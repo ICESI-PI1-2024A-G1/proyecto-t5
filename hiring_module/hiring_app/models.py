@@ -75,15 +75,11 @@ class ApplicationTemplate(models.Model):
 # TODO: Add fields for the ApplicationTemplate model
 
 class ApplicationTemplateManager(models.Manager):
-    def create_application_template(self, id, name, created_by):
-        if not id:
-            raise ValueError('The Application Template must have an ID')
-        
+    def create_application_template(self, name, created_by):
         if not created_by:
             raise ValueError('The Application Template must have a creator')
         
         application_template = self.model(
-            id=id,
             name=name,
             created_by=created_by,
         )
