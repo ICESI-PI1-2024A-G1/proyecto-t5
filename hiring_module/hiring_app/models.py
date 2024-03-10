@@ -49,3 +49,31 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return str(self.id)
+
+class ApplicationTemplate(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=64)
+    created_at = models.DateTimeField(auto_now_add=True)
+    created_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+# TODO: Add fields for the ApplicationTemplate model
+
+class ApplicationTemplateManager(models.Manager):
+    def create_application_template(self, id, name, created_by):
+        if not id:
+            raise ValueError('The Application Template must have an ID')
+        
+        if not created_by:
+            raise ValueError('The Application Template must have a creator')
+        
+        application_template = self.model(
+            id=id,
+            name=name,
+            created_by=created_by,
+        )
+
+        application_template.save(using=self._db)
+        return application_template
