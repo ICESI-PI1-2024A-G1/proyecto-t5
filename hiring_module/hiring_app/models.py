@@ -1,15 +1,21 @@
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.db import models
+from django.utils import timezone
+from hiring_module.settings import MEDIA_ROOT
+import os
 
 class CustomUserManager(BaseUserManager):
-    def create_user(self, id, first_name, last_name, role, password):
+    def create_user(self, id, first_name, last_name, birth_date, gender, address, role, password):
         if not id:
-            raise ValueError('The User must have an ID')
-        
+            raise ValueError('Users must have an ID')
+
         user = self.model(
             id=id,
             first_name=first_name,
             last_name=last_name,
+            birth_date=birth_date,
+            gender=gender,
+            address=address,
             role=role,
         )
 
@@ -17,31 +23,38 @@ class CustomUserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, id, first_name, last_name, role, password):
+    def create_superuser(self, id, first_name, last_name, birth_date, gender, address, role, password):
         user = self.create_user(
             id=id,
             first_name=first_name,
             last_name=last_name,
+            birth_date=birth_date,
+            gender=gender,
+            address=address,
             role=role,
             password=password,
         )
-        user.is_staff = True
         user.is_superuser = True
+        user.is_staff = True
         user.save(using=self._db)
         return user
-
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     ROLE_CHOICES = (
         ('leader', 'Leader'),
         ('manager', 'Manager'),
         ('administrator', 'Administrator'),
+        ('solicitant', 'Solicitant'),
+        ('normal', 'Normal')
     )
 
     id = models.IntegerField(primary_key=True)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     date_joined = models.DateTimeField(auto_now_add=True)
+    birth_date = models.DateField()
+    gender = models.CharField(max_length=20)
+    address = models.CharField(max_length=100)
     role = models.CharField(max_length=20, choices=ROLE_CHOICES)
 
     USERNAME_FIELD = 'id'
