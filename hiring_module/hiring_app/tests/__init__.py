@@ -1,0 +1,3 @@
+from .cex_contract_request_tests import CEXContractRequestModelTests
+from .monitoring_contract_request_tests import MonitoringContractRequestTests
+from .user_model_tests import UserModelTests
