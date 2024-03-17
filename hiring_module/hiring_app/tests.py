@@ -1,6 +1,7 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 from django.db.utils import IntegrityError
+from django.core.exceptions import ValidationError
 from hiring_app.models import *
 
 class UserModelTests(TestCase):
@@ -58,3 +59,53 @@ class UserModelTests(TestCase):
         # Try to create a superuser with a string id
         with self.assertRaises(ValueError):
             User.objects.create_superuser(id="foo", password='foo', first_name='John', last_name='Doe', birth_date='1990-01-01', address='1234 Main St')
+
+class ContractRequestModelTests(TestCase):
+    def test_create_contract_request(self):
+        # Create a user
+        User = get_user_model()
+        user = User.objects.create_user(id=1, password='1', first_name='John', last_name='Doe', birth_date='1990-01-01', gender='Male', address='1234 Main St')
+        # Create a contract request
+        contract_request = ContractRequest.objects.create_contract_request(created_by=user, estimated_completion_date='2024-10-10')
+        self.assertEqual(contract_request.created_by, user)
+        self.assertEqual(contract_request.state, 'pending')
+        # Assign a user to the contract request
+        # Create a new user
+        assigned_to = User.objects.create_user(id=2, password='2', first_name='Jane', last_name='Doe', birth_date='1990-01-01', gender='Female', address='1234 Main St')
+        contract_request.assign_to(user=assigned_to)
+        self.assertEqual(contract_request.assigned_to, assigned_to)
+        # Try to create a contract request without a creator
+        with self.assertRaises(TypeError):
+            ContractRequest.objects.create_contract_request()
+        # Try to create a contract request with wrong user input
+        with self.assertRaises(ValueError):
+            ContractRequest.objects.create_contract_request(created_by=1)
+        # Try to assign a wrong user
+        with self.assertRaises(ValueError):
+            contract_request.assign_to(user=1)
+        
+    def test_transition_to_state(self):
+        # Create a user
+        User = get_user_model()
+        user = User.objects.create_user(id=1, password='1', first_name='John', last_name='Doe', birth_date='1990-01-01', gender='Male', address='1234 Main St')
+        # Create a contract request
+        contract_request = ContractRequest.objects.create_contract_request(created_by=user, estimated_completion_date='2024-10-10')
+        # Transition to a new state
+        contract_request.transition_to_state(new_state='review', comment='review state')
+        self.assertEqual(contract_request.state, 'review')
+        self.assertEqual(contract_request.comment, 'review state')
+        # Check if the snapshot was created
+        self.assertEqual(contract_request.get_snapshots().count(), 1)
+        # Transition to a new state with comment
+        contract_request.transition_to_state(new_state='filed', comment='filed state')
+        self.assertEqual(contract_request.state, 'filed')
+        self.assertEqual(contract_request.comment, 'filed state')
+        # Check if the snapshot was created and has the comment of the previous state
+        self.assertEqual(contract_request.get_snapshots().count(), 2)
+        self.assertEqual(contract_request.get_snapshots().filter(state='review').first().comment, 'review state')
+        # Try to transition to a non existent state
+        with self.assertRaises(ValueError):
+            contract_request.transition_to_state(new_state='foo')
+        # Try to transition to a state previously transitioned to
+        with self.assertRaises(ValueError):
+            contract_request.transition_to_state(new_state='review')

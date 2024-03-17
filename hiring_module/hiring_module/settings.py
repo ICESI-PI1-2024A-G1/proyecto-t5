@@ -82,6 +82,14 @@ DATABASES = {
         'PASSWORD': 'admin',
         'HOST': 'localhost',
         'PORT': '5432',
+    },
+    'test': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'hiring_module_test',
+        'USER': 'postgres',
+        'PASSWORD': 'admin',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -127,7 +135,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'auth.User'
+AUTH_USER_MODEL = 'hiring_app.CustomUser'
 LOGIN_REDIRECT_URL ="hiring_app:home"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'hiring_app','media')
