@@ -1,8 +1,8 @@
 from django.urls import path
-from .views import home
+from hiring_app.views import ControlBoardView
 
 app_name = 'hiring_app'
 
 urlpatterns = [
-    path('home/', home, name = 'home',)
+    path('control_board/', ControlBoardView.as_view(), name = 'control_board',)
 ]
