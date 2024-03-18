@@ -1,2 +1,8 @@
 Django==5.0.2
 psycopg2-binary==2.9.9
+python-dotenv
+tailwind
+django-tailwind
+django-tailwind[reload]
+nodejs
+npm

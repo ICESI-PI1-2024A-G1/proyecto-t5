@@ -2,3 +2,6 @@ hiring_venv/
 venv/
 __pycache__/
 .vscode/
+/hiring_module/.env
+/hiring_module/hiring_module/__pycache__
+/hiring_module/hiring_app/__pycache__

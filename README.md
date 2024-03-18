@@ -22,13 +22,14 @@ Configuration for collaborative work:
 
 6) Activate the virtual environment
 
-> hiring_venv/Scripts/activate
+> ./hiring_venv/Scripts/activate
 
 When you are in the virtual environment you can work on the project
 
 7) Make the necessary installations of dependencies
 
-> pip install requirements.txt
+> pip install -r requirements.txt
+> cd hiring_module
 
 7) Make database migrations
 
@@ -40,8 +41,11 @@ Being in the project directory...
 
 8) Work on the project...
 
-9) Run the server
+9) Load tailwind
 
+> python manage.py tailwind init
+
+10) Run server
 Being in the project director...
 
 > python manage.py runserver
