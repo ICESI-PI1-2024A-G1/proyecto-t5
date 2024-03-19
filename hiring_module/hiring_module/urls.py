@@ -27,7 +27,7 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(), name='logout'),
     path('hiring_app/',include('hiring_app.urls')),
 ]
-from django.conf.urls.static import static
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
