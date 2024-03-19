@@ -29,9 +29,12 @@ When you are in the virtual environment you can work on the project
 7) Make the necessary installations of dependencies
 
 > pip install -r requirements.txt
+
 > cd hiring_module
 
-7) Make database migrations
+> npm install
+
+8) Make database migrations
 
 Being in the project directory...
 
@@ -39,13 +42,13 @@ Being in the project directory...
 
 > python manage.py migrate
 
-8) Work on the project...
+9) Work on the project...
 
-9) Load tailwind
+10) Load tailwind
 
-> python manage.py tailwind init
+> python manage.py tailwind start
 
-10) Run server
+11) Run server
 Being in the project director...
 
 > python manage.py runserver
