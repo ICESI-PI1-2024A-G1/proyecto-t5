@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
-from hiring_app.models import CEXContractRequest
+from hiring_app.model import CEXContractRequest
 
 class CEXContractRequestModelTests(TestCase):
     def test_create_cex_contract_request(self):

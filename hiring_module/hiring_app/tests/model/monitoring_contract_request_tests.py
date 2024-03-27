@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.core.exceptions import ValidationError
-from hiring_app.models import MonitoringContractRequest
+from hiring_app.model import MonitoringContractRequest
 from django.contrib.auth import get_user_model
 
 class MonitoringContractRequestTests(TestCase):
