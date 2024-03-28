@@ -2,3 +2,4 @@ from .user_model import CustomUser
 from .contract_request_snapshot_model import ContractRequestSnapshot
 from .cex_contract_request_model import CEXContractRequest
 from .monitoring_contract_request_model import MonitoringContractRequest
+from .contract_request_model import state_choices

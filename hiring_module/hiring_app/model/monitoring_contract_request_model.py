@@ -7,7 +7,6 @@ from django.core.validators import validate_email
 
 class MonitoringContractRequestManager(models.Manager):
     def create_contract_request(self, **extra_fields):
-        # Create a monitoring contract request
         self.model = MonitoringContractRequest
         monitoring_contract_request = self.create(
             **extra_fields
@@ -16,8 +15,6 @@ class MonitoringContractRequestManager(models.Manager):
         return monitoring_contract_request
     
 class MonitoringContractRequest(ContractRequest):
-    # Monitoring Contract Request model
-    assigned_to = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='monitoring_contract_requests_assigned_to', null=True, blank=True)
     cenco = models.CharField(max_length=128)
     has_money_in_cenco = models.BooleanField()
     cenco_manager = models.CharField(max_length=256)

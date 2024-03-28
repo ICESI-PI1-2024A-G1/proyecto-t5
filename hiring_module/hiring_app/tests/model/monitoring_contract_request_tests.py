@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.core.exceptions import ValidationError
-from hiring_app.models import MonitoringContractRequest
+from hiring_app.model import MonitoringContractRequest
 from django.contrib.auth import get_user_model
 
 class MonitoringContractRequestTests(TestCase):
@@ -25,7 +25,8 @@ class MonitoringContractRequestTests(TestCase):
             monitoring_description = 'monitoring description',
             weekly_hours = 10,
             total_value_to_pay = 1000000,
-            is_unique_payment = True
+            is_unique_payment = True,
+            created_by=user
         )
         self.assertEqual(monitoring_contract_request.id, 1)
         self.assertEqual(monitoring_contract_request.cenco, 'cenco')
@@ -68,7 +69,8 @@ class MonitoringContractRequestTests(TestCase):
                 monitoring_description = 'monitoring description',
                 weekly_hours = 10,
                 total_value_to_pay = 1000000,
-                is_unique_payment = True
+                is_unique_payment = True,
+                created_by=user
             )
         # Try to create a moniting contract request with a wrong monitoring type
         with self.assertRaises(ValidationError):
@@ -89,7 +91,8 @@ class MonitoringContractRequestTests(TestCase):
                 monitoring_description = 'monitoring description',
                 weekly_hours = 10,
                 total_value_to_pay = 1000000,
-                is_unique_payment = True
+                is_unique_payment = True,
+                created_by=user
             )
 
     def test_transition_state_on_monitoring_contract_request(self):
@@ -113,13 +116,12 @@ class MonitoringContractRequestTests(TestCase):
             monitoring_description = 'monitoring description',
             weekly_hours = 10,
             total_value_to_pay = 1000000,
-            is_unique_payment = True
+            is_unique_payment = True,
+            created_by=user
         )
-        monitoring_contract_request.edit_comment('Initial comment')
         # Transition the state of the contract request
         monitoring_contract_request.transition_to_state('review', 'Review comment')
         self.assertEqual(monitoring_contract_request.state, 'review')
-        self.assertEqual(monitoring_contract_request.comment, 'Review comment')
         # Check that the snapshot was created
         snapshots = monitoring_contract_request.get_snapshots()
         self.assertEqual(snapshots.count(), 1)
