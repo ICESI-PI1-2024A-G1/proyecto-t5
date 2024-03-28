@@ -25,7 +25,7 @@
         document.addEventListener('DOMContentLoaded', function () {
             var selectElement = document.getElementById('stateSelect');
             selectElement.addEventListener('change', function () {
-                if (this.value === 'incomplete') {
+                if (this.value === 'incomplete' || this.value === 'cancelled') {
                     var reason = prompt('Ingrese el motivo de los documentos faltantes:');
                     if (reason !== null) {
                         // Agregar el motivo al formulario como un campo oculto

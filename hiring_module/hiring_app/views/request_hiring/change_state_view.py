@@ -37,13 +37,13 @@ class ChangeState(View):
         
         new_state = request.POST.get('state')
         
-        if new_state == 'incomplete':
+        if new_state == 'incomplete' or new_state == 'cancelled':
             reason = request.POST.get('reason')
             if not reason:
                 return render(request, 'request_hiring.html', {'choices': state_choices(), 'result': contract_request.state, 'error_message': 'Debe ingresar un motivo para los documentos faltantes.'})
             
         if contract_request.is_valid_transition(contract_request.state, new_state):
-            if new_state == 'incomplete':
+            if new_state == 'incomplete' or new_state == 'cancelled':
                 reason = request.POST.get('reason')
                 if not reason:
                     return render(request, 'request_hiring.html', {'choices': state_choices(), 'result': contract_request.state, 'error_message': 'Debe ingresar un motivo para los documentos faltantes.'})
