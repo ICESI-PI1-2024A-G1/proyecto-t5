@@ -81,4 +81,4 @@ class ContractRequest(models.Model):
             'cancelled': ()
         }
 
-        return True
+        return new_state in transitions.get(current_state, ())
