@@ -21,9 +21,6 @@ class CEXContractRequest(ContractRequest):
         ('checking', 'Checking'),
         ('savings', 'Savings')
     ]
-    manager_assigned_to = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True, related_name='cex_manager_assigned_to')
-    leader_assigned_to = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True, related_name='cex_leader_assigned_to')
-    created_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='cex_created_by')
     hiree_full_name = models.CharField(max_length=256)
     hiree_id = models.IntegerField()
     hiree_cellphone = models.CharField(max_length=16)
