@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Change state
+{% endblock %}
+
+{% block content %}    
+    <table class="min-w-full divide-y divide-gray-200 mt-14 ml-0">
+        <thead>
+            <tr>
+                <th
+                    class="border border-black px-6 py-3 bg-[#2A8FD0] text-center text-xs leading-4 font-extrabold text-black uppercase tracking-wider">
+                    ID
+                </th>
+                <th
+                    class="border border-black px-6 py-3 bg-[#2A8FD0] text-center text-xs leading-4 font-extrabold text-black uppercase tracking-wider">
+                    Solicitante
+                </th>
+                <th
+                    class="border border-black px-6 py-3 bg-[#2A8FD0] text-center text-xs leading-4 font-extrabold text-black uppercase tracking-wider">
+                    Lider encargado
+                </th>
+                <th
+                    class="border border-black px-6 py-3 bg-[#2A8FD0] text-center text-xs leading-4 font-extrabold text-black uppercase tracking-wider">
+                    Gestor encargado
+                </th>
+                <th
+                    class="border border-black px-6 py-3 bg-[#2A8FD0] text-center text-xs leading-4 font-extrabold text-black uppercase tracking-wider">
+                    Estado
+                </th>
+                <th
+                    class="border border-black px-6 py-3 bg-[#2A8FD0] text-center text-xs leading-4 font-extrabold text-black uppercase tracking-wider">
+                    Contrato
+                </th>
+                <th
+                    class="border border-black px-6 py-3 bg-[#2A8FD0] text-center text-xs leading-4 font-extrabold text-black uppercase tracking-wider">
+                    Fecha incio
+                </th>
+                <th
+                    class="border border-black px-6 py-3 bg-[#2A8FD0] text-center text-xs leading-4 font-extrabold text-black uppercase tracking-wider">
+                    Lider asignado
+                </th>
+            </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+            <tr>
+                <td class="border border-black px-6 py-4 text-center whitespace-no-wrap">
+                    1
+                </td>
+                <td class="border border-black px-6 py-4 text-center whitespace-no-wrap">
+                    Alejandro Castro
+                </td>
+                <td class="border border-black px-6 py-4 text-center whitespace-no-wrap">
+                    Roberto Álvarez
+                </td>
+                <td class="border border-black px-6 py-4 text-center whitespace-no-wrap">
+                    Juan José Arana
+                </td>
+                <td id="statusButton"
+                    class="border border-black px-6 py-4 text-center whitespace-no-wrap relative">
+                    <div>
+                        <button onclick="toggleDropdownStatus()"
+                            class="bg-slate-200 rounded-full shadow px-3 py-1 hover:bg-slate-300 transition-colors">
+                            <div id="selectedOptionStatus" class="font-semibold flex items-center">
+                                En revisión
+                            </div>
+                        </button>
+                        <div id="dropdownStatus"
+                            class="font-semibold bg-slate-200 shadow rounded px-3 py-1 mt-1 hidden flex flex-col absolute">
+                            <button onclick="changeOptionStatus('Contrato cancelado')"
+                                class="bg-slate-50 rounded-full px-1 mt-1 hover:bg-slate-300 transition-colors">
+                                Contrato cancelado
+                            </button>
+                            <button onclick="changeOptionStatus('Datos faltantes')"
+                                class="bg-slate-50 rounded-full px-1 mt-1 hover:bg-slate-300 transition-colors">
+                                Datos faltantes
+                            </button>
+                            <button onclick="changeOptionStatus('Por validar')"
+                                class="bg-slate-50 rounded-full px-1 mt-1 hover:bg-slate-300 transition-colors">
+                                Por validar
+                            </button>
+                            <button onclick="changeOptionStatus('Contrato radicado')"
+                                class="bg-slate-50 rounded-full px-1 mt-1 hover:bg-slate-300 transition-colors">
+                                Contrato radicado
+                            </button>
+                            <button onclick="changeOptionStatus('En revisión')"
+                                class="bg-slate-50 rounded-full px-1 mt-1 hover:bg-slate-300 transition-colors">
+                                En revisión
+                            </button>
+                        </div>
+                    </div>
+                </td>
+                <td class="border border-black px-6 py-4 text-center whitespace-no-wrap">
+                    Honorarios
+                </td>
+                <td class="border border-black px-6 py-4 text-center whitespace-no-wrap">
+                    02-04-2023
+                </td>
+                <td id="leaderButton"
+                    class="border border-black px-6 py-4 text-center whitespace-no-wrap relative">
+                    <div>
+                        <button
+                            class="bg-slate-200 rounded-full shadow px-3 py-1 hover:bg-slate-300 transition-colors">
+                            <div id="selectedLeaderOption" class="font-semibold flex items-center">
+                                Valentina Martínez
+                            </div>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}    

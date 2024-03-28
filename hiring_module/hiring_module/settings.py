@@ -26,9 +26,6 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG') == 'True'
 
 
-NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"
-
-
 # Configuración de la base de datos
 DATABASES = {
     'default': {
@@ -134,6 +131,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [
+  BASE_DIR / "static",
+  BASE_DIR.parent / "node_modules",
+]
+
+
+STATIC_ROOT = BASE_DIR.parent / "static"
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
