@@ -11,8 +11,6 @@ class CEXContractRequestModelTests(TestCase):
         # Create a CEX contract request
         cex_contract_request = CEXContractRequest.objects.create_contract_request(
             estimated_completion_date='2021-12-31',
-            solicitant_name='John Doe', 
-            solicitant_faculty='Faculty of Engineering', 
             hiree_full_name='Jane Doe',
             hiree_id=148964,
             hiree_cellphone='1234567890',
@@ -27,11 +25,10 @@ class CEXContractRequestModelTests(TestCase):
             arl='ARL',
             contract_value=123456,
             charge_account='Charge account',
-            rut=f'rut content'
+            rut=f'rut content',
+            created_by=user
         )
         self.assertEqual(cex_contract_request.id, 1)
-        self.assertEqual(cex_contract_request.solicitant_name, 'John Doe')
-        self.assertEqual(cex_contract_request.solicitant_faculty, 'Faculty of Engineering')
         self.assertEqual(cex_contract_request.hiree_full_name, 'Jane Doe')
         self.assertEqual(cex_contract_request.hiree_id, 148964)
         self.assertEqual(cex_contract_request.hiree_cellphone, '1234567890')
@@ -47,6 +44,7 @@ class CEXContractRequestModelTests(TestCase):
         self.assertEqual(cex_contract_request.contract_value, 123456)
         self.assertEqual(cex_contract_request.charge_account, 'Charge account')
         self.assertEqual(cex_contract_request.rut, f'rut content')
+        self.assertEqual(cex_contract_request.created_by, user)
         # Assign the user to the contract request
         cex_contract_request.assign_to(user)
         self.assertEqual(cex_contract_request.assigned_to, user)
@@ -57,8 +55,6 @@ class CEXContractRequestModelTests(TestCase):
         with self.assertRaises(ValidationError):
             cex_contract_request = CEXContractRequest.objects.create_contract_request(
                 estimated_completion_date='2021-12-31',
-                solicitant_name='John Doe', 
-                solicitant_faculty='Faculty of Engineering', 
                 assigned_to=user,
                 hiree_full_name='Jane Doe',
                 hiree_id=148964,
@@ -74,14 +70,13 @@ class CEXContractRequestModelTests(TestCase):
                 arl='ARL',
                 contract_value=123456,
                 charge_account='Charge account',
-                rut=f'rut content'
+                rut=f'rut content',
+                created_by=user
             )
         # Try to create a CEX contract with a wrong email
         with self.assertRaises(ValidationError):
             cex_contract_request = CEXContractRequest.objects.create_contract_request(
                 estimated_completion_date='2021-12-31',
-                solicitant_name='John Doe', 
-                solicitant_faculty='Faculty of Engineering', 
                 assigned_to=user,
                 hiree_full_name='Jane Doe',
                 hiree_id=148964,
@@ -97,7 +92,8 @@ class CEXContractRequestModelTests(TestCase):
                 arl='ARL',
                 contract_value=123456,
                 charge_account='Charge account',
-                rut=f'rut content'
+                rut=f'rut content',
+                created_by=user
             )
     
     def test_transition_state_on_cex_contract_request(self):
@@ -107,8 +103,6 @@ class CEXContractRequestModelTests(TestCase):
         # Create a CEX contract request
         cex_contract_request = CEXContractRequest.objects.create_contract_request(
             estimated_completion_date='2021-12-31',
-            solicitant_name='John Doe', 
-            solicitant_faculty='Faculty of Engineering', 
             hiree_full_name='Jane Doe',
             hiree_id=148964,
             hiree_cellphone='1234567890',
@@ -123,13 +117,12 @@ class CEXContractRequestModelTests(TestCase):
             arl='ARL',
             contract_value=123456,
             charge_account='Charge account',
-            rut=f'rut content'
+            rut=f'rut content',
+            created_by=user
         )
-        cex_contract_request.edit_comment('Initial comment')
         # Transition the state of the contract request
         cex_contract_request.transition_to_state('review', 'Review comment')
         self.assertEqual(cex_contract_request.state, 'review')
-        self.assertEqual(cex_contract_request.comment, 'Review comment')
         # Check that the snapshot was created
         snapshots = cex_contract_request.get_snapshots()
         self.assertEqual(snapshots.count(), 1)

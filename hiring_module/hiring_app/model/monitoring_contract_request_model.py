@@ -15,7 +15,9 @@ class MonitoringContractRequestManager(models.Manager):
         return monitoring_contract_request
     
 class MonitoringContractRequest(ContractRequest):
-    assigned_to = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='monitoring_contract_requests_assigned_to', null=True, blank=True)
+    manager_assigned_to = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True, related_name='monitoring_manager_assigned_to')
+    leader_assigned_to = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True, related_name='monitoring_leader_assigned_to')
+    created_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='monitoring_created_by')
     cenco = models.CharField(max_length=128)
     has_money_in_cenco = models.BooleanField()
     cenco_manager = models.CharField(max_length=256)
