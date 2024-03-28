@@ -144,3 +144,13 @@ AUTH_USER_MODEL = 'hiring_app.CustomUser'
 LOGIN_REDIRECT_URL ="hiring_app:home"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'hiring_app','media')
+
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'mail.sebastiandiazdev.com'  # Dirección del servidor SMTP
+EMAIL_PORT = 465  # Puerto SMTP
+EMAIL_USE_SSL = True  # Usar SSL para la conexión SMTP
+EMAIL_HOST_USER = 'no-reply@sebastiandiazdev.com'  # Correo electrónico del remitente
+EMAIL_HOST_PASSWORD = 'w=!56S93oK$h'  # Contraseña del correo electrónico del remitente

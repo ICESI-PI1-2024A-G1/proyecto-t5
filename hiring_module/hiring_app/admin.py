@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CustomUser, ContractRequestSnapshot, CEXContractRequest, MonitoringContractRequest
+from .model import CustomUser, ContractRequestSnapshot, CEXContractRequest, MonitoringContractRequest
 
 admin.site.register(CustomUser)
 admin.site.register(ContractRequestSnapshot)
