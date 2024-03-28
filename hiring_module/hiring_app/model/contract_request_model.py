@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 from .user_model import CustomUser
 from django.utils import timezone
@@ -13,7 +14,7 @@ def state_choices():
     )
 
 class ContractRequest(models.Model):
-    id = models.AutoField(primary_key=True)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     start_date = models.DateField(auto_now_add=True)
     completion_date = models.DateTimeField(null=True, blank=True)
     estimated_completion_date = models.DateField()

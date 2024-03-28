@@ -37,12 +37,13 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     birth_date = models.DateField()
     gender = models.CharField(max_length=20)
     address = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
     groups = models.ManyToManyField(Group, verbose_name='groups', blank=True, help_text='The groups this user belongs to.', related_name='customuser_set')
     user_permissions = models.ManyToManyField(Permission, verbose_name='user permissions', blank=True, help_text='Specific permissions for this user.', related_name='customuser_set')
     is_staff = models.BooleanField(default=False)
     
     USERNAME_FIELD = 'id' 
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'birth_date', 'gender', 'address']
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'birth_date', 'gender', 'address', 'email']
     objects = CustomUserManager()
 
     def __str__(self):
