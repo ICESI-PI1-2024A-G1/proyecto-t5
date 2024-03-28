@@ -6,7 +6,7 @@ from hiring_app.forms import LoginForm
 from django.http import HttpResponseRedirect
 
 class LoginView(FormView):
-    template_name = 'auth/login.html'
+    template_name = 'login.html'
     form_class = LoginForm
     success_url = reverse_lazy('hiring_app:control_board')
 
