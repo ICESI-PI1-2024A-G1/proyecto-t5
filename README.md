@@ -30,7 +30,6 @@ When you are in the virtual environment you can work on the project
 
 > pip install -r requirements.txt
 
-> cd hiring_module
 
 8) Make database migrations
 
@@ -44,3 +43,10 @@ Being in the project directory...
 Being in the project director...
 
 > python manage.py runserver
+
+
+
+
+
+
+

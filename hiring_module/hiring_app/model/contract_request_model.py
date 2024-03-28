@@ -19,9 +19,12 @@ class ContractRequest(models.Model):
     estimated_completion_date = models.DateField()
     current_state_start = models.DateTimeField(auto_now_add=True)
     state = models.CharField(max_length=64, choices=state_choices(), default='pending')
-    comment = models.TextField(null=True, blank=True, default='')
-    assigned_to = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='%(class)s_assigned_to', null=True, blank=True)
-
+    comment = models.TextField(null=True, blank=True, default='') # Eliminar
+    assigned_to = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='%(class)s_assigned_to', null=True, blank=True) 
+    # asignar a gestores y a lideres
+    # asignar el usuario quien hizo la solicitud
+    
+    
     class Meta:
         abstract = True
 
