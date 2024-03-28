@@ -6,3 +6,4 @@ __pycache__/
 /hiring_module/hiring_module/__pycache__
 /hiring_module/hiring_app/__pycache__
 /hiring_module/node_modules/
+/hiring_module/hiring_app/migrations/

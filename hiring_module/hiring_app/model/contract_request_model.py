@@ -19,11 +19,9 @@ class ContractRequest(models.Model):
     estimated_completion_date = models.DateField()
     current_state_start = models.DateTimeField(auto_now_add=True)
     state = models.CharField(max_length=64, choices=state_choices(), default='pending')
-    comment = models.TextField(null=True, blank=True, default='') # Eliminar
-    assigned_to = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='%(class)s_assigned_to', null=True, blank=True) 
-    # asignar a gestores y a lideres
-    # asignar el usuario quien hizo la solicitud
-    
+    manager_assigned_to = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True, related_name='manager_assigned_to')
+    leader_assigned_to = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True, related_name='leader_assigned_to')
+    created_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='created_by')
     
     class Meta:
         abstract = True
@@ -62,7 +60,6 @@ class ContractRequest(models.Model):
 
         # Create a new snapshot of the contract request
         ContractRequestSnapshot.objects.create(
-                
             state_start=self.current_state_start,
             state_end=timezone.now(),
             comment=previous_comment
