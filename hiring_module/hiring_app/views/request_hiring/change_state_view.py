@@ -14,19 +14,46 @@ from hiring_app.model.monitoring_contract_request_model import MonitoringContrac
 
 class ChangeState(View):
     def get(self, request, idContract):
-        contract_request = CEXContractRequest.objects.filter(
-            id=idContract).first()
-
-        if not contract_request:
-            contract_request = MonitoringContractRequest.objects.filter(
-                id=idContract).first()
-
-        if not contract_request:
-            raise Http404("Contract request does not exist")
+        contract_request = self.getContract(idContract)
 
         return render(request, 'request_hiring.html', {'choices': state_choices(), 'result': contract_request.state, 'id': idContract})
 
     def post(self, request, idContract):
+        contract_request = self.getContract(idContract)
+        new_state = request.POST.get('state')
+
+        state_actions = {
+            'incomplete': {
+                'error_message': 'Debe ingresar un motivo para los documentos faltantes.',
+                'email_function': self.sendEmailFile
+            },
+            'cancelled': {
+                'error_message': 'Debe ingresar un motivo para la cancelacion.',
+                'email_function': self.sendEmailRequest
+            },
+            'filed': {
+                'error_message': None,
+                'email_function': self.sendEmailSuccess
+            }
+        }
+
+        action = state_actions.get(new_state, None)
+
+        if not action:
+            return render(request, 'request_hiring.html', {'choices': state_choices(), 'result': contract_request.state, 'error_message': 'Invalid state transition. Unable to change state.', 'id': idContract})
+
+        reason = request.POST.get('reason')
+        if action and (not reason and action['error_message']):
+            return render(request, 'request_hiring.html', {'choices': state_choices(), 'result': contract_request.state, 'error_message': action['error_message'], 'id': idContract})
+        elif action:
+            contract_request.state = new_state
+            contract_request.save()
+            if action['email_function']:
+                action['email_function'](contract_request, reason)
+
+        return self.get(request, idContract)
+
+    def getContract(self, idContract):
         contract_request = CEXContractRequest.objects.filter(
             id=idContract).first()
 
@@ -36,48 +63,35 @@ class ChangeState(View):
 
         if not contract_request:
             raise Http404("Contract request does not exist")
+        return contract_request
 
-        new_state = request.POST.get('state')
 
-        if new_state == 'incomplete' or new_state == 'cancelled':
-            reason = request.POST.get('reason')
-            if not reason:
-                return render(request, 'request_hiring.html', {'choices': state_choices(), 'result': contract_request.state, 'error_message': 'Debe ingresar un motivo para los documentos faltantes.', 'id': idContract})
+    def sendEmailRequest(self, contract_request, reason):
+        content = f'Estimado/a {contract_request.created_by.first_name},\n\nLamentamos informarle que su solicitud ha sido cancelada. El motivo proporcionado es: {reason}.\n\nPor favor, no dude en ponerse en contacto con nosotros si tiene alguna pregunta.\n\nAtentamente,\nTu aplicación'
 
-        if contract_request.is_valid_transition(contract_request.state, new_state):
-            if new_state == 'incomplete' or new_state == 'cancelled':
-                reason = request.POST.get('reason')
-                if not reason:
-                    return render(request, 'request_hiring.html', {'choices': state_choices(), 'result': contract_request.state, 'error_message': 'Debe ingresar un motivo para los documentos faltantes.', 'id': idContract})
-                else:
-                    contract_request.state = new_state
-                    contract_request.save()
-
-                    self.sendEmailError(contract_request, reason)
-            elif new_state == 'filed':
-                self.sendEmailSuccess(contract_request)
-            else:
-                contract_request.state = new_state
-                contract_request.save()
-
-        else:
-            return render(request, 'request_hiring.html', {'choices': state_choices(), 'result': contract_request.state, 'error_message': 'Invalid state transition. Unable to change state.', 'id': idContract})
-
-        return self.get(request, idContract)
-
-    def sendEmailError(self, contract_request, reason):
-        content = f'Estimado/a {contract_request.created_by.first_name},\n\nLamentamos informarle que faltan documentos para su solicitud. El motivo proporcionado es: {reason}.\n\nPor favor, complete los documentos requeridos lo antes posible.\n\nAtentamente,\nTu aplicación'
-
-        message = EmailMultiAlternatives('Documentos faltantes',
-                                         content,
-                                         settings.EMAIL_HOST_USER,
-                                         [contract_request.created_by.email])
+        message = EmailMultiAlternatives('Solicitud cancelada',
+                                        content,
+                                        settings.EMAIL_HOST_USER,
+                                        [contract_request.created_by.email])
 
         message.attach_alternative(content, 'text/html')
         message.send()
 
 
-    def sendEmailSuccess(self, contract_request):
+    def sendEmailFile(self, contract_request, reason):
+        content = f'Estimado/a {contract_request.created_by.first_name},\n\nLamentamos informarle que su solicitud ha sido cancelada. El motivo proporcionado es: {reason}.\n\nPor favor, no dude en ponerse en contacto con nosotros si tiene alguna pregunta.\n\nAtentamente,\nTu aplicación'
+
+        message = EmailMultiAlternatives('Solicitud cancelada',
+                                        content,
+                                        settings.EMAIL_HOST_USER,
+                                        [contract_request.created_by.email])
+
+        message.attach_alternative(content, 'text/html')
+        message.send()
+
+
+
+    def sendEmailSuccess(self, contract_request, reason=""):
         content = f'Estimado/a {contract_request.created_by.first_name},\n\nNos complace informarle que su solicitud ha sido completada exitosamente.\n\nPor favor, no dude en ponerse en contacto con nosotros si tiene alguna pregunta o necesita asistencia adicional.\n\nAtentamente,\nTu aplicación'
 
         message = EmailMultiAlternatives(
