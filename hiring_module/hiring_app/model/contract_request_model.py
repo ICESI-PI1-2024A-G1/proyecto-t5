@@ -60,8 +60,12 @@ class ContractRequest(models.Model):
         self.create_snapshot(comment=comment)
         return previous_state
 
-    def assign_to(self, user):
-        self.assigned_to = user
+    def assign_leader(self, user):
+        self.leader_assigned_to = user
+        self.save()
+
+    def assign_manager(self, user):
+        self.manager_assigned_to = user
         self.save()
 
     def is_valid_transition(self, current_state, new_state):
