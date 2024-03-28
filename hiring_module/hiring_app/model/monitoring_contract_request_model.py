@@ -11,7 +11,9 @@ class MonitoringContractRequestManager(models.Manager):
         monitoring_contract_request = self.create(
             **extra_fields
         )
+        monitoring_contract_request.create_snapshot()
         monitoring_contract_request.save(using=self._db)
+        
         return monitoring_contract_request
     
 class MonitoringContractRequest(ContractRequest):

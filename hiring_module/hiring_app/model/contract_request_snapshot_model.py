@@ -2,7 +2,7 @@ from django.db import models
 
 class ContractRequestSnapshot(models.Model):
     # Contract Request Snapshot model
-    contract_request_id = models.PositiveIntegerField()
+    contract_request_id = models.UUIDField()
     state = models.CharField(max_length=64)
     state_start = models.DateTimeField()
     state_end = models.DateTimeField()
