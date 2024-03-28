@@ -17,7 +17,7 @@ def admin_required(view_func):
 
 
 class AdministratorDashboardView(TemplateView):
-    template_name = 'hiring_app/administrator_dashboard.html'
+    template_name = 'administrator_dashboard.html'
     
     @method_decorator(admin_required)
     def dispatch(self, *args, **kwargs):

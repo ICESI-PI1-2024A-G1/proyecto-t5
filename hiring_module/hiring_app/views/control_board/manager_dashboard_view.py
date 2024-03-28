@@ -16,7 +16,7 @@ def manager_required(view_func):
     return wrapper
 
 class ManagerDashboardView(TemplateView):
-    template_name = 'hiring_app/manager_dashboard.html'
+    template_name = 'manager_dashboard.html'
 
     @method_decorator(manager_required)
     def dispatch(self, *args, **kwargs):

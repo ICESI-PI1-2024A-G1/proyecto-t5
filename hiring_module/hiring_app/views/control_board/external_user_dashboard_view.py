@@ -15,7 +15,7 @@ def role_redirect(view_func):
     return wrapper
 
 class ExternalUserDashboardView(TemplateView):
-    template_name = 'hiring_app/external_user_dashboard.html'
+    template_name = 'external_user_dashboard.html'
     @method_decorator(role_redirect)
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)

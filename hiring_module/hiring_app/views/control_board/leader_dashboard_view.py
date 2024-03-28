@@ -16,7 +16,7 @@ def leader_required(view_func):
     return wrapper
 
 class LeaderDashboardView(TemplateView):
-    template_name = 'hiring_app/leader_dashboard.html'
+    template_name = 'leader_dashboard.html'
 
     @method_decorator(leader_required)
     def dispatch(self, *args, **kwargs):
