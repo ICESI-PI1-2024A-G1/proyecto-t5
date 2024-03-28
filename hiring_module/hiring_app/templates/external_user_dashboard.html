@@ -1,28 +1,27 @@
-{% load static tailwind_tags %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Control_board</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{% static 'css/tailwind/tailwind.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body class="bg-slate-300 flex justify-center items-center h-screen">
-<main id="main">
-    <div class="container text-center">
-            <div style="padding-top: 25px;">
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    <a href="">Crear contrato de monitoria</a>
-                </button>
-            </div>
-            <div style="padding-top: 25px;">
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    <a href="">Crear contrato CEX</a>
-                </button>
-            </div>
-    </div>
-</main>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+
+{% block content %}
+    {% include 'auth/logout.html' %}
+    {% include 'components/header.html' %}
+    {% include 'control_board/components/LeftSideMenu.html' %}
+    <main id="main">
+        <div class="container text-center">
+                <div style="padding-top: 25px;">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        <a href="">Crear contrato de monitoria</a>
+                    </button>
+                </div>
+                <div style="padding-top: 25px;">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        <a href="">Crear contrato CEX</a>
+                    </button>
+                </div>
+        </div>
+    </main>
+
+{% endblock %}

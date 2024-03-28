@@ -1,21 +1,15 @@
-{% load static tailwind_tags %}
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-    <title>Control_board</title>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<link rel="stylesheet" href="{% static 'css/tailwind/tailwind.css' %}">
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% extends 'base.html' %}
 
-	</head>
-    <body class="bg-slate-300">
-        {% include 'control_board/components/LeftSideMenu.html' %}
-        {% include 'components/header.html' %}
-        <main id="main" class="xl:ml-[14%] p-4 pl-14 pr-14">
-            
-        </main>
-    </body>
+{% block title %}
+    Dashboard
+{% endblock %}
 
-</html>
+
+{% block content %}
+    {% include 'auth/logout.html' %}
+    {% include 'components/header.html' %}
+    {% include 'control_board/components/LeftSideMenu.html' %}
+    <main id="main" class="xl:ml-[14%] p-4 pl-14 pr-14">
+    </main>
+
+{% endblock %}
