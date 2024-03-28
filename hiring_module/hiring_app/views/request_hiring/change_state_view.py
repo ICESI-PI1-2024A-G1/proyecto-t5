@@ -42,26 +42,26 @@ class ChangeState(View):
         if new_state == 'incomplete' or new_state == 'cancelled':
             reason = request.POST.get('reason')
             if not reason:
-                return render(request, 'request_hiring.html', {'choices': state_choices(), 'result': contract_request.state, 'error_message': 'Debe ingresar un motivo para los documentos faltantes.'})
+                return render(request, 'request_hiring.html', {'choices': state_choices(), 'result': contract_request.state, 'error_message': 'Debe ingresar un motivo para los documentos faltantes.', 'id': idContract})
 
         if contract_request.is_valid_transition(contract_request.state, new_state):
             if new_state == 'incomplete' or new_state == 'cancelled':
                 reason = request.POST.get('reason')
                 if not reason:
-                    return render(request, 'request_hiring.html', {'choices': state_choices(), 'result': contract_request.state, 'error_message': 'Debe ingresar un motivo para los documentos faltantes.'})
+                    return render(request, 'request_hiring.html', {'choices': state_choices(), 'result': contract_request.state, 'error_message': 'Debe ingresar un motivo para los documentos faltantes.', 'id': idContract})
                 else:
                     contract_request.state = new_state
                     contract_request.save()
 
                     self.sendEmailError(contract_request, reason)
             elif new_state == 'filed':
-                self.sendEmailSuccess(contract_request, reason)
+                self.sendEmailSuccess(contract_request)
             else:
                 contract_request.state = new_state
                 contract_request.save()
 
         else:
-            return render(request, 'request_hiring.html', {'choices': state_choices(), 'result': contract_request.state, 'error_message': 'Invalid state transition. Unable to change state.'})
+            return render(request, 'request_hiring.html', {'choices': state_choices(), 'result': contract_request.state, 'error_message': 'Invalid state transition. Unable to change state.', 'id': idContract})
 
         return self.get(request, idContract)
 
