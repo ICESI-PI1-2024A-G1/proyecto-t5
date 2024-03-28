@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+
+{% block content %}
+    {% include 'auth/logout.html' %}
+    {% include 'components/header.html' %}
+    {% include 'control_board/components/LeftSideMenu.html' %}
+    <main id="main">
+        <div class="container text-center">
+                <div style="padding-top: 25px;">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        <a href="">Crear contrato de monitoria</a>
+                    </button>
+                </div>
+                <div style="padding-top: 25px;">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        <a href="">Crear contrato CEX</a>
+                    </button>
+                </div>
+        </div>
+    </main>
+
+{% endblock %}

@@ -6,10 +6,11 @@ class UserModelTests(TestCase):
     def test_create_user(self):
         User = get_user_model()
         # Create a user and check if the fields are correct
-        user = User.objects.create_user(id=1, password='1', first_name='John', last_name='Doe', birth_date='1990-01-01', gender='Male', address='1234 Main St')
+        user = User.objects.create_user(id=1, password='1', first_name='John', last_name='Doe', email='jhon@example.com', birth_date='1990-01-01', gender='Male', address='1234 Main St')
         self.assertEqual(user.id, 1)
         self.assertEqual(user.first_name, 'John')
         self.assertEqual(user.last_name, 'Doe')
+        self.assertEqual(user.email, 'jhon@example.com')
         self.assertEqual(user.birth_date, '1990-01-01')
         self.assertEqual(user.gender, 'Male')
         self.assertEqual(user.address, '1234 Main St')
@@ -34,10 +35,11 @@ class UserModelTests(TestCase):
     def text_create_superuser(self):
         User = get_user_model()
         # Create a superuser and check if the fields are correct
-        admin_user = User.objects.create_superuser(id=1, password='1', first_name='John', last_name='Doe', birth_date='1990-01-01', address='1234 Main St')
+        admin_user = User.objects.create_superuser(id=1, password='1', first_name='John', last_name='Doe', email='jhon@example.com', birth_date='1990-01-01', address='1234 Main St')
         self.assertEqual(admin_user.id, 1)
         self.assertEqual(admin_user.first_name, 'John')
         self.assertEqual(admin_user.last_name, 'Doe')
+        self.assertEqual(admin_user.email, 'jhon@example.com')
         self.assertEqual(admin_user.birth_date, '1990-01-01')
         self.assertEqual(admin_user.address, '1234 Main St')
         self.assertTrue(admin_user.is_active)

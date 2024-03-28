@@ -6,9 +6,9 @@ from hiring_app.forms import LoginForm
 from django.http import HttpResponseRedirect
 
 class LoginView(FormView):
-    template_name = 'auth/login.html'
+    template_name = 'login.html'
     form_class = LoginForm
-    success_url = reverse_lazy('hiring_app:control_board')
+    success_url = reverse_lazy('hiring_app:external_user_dashboard')
 
     def form_valid(self, form):
         id = form.cleaned_data['id']
@@ -18,7 +18,21 @@ class LoginView(FormView):
         
         if user is not None:
             login(self.request, user)
-            return super().form_valid(form)
+            # Check user's groups
+            for group in user.groups.all():
+                print(group)
+            if user.groups.filter(name='Administrator').exists():
+                return HttpResponseRedirect(reverse_lazy('hiring_app:administrator_dashboard'))
+            
+            elif user.groups.filter(name='Leader').exists():
+                return HttpResponseRedirect(reverse_lazy('hiring_app:leader_dashboard'))
+                
+            elif user.groups.filter(name='Manager').exists():
+                return HttpResponseRedirect(reverse_lazy('hiring_app:manager_dashboard'))
+                
+            else:
+                return super().form_valid(form) 
+                
         else:
             messages.error(self.request, 'Credenciales incorrectas. Por favor, inténtelo de nuevo.')
             return HttpResponseRedirect(reverse_lazy('login')) 

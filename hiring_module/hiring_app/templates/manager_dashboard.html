@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+
+{% block content %}
+    {% include 'auth/logout.html' %}
+    {% include 'components/header.html' %}
+    {% include 'control_board/components/LeftSideMenu.html' %}
+    <main id="main" class="xl:ml-[14%] p-4 pl-14 pr-14">
+    </main>
+
+{% endblock %}

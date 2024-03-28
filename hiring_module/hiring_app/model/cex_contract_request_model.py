@@ -12,6 +12,7 @@ class CEXContractRequestManager(models.Manager):
         cex_contract_request = self.create(
             **extra_fields
         )
+        cex_contract_request.create_snapshot()
         cex_contract_request.save(using=self._db)
         return cex_contract_request
     
