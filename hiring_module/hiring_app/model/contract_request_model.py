@@ -35,9 +35,10 @@ class ContractRequest(models.Model):
         return ContractRequestSnapshot.objects.filter(contract_request_id=self.id)
 
     def edit_comment(self, comment):
-        # Edit the comment of the contract request
-        self.comment = comment
-        self.save()
+        # Edit the comment of the current snapshot of the contract request
+        current_snapshot = self.get_snapshots().filter(state=self.state).first()
+        current_snapshot.comment = comment
+        current_snapshot.save()
 
     def transition_to_state(self, new_state, comment=''):
         # Transition the contract request to a new state
@@ -49,27 +50,22 @@ class ContractRequest(models.Model):
             # If the state transition has already been made, raise a ValueError
             raise ValueError('The state transition has already been made')
         previous_state = self.state
-        previous_comment = self.comment
         if (new_state == previous_state):
             # If the new state is the same as the previous state, raise a ValueError
             raise ValueError('You cannot transition to the same state')
 
         self.state = new_state
-        self.comment = comment
         self.current_state_start = timezone.now()
         self.save()
-
-        # Create a new snapshot of the contract request
-        ContractRequestSnapshot.objects.create(
-            state_start=self.current_state_start,
-            state_end=timezone.now(),
-            comment=previous_comment
-        )
-
+        self.create_snapshot(comment=comment)
         return previous_state
 
-    def assign_to(self, user):
-        self.assigned_to = user
+    def assign_leader(self, user):
+        self.leader_assigned_to = user
+        self.save()
+
+    def assign_manager(self, user):
+        self.manager_assigned_to = user
         self.save()
 
     def is_valid_transition(self, current_state, new_state):
@@ -82,3 +78,17 @@ class ContractRequest(models.Model):
         }
 
         return True
+    
+    def create_snapshot(self, comment=''):
+        # Create a snapshot of the current state of the contract request
+        snapshot = ContractRequestSnapshot.objects.create(
+            contract_request_id=self.id,
+            state=self.state,
+            state_start=self.current_state_start,
+            state_end=timezone.now(),
+            comment=comment
+        )
+
+        snapshot.save()
+
+        return snapshot
