@@ -2,3 +2,5 @@ from .auth.login_view import LoginView
 from .auth.logout_view import LogoutView
 from .control_board_view import ControlBoardView
 from .request_hiring.change_state_view import ChangeState
+from .request_creation.cex_contract_request_view import CEXContractRequestView
+from .request_creation.monitoring_contract_request_view import MonitoringContractRequestView
