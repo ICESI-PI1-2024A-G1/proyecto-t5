@@ -13,6 +13,10 @@ class ChangeStateView(View):
         new_state = request.POST.get('state')
 
         state_actions = {
+            'review': {
+                'error_message': None,
+                'email_function': None
+            },
             'incomplete': {
                 'error_message': 'Debe ingresar un motivo para los documentos faltantes.',
                 'email_function': self.sendEmailFile
