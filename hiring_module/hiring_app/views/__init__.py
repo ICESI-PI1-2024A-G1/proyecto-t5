@@ -5,5 +5,3 @@ from .control_board.external_user_dashboard_view import ExternalUserDashboardVie
 from .control_board.administrator_dashboard_view import AdministratorDashboardView
 from .control_board.leader_dashboard_view import LeaderDashboardView
 from .control_board.manager_dashboard_view import ManagerDashboardView
-
-
