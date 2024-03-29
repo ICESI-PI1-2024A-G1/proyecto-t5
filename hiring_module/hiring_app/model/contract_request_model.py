@@ -3,7 +3,6 @@ from django.db import models
 from .user_model import CustomUser
 from django.utils import timezone
 from .contract_request_snapshot_model import ContractRequestSnapshot
-
 def state_choices():
     return (
         ('pending', 'Pending'),
@@ -17,12 +16,12 @@ class ContractRequest(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     start_date = models.DateField(auto_now_add=True)
     completion_date = models.DateTimeField(null=True, blank=True)
-    estimated_completion_date = models.DateField()
+    estimated_completion_date = models.DateField(null=True, blank=True)
     current_state_start = models.DateTimeField(auto_now_add=True)
-    state = models.CharField(max_length=64, choices=state_choices(), default='pending')
+    state = models.CharField(max_length=64, choices=state_choices(), default='pending', blank=True)
     manager_assigned_to = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, related_name='manager_%(class)s_requests', null=True, blank=True)
     leader_assigned_to = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, related_name='leader_%(class)s_requests', null=True, blank=True)
-    created_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='created_%(class)s_requests')
+    created_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='created_%(class)s_requests', null=True, blank=True)
 
     class Meta:
         abstract = True

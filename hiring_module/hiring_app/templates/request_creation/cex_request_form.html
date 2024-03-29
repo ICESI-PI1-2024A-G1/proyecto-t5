@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Solicitudes de contratos CEX
+{% endblock %}
+
+{% block content %}
+<div class="">
+
+    <!-- visualize errors -->
+
+    {% if form.errors %}
+    <div>
+        {{form.errors}}
+        <strong>Error:</strong>
+        <ul>
+            {% for field, error in form.errors.items %}
+                <li>{{ field }}: {{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <h1 class="">Solicitudes de contratos CEX</h1>
+
+    <form method="post" enctype="multipart/form-data" action="{% url 'hiring_app:cex' %}">
+        {% csrf_token %}
+
+        <!-- Solicitant name -->
+        <div class="">
+            <label for="id_solicitant_name" class="">Solicitant name:</label>
+            <input type="text" id="id_solicitant_name" name="solicitant_name"
+                class="">
+        </div>
+
+        <!-- Solicitant faculty -->
+        <div class="">
+            <label for="id_solicitant_faculty" class="">Solicitant
+                faculty:</label>
+            <input type="text" id="id_solicitant_faculty" name="solicitant_faculty"
+                class="l">
+        </div>
+
+        <!-- Hiree full name -->
+        <div class="">
+            <label for="id_hiree_full_name" class="">Hiree full name:</label>
+            <input type="text" id="id_hiree_full_name" name="hiree_full_name"
+                class="">
+        </div>
+
+        <!-- Hiree ID -->
+        <div class="">
+            <label for="id_hiree_id" class="">Hiree ID:</label>
+            <input type="number" id="id_hiree_id" name="hiree_id" class="">
+        </div>
+
+        <!-- Hiree cellphone -->
+        <div class="">
+            <label for="id_hiree_cellphone" class="">Hiree cellphone:</label>
+            <input type="text" id="id_hiree_cellphone" name="hiree_cellphone"
+                class="">
+        </div>
+
+        <!-- Hiree email -->
+        <div class="">
+            <label for="id_hiree_email" class="">Hiree email:</label>
+            <input type="email" id="id_hiree_email" name="hiree_email" class="">
+        </div>
+
+        <!-- Cenco -->
+        <div class="">
+            <label for="id_cenco" class="">Cenco:</label>
+            <input type="text" id="id_cenco" name="cenco" class="">
+        </div>
+
+        <!-- Request motive -->
+        <div class="">
+            <label for="id_request_motive" class="">Request motive:</label>
+            <textarea id="id_request_motive" name="request_motive"
+                class=""></textarea>
+        </div>
+
+        <!-- Banking entity -->
+        <div class="">
+            <label for="id_banking_entity" class="">Banking entity:</label>
+            <input type="text" id="id_banking_entity" name="banking_entity"
+                class="">
+        </div>
+
+        <!-- Bank account type -->
+        <div class="">
+            <label for="id_bank_account_type" class="">Bank account
+                type:</label>
+            <select name="bank_account_type" id="id_bank_account_type" class="">
+                <option value="" disabled selected>Seleccionar</option>
+                {% for choice in form.bank_account_type.field.choices %}
+                <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Bank account number -->
+        <div class="">
+            <label for="id_bank_account_number" class="">Bank account
+                number:</label>
+            <input type="text" id="id_bank_account_number" name="bank_account_number"
+                class="">
+        </div>
+
+        <!-- EPS -->
+        <div class="">
+            <label for="id_eps" class="">EPS:</label>
+            <input type="text" id="id_eps" name="eps" class="">
+        </div>
+
+        <!-- Pension fund -->
+        <div class="">
+            <label for="id_pension_fund" class="">Pension fund:</label>
+            <input type="text" id="id_pension_fund" name="pension_fund" class="">
+        </div>
+
+        <!-- ARL -->
+        <div class="">
+            <label for="id_arl" class="">ARL:</label>
+            <input type="text" id="id_arl" name="arl" class="">
+        </div>
+
+        <!-- Contract value -->
+        <div class="">
+            <label for="id_contract_value" class="">Contract value:</label>
+            <input type="number" id="id_contract_value" name="contract_value"
+                class="">
+        </div>
+
+        <!-- Charge account -->
+        <div class="">
+            <label for="id_charge_account" class="">Charge account:</label>
+            <textarea id="id_charge_account" name="charge_account"
+                class=""></textarea>
+        </div>
+
+        <!-- Rut -->
+        <div class="">
+            <label for="id_rut" class="">Rut:</label>
+            <input type="file" id="id_rut" name="rut" class="">
+        </div>
+
+        <!-- Submit -->
+        <button type="submit"
+            class="">Enviar</button>
+    </form>
+</div>
+{% endblock %}
