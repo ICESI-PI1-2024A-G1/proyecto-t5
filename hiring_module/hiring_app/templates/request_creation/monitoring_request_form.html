@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Solicitudes de contratos de Monitoría
+{% endblock %}
+
+{% block content %}
+<div class="">
+
+    <!-- visualize errors -->
+
+    {% if form.errors %}
+    <div>
+        <strong>Error:</strong>
+        <ul>
+            {% for field, error in form.errors.items %}
+                <li>{{ field }}: {{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <h1 class="">Solicitudes de contratos de Monitoría</h1>
+
+    <form method="post" enctype="multipart/form-data" action="{% url 'hiring_app:monitoring' %}">
+        {% csrf_token %}
+
+        <!-- Cenco -->
+        <div>
+            <label for="id_cenco">Cenco:</label>
+            <input type="text" name="cenco" maxlength="128" required id="id_cenco">
+        </div>
+
+        <!-- Cenco manager -->
+        <div>
+            <label for="id_cenco_manager">Cenco manager:</label>
+            <input type="text" name="cenco_manager" maxlength="256" required id="id_cenco_manager">
+        </div>
+
+        <!-- Monitoring type -->
+        <div>
+            <label for="id_monitoring_type">Monitoring type:</label>
+            <select name="monitoring_type" required id="id_monitoring_type">
+                <option value="" disabled selected>Seleccionar</option>
+                {% for choice in form.monitoring_type.field.choices %}
+                <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Student code  -->
+        <div>
+            <label for="id_student_code">Student code:</label>
+            <input type="text" name="student_code" maxlength="16" required id="id_student_code">
+        </div>
+
+        <!-- Student full name -->
+        <div>
+            <label for="id_student_full_name">Student full name:</label>
+            <input type="text" name="student_full_name" maxlength="256" required id="id_student_full_name">
+        </div>
+
+        <!-- Student ID -->
+        <div>
+            <label for="id_student_id">Student id:</label>
+            <input type="text" name="student_id" maxlength="16" required id="id_student_id">
+        </div>
+
+        <!-- Student email -->
+        <div>
+            <label for="id_student_email">Student email:</label>
+            <input type="email" name="student_email" maxlength="254" required id="id_student_email">
+        </div>
+
+        <!-- Student cellphone -->
+        <div>
+            <label for="id_student_cellphone">Student cellphone:</label>
+            <input type="text" name="student_cellphone" maxlength="16" required id="id_student_cellphone">
+        </div>
+
+        <!-- Daviplata -->
+        <div>
+            <label for="id_daviplata">Daviplata:</label>
+            <input type="text" name="daviplata" maxlength="32" required id="id_daviplata">
+        </div>
+
+        <!-- Course or proyect -->
+        <div>
+            <label for="id_course_or_proyect">Course or proyect:</label>
+            <input type="text" name="course_or_proyect" maxlength="256" required id="id_course_or_proyect">
+        </div>
+
+        <!-- Monitoring description -->
+        <div>
+            <label for="id_monitoring_description">Monitoring description:</label>
+            <textarea name="monitoring_description" cols="40" rows="10" required id="id_monitoring_description">
+        </textarea>
+        </div>
+
+        <!-- Weekly hours -->
+        <div>
+            <label for="id_weekly_hours">Weekly hours:</label>
+            <input type="number" name="weekly_hours" step="0.01" required id="id_weekly_hours">
+        </div>
+
+        <!-- Total value to pay -->
+        <div>
+            <label for="id_total_value_to_pay">Total value to pay:</label>
+            <input type="number" name="total_value_to_pay" step="0.01" required id="id_total_value_to_pay">
+        </div>
+
+        <!-- Is unique payment -->
+        <div>
+            <label for="id_is_unique_payment">Is unique payment:</label>
+            <input type="checkbox" name="is_unique_payment" id="id_is_unique_payment">
+        </div>
+        
+        <!-- Submit -->
+        <button type="submit"
+            class="">Enviar</button>
+
+    </form>
+</div>
+{% endblock %}
