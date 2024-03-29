@@ -5,12 +5,14 @@
 {% endblock %}
 
 {% block content %}
+
+
     <form id="changeStateForm" method="post">
         {% csrf_token %}
         <label for="state">Select State:</label>
         <select name="state" id="stateSelect">
             {% for choice in choices %}
-                <option value="{{ choice.0 }}" {% if choice.0 == result %}selected{% endif %}>{{ choice.1 }}</option>
+                <option value="{{ choice.0 }}" {% if choice.0 == contract_request.state %}selected{% endif %}>{{ choice.1 }}</option>
             {% endfor %}
         </select>        
     </form>
@@ -25,10 +27,10 @@
         document.addEventListener('DOMContentLoaded', function () {
             var selectElement = document.getElementById('stateSelect');
             selectElement.addEventListener('change', function () {
+                alert(this.value)
                 if (this.value === 'incomplete' || this.value === 'cancelled') {
                     var reason = prompt('Ingrese el motivo de los documentos faltantes:');
                     if (reason !== null) {
-                        // Agregar el motivo al formulario como un campo oculto
                         var reasonInput = document.createElement('input');
                         reasonInput.type = 'hidden';
                         reasonInput.name = 'reason';
