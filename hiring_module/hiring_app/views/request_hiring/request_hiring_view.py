@@ -7,8 +7,8 @@ from hiring_app.model.user_model import CustomUser
 
 class RequestHiringView(View):
     def get(self, request, idContract):
-        print(self.request.user.groups)
+
         group = Group.objects.get(name='manager')
         managers = list(CustomUser.objects.filter(groups=group))
         contract_request = utilities.getContract(idContract)
-        return render(request, 'request_hiring.html', {'choices': state_choices(), 'contract_request': contract_request, 'managers': managers, 'error_message': request.session.pop('error_message', None)})
+        return render(request, 'request_hiring.html', {'choices': state_choices(), 'contract_request': contract_request, 'managers': managers, 'error_message': request.session.pop('error_message', None), 'user': self.request.user})
