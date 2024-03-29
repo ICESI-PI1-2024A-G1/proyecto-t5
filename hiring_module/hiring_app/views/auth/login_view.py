@@ -21,13 +21,13 @@ class LoginView(FormView):
             # Check user's groups
             for group in user.groups.all():
                 print(group)
-            if user.groups.filter(name='Administrator').exists():
+            if user.groups.filter(name='admin').exists():
                 return HttpResponseRedirect(reverse_lazy('hiring_app:administrator_dashboard'))
             
-            elif user.groups.filter(name='Leader').exists():
+            elif user.groups.filter(name='leader').exists():
                 return HttpResponseRedirect(reverse_lazy('hiring_app:leader_dashboard'))
                 
-            elif user.groups.filter(name='Manager').exists():
+            elif user.groups.filter(name='manager').exists():
                 return HttpResponseRedirect(reverse_lazy('hiring_app:manager_dashboard'))
                 
             else:

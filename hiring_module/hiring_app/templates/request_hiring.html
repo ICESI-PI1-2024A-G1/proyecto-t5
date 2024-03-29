@@ -7,6 +7,13 @@
 
 
 {% block content %}
+
+    {% if error_message %}
+    <script>
+        alert("{{ error_message }}");
+    </script>
+    {% endif %}
+
     {% include 'auth/logout.html' %}
     {% include 'components/header.html' %}
     {% include 'request_hiring/center_container.html' %}

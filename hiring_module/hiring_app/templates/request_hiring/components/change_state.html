@@ -1,44 +1,30 @@
-{% extends 'request_hiring.html' %}
+<form id="changeStateForm" method="post" action="{% url 'hiring_app:change_state' contract_request.id %}">
+    {% csrf_token %}
+    <label for="state">Estado:</label>
+    <select name="state" id="stateSelect">
+        {% for choice in choices %}
+        <option value="{{ choice.0 }}" {% if choice.0 == contract_request.state %}selected{% endif %}>{{ choice.1 }}</option>
+        {% endfor %}
+    </select>
+</form>
 
-{% block title %}
-    Change state
-{% endblock %}
-
-{% block content %}
-    <form id="changeStateForm" method="post">
-        {% csrf_token %}
-        <label for="state">Select State:</label>
-        <select name="state" id="stateSelect">
-            {% for choice in choices %}
-                <option value="{{ choice.0 }}" {% if choice.0 == result %}selected{% endif %}>{{ choice.1 }}</option>
-            {% endfor %}
-        </select>        
-    </form>
-
-    {% if error_message %}
-        <script>
-            alert("{{ error_message }}");
-        </script>
-    {% endif %}
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var selectElement = document.getElementById('stateSelect');
-            selectElement.addEventListener('change', function () {
-                if (this.value === 'incomplete' || this.value === 'cancelled') {
-                    var reason = prompt('Ingrese el motivo de los documentos faltantes:');
-                    if (reason !== null) {
-                        // Agregar el motivo al formulario como un campo oculto
-                        var reasonInput = document.createElement('input');
-                        reasonInput.type = 'hidden';
-                        reasonInput.name = 'reason';
-                        reasonInput.value = reason.trim();
-                        document.getElementById('changeStateForm').appendChild(reasonInput);
-                    }
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var selectElement = document.getElementById('stateSelect');
+        selectElement.addEventListener('change', function () {
+            if (this.value === 'incomplete' || this.value === 'cancelled') {
+                var reason = prompt('Ingrese el motivo de los documentos faltantes:');
+                if (reason !== null) {
+                    // Agregar el motivo al formulario como un campo oculto
+                    var reasonInput = document.createElement('input');
+                    reasonInput.type = 'hidden';
+                    reasonInput.name = 'reason';
+                    reasonInput.value = reason.trim();
+                    document.getElementById('changeStateForm').appendChild(reasonInput);
                 }
-                // Enviar el formulario después de manejar el motivo
-                document.getElementById('changeStateForm').submit();
-            });
+            }
+            // Enviar el formulario después de manejar el motivo
+            document.getElementById('changeStateForm').submit();
         });
-    </script>
-{% endblock %}
+    });
+</script>
