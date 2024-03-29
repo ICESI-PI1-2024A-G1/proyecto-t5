@@ -1,7 +1,9 @@
+from .request_hiring.request_hiring import InfoView
 from .auth.login_view import LoginView
 from .auth.logout_view import LogoutView
-from .request_hiring.change_state_view import ChangeState
 from .control_board.external_user_dashboard_view import ExternalUserDashboardView
 from .control_board.administrator_dashboard_view import AdministratorDashboardView
 from .control_board.leader_dashboard_view import LeaderDashboardView
 from .control_board.manager_dashboard_view import ManagerDashboardView
+
+

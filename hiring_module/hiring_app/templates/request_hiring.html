@@ -1,21 +1,21 @@
-<!-- main screen --> 
-{% extends 'base.html' %}
+    <!-- main screen --> 
+    {% extends 'base.html' %}
 
-{% block title %}
-    Request Hiring
-{% endblock %}
+    {% block title %}
+        Request Hiring
+    {% endblock %}
 
 
-{% block content %}
-    {% include 'auth/logout.html' %}
-    {% include 'components/header.html' %}
-    {% include 'request_hiring/center_container.html' %}
-    <div class="flex">
-        {% include 'request_hiring/date_details.html' %}
-        {% include 'request_hiring/progress_bar.html' %}
-    </div>
-    <div class="flex">
-        {% include 'request_hiring/request_details.html' %}
-        {% include 'request_hiring/snapshot.html' %}
-    </div>
-{% endblock %}
+    {% block content %}
+        {% include 'auth/logout.html' %}
+        {% include 'components/header.html' %}
+        {% include 'request_hiring/center_container.html' %}
+        <div class="flex">
+            {% include 'request_hiring/date_details.html' %}
+            {% include 'request_hiring/progress_bar.html' %}
+        </div>
+        <div class="flex">
+            {% include 'request_hiring/request_details.html' %}
+            {% include 'request_hiring/snapshot.html' %}
+        </div>
+    {% endblock %}

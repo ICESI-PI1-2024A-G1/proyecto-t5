@@ -13,13 +13,16 @@
     <body class="bg-slate-300">
         {% include 'components/header.html' %}
         {% include 'control_board/components/LeftSideMenu.html' %}
-
         <main id="main" class="xl:ml-[14%] p-4 pl-14 pr-14">
+            <h1>Hola, {{ user.first_name }}</h1>
+
             {% include 'control_board/center_container.html' %}
+            
             <div>
                 {% include 'control_board/table.html' %} 
             </div>
-                {% include 'control_board/state_change.html' %}
+            
+            {% include 'control_board/state_change.html' %}
         </main>
     </body>
 

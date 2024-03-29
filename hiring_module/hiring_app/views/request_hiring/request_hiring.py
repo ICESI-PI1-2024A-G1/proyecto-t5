@@ -12,7 +12,7 @@ from django.conf import settings
 from hiring_app.model.monitoring_contract_request_model import MonitoringContractRequest
 
 
-class ChangeState(View):
+class InfoView(View):
     def get(self, request, idContract):
         contract_request = self.getContract(idContract)
 
@@ -89,8 +89,6 @@ class ChangeState(View):
         message.attach_alternative(content, 'text/html')
         message.send()
 
-
-
     def sendEmailSuccess(self, contract_request, reason=""):
         content = f'Estimado/a {contract_request.created_by.first_name},\n\nNos complace informarle que su solicitud ha sido completada exitosamente.\n\nPor favor, no dude en ponerse en contacto con nosotros si tiene alguna pregunta o necesita asistencia adicional.\n\nAtentamente,\nTu aplicación'
 
@@ -103,3 +101,6 @@ class ChangeState(View):
 
         message.attach_alternative(content, 'text/html')
         message.send()
+        
+        
+        

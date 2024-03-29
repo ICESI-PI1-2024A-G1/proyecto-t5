@@ -80,7 +80,6 @@ class ContractRequest(models.Model):
         return True
     
     def create_snapshot(self, comment=''):
-        # Create a snapshot of the current state of the contract request
         snapshot = ContractRequestSnapshot.objects.create(
             contract_request_id=self.id,
             state=self.state,
