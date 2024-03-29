@@ -2,6 +2,9 @@ from django.views.generic import TemplateView
 from django.shortcuts import redirect
 from django.utils.decorators import method_decorator
 
+from hiring_app.model.cex_contract_request_model import CEXContractRequest
+from hiring_app.model.monitoring_contract_request_model import MonitoringContractRequest
+
 def admin_required(view_func):
     def wrapper(request, *args, **kwargs):
         # Check if the user is an administrator, if not redirect to the appropriate dashboard
@@ -18,8 +21,14 @@ def admin_required(view_func):
 
 class AdministratorDashboardView(TemplateView):
     template_name = 'administrator_dashboard.html'
-    
-    @method_decorator(admin_required)
-    def dispatch(self, *args, **kwargs):
-        return super().dispatch(*args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        solicitudes_cex = CEXContractRequest.objects.all()
+        solicitudes_monitoring = MonitoringContractRequest.objects.all()
+        # Unir ambas consultas en una lista
+        solicitudes = list(solicitudes_cex) + list(solicitudes_monitoring)
+        # Pasar la lista de solicitudes al contexto
+        context['solicitudes'] = solicitudes
+        return context
 

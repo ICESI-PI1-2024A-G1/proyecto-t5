@@ -3,9 +3,11 @@ from django.views import View
 from django.core.mail import EmailMultiAlternatives
 from django.conf import settings
 from .utilities import utilities 
+from hiring_app.model.monitoring_contract_request_model import MonitoringContractRequest
+from hiring_app.model.contract_request_snapshot_model import ContractRequestSnapshot
+from hiring_app.model.user_model import CustomUser
 
 class ChangeStateView(View):
-
     def post(self, request, idContract):
         contract_request = utilities.getContract(idContract)
         new_state = request.POST.get('state')
@@ -25,7 +27,7 @@ class ChangeStateView(View):
             }
         }
 
-        action = state_actions.get(new_state, None)
+        action = state_actions.get(new_state)
 
         if not action:
             request.session['error_message'] = 'Invalid state transition. Unable to change state.'
@@ -42,29 +44,28 @@ class ChangeStateView(View):
 
 
     def sendEmailRequest(self, contract_request, reason):
-        content = f'Estimado/a {contract_request.created_by.first_name},\n\nLamentamos informarle que su solicitud ha sido cancelada. El motivo proporcionado es: {reason}.\n\nPor favor, no dude en ponerse en contacto con nosotros si tiene alguna pregunta.\n\nAtentamente,\nTu aplicación'
+        content = f'Estimado/a {contract_request.created_by.first_name},\n\nLamentamos informarle que su solicitud ha sido cancelada. El motivo proporcionado es: {
+            reason}.\n\nPor favor, no dude en ponerse en contacto con nosotros si tiene alguna pregunta.\n\nAtentamente,\nTu aplicación'
 
         message = EmailMultiAlternatives('Solicitud cancelada',
-                                        content,
-                                        settings.EMAIL_HOST_USER,
-                                        [contract_request.created_by.email])
+                                         content,
+                                         settings.EMAIL_HOST_USER,
+                                         [contract_request.created_by.email])
 
         message.attach_alternative(content, 'text/html')
         message.send()
-
 
     def sendEmailFile(self, contract_request, reason):
-        content = f'Estimado/a {contract_request.created_by.first_name},\n\nLamentamos informarle que su solicitud ha sido cancelada. El motivo proporcionado es: {reason}.\n\nPor favor, no dude en ponerse en contacto con nosotros si tiene alguna pregunta.\n\nAtentamente,\nTu aplicación'
+        content = f'Estimado/a {contract_request.created_by.first_name},\n\nLamentamos informarle que su solicitud ha sido cancelada. El motivo proporcionado es: {
+            reason}.\n\nPor favor, no dude en ponerse en contacto con nosotros si tiene alguna pregunta.\n\nAtentamente,\nTu aplicación'
 
         message = EmailMultiAlternatives('Solicitud cancelada',
-                                        content,
-                                        settings.EMAIL_HOST_USER,
-                                        [contract_request.created_by.email])
+                                         content,
+                                         settings.EMAIL_HOST_USER,
+                                         [contract_request.created_by.email])
 
         message.attach_alternative(content, 'text/html')
         message.send()
-
-
 
     def sendEmailSuccess(self, contract_request, reason=""):
         content = f'Estimado/a {contract_request.created_by.first_name},\n\nNos complace informarle que su solicitud ha sido completada exitosamente.\n\nPor favor, no dude en ponerse en contacto con nosotros si tiene alguna pregunta o necesita asistencia adicional.\n\nAtentamente,\nTu aplicación'
