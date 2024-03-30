@@ -1,8 +1,23 @@
 <!-- main screen --> 
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
     Request Hiring
+{% endblock %}
+{% block aditionalMetadata %}
+    <style>
+        .expanded {
+            margin-left: 18vw; /* Ancho del sidebar */
+            transition: margin-left 0.3s; /* Agregar una transición para un efecto suave */
+        }
+
+        .nonExpanded {
+            margin-left: 3vw; /* Ancho del sidebar */
+            transition: margin-left 0.3s; /* Agregar una transición para un efecto suave */
+        }
+    </style>
+
 {% endblock %}
 
 {% block content %}
@@ -12,20 +27,28 @@
     </script>
     {% endif %}
 
-    {% include 'auth/logout.html' %}
-    {% include 'components/header.html' %}
+    <div>
+        {% include 'components/header.html' %}
 
-    <div style="text-align: center; margin-top: 1rem;">
-        {% include 'request_hiring/center_container.html' %}
     </div>
+    <div id="sidebar">
+        {% include 'components/LeftSideMenu.html' %}
+    </div>
+    <main id="main" class="expanded">
+        <div style="text-align: center; margin-top: 1rem;">
+            {% include 'request_hiring/center_container.html' %}
+        </div>
 
-    <div style="display: flex; justify-content: center; margin-top: 1rem;">
-        {% include 'request_hiring/date_details.html' %}
-        {% include 'request_hiring/progress_bar.html' %}
-    </div>
+        <div style="display: flex; justify-content: center; margin-top: 1rem;">
+            {% include 'request_hiring/date_details.html' %}
+            {% include 'request_hiring/progress_bar.html' %}
+        </div>
+    
+        <div style="display: flex; justify-content: center; margin-top: 1rem;">
+            {% include 'request_hiring/request_details.html' %}
+            {% include 'request_hiring/components/snapshot.html' %}
+        </div>
+    </main>
+    <script src="{% static 'js/side_bar.js' %}"></script>
 
-    <div style="display: flex; justify-content: center; margin-top: 1rem;">
-        {% include 'request_hiring/request_details.html' %}
-        {% include 'request_hiring/components/snapshot.html' %}
-    </div>
 {% endblock %}
