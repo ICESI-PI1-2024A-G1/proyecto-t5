@@ -1,0 +1,29 @@
+<form id="ChangeLeaderForm" method="post" action="{% url 'hiring_app:assign_leader' contract_request.id %}">
+    {% csrf_token %}
+    <label for="leader">Líder:</label>    
+    <select name="leader" id="leaderSelect" 
+
+
+
+    {% for group in user.groups.all %}
+
+    {%  if not group.name == 'admin' %} disabled  {{ break }} {% endif %}
+    {% endfor %} 
+    
+    >
+        <option value="" disabled selected>Seleccionar</option>
+        {% for leader in leaders %}
+        <option value="{{ leader.id }}" {% if leader.id == contract_request.leader_assigned_to.id %}selected{% endif %}>{{ leader.first_name }} {{ leader.last_name }}</option>
+        {% endfor %}
+    </select>
+
+</form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var selectElement = document.getElementById('leaderSelect');
+        selectElement.addEventListener('change', function () {
+            document.getElementById('ChangeLeaderForm').submit();
+        });
+    });
+</script>

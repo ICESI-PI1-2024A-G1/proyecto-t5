@@ -18,5 +18,5 @@ class utilities:
         return contract_request
     
     def getGroupUsers(groupName):
-        group = Group.objects.get(name='manager')
+        group = Group.objects.get(name=groupName)
         return CustomUser.objects.filter(groups=group)
