@@ -79,13 +79,25 @@ class ContractRequest(models.Model):
         return new_state in transitions.get(self.state, ())
         
         
-    def create_snapshot(self, comment=''):
+    def create_snapshot(self, old_state=None, comment=''):
+        # Get the previous snapshot of the contract request
+        if(old_state is not None):
+            previous_snapshot = self.get_snapshots().filter(state=old_state).first()
+            if previous_snapshot:
+                # If there is a previous snapshot, set the end date of the previous snapshot to the current date
+                previous_snapshot.state_end = timezone.now()
+                previous_snapshot.save()
         # Create a snapshot of the current state of the contract request
+        # If it's filled or cancelled, set the end date to the current date
+        if self.state in ['filed', 'cancelled']:
+            state_end = timezone.now()
+        else:
+            state_end = None
         snapshot = ContractRequestSnapshot.objects.create(
             contract_request_id=self.id,
             state=self.state,
             state_start=self.current_state_start,
-            state_end=timezone.now(),
+            state_end=state_end,
             comment=comment
         )
 

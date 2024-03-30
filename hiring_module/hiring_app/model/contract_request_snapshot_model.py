@@ -5,7 +5,7 @@ class ContractRequestSnapshot(models.Model):
     contract_request_id = models.UUIDField()
     state = models.CharField(max_length=64)
     state_start = models.DateTimeField()
-    state_end = models.DateTimeField()
+    state_end = models.DateTimeField(null=True, blank=True)
     comment = models.TextField(null=True)
     class Meta:
         constraints = [
