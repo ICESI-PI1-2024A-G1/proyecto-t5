@@ -5,9 +5,7 @@
     Request Hiring
 {% endblock %}
 
-
 {% block content %}
-
     {% if error_message %}
     <script>
         alert("{{ error_message }}");
@@ -16,12 +14,17 @@
 
     {% include 'auth/logout.html' %}
     {% include 'components/header.html' %}
-    {% include 'request_hiring/center_container.html' %}
-    <div class="flex">
+
+    <div style="text-align: center; margin-top: 1rem;">
+        {% include 'request_hiring/center_container.html' %}
+    </div>
+
+    <div style="display: flex; justify-content: center; margin-top: 1rem;">
         {% include 'request_hiring/date_details.html' %}
         {% include 'request_hiring/progress_bar.html' %}
     </div>
-    <div class="flex">
+
+    <div style="display: flex; justify-content: center; margin-top: 1rem;">
         {% include 'request_hiring/request_details.html' %}
         {% include 'request_hiring/components/snapshot.html' %}
     </div>
