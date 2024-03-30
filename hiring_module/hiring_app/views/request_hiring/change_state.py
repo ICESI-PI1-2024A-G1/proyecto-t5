@@ -13,10 +13,6 @@ class ChangeStateView(View):
         new_state = request.POST.get('state')
 
         state_actions = {
-            'review': {
-                'error_message': None,
-                'email_function': None
-            },
             'incomplete': {
                 'error_message': 'Debe ingresar un motivo para los documentos faltantes.',
                 'email_function': self.sendEmailFile
@@ -34,22 +30,26 @@ class ChangeStateView(View):
         action = state_actions.get(new_state)
 
         if not action:
-            request.session['error_message'] = 'Invalid state transition. Unable to change state.'
+            action = {'error_message': None, 'email_function': None} 
+                   
         reason = request.POST.get('reason')
-        if action and (not reason and action['error_message']):
-            request.session['error_message'] = action['error_message']
-        elif action:
-            contract_request.state = new_state
-            contract_request.save()
-            if action['email_function']:
-                action['email_function'](contract_request, reason)
+        if not contract_request.is_valid_transition(new_state):
+            request.session['error_message'] = "This option is unable"
+        else:
+            if action and (not reason and action['error_message']):
+                request.session['error_message'] = action['error_message']
+            elif action:
+                contract_request.state = new_state
+                contract_request.save()
+                if action['email_function']:
+                    action['email_function'](contract_request, reason)
                 
         return redirect('hiring_app:info', idContract=idContract)
 
 
     def sendEmailRequest(self, contract_request, reason):
         content = f'Estimado/a {contract_request.created_by.first_name},\n\nLamentamos informarle que su solicitud ha sido cancelada. El motivo proporcionado es: {
-            reason}.\n\nPor favor, no dude en ponerse en contacto con nosotros si tiene alguna pregunta.\n\nAtentamente,\nTu aplicación'
+            reason}. \n \n Por favor, no dude en ponerse en contacto con nosotros si tiene alguna pregunta.\n\nAtentamente,\nTu aplicación'
 
         message = EmailMultiAlternatives('Solicitud cancelada',
                                          content,
@@ -60,13 +60,12 @@ class ChangeStateView(View):
         message.send()
 
     def sendEmailFile(self, contract_request, reason):
-        content = f'Estimado/a {contract_request.created_by.first_name},\n\nLamentamos informarle que su solicitud ha sido cancelada. El motivo proporcionado es: {
-            reason}.\n\nPor favor, no dude en ponerse en contacto con nosotros si tiene alguna pregunta.\n\nAtentamente,\nTu aplicación'
+        content = f'Estimado/a {contract_request.created_by.first_name},\n\nLe informamos que hemos identificado documentos faltantes en su solicitud. El motivo proporcionado es: {reason}.\n\nPor favor, proporcione la documentación faltante lo antes posible para continuar con el proceso.\n\nSi tiene alguna pregunta o necesita ayuda, no dude en ponerse en contacto con nosotros.\n\nAtentamente,\nTu aplicación'
 
-        message = EmailMultiAlternatives('Solicitud cancelada',
-                                         content,
-                                         settings.EMAIL_HOST_USER,
-                                         [contract_request.created_by.email])
+        message = EmailMultiAlternatives('Solicitud de documentación faltante',
+                                        content,
+                                        settings.EMAIL_HOST_USER,
+                                        [contract_request.created_by.email])
 
         message.attach_alternative(content, 'text/html')
         message.send()

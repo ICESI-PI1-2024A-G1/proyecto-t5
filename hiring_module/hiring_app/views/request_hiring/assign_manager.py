@@ -7,6 +7,7 @@ class AssignManagerView(View):
 
     def post(self, request, idContract):
         user = self.request.user
+        
         is_leader_or_admin = any(group.name in ['leader', 'admin'] for group in user.groups.all())     
         if is_leader_or_admin:
             contract_request = utilities.getContract(idContract)
@@ -16,7 +17,7 @@ class AssignManagerView(View):
         
             if new_manager in managers:
                 contract_request.manager_assigned_to = new_manager
-                contract_request.assign_manager(new_manager)
+                contract_request.save()
             else:
                 request.session['error_message'] = 'Selected user is not manager.'
         else:
