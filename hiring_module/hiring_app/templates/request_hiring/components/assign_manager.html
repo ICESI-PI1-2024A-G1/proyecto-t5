@@ -6,7 +6,7 @@
 
     {% for group in user.groups.all %}
 
-    {%  if   not group.name == 'leader' and not group.name == 'admin' %} disabled {% endif %}
+    {%  if   not group.name == 'leader' and not group.name == 'admin' %} disabled {{ break }} {% endif %}
     {% endfor %} 
     
     >
