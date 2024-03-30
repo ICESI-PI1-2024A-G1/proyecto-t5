@@ -14,6 +14,7 @@ urlpatterns = [
     path('info/<str:idContract>/', RequestHiringView.as_view(), name='info'),
     path('info/change_state/<str:idContract>/', ChangeStateView.as_view(), name='change_state'),
     path('info/assign_manager/<str:idContract>/', AssignManagerView.as_view(), name='assign_manager'),
+    path('info/assign_leader/<str:idContract>/', AssignLeaderView.as_view(), name='assign_leader'),
     path('request_creation/cex/', CEXContractRequestView.as_view(), name = 'cex',),
     path('request_creation/monitoring/', MonitoringContractRequestView.as_view(), name = 'monitoring',),
 ]

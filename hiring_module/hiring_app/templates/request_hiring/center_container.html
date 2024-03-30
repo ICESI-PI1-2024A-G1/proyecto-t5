@@ -1,7 +1,9 @@
 {% block content %} 
     <div class="flex">
         <div class="w-1/3 bg-gray-200 p-4">ID: {{contract_request.id}}</div>
-        <div class="w-1/3 bg-gray-400 p-4">Lider DROPDOWN</div>
+        <div class="w-1/3 bg-gray-400 p-4">
+            {% include 'request_hiring/components/assign_leader.html' %}
+        </div>
         <div class="w-1/3 bg-gray-400 p-4">
             {% include 'request_hiring/components/assign_manager.html' %}
         </div>
