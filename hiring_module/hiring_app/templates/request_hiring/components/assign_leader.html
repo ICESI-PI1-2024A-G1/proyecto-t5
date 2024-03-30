@@ -1,15 +1,11 @@
 <form id="ChangeLeaderForm" method="post" action="{% url 'hiring_app:assign_leader' contract_request.id %}">
     {% csrf_token %}
-    <label for="leader">Líder:</label>    
-    <select name="leader" id="leaderSelect" 
-
-
-
-    {% for group in user.groups.all %}
-
-    {%  if not group.name == 'admin' %} disabled  {{ break }} {% endif %}
-    {% endfor %} 
+    <select name="leader" id="leaderSelect" style="width: 100%; margin-top: 0.5rem; padding: 0.5rem; background-color: #ffffff; border: 1px solid #cbd5e0; border-radius: 0.375rem; outline: none; transition: border-color 0.15s ease-in-out;" 
     
+    {% if not is_admin %}
+    disabled
+    {% endif %}
+
     >
         <option value="" disabled selected>Seleccionar</option>
         {% for leader in leaders %}
