@@ -11,12 +11,15 @@ from hiring_app.model.monitoring_contract_request_model import MonitoringContrac
 class RequestHiringView(View):
     def get(self, request, idContract):
         group = Group.objects.get(name='manager')
-        managers = list(CustomUser.objects.filter(groups=group))
-        contract_request = utilities.getContract(idContract)
+        groupManager = Group.objects.get(name='manager')
+        groupLeader = Group.objects.get(name='leader')        
+        managers = list(CustomUser.objects.filter(groups=groupManager))
+        leaders = list(CustomUser.objects.filter(groups=groupLeader))
+        contract_request = utilities.getContract(idContract)        
         typedContract = ("Contrato CEX" if isinstance(contract_request, CEXContractRequest) 
-                else "Contrato Monitoria" if isinstance(contract_request, MonitoringContractRequest) 
-                else "Error al obtener")
+                        else "Contrato Monitoria" if isinstance(contract_request, MonitoringContractRequest) 
+                        else "Error al obtener")
 
         days_difference = (contract_request.estimated_completion_date - timezone.now().date()).days if contract_request.estimated_completion_date else None
 
-        return render(request, 'request_hiring.html', {'days_difference': days_difference,'typedContract': typedContract,'choices': state_choices(), 'contract_request': contract_request, 'managers': managers, 'error_message': request.session.pop('error_message', None), 'user': self.request.user})
+        return render(request, 'request_hiring.html', {'days_difference': days_difference,'typedContract': typedContract,'choices': state_choices(), 'contract_request': contract_request, 'managers': managers, 'leaders': leaders,'error_message': request.session.pop('error_message', None), 'user': self.request.user})
