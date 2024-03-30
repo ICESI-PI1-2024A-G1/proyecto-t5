@@ -1,0 +1,20 @@
+[
+    {
+        "estimated_completion_date": "2024-06-30",
+        "cenco": "cenco",
+        "has_money_in_cenco": true,
+        "cenco_manager": "Julian Mendoza",
+        "monitoring_type": "academic",
+        "student_code": "A00397412",
+        "student_full_name": "Ricardo Urbina Ospina",
+        "student_id": "1108459874",
+        "student_email": "1108459874@u.icesi.edu.co",
+        "student_cellphone": "3148444598",
+        "daviplata": "123456789",
+        "course_or_proyect": "Proyecto Integrador",
+        "monitoring_description": "Monitor de Proyecto Integrador",
+        "weekly_hours": 3,
+        "total_value_to_pay": 100000,
+        "is_unique_payment": true
+    }
+]
