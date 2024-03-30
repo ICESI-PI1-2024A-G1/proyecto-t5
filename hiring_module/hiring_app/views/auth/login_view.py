@@ -33,6 +33,5 @@ class LoginView(FormView):
             else:
                 return super().form_valid(form) 
                 
-        else:
-            messages.error(self.request, 'Credenciales incorrectas. Por favor, inténtelo de nuevo.')
-            return HttpResponseRedirect(reverse_lazy('login')) 
+        messages.error(self.request, 'Credenciales incorrectas. Por favor, inténtelo de nuevo.')
+        return HttpResponseRedirect(reverse_lazy('login')) 
