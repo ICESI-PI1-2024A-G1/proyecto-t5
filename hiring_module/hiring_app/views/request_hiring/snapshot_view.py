@@ -20,10 +20,7 @@ class SnapshotsView(View):
         if action == 'edit-comment':
             contract_request = utilities.getContract(idContract)
             comment = request.POST.get('comment')
-            snapshots = contract_request.get_snapshots()
-            snapshot = snapshots.filter(state=contract_request.state).first()
-            snapshot.comment = comment
-            snapshot.save()
+            contract_request.edit_comment(comment)
             return HttpResponse('Comment edited successfully')
         
         if action == 'view-snapshot':
