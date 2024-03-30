@@ -17,6 +17,15 @@ class SnapshotsView(View):
             snapshots = contract_request.get_snapshots()
             return render(request, 'snapshots_list.html', {'snapshots': snapshots})
         
+        if action == 'edit-comment':
+            contract_request = utilities.getContract(idContract)
+            comment = request.POST.get('comment')
+            snapshots = contract_request.get_snapshots()
+            snapshot = snapshots.filter(state=contract_request.state).first()
+            snapshot.comment = comment
+            snapshot.save()
+            return HttpResponse('Comment edited successfully')
+        
         if action == 'view-snapshot':
             snapshot_id = request.POST.get('snapshot_id')
             snapshot = ContractRequestSnapshot.objects.get(id=snapshot_id)
