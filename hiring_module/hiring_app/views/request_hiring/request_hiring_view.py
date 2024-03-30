@@ -21,6 +21,7 @@ class RequestHiringView(View):
         typedContract = ("Contrato CEX" if isinstance(contract_request, CEXContractRequest) 
                         else "Contrato Monitoria" if isinstance(contract_request, MonitoringContractRequest) 
                         else "Error al obtener")
+        snapshot_comment = contract_request.get_snapshots().filter(state=contract_request.state).first().comment
 
         days_difference = (contract_request.estimated_completion_date - timezone.now().date()).days if contract_request.estimated_completion_date else None
         return {
@@ -35,6 +36,7 @@ class RequestHiringView(View):
             'is_admin': is_admin,
             'is_leader': is_leader,
             'is_manager': is_manager,
+            'snapshot_comment': snapshot_comment
             }
 
     def get(self, request, idContract):
