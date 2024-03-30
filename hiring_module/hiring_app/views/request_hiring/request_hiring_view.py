@@ -7,11 +7,9 @@ from hiring_app.model.user_model import CustomUser
 
 class RequestHiringView(View):
     def get(self, request, idContract):
-
-        
         groupManager = Group.objects.get(name='manager')
         groupLeader = Group.objects.get(name='leader')
-
+        
         managers = list(CustomUser.objects.filter(groups=groupManager))
         leaders = list(CustomUser.objects.filter(groups=groupLeader))
         contract_request = utilities.getContract(idContract)

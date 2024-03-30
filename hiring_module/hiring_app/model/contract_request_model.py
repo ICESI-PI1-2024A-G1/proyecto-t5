@@ -64,7 +64,7 @@ class ContractRequest(models.Model):
         self.assigned_to = user
         self.save()
 
-    def is_valid_transition(self, current_state, new_state):
+    def is_valid_transition(self, new_state):
         transitions = {
             'pending': ('review', 'incomplete', 'cancelled'),
             'review': ('filed', 'cancelled'),
@@ -73,7 +73,7 @@ class ContractRequest(models.Model):
             'cancelled': ()
         }
 
-        return True
+        return new_state in transitions.get(self.state, ())
     
         
         
