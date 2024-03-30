@@ -7,6 +7,7 @@ from hiring_app.model.contract_request_model import state_choices
 from django.contrib.auth.models import Group
 from hiring_app.model.user_model import CustomUser
 from hiring_app.model.cex_contract_request_model import CEXContractRequest
+from hiring_app.model.contract_request_snapshot_model import ContractRequestSnapshot
 
 class SnapshotsView(View):
     def post(self, request, idContract):
@@ -15,4 +16,9 @@ class SnapshotsView(View):
             contract_request = utilities.getContract(idContract)
             snapshots = contract_request.get_snapshots()
             return render(request, 'snapshots_list.html', {'snapshots': snapshots})
+        
+        if action == 'view-snapshot':
+            snapshot_id = request.POST.get('snapshot_id')
+            snapshot = ContractRequestSnapshot.objects.get(id=snapshot_id)
+            return render(request, 'snapshot_information.html', {'snapshot': snapshot})
     
