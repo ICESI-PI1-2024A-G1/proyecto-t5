@@ -1,0 +1,26 @@
+<!-- main screen --> 
+{% extends 'base.html' %}
+
+{% block title %}
+    Request Hiring
+{% endblock %}
+
+{% block content %}
+    {% if error_message %}
+    <script>
+        alert("{{ error_message }}");
+    </script>
+    {% endif %}
+
+    {% include 'auth/logout.html' %}
+    {% include 'components/header.html' %}
+
+    <div style="display: flex; justify-content: center; margin-top: 1rem;">
+        {% for snapshot in snapshots %}
+            <div style="width: calc(33% - 1rem); background-color: #f0f4f8; padding: 1rem; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); text-align: center;">
+                <p style="font-weight: bold; font-size: 1.2rem; margin-bottom: 0.5rem;">{{ snapshot.state }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
