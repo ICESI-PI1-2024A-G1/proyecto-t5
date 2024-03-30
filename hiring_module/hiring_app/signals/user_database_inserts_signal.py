@@ -59,11 +59,11 @@ def user_database_inserts_signal(sender, **kwargs):
                 cex = DEFAULT_CEX[current_cex]
                 cex['created_by'] = user
                 cex['rut'] = f"rut"
-                CEXContractRequest.objects.create(**cex)
+                CEXContractRequest.objects.create_contract_request(**cex)
                 current_cex += 1
             elif current_monitoring < total_monitoring:
                 monitoring = DEFAULT_MONITORING[current_monitoring]
                 monitoring['created_by'] = user
-                MonitoringContractRequest.objects.create(**monitoring)
+                MonitoringContractRequest.objects.create_contract_request(**monitoring)
                 current_monitoring += 1
             
