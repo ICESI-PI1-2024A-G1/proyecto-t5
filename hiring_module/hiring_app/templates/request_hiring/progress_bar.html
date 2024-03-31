@@ -1,6 +1,74 @@
-<div id="ProgressBarContainer" style="border-width: 2px; border-style: solid; padding: 0.125rem; border-color: #434343; background-color: white; height: 2.5rem; border-radius: 9999px; width: 80%;">
-    <div id="ProgressBar" style="background-color: #00599C; width: 25%; border-radius: 9999px; height: 100%; font-size: 0.75rem; line-height: 1rem; display: flex; justify-content: center; align-items: center; text-decoration-color: white; font-weight: 700; color:white">
-        25%
+{% load static %}
+
+<div style="background-color: white; margin-left: 0.75rem; display: flex; align-items: center; justify-content: center; width: 70%; border-radius: 0.375rem; box-shadow: 2px 2px 4px rgba(42, 143, 208, 0.5);">
+    <div style="height: 4rem; width: 4rem; margin-right: 0.5rem;">
+        <img src="{% static 'images/icons/IconDate.png' %}" alt="DateIcon">
+    </div>
+    <div id="ProgressBarContainer" style="border-width: 2px; border-style: solid; padding: 0.125rem; border-color: #434343; background-color: white; height: 2.5rem; border-radius: 9999px; width: 80%;">
+        <div id="ProgressBar" style="background-color: #00599C; width: 25%; border-radius: 9999px; height: 100%; font-size: 0.75rem; line-height: 1rem; display: flex; justify-content: center; align-items: center; text-decoration-color: white; font-weight: 700; color:white">
+            25%
+        </div>
     </div>
 </div>
+
+<!-- Set the default state to "Pending" -->
+<select name="state" id="stateSelect" style="display: none;">
+    <option value="pending" selected>Pending</option>
+    <option value="review">Review</option>
+    <option value="incomplete">Incomplete</option>
+    <option value="filed">Filed</option>
+    <option value="cancelled">Cancelled</option>
+</select>
+
+<script>
+    // Update progress bar function according to selected status
+    function updateProgressBar(state) {
+        var progressBar = document.getElementById('ProgressBar');
+        switch (state) {
+            case 'pending':
+                progressBar.style.width = '25%';
+                progressBar.style.backgroundColor = '#00599C';
+                progressBar.textContent = '25%';
+                break;
+            case 'review':
+                progressBar.style.width = '50%';
+                progressBar.style.backgroundColor = '#00599C';
+                progressBar.textContent = '50%';
+                break;
+            case 'incomplete':
+                progressBar.style.width = '75%';
+                progressBar.style.backgroundColor = '#00599C';
+                progressBar.textContent = '75%';
+                break;
+            case 'filed':
+                progressBar.style.width = '100%';
+                progressBar.style.backgroundColor = 'green';
+                progressBar.textContent = '100%';
+                break;
+            case 'cancelled':
+                progressBar.style.width = '100%';
+                progressBar.style.backgroundColor = 'red';
+                progressBar.textContent = '100%';
+                break;
+            default:
+                break;
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get the default state from the drop-down menu
+        var defaultState = document.getElementById('stateSelect').value;
+        // Update progress bar with default status
+        updateProgressBar(defaultState);
+    });
+
+    // Add a change event to the drop-down menu
+    document.getElementById('stateSelect').addEventListener('change', function () {
+        // Get the selected value from the drop-down menu
+        var selectedState = this.value;
+        // Update progress bar based on selected status
+        updateProgressBar(selectedState);
+    });
+</script>
+
 
