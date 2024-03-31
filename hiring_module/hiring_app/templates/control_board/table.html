@@ -5,56 +5,28 @@ Change state
 {% endblock %}
 
 {% block content %}    
-    <table class="min-w-full divide-y divide-gray-200 mt-14 ml-0">
+    <table style="width: 100%; border-collapse: collapse; margin-top: 14px;">
         <thead>
-            <tr>
-                <th class="border border-black px-6 py-3 bg-[#2A8FD0] text-center text-xs leading-4 font-extrabold text-black uppercase tracking-wider">
-                    ID
-                </th>
-                <th class="border border-black px-6 py-3 bg-[#2A8FD0] text-center text-xs leading-4 font-extrabold text-black uppercase tracking-wider">
-                    Solicitante
-                </th>
-                <th class="border border-black px-6 py-3 bg-[#2A8FD0] text-center text-xs leading-4 font-extrabold text-black uppercase tracking-wider">
-                    Lider encargado
-                </th>
-                <th class="border border-black px-6 py-3 bg-[#2A8FD0] text-center text-xs leading-4 font-extrabold text-black uppercase tracking-wider">
-                    Gestor encargado
-                </th>
-                <th class="border border-black px-6 py-3 bg-[#2A8FD0] text-center text-xs leading-4 font-extrabold text-black uppercase tracking-wider">
-                    Estado
-                </th>
-                <th class="border border-black px-6 py-3 bg-[#2A8FD0] text-center text-xs leading-4 font-extrabold text-black uppercase tracking-wider">
-                    Contrato
-                </th>
-                <th class="border border-black px-6 py-3 bg-[#2A8FD0] text-center text-xs leading-4 font-extrabold text-black uppercase tracking-wider">
-                    Fecha incio
-                </th>
+            <tr style="background-color: #2A8FD0; color: white;">
+                <th style="border: 2px solid white; padding: 10px; text-align: center; font-weight: bold; text-transform: uppercase;">ID</th>
+                <th style="border: 2px solid white; padding: 10px; text-align: center; font-weight: bold; text-transform: uppercase;">Solicitante</th>
+                <th style="border: 2px solid white; padding: 10px; text-align: center; font-weight: bold; text-transform: uppercase;">Lider encargado</th>
+                <th style="border: 2px solid white; padding: 10px; text-align: center; font-weight: bold; text-transform: uppercase;">Gestor encargado</th>
+                <th style="border: 2px solid white; padding: 10px; text-align: center; font-weight: bold; text-transform: uppercase;">Estado</th>
+                <th style="border: 2px solid white; padding: 10px; text-align: center; font-weight: bold; text-transform: uppercase;">Contrato</th>
+                <th style="border: 2px solid white; padding: 10px; text-align: center; font-weight: bold; text-transform: uppercase;">Fecha incio</th>
             </tr>
         </thead>
-        <tbody class="bg-white divide-y divide-gray-200">
+        <tbody>
             {% for solicitud in solicitudes %}
-            <tr onclick="redirectToInfoPage('{{ solicitud.id }}')">
-                <td class="border border-black px-6 py-4 text-center whitespace-no-wrap">
-                    {{ solicitud.id }}
-                </td>
-                <td class="border border-black px-6 py-4 text-center whitespace-no-wrap">
-                    {{ solicitud.created_by.first_name }} {{ solicitud.created_by.last_name }}
-                </td>
-                <td class="border border-black px-6 py-4 text-center whitespace-no-wrap">
-                    {{ solicitud.leader_assigned_to.first_name }} {{ solicitud.leader_assigned_to.last_name }}
-                </td>
-                <td class="border border-black px-6 py-4 text-center whitespace-no-wrap">
-                    {{ solicitud.manager_assigned_to.first_name }} {{ solicitud.manager_assigned_to.last_name }}
-                </td>
-                <td id="statusButton" class="border border-black px-6 py-4 text-center whitespace-no-wrap relative">
-                    {{ solicitud.state }}
-                </td>
-                <td class="border border-black px-6 py-4 text-center whitespace-no-wrap">
-                    {{ solicitud.contrato }}
-                </td>
-                <td class="border border-black px-6 py-4 text-center whitespace-no-wrap">
-                    {{ solicitud.start_date }}
-                </td>
+            <tr onclick="redirectToInfoPage('{{ solicitud.id }}')" style="cursor: pointer;">
+                <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ solicitud.id }}</td>
+                <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ solicitud.created_by.first_name }} {{ solicitud.created_by.last_name }}</td>
+                <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ solicitud.leader_assigned_to.first_name }} {{ solicitud.leader_assigned_to.last_name }}</td>
+                <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ solicitud.manager_assigned_to.first_name }} {{ solicitud.manager_assigned_to.last_name }}</td>
+                <td id="statusButton" style="border: 2px solid white; padding: 10px; text-align: center; position: relative; background-color: #f2f2f2;">{{ solicitud.state }}</td>
+                <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ solicitud.contrato }}</td>
+                <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ solicitud.start_date|date:"d-m-Y" }}</td>
             </tr>
             {% endfor %}
         </tbody>
