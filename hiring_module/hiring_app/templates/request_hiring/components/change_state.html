@@ -1,7 +1,6 @@
 <form id="changeStateForm" method="post" action="{% url 'hiring_app:change_state' contract_request.id %}" style="margin-bottom: 1rem;">
     {% csrf_token %}
-    <label for="state" style="margin-right: 0.5rem; color: #4a5568; font-weight: 600;">Estado:</label>
-    <select name="state" id="stateSelect" style="padding: 0.5rem; border-radius: 0.375rem; border: 1px solid #cbd5e0; outline: none; transition: border-color 0.15s ease-in-out;">
+    <select name="state" id="stateSelect" style="width: 100%; margin-top: 0.5rem; padding: 0.5rem; background-color: #ffffff; border: 1px solid #cbd5e0; border-radius: 0.375rem; outline: none; transition: border-color 0.15s ease-in-out;">
         {% for choice in choices %}
         <option value="{{ choice.0 }}" {% if choice.0 == contract_request.state %}selected{% endif %} style="color: #4a5568;">{{ choice.1 }}</option>
         {% endfor %}

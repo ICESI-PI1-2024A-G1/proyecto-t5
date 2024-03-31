@@ -1,7 +1,6 @@
 <form id="ChangeManagerForm" method="post" action="{% url 'hiring_app:assign_manager' contract_request.id %}" style="margin-bottom: 1rem;">
     {% csrf_token %}
-    <label for="manager" style="margin-right: 0.5rem; color: #4a5568; font-weight: 600;">Gestor:</label>    
-    <select name="manager" id="managerSelect" style="padding: 0.5rem; border-radius: 0.375rem; border: 1px solid #cbd5e0; outline: none; transition: border-color 0.15s ease-in-out; width: 100%; max-width: 100%; background-color: #fff;"
+    <select name="manager" id="managerSelect" style="width: 100%; margin-top: 0.5rem; padding: 0.5rem; background-color: #ffffff; border: 1px solid #cbd5e0; border-radius: 0.375rem; outline: none; transition: border-color 0.15s ease-in-out;"
     
     {% if not is_admin and not is_leader %}
     disabled
