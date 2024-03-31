@@ -1,32 +1,35 @@
-<!-- main screen --> 
+<!-- main screen -->
 {% extends 'base.html' %}
 
 {% block title %}
-    Request Hiring
+Request Hiring
 {% endblock %}
 
 {% block content %}
-    {% if error_message %}
-    <script>
-        alert("{{ error_message }}");
-    </script>
-    {% endif %}
+{% if error_message %}
+<script>
+    alert("{{ error_message }}");
+</script>
+{% endif %}
 
-    {% include 'components/header.html' %}
+{% include 'components/header.html' %}
 
-    <div style="display: flex; justify-content: center; margin-top: 1rem;">
-        {% for snapshot in snapshots %}
-        <div style="width: calc(33% - 1rem); background-color: #f0f4f8; padding: 1rem; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); text-align: center; cursor: pointer;">
-            <form action="{% url 'hiring_app:snapshots' snapshot.id %}" method="post" id="snapshot_form_{{ snapshot.id }}" style="display: inline;">
-                {% csrf_token %}
-                <input type="hidden" name="action" value="view-snapshot">
-                <input type="hidden" name="snapshot_id" value="{{ snapshot.id }}">
-                <a href="#" onclick="document.getElementById('snapshot_form_{{ snapshot.id }}').submit(); return false;" style="text-decoration: none;">
-                    <p style="font-weight: bold; font-size: 1.2rem; margin-bottom: 0.5rem;">{{ snapshot.state }}</p>    
-                </a>
-            </form>
-        </div>
-        {% endfor %}
+<div style="display: flex; justify-content: center; margin-top: 1rem;">
+    {% for snapshot in snapshots %}
+    <div
+        style="width: calc(33% - 1rem); background-color: #f0f4f8; padding: 1rem; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); text-align: center; cursor: pointer;">
+        <form action="{% url 'hiring_app:snapshots' snapshot.id %}" method="post" id="snapshot_form_{{ snapshot.id }}"
+            style="display: inline;">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="view-snapshot">
+            <input type="hidden" name="snapshot_id" value="{{ snapshot.id }}">
+            <a href="#" onclick="document.getElementById('snapshot_form_{{ snapshot.id }}').submit(); return false;"
+                style="text-decoration: none;">
+                <p style="font-weight: bold; font-size: 1.2rem; margin-bottom: 0.5rem;">{{ snapshot.state }}</p>
+            </a>
+        </form>
     </div>
+    {% endfor %}
+</div>
 
 {% endblock %}
