@@ -1,47 +1,19 @@
-{% load static tailwind_tags %}
+{% extends 'base.html' %}
 {% load static %}
+{% block title %}
+Panel de control de Administrador
+{% endblock %}
+{% block aditionalMetadata %}
+{% endblock %}
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-    <title>Dashboard</title>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<link rel="stylesheet" href="{% static 'css/tailwind/tailwind.css' %}">
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
-        <style>
-            .expanded {
-                margin-left: 18vw; /* Ancho del sidebar */
-                transition: margin-left 0.3s; /* Agregar una transición para un efecto suave */
-            }
+{% block content %}
+    <main id="main" class="expanded">
+        {% include 'control_board/center_container.html' %}
 
-            .nonExpanded {
-                margin-left: 3vw; /* Ancho del sidebar */
-                transition: margin-left 0.3s; /* Agregar una transición para un efecto suave */
-            }
-        </style>
-	</head>
-    <body >
         <div>
-            {% include 'components/header.html' %}
-
+            {% include 'control_board/table.html' %}
         </div>
-        <div id="sidebar">
-            {% include 'components/LeftSideMenu.html' %}
-        </div>
-        
-        <main id="main" class="expanded">
-            {% include 'control_board/center_container.html' %}
-            
-            <div>
-                {% include 'control_board/table.html' %} 
-            </div>
-            
-            {% include 'control_board/state_change.html' %}
-        </main>
 
-    </body>
-    <script src="{% static 'js/side_bar.js' %}"></script>
-
-</html>
+        {% include 'control_board/state_change.html' %}
+    </main>
+{% endblock %}

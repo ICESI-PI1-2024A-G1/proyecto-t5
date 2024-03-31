@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block title %}
-    Dashboard
+    Panel de control de usuario externo
+{% endblock %}
+{% block aditionalMetadata %}
 {% endblock %}
 
-
 {% block content %}
-    {% include 'components/header.html' %}
-    <main id="main">
+    <main id="main" class="expanded">
         <div class="container text-center">
                 <div style="padding-top: 25px;">
                     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
