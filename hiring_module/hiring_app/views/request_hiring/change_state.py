@@ -6,6 +6,8 @@ from .utilities import utilities
 from hiring_app.model.monitoring_contract_request_model import MonitoringContractRequest
 from hiring_app.model.contract_request_snapshot_model import ContractRequestSnapshot
 from hiring_app.model.user_model import CustomUser
+from django.urls import reverse
+from django.http import HttpResponseRedirect
 
 class ChangeStateView(View):
     def post(self, request, idContract):
@@ -31,21 +33,24 @@ class ChangeStateView(View):
 
         if not action:
             action = {'error_message': None, 'email_function': None} 
-                   
+                    
         reason = request.POST.get('reason')
         if not contract_request.is_valid_transition(new_state):
             request.session['error_message'] = "This option is unable"
-        else:
-            if action and (not reason and action['error_message']):
-                request.session['error_message'] = action['error_message']
-            elif action:
-                contract_request.transition_to_state(new_state)
-                contract_request.state = new_state
-                contract_request.save()
-                if action['email_function']:
-                    action['email_function'](contract_request, reason)
-                
-        return redirect('hiring_app:info', idContract=idContract)
+            return HttpResponseRedirect(reverse('hiring_app:info', kwargs={'idContract': idContract}))
+
+        if action and (not reason and action['error_message']):
+            request.session['error_message'] = action['error_message']
+            return HttpResponseRedirect(reverse('hiring_app:info', kwargs={'idContract': idContract}))
+
+        if action:
+            contract_request.transition_to_state(new_state)
+            contract_request.state = new_state
+            contract_request.save()
+            if action['email_function']:
+                action['email_function'](contract_request, reason)
+
+        return HttpResponseRedirect(reverse('hiring_app:info', kwargs={'idContract': idContract}))
 
 
     def sendEmailRequest(self, contract_request, reason):

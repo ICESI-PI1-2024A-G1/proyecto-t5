@@ -7,23 +7,47 @@
     </select>
 </form>
 
+<dialog id="reasonDialog" style="background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); z-index: 9999;">
+    <form id="reasonForm">
+        <label id="reasonLabel" for="reason" style="margin-bottom: 10px; color: #4a5568; font-weight: bold; display: block;">Motivo:</label>
+        <input type="text" id="reason" name="reason" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #cbd5e0; outline: none; transition: border-color 0.15s ease-in-out; margin-bottom: 10px;">
+        <button type="submit" style="padding: 10px 20px; border: none; background-color: #1e40af; color: #fff; border-radius: 4px; cursor: pointer;">Enviar</button>
+    </form>
+</dialog>
+
+
+
+<div id="successDropdown" class="success-box" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #1f8b1f; padding: 20px; border-radius: 5px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); z-index: 9999; color: white; font-weight: bold; text-align: center;">
+    ¡Formulario enviado correctamente!
+</div>
+
+
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var selectElement = document.getElementById('stateSelect');
+        var dialog = document.getElementById('reasonDialog');
+        var successDropdown = document.getElementById('successDropdown');
+        var reasonLabel = document.getElementById('reasonLabel');
+        var errorPopup = document.getElementById('errorPopup');
+
         selectElement.addEventListener('change', function () {
-            if (this.value === 'incomplete' || this.value === 'cancelled') {
-                var reason = prompt('Ingrese el motivo de los documentos faltantes:');
-                if (reason !== null) {
-                    // Agregar el motivo al formulario como un campo oculto
-                    var reasonInput = document.createElement('input');
-                    reasonInput.type = 'hidden';
-                    reasonInput.name = 'reason';
-                    reasonInput.value = reason.trim();
-                    document.getElementById('changeStateForm').appendChild(reasonInput);
-                }
+            if (this.value === 'incomplete') {
+                document.getElementById('reasonForm').reset(); // Resetear el formulario
+                reasonLabel.textContent = 'Documentos faltantes:';
+                dialog.showModal();
+            } else if (this.value === 'cancelled') {
+                document.getElementById('reasonForm').reset(); // Resetear el formulario
+                reasonLabel.textContent = 'Motivo de cancelación:';
+                dialog.showModal();
+            } else {
+                document.getElementById('changeStateForm').submit();
+                    successDropdown.style.display = 'block';
+                    setTimeout(function () {
+                        successDropdown.style.display = 'none';
+                    }, 2000);
             }
-            // Enviar el formulario después de manejar el motivo
-            document.getElementById('changeStateForm').submit();
         });
+
     });
 </script>

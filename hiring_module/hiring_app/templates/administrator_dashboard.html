@@ -7,13 +7,14 @@ Panel de control de Administrador
 {% endblock %}
 
 {% block content %}
-    <main id="main" class="expanded">
-        {% include 'control_board/center_container.html' %}
-
-        <div>
-            {% include 'control_board/table.html' %}
-        </div>
-
-        {% include 'control_board/state_change.html' %}
+        <main id="main" class="expanded">
+            {% include 'control_board/center_container.html' %}
+            
+            <div>
+                {% include 'control_board/table.html' %} 
+            </div>
+            
+            {% include 'control_board/state_change.html' %}
+        </main>
     </main>
 {% endblock %}
