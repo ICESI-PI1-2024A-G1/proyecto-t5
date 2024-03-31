@@ -8,12 +8,12 @@
 {% block aditionalMetadata %}
     <style>
         .expanded {
-            margin-left: 18vw; /* Ancho del sidebar */
+            margin-left: 15vw; /* Ancho del sidebar */
             transition: margin-left 0.3s; /* Agregar una transición para un efecto suave */
         }
 
         .nonExpanded {
-            margin-left: 3vw; /* Ancho del sidebar */
+            margin-left: 0vw; /* Ancho del sidebar */
             transition: margin-left 0.3s; /* Agregar una transición para un efecto suave */
         }
     </style>
@@ -31,7 +31,7 @@
         {% include 'components/LeftSideMenu.html' %}
     </div>
 
-    <main id="main" class="expanded" style="display: flex; flex-direction: column; height: 100%; width: 85vw; background-color: #E5E5E5; padding: 1rem;">
+    <main id="main" class="expanded" style="display: flex; flex-direction: column; height: 100%; background-color: #E5E5E5; padding: 1rem;">
         <div style="text-align: center; margin-top: 1rem;">
             {% include 'request_hiring/center_container.html' %}
         </div>
@@ -74,3 +74,4 @@
     </script>
     {% endif %}
 {% endblock %}
+<script src="{% static 'js/side_bar.js' %}"></script>
