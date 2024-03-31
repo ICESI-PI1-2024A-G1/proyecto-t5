@@ -21,11 +21,7 @@
 {% endblock %}
 
 {% block content %}
-    {% if error_message %}
-    <script>
-        alert("{{ error_message }}");
-    </script>
-    {% endif %}
+
 
     <div>
         {% include 'components/header.html' %}
@@ -49,6 +45,29 @@
             {% include 'request_hiring/components/snapshot.html' %}
         </div>
     </main>
+
+    <div id="errorPopup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(255, 0, 0, 0.8); padding: 20px; border-radius: 5px; color: white; font-weight: bold; z-index: 9999;"></div>
+
     <script src="{% static 'js/side_bar.js' %}"></script>
 
+
+    {% if error_message %}
+    <script>
+        function showErrorPopup(message) {
+            var popup = document.getElementById('errorPopup');
+            popup.innerHTML = message;
+            popup.style.display = 'block';
+            // Ocultar el pop-up después de 2 segundos
+            setTimeout(function() {
+                popup.style.display = 'none';
+            }, 2000);
+        }
+
+        // Código para mostrar el pop-up si hay un mensaje de error disponible
+        var errorMessage = "{{ error_message }}";
+        if (errorMessage && errorMessage !== 'None') {
+            showErrorPopup(errorMessage);
+        }
+    </script>
+    {% endif %}
 {% endblock %}
