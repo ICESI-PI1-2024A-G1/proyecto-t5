@@ -14,10 +14,10 @@
 1. **Test Objective:** Create CEX Contract Request
 
 
-   | **Model**          | **Method**              | **Scenario**                | **Input**            | **Expected output**                         |
-   | :----------------- | :---------------------- | :-------------------------- | :------------------- | :------------------------------------------ |
-   | CEXContractRequest | create_contract_request | Create CEX Contract Request | Various valid inputs | Successful creation of CEX contract request |
-   | CEXContractRequest | create_contract_request | Create CEX Contract Request | Invalid inputs       | Validation error raised                     |
+   | **Model**          | **Method**              | **Scenario**                | **Input**            | **Expected output**                                                          |
+   | :----------------- | :---------------------- | :-------------------------- | :------------------- | :--------------------------------------------------------------------------- |
+   | CEXContractRequest | create_contract_request | Create CEX Contract Request | Various valid inputs | Successful creation of CEX contract request and manager and leader assigment |
+   | CEXContractRequest | create_contract_request | Create CEX Contract Request | Invalid inputs       | Validation error raised                                                      |
 2. **Test Objective:** Transition State on CEX Contract Request
 
 
@@ -28,10 +28,10 @@
 3. **Test Objective:** Create Monitoring Contract Request
 
 
-   | **Model**                 | **Method**              | **Scenario**                       | **Input**            | **Expected output**                                |
-   | :------------------------ | :---------------------- | :--------------------------------- | :------------------- | :------------------------------------------------- |
-   | MonitoringContractRequest | create_contract_request | Create Monitoring Contract Request | Various valid inputs | Successful creation of monitoring contract request |
-   | MonitoringContractRequest | create_contract_request | Create Monitoring Contract Request | Invalid inputs       | Validation error raised                            |
+   | **Model**                 | **Method**              | **Scenario**                       | **Input**            | **Expected output**                                                                 |
+   | :------------------------ | :---------------------- | :--------------------------------- | :------------------- | :---------------------------------------------------------------------------------- |
+   | MonitoringContractRequest | create_contract_request | Create Monitoring Contract Request | Various valid inputs | Successful creation of monitoring contract request and manager and leader assigment |
+   | MonitoringContractRequest | create_contract_request | Create Monitoring Contract Request | Invalid inputs       | Validation error raised                                                             |
 4. **Test Objective:** Transition State on Monitoring Contract Request
 
 
