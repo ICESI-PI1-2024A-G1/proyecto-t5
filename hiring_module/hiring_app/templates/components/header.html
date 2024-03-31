@@ -44,7 +44,11 @@
             </div>
             <button style="display: flex; padding: 10px; margin-left: 8px;">
 
-                <img style="width: 40px; height: 40px; border-radius: 20px;" src="https://ui-avatars.com/api?name={{ user_first_name }}%20{{ user_last_name }}" alt="{{ user.first_name }} {{ user.last_name }}" />
+                {% with user.first_name.split|first as first_word %}
+                {% with user.last_name.split|first as last_word %}
+                <img style="width: 40px; height: 40px; border-radius: 20px;" src="https://ui-avatars.com/api?name={{ first_word }}%20{{ last_word }}" alt="{{ user.first_name }} {{ user.last_name }}" />
+                {% endwith %}
+                {% endwith %}
             </button>
         </div>
     </div>

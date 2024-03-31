@@ -8,8 +8,20 @@ from django.contrib.auth.models import Group
 from hiring_app.model.user_model import CustomUser
 from hiring_app.model.cex_contract_request_model import CEXContractRequest
 from hiring_app.model.contract_request_snapshot_model import ContractRequestSnapshot
+from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect
 
 class SnapshotsView(View):
+
+    def get(self, request, idContract):
+        is_admin = any(group.name == 'admin' for group in self.request.user.groups.all())
+        is_leader = any(group.name == 'leader' for group in self.request.user.groups.all())
+        is_manager = any(group.name == 'manager' for group in self.request.user.groups.all())
+
+        if not (is_admin or is_leader or is_manager):
+            # Redirect to external user dashboard if user doesn't have admin, leader, or manager role
+            return HttpResponseRedirect(reverse_lazy('hiring_app:external_user_dashboard'))
+
     def post(self, request, idContract):
         action = request.POST.get('action')
         if action == 'view-snapshots':
