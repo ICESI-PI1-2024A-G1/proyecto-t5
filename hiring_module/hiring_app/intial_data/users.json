@@ -15,12 +15,12 @@
     {
         "id": "1107838593",
         "first_name": "Alejandro",
-        "last_name": "Londoño Bermudez",
+        "last_name": "Londono Bermudez",
         "birth_date": "2005-05-05",
         "gender": "male",
         "address": " Cl. 18 #122-135",
         "email": "1107838593@u.icesi.edu.co",
-        "password": "alejandrolondoño123",
+        "password": "alejandrolondono123",
         "groups": "leader",
         "is_superuser": true,
         "is_staff": true
@@ -47,6 +47,19 @@
         "address": " Cl. 18 #122-135",
         "email": "1111539567@u.ices.edu.co",
         "password": "santiagovalencia123",
+        "groups": "manager",
+        "is_superuser": true,
+        "is_staff": true
+    },
+    {
+        "id": "1107834787",
+        "first_name": "Alejandro",
+        "last_name": "Castro",
+        "birth_date": "2005-05-05",
+        "gender": "male",
+        "address": " Cl. 18 #122-135",
+        "email": "1107834787@u.icesi.edu.co",
+        "password": "alejandrocastro123",
         "groups": "manager",
         "is_superuser": true,
         "is_staff": true
