@@ -44,7 +44,7 @@
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
-| Alejandro Castro     |                  |                   |                |
+| Alejandro Castro     |Empecé a realizar el frontend del panel de control                  |Nada                   |No sabía mucho de TailwindCSS                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
 
@@ -70,7 +70,7 @@
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
-| Alejandro Castro     |                  |                   |                |
+| Alejandro Castro     |Terminé el frontend del panel de control                  |Nada                   |Ninguno                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
 
@@ -135,7 +135,7 @@
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
-| Alejandro Castro     |                  |                   |                |
+| Alejandro Castro     |Empecé a realizar el frontend de cambio de estados en las solicitudes                  |Nada                   |Me toco aprender un poco de JavaScript                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
 
@@ -148,7 +148,7 @@
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
-| Alejandro Castro     |                  |                   |                |
+| Alejandro Castro     |Termine el de realizar el frontend de cambio de estados en las solicitudes                  |Empecé a realizar el cambio de estados en las solicitudes                   |Ninguno                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
 
@@ -226,7 +226,7 @@
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
-| Alejandro Castro     |                  |                   |                |
+| Alejandro Castro     |Empecé a realizar el frontend de cambio de lider en las solicitudes                  |Nada                   |Ninguno                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
 
@@ -252,7 +252,7 @@
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
-| Alejandro Castro     |                  |                   |                |
+| Alejandro Castro     |Terminé de realizar el frontend de cambio de lider en las solicitudes                  |Nada                   |Ninguno                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
 
@@ -330,7 +330,7 @@
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
-| Alejandro Castro     |                  |                   |                |
+| Alejandro Castro     |Realicé el frontend del cambio de gestor en las solicitudes                  |Nada                   |Ninguno                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
 
@@ -343,7 +343,7 @@
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
-| Alejandro Castro     |                  |                   |                |
+| Alejandro Castro     |Realicé el frontend de notificar la completitud de las solicitudes al cliente                  |Realicé el frontend del cambio de gestor en las solicitudes                   |Ninguno                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
 
@@ -382,7 +382,7 @@
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
-| Alejandro Castro     |                  |                   |                |
+| Alejandro Castro     |Realicé el merge de todos los frontend que hice en la pantalla de la información de solicitudes y realicé los frontend de los formularios de las solicitudes                 |Nada                   |A veces me tocaba aplicar en ves de TailwindCSS un CSS puro por medio de style a los componentes                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
 
