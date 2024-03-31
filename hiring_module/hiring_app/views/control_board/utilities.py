@@ -5,7 +5,6 @@ def role_redirect(view_func):
     @wraps(view_func)
     def wrapper(request, *args, **kwargs):
         # Check if the user is already on the correct dashboard
-        print(request.path)
         if request.user.groups.filter(name='admin').exists() and request.path != '/hiring_app/administrator_dashboard/':
             return redirect('hiring_app:administrator_dashboard')
         elif request.user.groups.filter(name='leader').exists() and request.path != '/hiring_app/leader_dashboard/':
