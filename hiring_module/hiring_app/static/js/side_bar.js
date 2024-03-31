@@ -7,6 +7,5 @@ document.addEventListener("DOMContentLoaded", function() {
         sidebar.classList.toggle('hidden');
         mainContent.classList.toggle('expanded');
         mainContent.classList.toggle('nonExpanded');
-
     });
 });
