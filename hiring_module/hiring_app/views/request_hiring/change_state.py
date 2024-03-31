@@ -39,6 +39,7 @@ class ChangeStateView(View):
             if action and (not reason and action['error_message']):
                 request.session['error_message'] = action['error_message']
             elif action:
+                contract_request.transition_to_state(new_state)
                 contract_request.state = new_state
                 contract_request.save()
                 if action['email_function']:

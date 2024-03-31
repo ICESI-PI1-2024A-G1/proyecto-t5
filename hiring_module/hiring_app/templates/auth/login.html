@@ -6,54 +6,28 @@ Inicio de Sesión
 {% endblock %}
 
 {% block content %}
-    <h1 style="font-size: 2rem; margin-bottom: 1rem;">Iniciar Sesión</h1>
-    {% if messages %}
-        {% for message in messages %}
-            <p id="warningMessage" style="color: #dc2626; font-weight: 600; margin: 1rem 0; text-align: center;">Credenciales incorrectas. Inténtelo de nuevo.</p>
-        {% endfor %}
-    {% endif %}
-    <!--Login-->
-    <form method="post" style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 1.5rem; padding: 2.5rem; background-image: url({% static 'images/auth/background_image.jpg' %}); background-size: cover;">
-        {% csrf_token %}
-        <!--University logo-->
-        <div>
-            <img src="{% static 'images/auth/logo_icesi.webp' %}" alt="Logo de la Universidad Icesi" style="height: 4rem;">
-        </div>
-        <!--Input for id -->
-        <div style="display: flex; align-items: center; width: 100%; max-width: 25rem;">
-            {{ form.non_field_errors }}
+    <div style="display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden;">
+        <div style="display: flex; flex-direction: column; align-items: center; margin-top: 20px; padding: 30px; background-color: rgba(255, 255, 255, 0.918); border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-width: 350px; min-width: 30vw;">
+            <img src="{% static 'images/auth/logo_icesi.webp' %}" alt="logo" style="margin-bottom: 20px; height: 70px;">
+            <h1 style="font-size: 20px; font-weight: bold; line-height: 1.2; margin-bottom: 20px; color: #333;">Sign in to your account</h1>
+            <form method="post" style="display: flex; flex-direction: column; width: 100%;" action="#">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
 
-            <div style="display: flex; align-items: center; background-color: #b8b8b8; padding: 0.5rem; border: 1px solid #b8b8b8;">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem; color: #4a5568;">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-                </svg>
-            </div>
-            {{ form.id }}
-        </div>
-        <!--Input for password-->
-        <div style="display: flex; align-items: center; width: 100%; max-width: 25rem;">
-            <div style="display: flex; align-items: center; background-color: #b8b8b8; padding: 0.5rem; border: 1px solid #b8b8b8;">
-                
-            </div>
-            <div style="display: flex; align-items: center;">
+                <label for="email" style="margin-bottom: 10px; font-size: 16px; font-weight: bold; color: #333;">Your ID</label>
+                {{ form.id }}
+                <label for="password" style="margin-top: 15px; margin-bottom: 10px; font-size: 16px; font-weight: bold; color: #333;">Password</label>
                 {{ form.password }}
 
-                <button id="togglePassword" type="button" style="margin-left: -3rem; padding-right: 0.25rem;">
-                    <!--OpenEye-->
-                    <svg id="eyeIconOpen" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem; color: #4a5568;">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                    </svg>
-                    <!--CloseEye-->
-                    <svg id="eyeIconClosed" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem; color: #4a5568;">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88" />
-                    </svg>
-                </button>
-            </div>
+                <button type="submit" style="padding: 12px; margin-top: 20px; border: none; border-radius: 8px; background-color: #2A8FD0; color: #fff; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease-in-out;">Sign in</button>
+                <div>
+                {% if messages %}
+                    {% for message in messages %}
+                        <p id="warningMessage" style="color: #dc2626; font-weight: 600; margin-top: 20px; text-align: center;">Credenciales incorrectas. Inténtelo de nuevo.</p>
+                    {% endfor %}
+                {% endif %}                
+                </div>
+            </form>
         </div>
-        <!--Submit button-->
-        <button type="submit" style="background-color: #00599C; padding-top: 0.5rem; padding-bottom: 0.5rem; padding-right: 1rem; padding-left: 1rem; border-radius: 0.75rem; color: white; font-weight: bold; border: none; cursor: pointer; transition: background-color 0.3s ease-in-out;">
-            Ingresar
-        </button>
-    </form>
+    </div>
 {% endblock %}
