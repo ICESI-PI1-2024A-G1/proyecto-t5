@@ -5,8 +5,8 @@
         <p style="color: #434343;">Tiempo restante:</p>
     </div>
     <div style="display: flex; flex-direction: column; width: 50%;">
-        <p style="color: #00599C; margin-bottom: 0.75rem;">{{ contract_request.start_date }}</p>
-        <p style="color: #00599C; margin-bottom: 0.75rem;">{{ contract_request.estimated_completion_date }}</p>
+        <p style="color: #00599C; margin-bottom: 0.75rem;">{{ contract_request.start_date|date:"d-m-Y" }}</p>
+        <p style="color: #00599C; margin-bottom: 0.75rem;">{{ contract_request.estimated_completion_date|date:"d-m-Y" }}</p>
         <p style="color: #00599C;">
             {{ days_difference }}
             {% if days_difference == 1 %}

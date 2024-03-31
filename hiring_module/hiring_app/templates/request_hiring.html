@@ -1,37 +1,16 @@
-<!-- main screen --> 
+<!-- main screen -->
 {% extends 'base.html' %}
 {% load static %}
-
 {% block title %}
-    Request Hiring
+Request Hiring
 {% endblock %}
 {% block aditionalMetadata %}
-    <style>
-        .expanded {
-            margin-left: 15vw; /* Ancho del sidebar */
-            transition: margin-left 0.3s; /* Agregar una transición para un efecto suave */
-        }
-
-        .nonExpanded {
-            margin-left: 0vw; /* Ancho del sidebar */
-            transition: margin-left 0.3s; /* Agregar una transición para un efecto suave */
-        }
-    </style>
-
 {% endblock %}
 
 {% block content %}
+    <div id="errorPopup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(255, 0, 0, 0.8); padding: 20px; border-radius: 5px; color: white; font-weight: bold; z-index: 9999;"></div>
 
-
-    <div>
-        {% include 'components/header.html' %}
-
-    </div>
-    <div id="sidebar">
-        {% include 'components/LeftSideMenu.html' %}
-    </div>
-
-    <main id="main" class="expanded" style="display: flex; flex-direction: column; height: 92.5vh; background-color: #E5E5E5; padding: 1rem;">
+    <main id="main" class="expanded" style="display: flex; flex-direction: column; height:80vh; background-color: #E5E5E5; padding: 1rem;">
         <div style="text-align: center; margin-top: 1rem;">
             {% include 'request_hiring/center_container.html' %}
         </div>
@@ -49,9 +28,13 @@
         </div>
     </main>
 
-    <div id="errorPopup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(255, 0, 0, 0.8); padding: 20px; border-radius: 5px; color: white; font-weight: bold; z-index: 9999;"></div>
-
-    <script src="{% static 'js/side_bar.js' %}"></script>
+    <h2
+        style="color: #434343; font-size: 1.5rem; line-height: 2rem; font-weight: 600; padding-bottom: 0.5rem; padding-top: 1rem;">
+        Bitácora
+    </h2>
+    <div style="display: flex;">
+    </div>
+</main>
 
 
     {% if error_message %}
@@ -73,4 +56,5 @@
         }
     </script>
     {% endif %}
+
 {% endblock %}
