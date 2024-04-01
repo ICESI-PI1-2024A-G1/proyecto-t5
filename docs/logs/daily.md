@@ -6,7 +6,7 @@
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
-| Santiago Valencia    |                  |                   |                |
+| Santiago Valencia    |Revisé los requisitos de la<br>historia de usuario del<br>login frontend|                   | Ninguno |
 | Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
@@ -19,7 +19,7 @@
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
-| Santiago Valencia    |                  |                   |                |
+| Santiago Valencia    | Nada | Revisé los requisitos de la<br>historia de usuario del<br>login frontend | Ninguno |
 | Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
@@ -32,7 +32,7 @@
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
-| Santiago Valencia    |                  |                   |                |
+| Santiago Valencia    | Nada | Nada | Ninguno |
 | Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
@@ -45,7 +45,7 @@
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |Empecé a realizar el frontend del panel de control                  |Nada                   |No sabía mucho de TailwindCSS                |
-| Santiago Valencia    |                  |                   |                |
+| Santiago Valencia    | Nada                 | Nada                  | Ninguno              |
 | Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
@@ -58,7 +58,7 @@
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
-| Santiago Valencia    |                  |                   |                |
+| Santiago Valencia    | Nada | Nada | Ninguno |
 | Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
@@ -71,7 +71,7 @@
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |Terminé el frontend del panel de control                  |Nada                   |Ninguno                |
-| Santiago Valencia    |                  |                   |                |
+| Santiago Valencia    | Se realizó la estructura en html<br>del login               | Nada                  | Ninguno               |
 | Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
@@ -84,7 +84,7 @@
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
-| Santiago Valencia    |                  |                   |                |
+| Santiago Valencia    | Nada | Se realizó la estructura en html<br>del login | Ninguno |
 | Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
@@ -97,7 +97,7 @@
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
-| Santiago Valencia    |                  |                   |                |
+| Santiago Valencia    | Se comenzó a aplicar estilos con Tailwind<br>al html del login | Nada | Ninguno |
 | Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
@@ -110,7 +110,7 @@
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
-| Santiago Valencia    |                  |                   |                |
+| Santiago Valencia    | Se continuó con la implementación del<br>frontend del login | Se comenzó a aplicar estilos con Tailwind<br>al html del login | Problemas con las medidas de la pantalla |
 | Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
@@ -123,7 +123,7 @@
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
-| Santiago Valencia    |                  |                   |                |
+| Santiago Valencia    | Nada | Se continuó con la implementación del<br>frontend del login | Ninguno |
 | Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
@@ -136,7 +136,7 @@
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |Empecé a realizar el frontend de cambio de estados en las solicitudes                  |Nada                   |Me toco aprender un poco de JavaScript                |
-| Santiago Valencia    |                  |                   |                |
+| Santiago Valencia    | Nada                 | Nada                  | Ninguno               |
 | Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
@@ -149,7 +149,7 @@
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |Termine el de realizar el frontend de cambio de estados en las solicitudes                  |Empecé a realizar el cambio de estados en las solicitudes                   |Ninguno                |
-| Santiago Valencia    |                  |                   |                |
+| Santiago Valencia    | Nada                 | Nada                  | Ninguno                |
 | Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
@@ -162,7 +162,7 @@
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
-| Santiago Valencia    |                  |                   |                |
+| Santiago Valencia    | Se culminó con la implementación del login<br>sin modularizar | Nada | Ninguno |
 | Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
@@ -175,7 +175,7 @@
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
-| Santiago Valencia    |                  |                   |                |
+| Santiago Valencia    | Nada | Se culminó con la implementación del login<br>sin modularizar | Ninguno |
 | Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
@@ -188,7 +188,7 @@
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
-| Santiago Valencia    |                  |                   |                |
+| Santiago Valencia    | Se comenzó a diseñar la interfaz de detalles de la<br>solicitud donde irá la barra de progreso | Nada | Ninguno |
 | Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
@@ -201,7 +201,7 @@
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
-| Santiago Valencia    |                  |                   |                |
+| Santiago Valencia    | Nada | Se comenzó a diseñar la interfaz de detalles de la<br>solicitud donde irá la barra de progreso | Ninguno |
 | Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
@@ -214,7 +214,7 @@
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
-| Santiago Valencia    |                  |                   |                |
+| Santiago Valencia    | Se comenzaron a aplicar estilos con Tailwind a la<br>interfaz de detalles de la solicitud | Nada | Ninguno |
 | Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
@@ -227,7 +227,7 @@
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |Empecé a realizar el frontend de cambio de lider en las solicitudes                  |Nada                   |Ninguno                |
-| Santiago Valencia    |                  |                   |                |
+| Santiago Valencia    | Nada                 | Se comenzaron a aplicar estilos con Tailwind<br>a la interfaz de detalles de la solicitud                  | Ninguno                |
 | Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
@@ -240,7 +240,7 @@
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
-| Santiago Valencia    |                  |                   |                |
+| Santiago Valencia    | Nada | Nada | Ninguno |
 | Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
@@ -253,7 +253,7 @@
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |Terminé de realizar el frontend de cambio de lider en las solicitudes                  |Nada                   |Ninguno                |
-| Santiago Valencia    |                  |                   |                |
+| Santiago Valencia    | Se modulariza el frontend del login y<br>se corrigen algunas cosas del diseño                  | Nada                  | No se reconocía la etiqueta static                |
 | Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
@@ -266,7 +266,7 @@
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
-| Santiago Valencia    |                  |                   |                |
+| Santiago Valencia    | Se culmina con el diseño de la interfaz de detalles<br>de la solicitud | Se modulariza el frontend del login y se corrigen<br>algunas cosas del diseño | Ninguno |
 | Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
@@ -279,7 +279,7 @@
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
-| Santiago Valencia    |                  |                   |                |
+| Santiago Valencia    | Se comienza a implementar el frontend de la barra<br>de progreso | Se culmina con el diseño de la interfaz de detalles<br>de la solicitud | Ninguno |
 | Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
@@ -292,7 +292,7 @@
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
-| Santiago Valencia    |                  |                   |                |
+| Santiago Valencia    | Nada | Se comienza a implementar el frontend de la barra<br>de progreso | Ninguno |
 | Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
@@ -305,7 +305,7 @@
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
-| Santiago Valencia    |                  |                   |                |
+| Santiago Valencia    | Se culmina con la implementación del frontend de la barra<br>de progreso, sin actualización automática | Nada | Ninguno |
 | Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
@@ -318,7 +318,7 @@
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
-| Santiago Valencia    |                  |                   |                |
+| Santiago Valencia    | Se implementa la lógica para que la barra se actualice<br>automáticamente | Se culmina con la implementación del frontend de la barra<br>de progreso, sin actualización automática | Hubo algunos bugs al actualizar el estado<br>de la barra |
 | Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
@@ -331,7 +331,7 @@
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |Realicé el frontend del cambio de gestor en las solicitudes                  |Nada                   |Ninguno                |
-| Santiago Valencia    |                  |                   |                |
+| Santiago Valencia    | Nada                  | Se implementa la lógica para que la barra se actualice<br>automáticamente                  | Ninguno                |
 | Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
@@ -344,7 +344,7 @@
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |Realicé el frontend de notificar la completitud de las solicitudes al cliente                  |Realicé el frontend del cambio de gestor en las solicitudes                   |Ninguno                |
-| Santiago Valencia    |                  |                   |                |
+| Santiago Valencia    | Se comienza a hacer el diseño del frontend<br>de la bitácora                 | Nada                  | Ninguno               |
 | Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
@@ -357,7 +357,7 @@
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
-| Santiago Valencia    |                  |                   |                |
+| Santiago Valencia    | Nada | Se comienza a hacer el diseño del frontend de la<br>bitácora | Ninguno |
 | Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
@@ -370,7 +370,7 @@
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
-| Santiago Valencia    |                  |                   |                |
+| Santiago Valencia    | Nada | Nada | Ninguno |
 | Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
@@ -383,7 +383,7 @@
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |Realicé el merge de todos los frontend que hice en la pantalla de la información de solicitudes y realicé los frontend de los formularios de las solicitudes                 |Nada                   |A veces me tocaba aplicar en ves de TailwindCSS un CSS puro por medio de style a los componentes                |
-| Santiago Valencia    |                  |                   |                |
+| Santiago Valencia    | Se culmina con la implementación de la bitácora<br>y se terminan de hacer commits de la barra de progreso y<br>de la bitácora                 | Nada                  | Algunos bugs al correr el proyecto               |
 | Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
@@ -396,7 +396,7 @@
 | Julian Mendoza       |                  |                   |                |
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
-| Santiago Valencia    |                  |                   |                |
+| Santiago Valencia    | Nada | Se culmina con la implementación de la bitácora y se<br>terminan de hacer commits de la barra de progreso<br>y de la bitácora | Ninguno |
 | Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
