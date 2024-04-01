@@ -6,12 +6,6 @@
 ## ALEJANDRO CASTRO
 
 
-# Evidencias:
-
-Question: about what? 
-
-
-
 # Standard commit 
 
 Primera línea: Algo breve pero descriptivo
@@ -129,8 +123,3 @@ def promedio(lista):
     prom = total / len(lista)  # Calculamos el promedio.
     return prom  # Devolvemos el resultado.
 ```
-
-
-# Forma de ejecucion del codigo
-
- TODO
