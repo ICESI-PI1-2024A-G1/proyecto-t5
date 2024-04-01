@@ -17,6 +17,10 @@ class MonitoringContractRequestView(CreateView):
         estimated_completion_date = datetime.now() + timedelta(days=15)
         form.instance.estimated_completion_date = estimated_completion_date
         form.instance.created_by = current_user
+        
+        monitoring_contract_request = form.save(commit=False)
+        monitoring_contract_request.create_snapshot()
+        monitoring_contract_request.save()
             
         utilities.sendEmailSuccess(current_user)
         return super().form_valid(form)

@@ -1,0 +1,39 @@
+<div style="background-color: white; padding: 1rem;  width: 100%; border-radius: 0.375rem; box-shadow: 2px 2px 4px rgba(42, 143, 208, 0.5); text-align: center;">    
+    <div style="display: flex; flex-direction: row; width: 100%;">
+        <div style="display: flex; flex-direction: column; width: 50%;">
+            <p style="color: #434343; margin-bottom: 0.75rem;">Hiree Full Name:</p>
+            <p style="color: #434343; margin-bottom: 0.75rem;">Hiree ID:</p>
+            <p style="color: #434343; margin-bottom: 0.75rem;">Hiree Cellphone:</p>
+            <p style="color: #434343; margin-bottom: 0.75rem;">Hiree Email:</p>
+            <p style="color: #434343; margin-bottom: 0.75rem;">Cenco:</p>
+            <p style="color: #434343; margin-bottom: 0.75rem;">Request Motive:</p>
+            <p style="color: #434343; margin-bottom: 0.75rem;">Banking Entity:</p>
+            <p style="color: #434343; margin-bottom: 0.75rem;">Bank Account Type:</p>
+            <p style="color: #434343; margin-bottom: 0.75rem;">Bank Account Number:</p>
+            <p style="color: #434343; margin-bottom: 0.75rem;">EPS:</p>
+            <p style="color: #434343; margin-bottom: 0.75rem;">Pension Fund:</p>
+            <p style="color: #434343; margin-bottom: 0.75rem;">ARL:</p>
+            <p style="color: #434343; margin-bottom: 0.75rem;">Contract Value:</p>
+            <p style="color: #434343; margin-bottom: 0.75rem;">Charge Account:</p>
+            <p style="color: #434343; margin-bottom: 0.75rem;">RUT:</p>
+        </div>
+        <div style="display: flex; flex-direction: column; width: 50%;">
+            <p style="color: #00599C; margin-bottom: 0.75rem;">{{ contract_request.hiree_full_name }}</p>
+            <p style="color: #00599C; margin-bottom: 0.75rem;">{{ contract_request.hiree_id }}</p>
+            <p style="color: #00599C; margin-bottom: 0.75rem;">{{ contract_request.hiree_cellphone }}</p>
+            <p style="color: #00599C; margin-bottom: 0.75rem;">{{ contract_request.hiree_email }}</p>
+            <p style="color: #00599C; margin-bottom: 0.75rem;">{{ contract_request.cenco }}</p>
+            <p style="color: #00599C; margin-bottom: 0.75rem;">{{ contract_request.request_motive }}</p>
+            <p style="color: #00599C; margin-bottom: 0.75rem;">{{ contract_request.banking_entity }}</p>
+            <p style="color: #00599C; margin-bottom: 0.75rem;">{{ contract_request.get_bank_account_type_display }}</p>
+            <p style="color: #00599C; margin-bottom: 0.75rem;">{{ contract_request.bank_account_number }}</p>
+            <p style="color: #00599C; margin-bottom: 0.75rem;">{{ contract_request.eps }}</p>
+            <p style="color: #00599C; margin-bottom: 0.75rem;">{{ contract_request.pension_fund }}</p>
+            <p style="color: #00599C; margin-bottom: 0.75rem;">{{ contract_request.arl }}</p>
+            <p style="color: #00599C; margin-bottom: 0.75rem;">{{ contract_request.contract_value }}</p>
+            <p style="color: #00599C; margin-bottom: 0.75rem;">{{ contract_request.charge_account }}</p>
+            <p style="color: #00599C; margin-bottom: 0.75rem;"><a href="/hiring_app/download_rut/{{ contract_request.id }}/">Download RUT File</a></p>
+        </div>
+    </div>
+    
+</div>
