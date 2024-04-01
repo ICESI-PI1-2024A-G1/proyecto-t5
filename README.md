@@ -8,9 +8,7 @@ Configuration for collaborative work:
 
 3) Create the hiring_module database for local use
 
-> psql -U postgres
-
-> CREATE DATABASE hiring_module;
+> psql -U postgres -c "CREATE DATABASE hiring_module;"
 
 4) Have python installed since version 3.12.1
 
@@ -30,16 +28,19 @@ When you are in the virtual environment you can work on the project
 
 > pip install -r requirements.txt
 
+8) Move to the project directory
 
-8) Make database migrations
+> cd hiring_module
+
+9) Make database migrations
 
 Being in the project directory...
 
-> python manage.py makemigrations
+> python manage.py makemigrations hiring_app
 
 > python manage.py migrate
 
-9) Run server
+10) Run server
 Being in the project director...
 
 > python manage.py runserver

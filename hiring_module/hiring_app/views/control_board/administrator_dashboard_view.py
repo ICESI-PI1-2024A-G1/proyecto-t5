@@ -10,6 +10,8 @@ from .utilities import role_redirect
 
 class AdministratorDashboardView(TemplateView):
     template_name = 'administrator_dashboard.html'
+
+    # Redirect to correct dashboard based on user role
     @method_decorator(role_redirect)
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
