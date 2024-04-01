@@ -6,7 +6,7 @@
 | Julian Mendoza       |                           |                               |                |
 | Alejandro Londoño    |                           |                               |                |
 | Alejandro Castro     |                           |                               |                |
-| Santiago Valencia    |                           |                               |                |
+| Santiago Valencia    | Revisé los requisitos de la historia de usuario<br>del login frontend | Nada | Ninguno |
 | Juan Sebastian Diaz  |                           |                               |                |
 
 </details>
@@ -19,7 +19,7 @@
 | Julian Mendoza       |                           |                               |                |
 | Alejandro Londoño    |                           |                               |                |
 | Alejandro Castro     |                           |                               |                |
-| Santiago Valencia    |                           |                               |                |
+| Santiago Valencia    | Implementé el diseño inicial del formulario de inicio<br>de sesión y comencé la implementación de la barra de progreso | Revisé los requisitos de la historia de usuario<br>del login frontend | Ninguno |
 | Juan Sebastian Diaz  |                           |                               |                |
 
 </details>
@@ -32,7 +32,7 @@
 | Julian Mendoza       |                           |                               |                |
 | Alejandro Londoño    |                           |                               |                |
 | Alejandro Castro     |                           |                               |                |
-| Santiago Valencia    |                           |                               |                |
+| Santiago Valencia    | Se realizó la estructura en html del login | Implementé el diseño inicial del formulario de inicio<br>de sesión y comencé la implementación de la barra de progreso | Ninguno |
 | Juan Sebastian Diaz  |                           |                               |                |
 
 </details>
@@ -45,7 +45,7 @@
 | Julian Mendoza       |                           |                               |                |
 | Alejandro Londoño    |                           |                               |                |
 | Alejandro Castro     |                           |                               |                |
-| Santiago Valencia    |                           |                               |                |
+| Santiago Valencia    | Se continuó con la implementación del frontend del login<br>y se implementó la lógica para que la barra de progreso<br>se actualice automáticamente | Se realizó la estructura en html del login | Ninguno |
 | Juan Sebastian Diaz  |                           |                               |                |
 
 </details>
@@ -58,7 +58,7 @@
 | Julian Mendoza       |                           |                               |                |
 | Alejandro Londoño    |                           |                               |                |
 | Alejandro Castro     |                           |                               |                |
-| Santiago Valencia    |                           |                               |                |
+| Santiago Valencia    | Se culmina con la implementación de la bitácora y se<br>terminan de hacer commits de la barra de progreso y<br>de la bitácora | Se continuó con la implementación del frontend del login<br>y se implementó la lógica para que la barra de progreso<br>se actualice automáticamente | Ninguno |
 | Juan Sebastian Diaz  |                           |                               |                |
 
 </details>
