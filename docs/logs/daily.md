@@ -4,7 +4,7 @@
 | Nombre               | Lo que hice hoy | Lo que hice ayer | Inconvenientes |
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
-| Alejandro Londoño    |                  |                   |                |
+| Alejandro Londoño    | Organizar el proyecto |                   |                |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
@@ -17,7 +17,7 @@
 | Nombre               | Lo que hice hoy | Lo que hice ayer | Inconvenientes |
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
-| Alejandro Londoño    |                  |                   |                |
+| Alejandro Londoño    | Nada |Determinar posible organización | Los tiempos del grupo son limitados y condicionados
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
@@ -30,7 +30,7 @@
 | Nombre               | Lo que hice hoy | Lo que hice ayer | Inconvenientes |
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
-| Alejandro Londoño    |                  |                   |                |
+| Alejandro Londoño    | Creación y configuración del proyecto en django y su conección a la base de datos | Nada |                |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
@@ -43,7 +43,7 @@
 | Nombre               | Lo que hice hoy | Lo que hice ayer | Inconvenientes |
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
-| Alejandro Londoño    |                  |                   |                |
+| Alejandro Londoño    | Seguimiento del modelo de datos | Creación y configuración del proyecto en django y su conección a la base de datos | No se tuvieron |
 | Alejandro Castro     |Empecé a realizar el frontend del panel de control                  |Nada                   |No sabía mucho de TailwindCSS                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
@@ -56,7 +56,7 @@
 | Nombre               | Lo que hice hoy | Lo que hice ayer | Inconvenientes |
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
-| Alejandro Londoño    |                  |                   |                |
+| Alejandro Londoño    | Implementar la vista para log in y página post-inicio | Revisión QA del modelo de datos | Se determinó que el modelo de datos no cumplió con los criterios de QA establecidos |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
@@ -69,7 +69,7 @@
 | Nombre               | Lo que hice hoy | Lo que hice ayer | Inconvenientes |
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
-| Alejandro Londoño    |                  |                   |                |
+| Alejandro Londoño    | Nada | Implementar el backend del log in y página de post-inicio | El modelo de datos se tuvo que ajustar |
 | Alejandro Castro     |Terminé el frontend del panel de control                  |Nada                   |Ninguno                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
@@ -82,7 +82,7 @@
 | Nombre               | Lo que hice hoy | Lo que hice ayer | Inconvenientes |
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
-| Alejandro Londoño    |                  |                   |                |
+| Alejandro Londoño    | Nada | Nada |                |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
@@ -95,7 +95,7 @@
 | Nombre               | Lo que hice hoy | Lo que hice ayer | Inconvenientes |
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
-| Alejandro Londoño    |                  |                   |                |
+| Alejandro Londoño    | Estudiar sobre django templates | Nada |                |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
@@ -108,7 +108,7 @@
 | Nombre               | Lo que hice hoy | Lo que hice ayer | Inconvenientes |
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
-| Alejandro Londoño    |                  |                   |                |
+| Alejandro Londoño    | Estudiar django forms | Estudiar sobre django templates  | Ninguno |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
@@ -121,7 +121,7 @@
 | Nombre               | Lo que hice hoy | Lo que hice ayer | Inconvenientes |
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
-| Alejandro Londoño    |                  |                   |                |
+| Alejandro Londoño    | Nada | Estudiar django forms | Ninguno |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
@@ -134,7 +134,7 @@
 | Nombre               | Lo que hice hoy | Lo que hice ayer | Inconvenientes |
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
-| Alejandro Londoño    |                  |                   |                |
+| Alejandro Londoño    | Ajustar el log in al nuevo modelo datos | Nada |    |
 | Alejandro Castro     |Empecé a realizar el frontend de cambio de estados en las solicitudes                  |Nada                   |Me toco aprender un poco de JavaScript                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
@@ -147,7 +147,7 @@
 | Nombre               | Lo que hice hoy | Lo que hice ayer | Inconvenientes |
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
-| Alejandro Londoño    |                  |                   |                |
+| Alejandro Londoño    | Nada | Ajustar el log in al nuevo modelo de datos  | Ninguno |
 | Alejandro Castro     |Termine el de realizar el frontend de cambio de estados en las solicitudes                  |Empecé a realizar el cambio de estados en las solicitudes                   |Ninguno                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
@@ -160,7 +160,7 @@
 | Nombre               | Lo que hice hoy | Lo que hice ayer | Inconvenientes |
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
-| Alejandro Londoño    |                  |                   |                |
+| Alejandro Londoño    |  Reorganización del grupo  | Nada |                |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
@@ -173,7 +173,7 @@
 | Nombre               | Lo que hice hoy | Lo que hice ayer | Inconvenientes |
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
-| Alejandro Londoño    |                  |                   |                |
+| Alejandro Londoño    | Nada | Reorganización del grupo | Ninguno |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
@@ -186,7 +186,7 @@
 | Nombre               | Lo que hice hoy | Lo que hice ayer | Inconvenientes |
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
-| Alejandro Londoño    |                  |                   |                |
+| Alejandro Londoño    | Nada | Nada |                |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
@@ -199,7 +199,7 @@
 | Nombre               | Lo que hice hoy | Lo que hice ayer | Inconvenientes |
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
-| Alejandro Londoño    |                  |                   |                |
+| Alejandro Londoño    |  Creación y organización de rutas  | Nada |                |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
@@ -212,7 +212,7 @@
 | Nombre               | Lo que hice hoy | Lo que hice ayer | Inconvenientes |
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
-| Alejandro Londoño    |                  |                   |                |
+| Alejandro Londoño    | Configuración de tailwind css en el proyecto | Creación y organización de rutas | Ninguno |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
@@ -225,7 +225,7 @@
 | Nombre               | Lo que hice hoy | Lo que hice ayer | Inconvenientes |
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
-| Alejandro Londoño    |                  |                   |                |
+| Alejandro Londoño    | Configuración de tailwind css | Configuración de tailwind css en el proyecto  | Hubo conflictos con las dependencias |
 | Alejandro Castro     |Empecé a realizar el frontend de cambio de lider en las solicitudes                  |Nada                   |Ninguno                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
@@ -238,7 +238,7 @@
 | Nombre               | Lo que hice hoy | Lo que hice ayer | Inconvenientes |
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
-| Alejandro Londoño    |                  |                   |                |
+| Alejandro Londoño    | Nada |  Configuración de tailwind css  | Ninguno |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
@@ -251,7 +251,7 @@
 | Nombre               | Lo que hice hoy | Lo que hice ayer | Inconvenientes |
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
-| Alejandro Londoño    |                  |                   |                |
+| Alejandro Londoño    | Nada | Nada |                |
 | Alejandro Castro     |Terminé de realizar el frontend de cambio de lider en las solicitudes                  |Nada                   |Ninguno                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
@@ -264,7 +264,7 @@
 | Nombre               | Lo que hice hoy | Lo que hice ayer | Inconvenientes |
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
-| Alejandro Londoño    |                  |                   |                |
+| Alejandro Londoño    | Nada | Nada |                |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
@@ -277,7 +277,7 @@
 | Nombre               | Lo que hice hoy | Lo que hice ayer | Inconvenientes |
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
-| Alejandro Londoño    |                  |                   |                |
+| Alejandro Londoño    | Nada | Nada |                |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
@@ -290,7 +290,7 @@
 | Nombre               | Lo que hice hoy | Lo que hice ayer | Inconvenientes |
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
-| Alejandro Londoño    |                  |                   |                |
+| Alejandro Londoño    | Nada | Nada |                |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
@@ -303,7 +303,7 @@
 | Nombre               | Lo que hice hoy | Lo que hice ayer | Inconvenientes |
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
-| Alejandro Londoño    |                  |                   |                |
+| Alejandro Londoño    | Nada  | Nada |                |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
@@ -316,7 +316,7 @@
 | Nombre               | Lo que hice hoy | Lo que hice ayer | Inconvenientes |
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
-| Alejandro Londoño    |                  |                   |                |
+| Alejandro Londoño    | Nada  | Nada |                |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
@@ -329,7 +329,7 @@
 | Nombre               | Lo que hice hoy | Lo que hice ayer | Inconvenientes |
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
-| Alejandro Londoño    |                  |                   |                |
+| Alejandro Londoño    | Implementación de los formularios para creación de solicitudes de contratación | Nada |                |
 | Alejandro Castro     |Realicé el frontend del cambio de gestor en las solicitudes                  |Nada                   |Ninguno                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
@@ -342,7 +342,7 @@
 | Nombre               | Lo que hice hoy | Lo que hice ayer | Inconvenientes |
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
-| Alejandro Londoño    |                  |                   |                |
+| Alejandro Londoño    | Manejo y visualización de errores en el formulario | Implementación de los formularios para creación de solicitudes de contratación | Se tuvo que cambiar varios atributos del modelo de datos para no generar conflicto con los formularios de django |
 | Alejandro Castro     |Realicé el frontend de notificar la completitud de las solicitudes al cliente                  |Realicé el frontend del cambio de gestor en las solicitudes                   |Ninguno                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
@@ -355,7 +355,7 @@
 | Nombre               | Lo que hice hoy | Lo que hice ayer | Inconvenientes |
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
-| Alejandro Londoño    |                  |                   |                |
+| Alejandro Londoño    | Traspolación de formularios de django a html y sus referencias respectivas | Manejo y visualización de errores en el formulario | Ninguno |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
@@ -368,7 +368,7 @@
 | Nombre               | Lo que hice hoy | Lo que hice ayer | Inconvenientes |
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
-| Alejandro Londoño    |                  |                   |                |
+| Alejandro Londoño    | Refactorización de la funcionalidad de cambio de estado e implementación de la funcionalidad de asignación de gestor | Traspolación de formularios de django a html y sus referencias respectivas | Ninguno |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
@@ -381,7 +381,7 @@
 | Nombre               | Lo que hice hoy | Lo que hice ayer | Inconvenientes |
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
-| Alejandro Londoño    |                  |                   |                |
+| Alejandro Londoño    | Implementación de la funcionalidad de asignación de líder, ajuste de los templates acorde a los django templates, resolución de conflictos de la funcionalidad asignación de gestor y asesoría de retoque para el frontend | Refactorización de la funcionalidad de cambio de estado e implementación de la funcionalidad de asignación de gestor | Hubo conflictos en el repositorio por la refactorización de la funcionalidad de cambio de estado |
 | Alejandro Castro     |Realicé el merge de todos los frontend que hice en la pantalla de la información de solicitudes y realicé los frontend de los formularios de las solicitudes                 |Nada                   |A veces me tocaba aplicar en ves de TailwindCSS un CSS puro por medio de style a los componentes                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
@@ -394,7 +394,7 @@
 | Nombre               | Lo que hice hoy | Lo que hice ayer | Inconvenientes |
 |----------------------|------------------|-------------------|----------------|
 | Julian Mendoza       |                  |                   |                |
-| Alejandro Londoño    |                  |                   |                |
+| Alejandro Londoño    | Afinamiento en el frontend | Implementación de la funcionalidad de asignación de líder, ajuste de los templates acorde a los django templates, resolución de conflictos de la funcionalidad asignación de gestor y asesoría de retoque para el frontend | Ninguno |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
 | Juan Sebastian Diaz  |                  |                   |                |
