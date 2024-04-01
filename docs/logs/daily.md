@@ -7,7 +7,7 @@
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
-| Juan Sebastian Diaz  |                  |                   |                |
+| Juan Sebastian Diaz  | Refinamiento de las historias de usuario |Nada|Conflictos con el requerimientos del cliente|
 
 </details>
 
@@ -20,7 +20,7 @@
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
-| Juan Sebastian Diaz  |                  |                   |                |
+| Juan Sebastian Diaz  | Nuevas epicas segun los nuevos requerimientos |Refinamiento de las historias de usuario segun lo que busca el cliente |Modularidad de las tareas, saber que habilidades tienen el grupo |
 
 </details>
 
@@ -33,7 +33,7 @@
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
-| Juan Sebastian Diaz  |                  |                   |                |
+| Juan Sebastian Diaz  | Nuevas epicas segun los requerimientos  | Epicas segun los requerimientos | Ninguno, pero no termine|
 
 </details>
 
@@ -46,7 +46,7 @@
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |Empecé a realizar el frontend del panel de control                  |Nada                   |No sabía mucho de TailwindCSS                |
 | Santiago Valencia    |                  |                   |                |
-| Juan Sebastian Diaz  |                  |                   |                |
+| Juan Sebastian Diaz  | Historias de usuario |Nuevas epicas segun los requerimientos|Nada|
 
 </details>
 
@@ -59,7 +59,7 @@
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
-| Juan Sebastian Diaz  |                  |                   |                |
+| Juan Sebastian Diaz  |Tareas por cada historia de usuario |Historias de usuario|Nada|
 
 </details>
 
@@ -72,7 +72,7 @@
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |Terminé el frontend del panel de control                  |Nada                   |Ninguno                |
 | Santiago Valencia    |                  |                   |                |
-| Juan Sebastian Diaz  |                  |                   |                |
+| Juan Sebastian Diaz  |Estimacion de cada tarea|Tareas por cada historia de usuario|Nada|
 
 </details>
 
@@ -85,7 +85,7 @@
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
-| Juan Sebastian Diaz  |                  |                   |                |
+| Juan Sebastian Diaz  |Estimacion de cada Historia de usuario|Estimacion de cada tarea|Nada|
 
 </details>
 
@@ -98,7 +98,7 @@
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
-| Juan Sebastian Diaz  |                  |                   |                |
+| Juan Sebastian Diaz  |Estimacion de cada epica|Estimacion de cada Historia de usuario|Nada|
 
 </details>
 
@@ -111,7 +111,7 @@
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
-| Juan Sebastian Diaz  |                  |                   |                |
+| Juan Sebastian Diaz  |Definicion de metologia de trabajo|Estimacion de cada epica|Conocer las capacidades del equipo, comunicación|
 
 </details>
 
@@ -124,7 +124,7 @@
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
-| Juan Sebastian Diaz  |                  |                   |                |
+| Juan Sebastian Diaz  | Configuracion de tailwind |Definicion de metologia de trabajo|No funcionan todas las etiquetas|
 
 </details>
 
@@ -137,7 +137,7 @@
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |Empecé a realizar el frontend de cambio de estados en las solicitudes                  |Nada                   |Me toco aprender un poco de JavaScript                |
 | Santiago Valencia    |                  |                   |                |
-| Juan Sebastian Diaz  |                  |                   |                |
+| Juan Sebastian Diaz  |Probar combinacion entre node y django|Configuracion de tailwind|No funciono|
 
 </details>
 
@@ -150,7 +150,7 @@
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |Termine el de realizar el frontend de cambio de estados en las solicitudes                  |Empecé a realizar el cambio de estados en las solicitudes                   |Ninguno                |
 | Santiago Valencia    |                  |                   |                |
-| Juan Sebastian Diaz  |                  |                   |                |
+| Juan Sebastian Diaz  | Nada |Probar combinacion entre node y django|Nada|
 
 </details>
 
@@ -163,7 +163,7 @@
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
-| Juan Sebastian Diaz  |                  |                   |                |
+| Juan Sebastian Diaz  |Investigacion sobre configuracion de tailwind y ayuda a miembros del equipo como rol de QA |Nada|Nada|
 
 </details>
 
@@ -176,7 +176,7 @@
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
-| Juan Sebastian Diaz  |                  |                   |                |
+| Juan Sebastian Diaz  |Nada|Investigacion sobre configuracion de tailwind y ayuda a miembros del equipo como rol de QA|Nada|
 
 </details>
 
@@ -215,7 +215,7 @@
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
-| Juan Sebastian Diaz  |                  |                   |                |
+| Juan Sebastian Diaz  |Configuracion de tailwind |Nada| Hay un pequeño bug con ciertas etiquetas|
 
 </details>
 
@@ -241,7 +241,7 @@
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
-| Juan Sebastian Diaz  |                  |                   |                |
+| Juan Sebastian Diaz  |Ayuda al equipo con temas de frontend y diseño|Nada |Nada|
 
 </details>
 
@@ -254,7 +254,7 @@
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |Terminé de realizar el frontend de cambio de lider en las solicitudes                  |Nada                   |Ninguno                |
 | Santiago Valencia    |                  |                   |                |
-| Juan Sebastian Diaz  |                  |                   |                |
+| Juan Sebastian Diaz  |Ayuda al equipo con temas de frontend |Ayuda al equipo con temas de frontend|Nada|
 
 </details>
 
@@ -267,7 +267,7 @@
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
-| Juan Sebastian Diaz  |                  |                   |                |
+| Juan Sebastian Diaz  | Reestructuracion de los templates |Ayuda al equipo con temas de frontend|nada|
 
 </details>
 
@@ -280,7 +280,7 @@
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
-| Juan Sebastian Diaz  |                  |                   |                |
+| Juan Sebastian Diaz  |Tarea de change state|Reestructuracion de los templates|Nada|
 
 </details>
 
@@ -293,7 +293,7 @@
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
-| Juan Sebastian Diaz  |                  |                   |                |
+| Juan Sebastian Diaz  |Terminar change state|Tarea de change state|Nada|
 
 </details>
 
@@ -306,7 +306,7 @@
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
-| Juan Sebastian Diaz  |                  |                   |                |
+| Juan Sebastian Diaz  |Notificar problemas de documentos al solicitante|Terminar change state|Nada|
 
 </details>
 
@@ -319,7 +319,7 @@
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
-| Juan Sebastian Diaz  |                  |                   |                |
+| Juan Sebastian Diaz  |Notificar problemas de cancelacion al solicitante|Notificar problemas al solicitante|nada|
 
 </details>
 
@@ -332,7 +332,7 @@
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |Realicé el frontend del cambio de gestor en las solicitudes                  |Nada                   |Ninguno                |
 | Santiago Valencia    |                  |                   |                |
-| Juan Sebastian Diaz  |                  |                   |                |
+| Juan Sebastian Diaz  |Notificar termacion con exito al solicitante|Notificar problemas al solicitante|Nada|                |
 
 </details>
 
@@ -345,7 +345,7 @@
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |Realicé el frontend de notificar la completitud de las solicitudes al cliente                  |Realicé el frontend del cambio de gestor en las solicitudes                   |Ninguno                |
 | Santiago Valencia    |                  |                   |                |
-| Juan Sebastian Diaz  |                  |                   |                |
+| Juan Sebastian Diaz  |QA con codigo de compañeros y ayuda |Notificar termacion con exito al solicitante|Tailwind fallando|
 
 </details>
 
@@ -358,7 +358,7 @@
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
-| Juan Sebastian Diaz  |                  |                   |                |
+| Juan Sebastian Diaz  |Refactorizar todo el tailwind existente a style css|QA con codigo de compañeros y ayuda|Ninguno|
 
 </details>
 
@@ -371,7 +371,7 @@
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |                  |                   |                |
 | Santiago Valencia    |                  |                   |                |
-| Juan Sebastian Diaz  |                  |                   |                |
+| Juan Sebastian Diaz  |Organizacion del equipo para generar una sinergia en el codigo|Refactorizar todo el tailwind existente a style css|Ninguno|
 
 </details>
 
@@ -384,7 +384,7 @@
 | Alejandro Londoño    |                  |                   |                |
 | Alejandro Castro     |Realicé el merge de todos los frontend que hice en la pantalla de la información de solicitudes y realicé los frontend de los formularios de las solicitudes                 |Nada                   |A veces me tocaba aplicar en ves de TailwindCSS un CSS puro por medio de style a los componentes                |
 | Santiago Valencia    |                  |                   |                |
-| Juan Sebastian Diaz  |                  |                   |                |
+| Juan Sebastian Diaz  |    |                   |                |
 
 </details>
 
