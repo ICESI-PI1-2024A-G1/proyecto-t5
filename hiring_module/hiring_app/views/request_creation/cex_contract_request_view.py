@@ -31,25 +31,18 @@ class CEXContractRequestView(CreateView):
         return self.render_to_response(self.get_context_data(form=form))
     
 def download_rut_file(request, idContract, *args, **kwargs):
-    # Retrieve the relevant model instance containing the file data
+    # Get the rut and send it as a file
     model_instance = get_object_or_404(CEXContractRequest, id=idContract)
-
-    # Check permissions if needed
-    # For example, if there's a specific condition to check for permission
     if not request.user.has_perm('your_app.view_cexcontractrequest'):
         raise PermissionDenied("You don't have permission to download this file.")
 
-    # Check if the file exists
     if not model_instance.rut:
         raise Http404("The requested file does not exist.")
-
-    # Try to read the file data
     try:
         rut_file_data = model_instance.rut
     except IOError as e:
         raise IOError(f"Error reading file: {e}")
 
-    # Create and return the HTTP response
     response = HttpResponse(rut_file_data, content_type='application/octet-stream')
     response['Content-Disposition'] = f'attachment; filename="{model_instance.rut.name}"'
     return response
