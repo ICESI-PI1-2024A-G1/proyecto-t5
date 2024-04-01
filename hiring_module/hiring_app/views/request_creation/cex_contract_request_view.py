@@ -21,6 +21,9 @@ class CEXContractRequestView(CreateView):
         form.instance.estimated_completion_date = estimated_completion_date
         form.instance.created_by = current_user
 
+        cex_contract_request = form.save(commit=False)
+        cex_contract_request.create_snapshot()
+        cex_contract_request.save()
         utilities.sendEmailSuccess(current_user)
         return super().form_valid(form)
     

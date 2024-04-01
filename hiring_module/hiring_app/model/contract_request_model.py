@@ -81,6 +81,10 @@ class ContractRequest(models.Model):
         
     def create_snapshot(self, old_state=None, comment=''):
         # Get the previous snapshot of the contract request
+        if self.state is None:
+            self.state = 'pending'
+        if self.current_state_start is None:
+            self.current_state_start = timezone.now()
         if(old_state is not None):
             previous_snapshot = self.get_snapshots().filter(state=old_state).first()
             if previous_snapshot:
