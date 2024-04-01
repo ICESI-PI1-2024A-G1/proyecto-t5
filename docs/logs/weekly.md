@@ -1,64 +1,33 @@
 <details>
-<summary>Semana del 01/03/2024 al 07/03/2024</summary>
+<summary>Semana del 01/03/2024 al 09/03/2024</summary>
 
-| Nombre               | Lo que hice esta semana | Lo que hice la semana pasada | Inconvenientes |
-|----------------------|---------------------------|-------------------------------|----------------|
-| Julian Mendoza       |                           |                               |                |
-| Alejandro Londoño    | Configuración del proyecto de django y la base de datos, Organización del grupo y creación de las primera vista del proyecto (login) |                               |  |
-| Alejandro Castro     |                           |                               |                |
-| Santiago Valencia    |                           |                               |                |
-| Juan Sebastian Diaz  |                           |                               |                |
+| Lo que hicimos esta semana                                                                                                                                                             | Lo que hicimos la semana pasada                                                                  | Inconvenientes                                                    |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|--------------------------------------------------------------------|
+| Organizamos el proyecto.                                                                                                                                                                | Nada.                                                                                            | Los tiempos del grupo son limitados y condicionados               |
+| Configuramos el proyecto en Django y lo conectamos a la base de datos. Seguimos el modelo de datos y realizamos la revisión QA. Implementamos la vista para el inicio de sesión y la página post-inicio.                                                  | Nada.                                                                                            | El modelo de datos no cumplió con los criterios de QA establecidos |
+| Empezamos a realizar el frontend del panel de control.                                                                                                                                   | Nada.                                                                                            | No sabíamos mucho de TailwindCSS                                  |
+| Realizamos la estructura en HTML del login.                                                                                                                                             | Nada.                                                                                            | Ninguno                                                            |
+| Estudiamos sobre Django Templates y Django Forms. Continuamos con la implementación del frontend del login. Aplicamos estilos con Tailwind al HTML del login.                                                                                       | Nada.                                                                                            | Problemas con las medidas de la pantalla                          |
 
 </details>
+
 
 <details>
-<summary>Semana del 08/03/2024 al 14/03/2024</summary>
+<summary>Semana del 10/03/2024 al 16/03/2024</summary>
 
-| Nombre               | Lo que hice esta semana | Lo que hice la semana pasada | Inconvenientes |
-|----------------------|---------------------------|-------------------------------|----------------|
-| Julian Mendoza       |                           |                               |                |
-| Alejandro Londoño    | Estudio de django, reorganización del grupo y ajustes a las primeras vistas | Creación y configuración del proyecto, implementación de la primera vista (log in) y hacer una primera aproximación a la organización del grupo | Cambios en los requerimientos del cliente |
-| Alejandro Castro     |                           |                               |                |
-| Santiago Valencia    |                           |                               |                |
-| Juan Sebastian Diaz  |                           |                               |                |
+| Lo que hicimos esta semana                                                                                                                                                                      | Lo que hicimos la semana pasada                                                                  | Inconvenientes                                                    |
+|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|--------------------------------------------------------------------|
+| Continuamos con la implementación del frontend del login y del cambio de estados en las solicitudes. Ajustamos el login al nuevo modelo de datos. Reorganizamos el grupo. Diseñamos la interfaz de detalles de la solicitud. | Estudiamos sobre Django Forms. Continuamos con la implementación del frontend del login. Ajustamos el login al nuevo modelo de datos. Realizamos la estructura en HTML del login sin modularizar. Reorganizamos el grupo. Diseñamos la interfaz de detalles de la solicitud. | Problemas con las medidas de la pantalla. |
 
 </details>
+
 
 <details>
-<summary>Semana del 15/03/2024 al 21/03/2024</summary>
+<summary>Semana del 17/03/2024 al 23/03/2024</summary>
 
-| Nombre               | Lo que hice esta semana | Lo que hice la semana pasada | Inconvenientes |
-|----------------------|---------------------------|-------------------------------|----------------|
-| Julian Mendoza       |                           |                               |                |
-| Alejandro Londoño    | Organización de rutas, configuración de tailwind, | Estudio de django y ajuste de vistas | Cambio en los requerimientos del cliente |
-| Alejandro Castro     |                           |                               |                |
-| Santiago Valencia    |                           |                               |                |
-| Juan Sebastian Diaz  |                           |                               |                |
+| Lo que hicimos esta semana                                                                                                                                                                      | Lo que hicimos la semana pasada                                                                  | Inconvenientes                                                    |
+|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|--------------------------------------------------------------------|
+| Continuamos con la configuración de Tailwind CSS en el proyecto. Empezamos a realizar el frontend de cambio de líder en las solicitudes. Se modularizó el frontend del login y se corrigieron algunas cosas del diseño. Se culminó con el diseño de la interfaz de detalles de la solicitud. Se comenzó a implementar el frontend de la barra de progreso. | Configuramos Tailwind CSS en el proyecto. Empezamos a realizar el frontend de cambio de estados en las solicitudes. Se modularizó el frontend del login y se corrigieron algunas cosas del diseño. Se culminó con el diseño de la interfaz de detalles de la solicitud. Se comenzó a implementar el frontend de la barra de progreso.  | Hubo conflictos con las dependencias. No se reconocía la etiqueta static. |
 
 </details>
-
-<details>
-<summary>Semana del 22/03/2024 al 28/03/2024</summary>
-
-| Nombre               | Lo que hice esta semana | Lo que hice la semana pasada | Inconvenientes |
-|----------------------|---------------------------|-------------------------------|----------------|
-| Julian Mendoza       |                           |                               |                |
-| Alejandro Londoño    | Implementación de la funcionalidad de creación de solicitudes de contratos | Organización del proyecto y configuraciones de dependencias y aplicaciones de terceros  | Problemas con la ejecución de tailwind |
-| Alejandro Castro     |                           |                               |                |
-| Santiago Valencia    |                           |                               |                |
-| Juan Sebastian Diaz  |                           |                               |                |
-
-</details>
-
-<details>
-<summary>Semana del 29/03/2024 al 31/03/2024</summary>
-
-| Nombre               | Lo que hice esta semana | Lo que hice la semana pasada | Inconvenientes |
-|----------------------|---------------------------|-------------------------------|----------------|
-| Julian Mendoza       |                           |                               |                |
-| Alejandro Londoño    | Implementación de las funcionalidades de asignación de líder y gestor a las solicitudes de contratación, solución de conflictos y arreglos en frontend y backend | Implementación de la funcionalidad de creación de solicitudes de contratos | Cambios en el modelo de datos |
-| Alejandro Castro     |                           |                               |                |
-| Santiago Valencia    |                           |                               |                |
-| Juan Sebastian Diaz  |                           |                               |                |
-
-</details>
+    
