@@ -1,0 +1,10 @@
+hiring_venv/
+venv/
+__pycache__/
+.vscode/
+/hiring_module/.env
+/hiring_module/hiring_module/__pycache__
+/hiring_module/hiring_app/__pycache__
+/hiring_module/node_modules/
+/hiring_module/hiring_app/migrations/
+/hiring_module/hiring_app/media

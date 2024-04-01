@@ -1,0 +1,18 @@
+<!-- main screen -->
+{% extends 'login_base.html' %}
+{% load static %}
+
+{% block title %}
+Log In
+{% endblock %}
+
+{% block content %}
+<main
+    style="background-image: url('{% static 'images/auth/background1.webp' %}'); background-size: cover; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; background-color: rgba(0, 0, 0, 0.5);">
+    <div style="background-color: rgba(0, 0, 0, 0.5); width: 100%; height: 100%; position: absolute; top: 0; left: 0;">
+    </div>
+    <div style="z-index: 1;">
+        {% include 'auth/login.html' %}
+    </div>
+</main>
+{% endblock %}

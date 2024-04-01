@@ -1,0 +1,107 @@
+[
+    {
+        "id": "1116070867",
+        "first_name": "Juan Sebastian",
+        "last_name": "Diaz Sanchez",
+        "birth_date": "2005-05-05",
+        "gender": "male",
+        "address": " Cl. 18 #122-135",
+        "email": "1116070867@u.icesi.edu.co",
+        "password": "juandiaz123",
+        "groups": "admin",
+        "is_superuser": true,
+        "is_staff": true
+    },
+    {
+        "id": "1107838593",
+        "first_name": "Alejandro",
+        "last_name": "Londono Bermudez",
+        "birth_date": "2005-05-05",
+        "gender": "male",
+        "address": " Cl. 18 #122-135",
+        "email": "1107838593@u.icesi.edu.co",
+        "password": "alejandrolondono123",
+        "groups": "leader",
+        "is_superuser": true,
+        "is_staff": true
+    },
+    {
+        "id": "1109185879",
+        "first_name": "Julian Andres",
+        "last_name": "Mendoza Castro",
+        "birth_date": "2005-05-05",
+        "gender": "male",
+        "address": " Cl. 18 #122-135",
+        "email": "1109185879@u.icesi.edu.co",
+        "password": "julianmendoza123",
+        "groups": "leader",
+        "is_superuser": true,
+        "is_staff": true
+    },
+    {
+        "id": "1111539567",
+        "first_name": "Santiago",
+        "last_name": "Valencia Garcia",
+        "birth_date": "2005-05-05",
+        "gender": "male",
+        "address": " Cl. 18 #122-135",
+        "email": "1111539567@u.ices.edu.co",
+        "password": "santiagovalencia123",
+        "groups": "manager",
+        "is_superuser": true,
+        "is_staff": true
+    },
+    {
+        "id": "1107834787",
+        "first_name": "Alejandro",
+        "last_name": "Castro",
+        "birth_date": "2005-05-05",
+        "gender": "male",
+        "address": " Cl. 18 #122-135",
+        "email": "1107834787@u.icesi.edu.co",
+        "password": "alejandrocastro123",
+        "groups": "manager",
+        "is_superuser": true,
+        "is_staff": true
+    },
+    {
+        "id": "1106293874",
+        "first_name": "Maria",
+        "last_name": "Gonzalez Ramirez",
+        "birth_date": "2004-10-15",
+        "gender": "female",
+        "address": "Carrera 45 #67-89",
+        "email": "1106293874@u.icesi.edu.co",
+        "password": "mariagonzales123"
+    },
+    {
+        "id": "1107384956",
+        "first_name": "Carlos",
+        "last_name": "Martinez Gomez",
+        "birth_date": "2003-12-28",
+        "gender": "male",
+        "address": "Avenida 30 #12-45",
+        "email": "1107384956@u.icesi.edu.co",
+        "password": "carlosmartinez123"
+    },
+    {
+        "id": "1108846372",
+        "first_name": "Luisa",
+        "last_name": "Hernandez Lopez",
+        "birth_date": "2000-05-20",
+        "gender": "female",
+        "address": "Calle 80 #34-56",
+        "email": "1108846372@u.icesi.edu.co",
+        "password": "luisahernandez123"
+    },
+    {
+        "id": "1110047328",
+        "first_name": "Jorge",
+        "last_name": "Perez Martinez",
+        "birth_date": "1999-09-12",
+        "gender": "male",
+        "address": "Carrera 70 #23-78",
+        "email": "1110047328@u.icesi.edu.co",
+        "password": "jorgeperez123"
+    }
+]
