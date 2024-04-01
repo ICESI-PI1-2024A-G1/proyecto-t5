@@ -1,6 +1,7 @@
 from functools import wraps
 from django.shortcuts import redirect
 
+# Decorator to redirect users to the correct dashboard based on their role
 def role_redirect(view_func):
     @wraps(view_func)
     def wrapper(request, *args, **kwargs):

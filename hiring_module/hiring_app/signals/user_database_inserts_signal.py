@@ -29,12 +29,14 @@ def create_default_groups():
 
 @receiver(post_migrate)
 def user_database_inserts_signal(sender, **kwargs):
+    # Only run this function if the sender is the auth app, to avoid running it multiple times
     auth_config = apps.get_app_config('auth')
     if sender != auth_config:
         return
     create_default_groups()
     current_cex = 0
     current_monitoring = 0
+    # Create default users
     for user_data in DEFAULT_USERS:
         user_id = user_data['id']
         if not CustomUser.objects.filter(id=user_id).exists():
@@ -55,6 +57,7 @@ def user_database_inserts_signal(sender, **kwargs):
                 if group_name:
                     group = Group.objects.get(name=group_name)
                     user.groups.add(group)
+            # If it's an external user, create a contract request
             elif current_cex < total_cex:
                 cex = DEFAULT_CEX[current_cex]
                 cex['created_by'] = user
