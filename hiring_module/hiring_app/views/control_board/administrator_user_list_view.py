@@ -19,7 +19,7 @@ class AdministratorUserListView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        users = CustomUser.objects.all()
+        users = CustomUser.objects.filter(groups__name__in=['admin', 'leader', 'manager'])
         # Add a role field to each user object
         for user in users:
             user.role = str(user.groups.first())
@@ -35,7 +35,7 @@ class AdministratorUserListView(TemplateView):
             # If either search button is clicked, determine which type of search is requested
             search_by = request.POST.get('search_by')
             if search_by == 'email':
-                users = CustomUser.objects.filter(email__icontains=search_query)
+                users = CustomUser.objects.filter(email__icontains=search_query, groups__name__in=['admin', 'leader', 'manager'])
             elif search_by == 'name':
                 search_terms = search_query.split()
                 query = Q()
@@ -44,13 +44,15 @@ class AdministratorUserListView(TemplateView):
                     # Filter users based on the query
                 users = CustomUser.objects.annotate(
                     full_name=Concat('first_name', Value(' '), 'last_name', output_field=CharField())
-                ).filter(query)
+                ).filter(query, groups__name__in=['admin', 'leader', 'manager'])
 
         else:
-            # If no search button is clicked, display all users
             users = CustomUser.objects.all()
 
         context = self.get_context_data()
+        for user in users:
+            user.role = str(user.groups.first())
+        context['users'] = users
         context['users'] = users
         return self.render_to_response(context)
 

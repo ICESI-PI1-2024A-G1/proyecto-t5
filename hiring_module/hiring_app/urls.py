@@ -6,6 +6,8 @@ from hiring_app.views.request_hiring.change_state import ChangeStateView
 from hiring_app.views.request_hiring.snapshot_view import SnapshotsView
 from hiring_app.views.request_creation.cex_contract_request_view import download_rut_file
 from hiring_app.views.control_board.administrator_user_list_view import AdministratorUserListView
+from hiring_app.views.control_board.add_user_view import AddUserView
+
 
 app_name = 'hiring_app'
 
@@ -13,6 +15,7 @@ urlpatterns = [
     path('external_user_dashboard/', ExternalUserDashboardView.as_view(), name = 'external_user_dashboard'),
     path('administrator_dashboard/', AdministratorDashboardView.as_view(), name = 'administrator_dashboard'),
     path('administrator_dashboard/user_list/', AdministratorUserListView.as_view(), name = 'administrator_user_list'),
+    path('administrator_dashboard/user_list/add_user/', AddUserView.as_view(), name = 'administrator_add_user'),
     path('leader_dashboard/', LeaderDashboardView.as_view(), name = 'leader_dashboard'),
     path('manager_dashboard/', ManagerDashboardView.as_view(), name = 'manager_dashboard'),
     path('info/<str:idContract>/', RequestHiringView.as_view(), name='info'),

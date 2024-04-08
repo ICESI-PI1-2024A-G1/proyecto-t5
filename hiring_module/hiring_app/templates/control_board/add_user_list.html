@@ -1,0 +1,38 @@
+<table style="width: 100%; border-collapse: collapse; margin-top: 14px;">
+    <thead>
+      <tr style="background-color: #2A8FD0; color: white;">
+        <th style="border: 2px solid white; padding: 10px; text-align: center; font-weight: bold; text-transform: uppercase;">ID</th>
+        <th style="border: 2px solid white; padding: 10px; text-align: center; font-weight: bold; text-transform: uppercase;">Email</th>
+        <th style="border: 2px solid white; padding: 10px; text-align: center; font-weight: bold; text-transform: uppercase;">Nombre</th>
+        <th style="border: 2px solid white; padding: 10px; text-align: center; font-weight: bold; text-transform: uppercase;">Apellido</th>
+        <th style="border: 2px solid white; padding: 10px; text-align: center; font-weight: bold; text-transform: uppercase;">Rol</th>
+        <th style="border: 2px solid white; padding: 10px; text-align: center; font-weight: bold; text-transform: uppercase;">Añadir</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in users %}
+      <tr>
+        <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ user.id }}</td>
+        <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ user.email }}</td>
+        <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ user.first_name }}</td>
+        <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ user.last_name }}</td>
+        <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">
+          <form id="addUserForm_{{ user.id }}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="user_id" value="{{ user.id }}">
+            <select name="role">
+              <option value="admin">Administrador</option>
+              <option value="leader">Lider</option>
+              <option value="manager">Gestor</option>
+              <option value="user" selected>Usuario Externo</option>
+            </select>
+          </td>
+          <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">
+            <button type="submit" name="search_by" value="email" class="py-2 px-4 ml-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none">Añadir</button>
+          </td>
+          </form>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  
