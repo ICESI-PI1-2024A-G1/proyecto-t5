@@ -47,7 +47,7 @@ class AdministratorUserListView(TemplateView):
                 ).filter(query, groups__name__in=['admin', 'leader', 'manager'])
 
         else:
-            users = CustomUser.objects.all()
+            users = CustomUser.objects.filter(groups__name__in=['admin', 'leader', 'manager'])
 
         context = self.get_context_data()
         for user in users:
