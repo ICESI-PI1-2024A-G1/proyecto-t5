@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Panel de control de Administrador
+{% endblock %}
+{% block aditionalMetadata %}
+{% endblock %}
+
+{% block content %}
+        <main id="main" class="expanded">
+            {% include 'control_board/user_list_center_container.html' %}
+            {% include 'control_board/user_search_bar.html' %}        
+            <div id="userListContainer">
+                {% include 'control_board/user_list.html' %} 
+            </div>
+            {% include 'control_board/state_change.html' %}
+        </main>
+    </main>
+{% endblock %}

@@ -1,0 +1,45 @@
+   
+    <table style="width: 100%; border-collapse: collapse; margin-top: 14px;">
+        <thead>
+            <tr style="background-color: #2A8FD0; color: white;">
+                <th style="border: 2px solid white; padding: 10px; text-align: center; font-weight: bold; text-transform: uppercase;">ID</th>
+                <th style="border: 2px solid white; padding: 10px; text-align: center; font-weight: bold; text-transform: uppercase;">Email</th>
+                <th style="border: 2px solid white; padding: 10px; text-align: center; font-weight: bold; text-transform: uppercase;">Nombre</th>
+                <th style="border: 2px solid white; padding: 10px; text-align: center; font-weight: bold; text-transform: uppercase;">Apellido</th>
+                <th style="border: 2px solid white; padding: 10px; text-align: center; font-weight: bold; text-transform: uppercase;">Rol</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr onclick="redirectToUserInfoPage('{{ user.id }}')" style="cursor: pointer;">
+                <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ user.id }}</td>
+                <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ user.email }}</td>
+                <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ user.first_name }}</td>
+                <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ user.last_name }}</td>
+                <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">
+                    {% if user.role == "admin" %}
+                        Administrator
+                    {% elif user.role == 'leader' %}
+                        Lider
+                    {% elif user.role == 'manager' %}
+                        Gestor
+                    {% else %}
+                        Usuario Externo
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    
+    <script>
+        function redirectToUserInfoPage(id) {
+            // Construir la URL con el ID proporcionado
+            var url = 'http://127.0.0.1:8000/hiring_app/user_info/' + id + '/';
+            // Redireccionar a la URL
+            window.location.href = url;
+        }
+    </script>
+
+

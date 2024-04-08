@@ -1,0 +1,9 @@
+<div>
+    <h2 class="text-2xl font-bold text-left mb-4 mt-4">Lista de usuarios</h2>
+    <div class="flex flex-row">
+        {% include 'control_board/components/user_element_container.html' with count=1 status='Administradores' %}
+        {% include 'control_board/components/user_element_container.html' with count=2 status='Lideres' %}
+        {% include 'control_board/components/user_element_container.html' with count=2 status='Gestores' %}
+        {% include 'control_board/components/user_element_container.html' with count=4 status='Usuarios Externos' %}
+    </div>
+</div>
