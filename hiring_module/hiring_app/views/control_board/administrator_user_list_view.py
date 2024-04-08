@@ -53,6 +53,5 @@ class AdministratorUserListView(TemplateView):
         for user in users:
             user.role = str(user.groups.first())
         context['users'] = users
-        context['users'] = users
         return self.render_to_response(context)
 
