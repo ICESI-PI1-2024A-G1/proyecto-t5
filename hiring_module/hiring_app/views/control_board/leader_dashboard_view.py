@@ -2,9 +2,10 @@ from django.views.generic import TemplateView
 from django.shortcuts import redirect
 from django.utils.decorators import method_decorator
 from hiring_app.views.control_board.utilities import role_redirect
+from hiring_app.views.control_board.general_dashboard_view import GeneralDashboard
 
-class LeaderDashboardView(TemplateView):
-    template_name = 'leader_dashboard.html'
+class LeaderDashboardView(TemplateView, GeneralDashboard):
+    template_name = 'control_board/leader_dashboard.html'
 
     # Redirect to correct dashboard based on user role
     @method_decorator(role_redirect)

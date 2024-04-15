@@ -22,7 +22,7 @@ def role_and_login_required(view_func):
     return wrapper
 
 class ExternalUserDashboardView(TemplateView):
-    template_name = 'external_user_dashboard.html'
+    template_name = 'control_board/external_user_dashboard.html'
 
     @method_decorator(role_and_login_required)
     def dispatch(self, *args, **kwargs):
