@@ -25,6 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG') == 'True'
 
+ALLOWED_HOSTS = ['.vercel.app']
 
 # Configuración de la base de datos
 DATABASES = {
