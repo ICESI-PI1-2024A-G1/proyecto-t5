@@ -25,6 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG') == 'True'
 
+ALLOWED_HOSTS = ['.vercel.app']
 
 # Configuración de la base de datos
 DATABASES = {
@@ -35,6 +36,9 @@ DATABASES = {
         'PASSWORD': os.getenv('DATABASE_PASSWORD'),
         'HOST': os.getenv('DATABASE_HOST'),
         'PORT': os.getenv('DATABASE_PORT'),
+        'OPTIONS': {
+            'sslmode': 'require',
+        },
     },
     'test': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -43,8 +47,12 @@ DATABASES = {
         'PASSWORD': os.getenv('TEST_DATABASE_PASSWORD'),
         'HOST': os.getenv('TEST_DATABASE_HOST'),
         'PORT': os.getenv('TEST_DATABASE_PORT'),
+        'OPTIONS': {
+            'sslmode': 'require',
+        },
     }
 }
+
 
 # Application definition
 
@@ -82,7 +90,7 @@ ROOT_URLCONF = 'hiring_module.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'hiring_app','templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'hiring_app', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -96,9 +104,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'hiring_module.wsgi.application'
-
-# Password validation
-# https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -133,13 +138,12 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-  BASE_DIR / "static",
-  BASE_DIR.parent / "node_modules",
+    BASE_DIR / "static",
+    BASE_DIR.parent / "node_modules",
 ]
 
 
 STATIC_ROOT = BASE_DIR.parent / "static"
-
 
 
 # Default primary key field type
@@ -148,16 +152,14 @@ STATIC_ROOT = BASE_DIR.parent / "static"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'hiring_app.CustomUser'
-LOGIN_REDIRECT_URL ="hiring_app:home"
+LOGIN_REDIRECT_URL = "hiring_app:home"
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'hiring_app','media')
-
-
+MEDIA_ROOT = os.path.join(BASE_DIR, 'hiring_app', 'media')
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'mail.sebastiandiazdev.com'  # Dirección del servidor SMTP
-EMAIL_PORT = 465  # Puerto SMTP
-EMAIL_USE_SSL = True  # Usar SSL para la conexión SMTP
-EMAIL_HOST_USER = 'no-reply@sebastiandiazdev.com'  # Correo electrónico del remitente
-EMAIL_HOST_PASSWORD = 'w=!56S93oK$h'  # Contraseña del correo electrónico del remitente
+EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = int(os.getenv('EMAIL_PORT'))
+EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL').lower() == 'true'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')

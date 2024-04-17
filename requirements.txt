@@ -1,8 +1,8 @@
 Django==5.0.2
 psycopg2-binary==2.9.9
 python-dotenv
-tailwind
-django-tailwind
-django-tailwind[reload]
-nodejs
-npm
+asgiref == 3.6.0
+python-dateutil == 2.8.2
+six == 1.16.0
+sqlparse == 0.4.3
+tzdata == 2022.7
