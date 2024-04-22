@@ -64,10 +64,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'tailwind'
 ]
 
-TAILWIND_APP_NAME = 'hiring_app'
 
 
 INTERNAL_IPS = [
