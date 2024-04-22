@@ -21,6 +21,8 @@ load_dotenv(dotenv_path=env_path)
 # Directorio base del proyecto
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+CSRF_TRUSTED_ORIGINS = ['https://proyecto-t5.onrender.com']
+
 # Configuración de las variables de entorno
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG') == 'True'
