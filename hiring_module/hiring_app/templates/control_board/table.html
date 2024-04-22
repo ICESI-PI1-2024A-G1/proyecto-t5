@@ -12,15 +12,16 @@
             </tr>
         </thead>
         <tbody>
-            {% for solicitud in solicitudes %}
-            <tr onclick="redirectToInfoPage('{{ solicitud.id }}')" style="cursor: pointer;">
-                <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ solicitud.id }}</td>
-                <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ solicitud.created_by.first_name }} {{ solicitud.created_by.last_name }}</td>
-                <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ solicitud.leader_assigned_to.first_name }} {{ solicitud.leader_assigned_to.last_name }}</td>
-                <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ solicitud.manager_assigned_to.first_name }} {{ solicitud.manager_assigned_to.last_name }}</td>
-                <td id="statusButton" style="border: 2px solid white; padding: 10px; text-align: center; position: relative; background-color: #f2f2f2;">{{ solicitud.state }}</td>
-                <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ solicitud.contrato }}</td>
-                <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ solicitud.start_date|date:"d-m-Y" }}</td>
+
+            {% for request in requests %}
+            <tr onclick="redirectToInfoPage('{{ request.id }}')" style="cursor: pointer;">
+                <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ request.id }}</td>
+                <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ request.created_by.first_name }} {{ request.created_by.last_name }}</td>
+                <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ request.leader_assigned_to.first_name }} {{ request.leader_assigned_to.last_name }}</td>
+                <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ request.manager_assigned_to.first_name }} {{ request.manager_assigned_to.last_name }}</td>
+                <td id="statusButton" style="border: 2px solid white; padding: 10px; text-align: center; position: relative; background-color: #f2f2f2;">{{ request.state }}</td>
+                <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ request.contrato }}</td>
+                <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ request.start_date|date:"d-m-Y" }}</td>
             </tr>
             {% endfor %}
         </tbody>

@@ -11,8 +11,9 @@ Panel de control
 <main id="main" class="expanded">
     {% include 'control_board/center_container.html' %}
     
+    {% include 'control_board/table.html'%} 
+
     <div>
-        {% include 'control_board/table.html' %} 
         {% block control_board %}
 
         {% endblock %}
