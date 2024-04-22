@@ -1,20 +1,97 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap");
-@tailwind base;
-
-@layer base {
-  html {
-    @apply text-surface;
-    @apply bg-white;
-  }
-  html.dark {
-    @apply text-neutral-50;
-    @apply bg-body-dark;
-  }
+#asideMenu {
+  width: 15vw;
+  height: 100%;
+  background-color: #00599C;
+  position: fixed;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
 }
 
-@tailwind components;
-@tailwind utilities;
-
-p {
-  @apply leading-[1.6];
+#asideMenu div {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
+
+#asideMenu button {
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.3s;
+  color: white;
+  background-color: #007acc;
+  border: none;
+  cursor: pointer;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #004d80;
+}
+
+#asideMenu button:hover,
+#asideMenu button.hover\:bg-blue-900:hover {
+  background-color: #00547D;
+}
+
+#asideMenu button:hover:not(.hover\:bg-blue-900),
+#asideMenu button.hover\:bg-blue-900:hover:not(.hover\:bg-blue-900) {
+  background-color: #00547D;
+}
+
+
+
+/* Header */
+
+#mainHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 0px 24px;
+  margin-left: 0px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+#mainHeader > div {
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+#mainHeader svg {
+  fill: none;
+  stroke-width: 1.5;
+  stroke: currentColor;
+  transition: stroke 0.3s;
+}
+
+#mainHeader button, #mainHeader a {
+  color: #1e3a8a;
+  transition: color 0.3s;
+  padding: 10px;
+}
+
+#mainHeader button:hover, #mainHeader a:hover {
+  color: #337ab7;
+}
+
+#mainHeader button[onclick="DOMContentLoaded"] {
+  margin-left: 16px;
+}
+
+#mainHeader button[onclick="window.history.back()"] {
+  margin-left: 16px;
+}
+
+#mainHeader button img {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+
+
