@@ -21,11 +21,13 @@ load_dotenv(dotenv_path=env_path)
 # Directorio base del proyecto
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+CSRF_TRUSTED_ORIGINS = ['https://proyecto-t5.onrender.com']
+
 # Configuración de las variables de entorno
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG') == 'True'
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', 'localhost', 'proyecto-t5.onrender.com', '0.0.0.0']
 
 # Configuración de la base de datos
 DATABASES = {
@@ -64,10 +66,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'tailwind'
 ]
 
-TAILWIND_APP_NAME = 'hiring_app'
 
 
 INTERNAL_IPS = [
@@ -137,10 +137,6 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-    BASE_DIR.parent / "node_modules",
-]
 
 
 STATIC_ROOT = BASE_DIR.parent / "static"
@@ -159,7 +155,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'hiring_app', 'media')
 
 EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
 EMAIL_HOST = os.getenv('EMAIL_HOST')
-EMAIL_PORT = int(os.getenv('EMAIL_PORT'))
-EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL').lower() == 'true'
+EMAIL_PORT = os.getenv('EMAIL_PORT')
+EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL')
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
