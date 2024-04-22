@@ -36,7 +36,7 @@ class CEXContractRequest(ContractRequest):
     arl = models.CharField(max_length=64, null=True)
     contract_value = models.DecimalField(max_digits=16, decimal_places=2)
     charge_account = models.TextField(null=True)
-    rut = models.FileField(upload_to=os.path.join(MEDIA_ROOT, 'rut'), max_length=500)
+    rut = models.FileField(upload_to='rut/', max_length=500)
 
     objects = CEXContractRequestManager()
     
