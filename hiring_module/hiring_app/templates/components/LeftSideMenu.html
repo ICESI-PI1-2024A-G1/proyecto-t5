@@ -1,13 +1,23 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-<aside id="asideMenu" class="style">
-    <div>
-        <button class="hover:bg-blue-900">
-            Control de solicitudes
-        </button>
-        <button class="hover:bg-blue-900">
-            Formularios de solicitud
-        </button>
+<aside class="bg-light text-dark position-fixed" style="width: 15vw; height: 100%; box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);">
+    <div class="p-4">
+        <h4 class="text-center mb-4">Menú</h4>
+        <ul class="list-unstyled">
+            <li class="mb-3">
+                <button class="btn btn-outline-dark btn-block rounded-0 py-3" 
+                        onmouseover="this.classList.remove('btn-outline-dark'); this.classList.add('btn-dark');" 
+                        onmouseout="this.classList.remove('btn-dark'); this.classList.add('btn-outline-dark');">
+                    Control de solicitudes
+                </button>
+            </li>
+            <li>
+                <button class="btn btn-outline-dark btn-block rounded-0 py-3" 
+                        onmouseover="this.classList.remove('btn-outline-dark'); this.classList.add('btn-dark');" 
+                        onmouseout="this.classList.remove('btn-dark'); this.classList.add('btn-outline-dark');">
+                    Formularios de solicitud
+                </button>
+            </li>
+        </ul>
     </div>
 </aside>
