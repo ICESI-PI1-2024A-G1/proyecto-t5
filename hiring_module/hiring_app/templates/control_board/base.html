@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Panel de control
+{% endblock %}
+{% block aditionalMetadata %}
+{% endblock %}
+
+{% block content %}
+
+<main id="main" class="expanded">
+    {% include 'control_board/center_container.html' %}
+    
+    {% include 'control_board/table.html'%} 
+
+    <div>
+        {% block control_board %}
+
+        {% endblock %}
+    </div>
+    
+    {% include 'control_board/state_change.html' %}
+</main>
+
+
+{% endblock %}
