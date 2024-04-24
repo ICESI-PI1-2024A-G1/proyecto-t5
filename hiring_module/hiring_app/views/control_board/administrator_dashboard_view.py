@@ -12,7 +12,9 @@ class AdministratorDashboardView(View):
     # Redirect to correct dashboard based on user role
     @method_decorator(role_redirect)
     def dispatch(self, request, *args, **kwargs):
-        context = {}
+        context = {
+            'actualgroup': 'admin'
+        }
         context.update(get_requests(self.request.user))
         return render(request, self.template_name, context)
     

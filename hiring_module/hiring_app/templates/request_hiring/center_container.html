@@ -6,12 +6,12 @@
             <p>{{ contract_request.id }}</p>
         </div>
         <div style="flex: 1; padding-left: 24px; padding-right: 24px; border-right: 1px solid #cbd5e0;">
-            <p style="font-weight: 600; color: #2d3748;">Líder:</p> 
-            {% include 'request_hiring/components/assign_leader.html' %}
+            <p style="font-weight: 600; color: #2d3748;">Leader:</p>
+            {% include 'request_hiring/components/assign_leader.html'  with leaders=leaders contract_request=contract_request %}
         </div>
         <div style="flex: 1; padding-left: 24px; padding-right: 24px; border-right: 1px solid #cbd5e0;">
             <p style="font-weight: 600; color: #2d3748;">Gestor:</p>
-            {% include 'request_hiring/components/assign_manager.html' %}
+            {% include 'request_hiring/components/assign_manager.html'  with managers=managers contract_request=contract_request %}
         </div>
         <div style="flex: 1; padding-left: 24px;">
             <p style="font-weight: 600; color: #2d3748;">Cambiar estado:</p>

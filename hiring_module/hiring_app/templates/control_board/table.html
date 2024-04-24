@@ -1,4 +1,5 @@
    
+
     <table style="width: 100%; border-collapse: collapse; margin-top: 14px;">
         <thead>
             <tr style="background-color: #2A8FD0; color: white;">
@@ -14,16 +15,17 @@
         <tbody>
 
             {% for request in requests %}
-            <tr onclick="redirectToInfoPage('{{ request.id }}')" style="cursor: pointer;">
-                <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ request.id }}</td>
+            <tr style="cursor: pointer;">
+                <td onclick="redirectToInfoPage('{{ request.id }}')" style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ request.id }}</td>
                 <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ request.created_by.first_name }} {{ request.created_by.last_name }}</td>
-                <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ request.leader_assigned_to.first_name }} {{ request.leader_assigned_to.last_name }}</td>
-                <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ request.manager_assigned_to.first_name }} {{ request.manager_assigned_to.last_name }}</td>
+                <td>{% include 'request_hiring/components/assign_leader.html' with leaders=leaders contract_request=request form_id_prefix='change_leader_form_' %}</td>
+                <td>{% include 'request_hiring/components/assign_manager.html' with managers=managers contract_request=request form_id_prefix='change_manager_form_' %}</td>
                 <td id="statusButton" style="border: 2px solid white; padding: 10px; text-align: center; position: relative; background-color: #f2f2f2;">{{ request.state }}</td>
                 <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ request.contrato }}</td>
                 <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ request.start_date|date:"d-m-Y" }}</td>
             </tr>
             {% endfor %}
+            
         </tbody>
     </table>
 

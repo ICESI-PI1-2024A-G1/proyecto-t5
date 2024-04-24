@@ -1,24 +1,28 @@
-<form id="ChangeManagerForm" method="post" action="{% url 'hiring_app:assign_manager' contract_request.id %}" style="margin-bottom: 1rem;">
+<form class="change-manager-form_{{ form_id_prefix }}{{ contract_request.id }}" method="post" action="{% url 'hiring_app:assign_manager' contract_request.id %}" style="margin-bottom: 1rem;">
     {% csrf_token %}
-    <select name="manager" id="managerSelect" style="width: 100%; margin-top: 0.5rem; padding: 0.5rem; background-color: #ffffff; border: 1px solid #cbd5e0; border-radius: 0.375rem; outline: none; transition: border-color 0.15s ease-in-out;"
+    <select name="manager" class="managerSelect" style="width: 100%; margin-top: 0.5rem; padding: 0.5rem; background-color: #ffffff; border: 1px solid #cbd5e0; border-radius: 0.375rem; outline: none; transition: border-color 0.15s ease-in-out;"
     
-    {% if not is_admin and not is_leader %}
+    {% if actualgroup != "admin"  and actualgroup != 'leader' %}
     disabled
     {% endif %}
     
     >
         <option value="" disabled selected style="color: #a0aec0;">Seleccionar</option>
         {% for manager in managers %}
+        
         <option value="{{ manager.id }}" {% if manager.id == contract_request.manager_assigned_to.id %}selected{% endif %} style="color: #4a5568;">{{ manager.first_name }} {{ manager.last_name }}</option>
         {% endfor %}
     </select>
 </form>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var selectElement = document.getElementById('managerSelect');
+document.addEventListener('DOMContentLoaded', function () {
+    var selectElements = document.querySelectorAll('.managerSelect');
+    selectElements.forEach(function(selectElement) {
         selectElement.addEventListener('change', function () {
-            document.getElementById('ChangeManagerForm').submit();
+            var form = selectElement.closest('form');
+            form.submit();
         });
     });
+});
 </script>

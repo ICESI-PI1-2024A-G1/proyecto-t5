@@ -11,8 +11,9 @@ Panel de control
 <main id="main" class="expanded">
     {% include 'control_board/center_container.html' %}
     
-    {% include 'control_board/table.html'%} 
+    {% include 'control_board/table.html' with managers=managers leaders=leaders group=actualgroup%} 
 
+    
     <div>
         {% block control_board %}
 
