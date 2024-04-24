@@ -22,5 +22,5 @@ class AssignManagerView(View):
                 request.session['error_message'] = 'Selected user is not manager.'
         else:
             request.session['error_message'] = 'You do not have permission for this action.'
-        return redirect('hiring_app:info', idContract=idContract)
+        return redirect(request.META.get('HTTP_REFERER'))
 
