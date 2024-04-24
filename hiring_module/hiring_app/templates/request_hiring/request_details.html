@@ -7,8 +7,8 @@
         <!-- Card Body -->
         <div class="card-body" style="padding-top: 1px !important; padding-bottom: 1px !important;">
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">Nombre: {{ contract_request.created_by.first_name }} {{ contract_request.created_by.last_name }}</li>
-                <li class="list-group-item">Correo: {{ contract_request.created_by.email }}</li>
+                <li class="list-group-item">Nombre:<br> {{ contract_request.created_by.first_name }} {{ contract_request.created_by.last_name }}</li>
+                <li class="list-group-item">Correo:<br> {{ contract_request.created_by.email }}</li>
                 <li class="list-group-item">Tipo de contrato:<br> {{ typedContract }}</li>
             </ul>
         </div>

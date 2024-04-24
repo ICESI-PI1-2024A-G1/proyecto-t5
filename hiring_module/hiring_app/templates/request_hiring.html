@@ -46,6 +46,11 @@ Request Hiring
         {% include 'request_hiring/components/snapshot.html' %}
     </div>
 
+    {% if typedContract == "Contrato CEX" %}
+        {% include 'request_hiring/cex_information.html' %}
+    {% elif typedContract == "Contrato Monitoria" %}
+        {% include 'request_hiring/monitoring_information.html' %}
+    {% endif %}
 
 </div>
 {% endblock %}
