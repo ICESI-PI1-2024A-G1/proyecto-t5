@@ -1,70 +1,51 @@
-<!-- main screen -->
 {% extends 'base.html' %}
+
+
 {% load static %}
+
+
 {% block title %}
 Request Hiring
 {% endblock %}
-{% block aditionalMetadata %}
-{% endblock %}
+
+
 
 {% block content %}
-    <div id="errorPopup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(255, 0, 0, 0.8); padding: 20px; border-radius: 5px; color: white; font-weight: bold; z-index: 9999;"></div>
+<div class="container-fluid">
 
-    <main id="main" class="expanded" style="display: flex; flex-direction: column; min-height: auto; background-color: #E5E5E5; padding: 1rem;">
-        <div style="text-align: center; margin-top: 1rem;">
-            {% include 'request_hiring/center_container.html' %}
-        </div>
-        <h2 style="color: #434343; font-size: 1.5rem; line-height: 2rem; font-weight: 600; padding-bottom: 0.5rem; padding-top: 1rem;">
-            Estado de la contratación
-        </h2>
-        <div style="display: flex;">
-            {% include 'request_hiring/date_details.html' %}
-            {% include 'request_hiring/progress_bar.html' %}
-        </div>
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Solicitud de contratación de {{contract_request.created_by.first_name}}</h1>
 
-        <div style="display: flex; padding-top: 30px;">
-            {% include 'request_hiring/request_details.html' %}
-            {% include 'request_hiring/components/snapshot.html' %}
-        </div>
-        <h2 style="color: #434343; font-size: 1.5rem; line-height: 2rem; font-weight: 600; padding-bottom: 0.5rem; padding-top: 1rem;">
-            Informacion de la contratacion
-        </h2>
-        <div style="display: flex; padding-top: 30px;">
-            {% if typedContract == "Contrato CEX" %}
-                {% include 'request_hiring/cex_information.html' %}
-            {% elif typedContract == "Contrato Monitoria" %}
-                {% include 'request_hiring/monitoring_information.html' %}
-            {% endif %}
-        </div>
-    </main>
-
-    <h2
-        style="color: #434343; font-size: 1.5rem; line-height: 2rem; font-weight: 600; padding-bottom: 0.5rem; padding-top: 1rem;">
-        Bitácora
-    </h2>
-    <div style="display: flex;">
     </div>
-</main>
 
 
-    {% if error_message %}
-    <script>
-        function showErrorPopup(message) {
-            var popup = document.getElementById('errorPopup');
-            popup.innerHTML = message;
-            popup.style.display = 'block';
-            // Ocultar el pop-up después de 2 segundos
-            setTimeout(function() {
-                popup.style.display = 'none';
-            }, 2000);
-        }
+    {% include 'request_hiring/center_container.html' %}
 
-        // Código para mostrar el pop-up si hay un mensaje de error disponible
-        var errorMessage = "{{ error_message }}";
-        if (errorMessage && errorMessage !== 'None') {
-            showErrorPopup(errorMessage);
-        }
-    </script>
-    {% endif %}
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Estado de la Solicitud</h1>
+    </div>
 
+
+    <div class="row">
+
+        <!-- Date info -->
+        {% include 'request_hiring/date_details.html' %}
+
+        <!-- Progress bar -->
+        {% include 'request_hiring/progress_bar.html' %}
+    </div>
+
+
+    <div class="row">
+
+        <!-- requester info -->
+        {% include 'request_hiring/request_details.html' %}
+
+        <!-- snapshot info -->
+        {% include 'request_hiring/components/snapshot.html' %}
+    </div>
+
+
+</div>
 {% endblock %}

@@ -1,24 +1,31 @@
 {% load static %}
+<div class="col-xl-8 col-lg-7">
+    <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">Barra de progreso</h6>
+        </div>
 
-<div style="background-color: white; margin-left: 0.75rem; display: flex; align-items: center; justify-content: center; width: 70%; border-radius: 0.375rem; box-shadow: 2px 2px 4px rgba(42, 143, 208, 0.5);">
-    <div style="height: 4rem; width: 4rem; margin-right: 0.5rem;">
-        <img src="{% static 'images/icons/IconDate.png' %}" alt="DateIcon">
-    </div>
-    <div id="ProgressBarContainer" style="border-width: 2px; border-style: solid; padding: 0.125rem; border-color: #434343; background-color: white; height: 2.5rem; border-radius: 9999px; width: 80%;">
-        <div id="ProgressBar" style="background-color: #00599C; width: 25%; border-radius: 9999px; height: 100%; font-size: 0.75rem; line-height: 1rem; display: flex; justify-content: center; align-items: center; text-decoration-color: white; font-weight: 700; color:white">
-            25%
+        <!-- Card Body -->
+        <div class="card-body">
+            <div class="row my-4 ">
+                <div class="col-auto my-1">
+                    <i class="fas fa-calendar fa-3x"></i>
+                </div>
+                <div id="ProgressBarContainer" class="col my-1"
+                    style="border-width: 2px; border-style: solid; padding: 0.125rem; border-color: #434343; background-color: white; height: 3rem; border-radius: 9999px;">
+                    <div id="ProgressBar"
+                        style="background-color: #00599C; width: 25%; border-radius: 9999px; height: 100%; font-size: 0.75rem; line-height: 1rem; display: flex; justify-content: center; align-items: center; text-decoration-color: white; font-weight: 700; color:white">
+                        25%
+                    </div>
+                </div>
+
+
+            </div>
+
         </div>
     </div>
 </div>
-
-<!-- Set the default state to "Pending" -->
-<select name="state" id="stateSelect" style="display: none;">
-    <option value="pending" selected>Pending</option>
-    <option value="review">Review</option>
-    <option value="incomplete">Incomplete</option>
-    <option value="filed">Filed</option>
-    <option value="cancelled">Cancelled</option>
-</select>
 
 <script>
     // Update progress bar function according to selected status
@@ -70,5 +77,3 @@
         updateProgressBar(selectedState);
     });
 </script>
-
-
