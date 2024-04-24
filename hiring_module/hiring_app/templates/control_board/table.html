@@ -1,35 +1,3 @@
-   
-
-    <table style="width: 100%; border-collapse: collapse; margin-top: 14px;">
-        <thead>
-            <tr style="background-color: #2A8FD0; color: white;">
-                <th style="border: 2px solid white; padding: 10px; text-align: center; font-weight: bold; text-transform: uppercase;">ID</th>
-                <th style="border: 2px solid white; padding: 10px; text-align: center; font-weight: bold; text-transform: uppercase;">Solicitante</th>
-                <th style="border: 2px solid white; padding: 10px; text-align: center; font-weight: bold; text-transform: uppercase;">Lider encargado</th>
-                <th style="border: 2px solid white; padding: 10px; text-align: center; font-weight: bold; text-transform: uppercase;">Gestor encargado</th>
-                <th style="border: 2px solid white; padding: 10px; text-align: center; font-weight: bold; text-transform: uppercase;">Estado</th>
-                <th style="border: 2px solid white; padding: 10px; text-align: center; font-weight: bold; text-transform: uppercase;">Contrato</th>
-                <th style="border: 2px solid white; padding: 10px; text-align: center; font-weight: bold; text-transform: uppercase;">Fecha incio</th>
-            </tr>
-        </thead>
-        <tbody>
-
-            {% for request in requests %}
-            <tr style="cursor: pointer;">
-                <td onclick="redirectToInfoPage('{{ request.id }}')" style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ request.id }}</td>
-                <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ request.created_by.first_name }} {{ request.created_by.last_name }}</td>
-                <td>{% include 'request_hiring/components/assign_leader.html' with leaders=leaders contract_request=request form_id_prefix='change_leader_form_' %}</td>
-                <td>{% include 'request_hiring/components/assign_manager.html' with managers=managers contract_request=request form_id_prefix='change_manager_form_' %}</td>
-                <td id="statusButton" style="border: 2px solid white; padding: 10px; text-align: center; position: relative; background-color: #f2f2f2;">{{ request.state }}</td>
-                <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ request.contrato }}</td>
-                <td style="border: 2px solid white; padding: 10px; text-align: center; background-color: #f2f2f2;">{{ request.start_date|date:"d-m-Y" }}</td>
-            </tr>
-            {% endfor %}
-            
-        </tbody>
-    </table>
-
-    
     <script>
         function redirectToInfoPage(id) {
             // Construir la URL con el ID proporcionado
@@ -40,3 +8,45 @@
     </script>
 
 
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Solicitudes de contratación</h1>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Listado de solicitudes de contratación</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Solicitante</th>
+                            <th>Lider encargado</th>
+                            <th>Gestor encargado</th>
+                            <th>Estado</th>
+                            <th>Contrato</th>
+                            <th>Fecha incio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for request in requests %}
+                            <tr href="#" onclick="redirectToInfoPage('{{ request.id }}')">
+                                <td>{{ request.id }}</td>
+                                <td>{{ request.created_by.first_name }} {{ request.created_by.last_name }}</td>
+                                <td>{% include 'request_hiring/components/assign_leader.html' with leaders=leaders contract_request=request form_id_prefix='change_leader_form_' %}</td>
+                                <td>{% include 'request_hiring/components/assign_manager.html' with managers=managers contract_request=request form_id_prefix='change_manager_form_' %}</td>
+                                <td>{{ request.state }}</td>
+                                <td>{{ request.contrato }}</td>
+                                <td>{{ request.start_date|date:"d-m-Y" }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,10 +1,10 @@
 <form class="change-leader-form_{{ form_id_prefix }}{{ contract_request.id }}" method="post" action="{% url 'hiring_app:assign_leader' contract_request.id %}" style="margin-bottom: 1rem;">
     {% csrf_token %}
 
-    <select name="leader" class="leaderSelect" style="width: 100%; margin-top: 0.5rem; padding: 0.5rem; background-color: #ffffff; border: 1px solid #cbd5e0; border-radius: 0.375rem; outline: none; transition: border-color 0.15s ease-in-out;" {% if actualgroup != 'admin' %} disabled {% endif %}>
-        <option value="" selected>Seleccionar</option>
+    <select name="leader" class="leaderSelect btn btn-white border border-2 border-dark text-dark dropdown-toggle col" {% if actualgroup != 'admin' %} disabled {% endif %}>
+        <option value="" class="col" selected>Seleccionar</option>
         {% for leader in leaders %}
-        <option value="{{ leader.id }}" {% if leader.id == contract_request.leader_assigned_to.id %} selected {% endif %}> {{ leader.first_name }} {{ leader.last_name }}</option>
+        <option value="{{ leader.id }}" class="col" {% if leader.id == contract_request.leader_assigned_to.id %} selected {% endif %}> {{ leader.first_name }} {{ leader.last_name }}</option>
         {% endfor %}
     </select>
 

@@ -1,17 +1,17 @@
 <form class="change-manager-form_{{ form_id_prefix }}{{ contract_request.id }}" method="post" action="{% url 'hiring_app:assign_manager' contract_request.id %}" style="margin-bottom: 1rem;">
     {% csrf_token %}
-    <select name="manager" class="managerSelect" style="width: 100%; margin-top: 0.5rem; padding: 0.5rem; background-color: #ffffff; border: 1px solid #cbd5e0; border-radius: 0.375rem; outline: none; transition: border-color 0.15s ease-in-out;"
-    
-    {% if actualgroup != "admin"  and actualgroup != 'leader' %}
+    <select name="manager" class="managerSelect btn btn-white border border-2 border-dark text-dark dropdown-toggle col" {% if actualgroup != "admin"  and actualgroup != 'leader' %}
     disabled
     {% endif %}
     
     >
-        <option value="" disabled selected style="color: #a0aec0;">Seleccionar</option>
+        <option class="col" value="" disabled selected >Seleccionar</option>
+
         {% for manager in managers %}
         
-        <option value="{{ manager.id }}" {% if manager.id == contract_request.manager_assigned_to.id %}selected{% endif %} style="color: #4a5568;">{{ manager.first_name }} {{ manager.last_name }}</option>
+        <option value="{{ manager.id }}" class="col" {% if manager.id == contract_request.manager_assigned_to.id %}selected{% endif %} style="color: #4a5568;">{{ manager.first_name }} {{ manager.last_name }}</option>
         {% endfor %}
+
     </select>
 </form>
 
