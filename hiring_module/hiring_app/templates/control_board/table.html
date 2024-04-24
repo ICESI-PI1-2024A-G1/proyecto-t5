@@ -33,14 +33,14 @@
                     </thead>
                     <tbody>
                         {% for request in requests %}
-                            <tr href="#" onclick="redirectToInfoPage('{{ request.id }}')">
-                                <td>{{ request.id }}</td>
-                                <td>{{ request.created_by.first_name }} {{ request.created_by.last_name }}</td>
+                            <tr>
+                                <td href="#" onclick="redirectToInfoPage('{{ request.id }}')">{{ request.id }}</td>
+                                <td href="#" onclick="redirectToInfoPage('{{ request.id }}')">{{ request.created_by.first_name }} {{ request.created_by.last_name }}</td>
                                 <td>{% include 'request_hiring/components/assign_leader.html' with leaders=leaders contract_request=request form_id_prefix='change_leader_form_' %}</td>
                                 <td>{% include 'request_hiring/components/assign_manager.html' with managers=managers contract_request=request form_id_prefix='change_manager_form_' %}</td>
-                                <td>{{ request.state }}</td>
-                                <td>{{ request.contrato }}</td>
-                                <td>{{ request.start_date|date:"d-m-Y" }}</td>
+                                <td href="#" onclick="redirectToInfoPage('{{ request.id }}')">{{ request.state }}</td>
+                                <td href="#" onclick="redirectToInfoPage('{{ request.id }}')">{{ request.contrato }}</td>
+                                <td href="#" onclick="redirectToInfoPage('{{ request.id }}')">{{ request.start_date|date:"d-m-Y" }}</td>
                             </tr>
                         {% endfor %}
                     </tbody>
