@@ -6,6 +6,7 @@ from django.db.models.functions import Concat
 
 from hiring_app.model.user_model import CustomUser
 from .utilities import admin_required
+from django.contrib.auth.models import Group
 
 
 
@@ -24,9 +25,22 @@ class AdministratorUserListView(TemplateView):
         for user in users:
             user.role = str(user.groups.first())
         context['users'] = users
+        context['actualgroup'] = 'admin'
         return context
     
     def post(self, request, *args, **kwargs):
+        if 'updateRole' in request.POST:
+            user_id = request.POST.get('userId')
+            new_role = request.POST.get('role')
+            user = CustomUser.objects.get(pk=user_id)
+            # Update the user's role based on new_role
+            if(new_role == 'remove'):
+                user.groups.clear()
+            else:
+                user.groups.clear()
+                user.groups.add(Group.objects.get(name=new_role))
+            user.save()
+
         search_query = request.POST.get('search_query')
         if 'clear_search' in request.POST:
             search_query = None
@@ -46,6 +60,7 @@ class AdministratorUserListView(TemplateView):
                     full_name=Concat('first_name', Value(' '), 'last_name', output_field=CharField())
                 ).filter(query, groups__name__in=['admin', 'leader', 'manager'])
 
+        
         else:
             users = CustomUser.objects.filter(groups__name__in=['admin', 'leader', 'manager'])
 
