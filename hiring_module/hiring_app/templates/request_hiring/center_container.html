@@ -1,21 +1,54 @@
-<div
-    style="max-width: 1280px; margin-right: 40px; background-color: #edf2f7; border-radius: 0.75rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 24px;">
-    <div style="display: flex; align-items: center;">
-        <div style="flex: 1; padding-left: 24px; padding-right: 24px; border-right: 1px solid #cbd5e0;">
-            <p style="font-weight: 600; color: #2d3748;">ID:</p>
-            <p>{{ contract_request.id }}</p>
+<div class="row">
+    
+    <!-- Leader  Card -->
+    <div class="col-xl-4 col-md-5 mb-4">
+        <div class="card border-left-danger shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                            Lider asignado:
+                            <br>
+                        </div>
+                        <div class="pt-3 h5 mb-0 font-weight-bold text-gray-800">{% include 'request_hiring/components/assign_leader.html' %}</div>
+                    </div>
+
+                </div>
+            </div>
         </div>
-        <div style="flex: 1; padding-left: 24px; padding-right: 24px; border-right: 1px solid #cbd5e0;">
-            <p style="font-weight: 600; color: #2d3748;">Líder:</p> 
-            {% include 'request_hiring/components/assign_leader.html' %}
+    </div>
+
+    <!-- Manager Card -->
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                            Gestor asignado:
+                            <br>
+                        </div>
+                        <div class="pt-3 h5 mb-0 font-weight-bold text-gray-800">{% include 'request_hiring/components/assign_manager.html' %}</div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div style="flex: 1; padding-left: 24px; padding-right: 24px; border-right: 1px solid #cbd5e0;">
-            <p style="font-weight: 600; color: #2d3748;">Gestor:</p>
-            {% include 'request_hiring/components/assign_manager.html' %}
-        </div>
-        <div style="flex: 1; padding-left: 24px;">
-            <p style="font-weight: 600; color: #2d3748;">Cambiar estado:</p>
-            {% include 'request_hiring/components/change_state.html' %}
+    </div>
+
+    <!-- State Example -->
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            Estado:
+                            <br>
+                        </div>
+                        <div class="pt-3 h5 mb-0 font-weight-bold text-gray-800">{% include 'request_hiring/components/change_state.html' %}</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
