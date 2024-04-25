@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Panel de control
+{% endblock %}
+{% block aditionalMetadata %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Panel de control</h1>
+        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+    </div>
+
+    <!-- Content center -->
+        
+        
+    {% include 'control_board/center_container.html' %}
+    
+
+    {% include 'control_board/table.html'%} 
+
+    <div>
+        {% block control_board %}
+
+        {% endblock %}
+    </div>
+    
+</div>
+
+
+{% endblock %}

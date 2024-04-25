@@ -54,8 +54,7 @@ class ChangeStateView(View):
 
 
     def sendEmailRequest(self, contract_request, reason):
-        content = f'Estimado/a {contract_request.created_by.first_name},\n\nLamentamos informarle que su solicitud ha sido cancelada. El motivo proporcionado es: {
-            reason}. \n \n Por favor, no dude en ponerse en contacto con nosotros si tiene alguna pregunta.\n\nAtentamente,\nTu aplicación'
+        content = f'Estimado/a {contract_request.created_by.first_name},\n\nLamentamos informarle que su solicitud ha sido cancelada. El motivo proporcionado es: {reason}. \n \n Por favor, no dude en ponerse en contacto con nosotros si tiene alguna pregunta.\n\nAtentamente,\nTu aplicación'
 
         message = EmailMultiAlternatives('Solicitud cancelada',
                                          content,
