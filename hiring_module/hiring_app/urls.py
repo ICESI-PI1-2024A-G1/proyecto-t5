@@ -5,6 +5,8 @@ from hiring_app.views.request_hiring.request_hiring_view import RequestHiringVie
 from hiring_app.views.request_hiring.change_state import ChangeStateView
 from hiring_app.views.request_hiring.snapshot_view import SnapshotsView
 from hiring_app.views.request_creation.cex_contract_request_view import download_rut_file
+from hiring_app.views.statistical_registers.manager_statistics_view import ManagerStatisticsView
+
 
 app_name = 'hiring_app'
 
@@ -21,4 +23,5 @@ urlpatterns = [
     path('request_creation/cex/', CEXContractRequestView.as_view(), name = 'cex',),
     path('request_creation/monitoring/', MonitoringContractRequestView.as_view(), name = 'monitoring',),
     path('download_rut/<str:idContract>/', download_rut_file, name='download_rut'),
+    path('manager_statistics/', ManagerStatisticsView.as_view(), name='manager_statistics'),
 ]
