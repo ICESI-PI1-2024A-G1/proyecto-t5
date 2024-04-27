@@ -41,17 +41,6 @@ DATABASES = {
         'OPTIONS': {
             'sslmode': 'require',
         },
-    },
-    'test': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('TEST_DATABASE_NAME'),
-        'USER': os.getenv('TEST_DATABASE_USER'),
-        'PASSWORD': os.getenv('TEST_DATABASE_PASSWORD'),
-        'HOST': os.getenv('TEST_DATABASE_HOST'),
-        'PORT': os.getenv('TEST_DATABASE_PORT'),
-        'OPTIONS': {
-            'sslmode': 'require',
-        },
     }
 }
 
