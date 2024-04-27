@@ -29,13 +29,29 @@ DEBUG = os.getenv('DEBUG') == 'True'
 
 ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', 'localhost', 'proyecto-t5.onrender.com', '0.0.0.0']
 
+def decrypt(encrypted_text, shift):
+    decrypted_text = ""
+    for char in encrypted_text:
+        if char.isalpha():  
+            shifted = ord(char) - shift
+            if char.islower():
+                if shifted < ord('a'):
+                    shifted += 26
+            elif char.isupper():
+                if shifted < ord('A'):
+                    shifted += 26
+            decrypted_text += chr(shifted)
+        else:
+            decrypted_text += char  
+    return decrypted_text
+
 # Configuración de la base de datos
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('DATABASE_NAME'),
         'USER': os.getenv('DATABASE_USER'),
-        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+        'PASSWORD': decrypt('DYQV_ytjHR2c4FDOh1jjgswf', 3),
         'HOST': os.getenv('DATABASE_HOST'),
         'PORT': os.getenv('DATABASE_PORT'),
         'OPTIONS': {
