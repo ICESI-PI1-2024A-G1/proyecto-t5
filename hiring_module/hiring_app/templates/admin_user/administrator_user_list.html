@@ -1,10 +1,58 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-    Panel de control
+Panel de control
 {% endblock %}
-{% block aditionalMetadata %}
+
+
+
+{% block metadata %}
+<style>
+    /* Estilos para el fondo opaco */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Opacidad del fondo */
+      display: none; /* Ocultar por defecto */
+    }
+
+    /* Estilos para el círculo de carga */
+    .loading-circle {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 64px;
+      height: 64px;
+      z-index: 9999; /* Asegurar que esté por encima de otros elementos */
+      display: none; /* Ocultar por defecto */
+    }
+
+    .loading-circle .spinner {
+      width: 64px;
+      height: 64px;
+      border: 4px solid rgba(0, 0, 0, 0.1);
+      border-radius: 50%;
+      border-top-color: #3498db;
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+
 {% endblock %}
+
+
 
 {% block content %}
 
@@ -16,8 +64,8 @@
     </div>
 
     <!-- Content center -->
-        
-        
+
+
     {% include 'admin_user/components/user_list_center_container.html' %}
 
 
@@ -28,7 +76,18 @@
 
         {% endblock %}
     </div>
-    
+
+
+    <!-- Loading -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Div para el círculo de carga -->
+    <div class="loading-circle" id="loadingCircle">
+      <div class="spinner"></div>
+    </div>
+  
+  
+
 </div>
 
 

@@ -1,9 +1,0 @@
-<form id="searchForm" method="POST" class="flex items-center justify-center">
-    {% csrf_token %}
-    <div class="mt-4 flex items-center border border-gray-300 rounded-md">
-        <input type="text" name="search_query" id="searchInput" placeholder="Busca por nombre o correo" class="py-2 px-4 focus:outline-none">
-        <button type="submit" name="search_by" value="email" class="py-2 px-4 ml-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none">Buscar por correo</button>
-        <button type="submit" name="search_by" value="name" class="py-2 px-4 ml-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none">Buscar por nombre</button>
-        <button type="submit" name="clear_search" value="true" class="py-2 px-4 ml-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400 focus:outline-none">Borrar busqueda</button>
-    </div>
-</form>

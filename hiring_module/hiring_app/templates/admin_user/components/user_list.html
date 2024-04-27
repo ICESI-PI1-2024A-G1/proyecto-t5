@@ -30,16 +30,15 @@
                             <td>{{ user.email }}</td>
                             <td>{{ user.first_name }}</td>
                             <td>{{ user.last_name }}</td>
-                            <td> 
-                                <select id="roleSelect_{{ user.id }}" onchange="updateRole('{{ user.id }}')">
-                                    <option value="admin" {% if user.role == "admin" %} selected {% endif %}>Administrator
-                                    </option>
-                                    <option value="leader" {% if user.role == "leader" %} selected {% endif %}>Leader
-                                    </option>
-                                    <option value="manager" {% if user.role == "manager" %} selected {% endif %}>Manager
-                                    </option> 
-                                    <option value="remove">Remove</option>
-                                </select></td>
+                            <td> <p style="display: none;">{{user.role}}</p>
+                                <select class="managerSelect btn btn-white border border-2 border-dark text-dark dropdown-toggle col" id="roleSelect_{{ user.id }}" onchange="updateRole('{{ user.id }}')">
+                                    <option class="col" value="admin" {% if user.role == "admin" %} selected {% endif %}>Administrator</option>
+                                    <option class="col" value="leader" {% if user.role == "leader" %} selected {% endif %}>Leader</option>
+                                    <option class="col" value="manager" {% if user.role == "manager" %} selected {% endif %}>Manager</option> 
+                                    <option class="col" value="remove">Remove</option>
+                                  </select>
+                      
+                            </td>
 
                         </tr>
                         {% endfor %}
@@ -54,27 +53,34 @@
 
 <script>
     function updateRole(userId) {
-        var selectedRole = document.getElementById("roleSelect_" + userId).value;
-        var formData = new FormData();
-        formData.append('updateRole', 'updateRole');
-        formData.append('userId', userId);
-        formData.append('role', selectedRole);
+      var selectedRole = document.getElementById("roleSelect_" + userId).value;
+      var formData = new FormData();
+      formData.append('updateRole', 'updateRole');
+      formData.append('userId', userId);
+      formData.append('role', selectedRole);
 
-        fetch('{% url "hiring_app:administrator_user_list" %}', {
-            method: 'POST',
-            headers: {
-                'X-CSRFToken': '{{ csrf_token }}'
-            },
-            body: formData
-        }).then(function (response) {
-            if (response.ok) {
-                location.reload();
-            } else {
-                alert('Failed to update role.');
-                console.error('Failed to update role.');
-            }
-        }).catch(function (error) {
-            console.error('Error:', error);
-        });
+      // Mostrar el círculo de carga
+      document.getElementById("loadingCircle").style.display = "block";
+
+      fetch('{% url "hiring_app:administrator_user_list" %}', {
+        method: 'POST',
+        headers: {
+          'X-CSRFToken': '{{ csrf_token }}'
+        },
+        body: formData
+      }).then(function(response) {
+        if (response.ok) {
+          location.reload();
+        } else {
+          alert('Failed to update role.');
+          console.error('Failed to update role.');
+        }
+        // Ocultar el círculo de carga después de la respuesta
+        document.getElementById("loadingCircle").style.display = "none";
+      }).catch(function(error) {
+        console.error('Error:', error);
+        // Ocultar el círculo de carga en caso de error
+        document.getElementById("loadingCircle").style.display = "none";
+      });
     }
-</script>
+  </script>
