@@ -26,6 +26,10 @@ jobs:
         cd hiring_module
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+    - name: Copy .env file
+      run: |
+        cd hiring_module
+        cp .env.example .env
     - name: Run Tests
       run: |
         cd hiring_module
