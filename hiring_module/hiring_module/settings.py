@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 import os
+import sys
 from dotenv import load_dotenv
 from pathlib import Path
 
@@ -41,20 +42,14 @@ DATABASES = {
         'OPTIONS': {
             'sslmode': 'require',
         },
-    },
-    'test': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('TEST_DATABASE_NAME'),
-        'USER': os.getenv('TEST_DATABASE_USER'),
-        'PASSWORD': os.getenv('TEST_DATABASE_PASSWORD'),
-        'HOST': os.getenv('TEST_DATABASE_HOST'),
-        'PORT': os.getenv('TEST_DATABASE_PORT'),
-        'OPTIONS': {
-            'sslmode': 'require',
-        },
     }
 }
 
+if 'test' in sys.argv:
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': ':memory:', 
+    }
 
 # Application definition
 
