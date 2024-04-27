@@ -30,6 +30,9 @@ jobs:
       run: |
         cd hiring_module
         cp .example.env .env
+    - name: Set up environment variables
+      run: |
+        echo "export TEST_DATABASE_NAME=test_db" >> $GITHUB_ENV
     - name: Run Tests
       run: |
         cd hiring_module
