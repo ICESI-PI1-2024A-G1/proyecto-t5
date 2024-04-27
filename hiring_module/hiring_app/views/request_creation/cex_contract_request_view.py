@@ -15,11 +15,15 @@ class CEXContractRequestView(CreateView):
     template_name = 'request_creation/cex_request_form.html'
 
     def form_valid(self, form):
-        # Assign created_by and estimated_completion_date fields
+        # Assign created_by, estimated_completion_date and responsibles fields
         current_user = self.request.user
         estimated_completion_date = datetime.now() + timedelta(days=30)
+        leader = utilities.findLeaderToAssign()
+        manager = utilities.findManagerToAssign()
         form.instance.estimated_completion_date = estimated_completion_date
         form.instance.created_by = current_user
+        form.instance.leader_assigned_to = leader
+        form.instance.manager_assigned_to = manager
 
         cex_contract_request = form.save(commit=False)
         cex_contract_request.create_snapshot()
