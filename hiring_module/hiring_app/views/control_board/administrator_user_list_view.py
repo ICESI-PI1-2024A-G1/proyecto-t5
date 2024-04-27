@@ -11,7 +11,7 @@ from django.contrib.auth.models import Group
 
 
 class AdministratorUserListView(TemplateView):
-    template_name = 'administrator_user_list.html'
+    template_name = 'admin_user/administrator_user_list.html'
 
     # Redirect to correct dashboard based on user role
     @method_decorator(admin_required)

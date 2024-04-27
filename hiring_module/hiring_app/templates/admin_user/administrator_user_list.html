@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Panel de control
+{% endblock %}
+{% block aditionalMetadata %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Panel de control</h1>
+    </div>
+
+    <!-- Content center -->
+        
+        
+    {% include 'admin_user/components/user_list_center_container.html' %}
+
+
+    {% include 'admin_user/components/user_list.html' %}
+
+    <div>
+        {% block control_board %}
+
+        {% endblock %}
+    </div>
+    
+</div>
+
+
+{% endblock %}

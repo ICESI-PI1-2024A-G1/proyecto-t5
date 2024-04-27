@@ -10,7 +10,7 @@ from django.db.models import Q, CharField, Value
 from django.db.models.functions import Concat
 
 class AddUserView(TemplateView):
-    template_name = 'administrator_add_user.html'
+    template_name = 'admin_user/administrator_add_user.html'
 
     # Redirect to correct dashboard based on user role
     @method_decorator(admin_required)
