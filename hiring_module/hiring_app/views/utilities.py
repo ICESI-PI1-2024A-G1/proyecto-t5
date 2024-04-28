@@ -26,7 +26,7 @@ def leader_or_admin_redirect_to_manager_statistics(view_func):
 
 
 def get_metrics(user):
-    # Get all managers
+
     group_manager = Group.objects.get(name='manager')
     managers = CustomUser.objects.filter(groups=group_manager)
 
@@ -38,14 +38,10 @@ def get_metrics(user):
     max_approved_requests = 0
     all_requests_assigned_to_the_best_manager = 0
 
-    # Count the requests assigned to each manager
     for manager in managers:
-        # View requests assigned to this manager in CEXContractRequest
         cex_requests = CEXContractRequest.objects.filter(manager_assigned_to=manager)
-        # View requests assigned to this manager in MonitoringContractRequest
         monitoring_requests = MonitoringContractRequest.objects.filter(manager_assigned_to=manager)
 
-        # Merge the results of both type requests
         total_requests_for_a_manager = cex_requests.count() + monitoring_requests.count()
         approved_requests += cex_requests.filter(state='filed').count() + monitoring_requests.filter(state='filed').count()
         review_requests += cex_requests.filter(state='review').count() + monitoring_requests.filter(state='review').count()
@@ -63,7 +59,6 @@ def get_metrics(user):
     else:
         effectiveness_percentage = 0
 
-    # Return metrics
     return {
         'total_requests': total_requests,
         'approved_requests': approved_requests,
