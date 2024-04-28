@@ -7,7 +7,7 @@ from hiring_app.views.request_hiring.snapshot_view import SnapshotsView
 from hiring_app.views.request_creation.cex_contract_request_view import download_rut_file
 from hiring_app.views.control_board.administrator_user_list_view import AdministratorUserListView
 from hiring_app.views.control_board.add_user_view import AddUserView
-from hiring_module.hiring_app.views.statistical_registers.statistics_view import StatisticsView
+from hiring_app.views.statistical_registers.statistics_view import StatisticsView
 
 
 app_name = 'hiring_app'
