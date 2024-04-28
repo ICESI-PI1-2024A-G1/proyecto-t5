@@ -68,9 +68,16 @@ def get_metrics():
 
     best_to_worse_manager = sorted(best_to_worse_manager, key=lambda x: x[1], reverse=True)
 
+    best_to_worse_manager = best_to_worse_manager[:5]
+    
+    
+    best_to_worse_manager_with_percentage = [(nombre, f"{porcentaje} %") for nombre, porcentaje in best_to_worse_manager]
+
+    
+
     return {
         'data': data,
-        'quality': best_to_worse_manager
+        'quality': best_to_worse_manager_with_percentage
     }
 
 def quality_calculator(aprobadas, en_revision, por_validar):
