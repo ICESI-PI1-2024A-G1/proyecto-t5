@@ -3,3 +3,5 @@ from .contract_request_snapshot_model import ContractRequestSnapshot
 from .cex_contract_request_model import CEXContractRequest
 from .monitoring_contract_request_model import MonitoringContractRequest
 from .contract_request_model import state_choices
+from .provision_of_services_request_model import ProvisionOfServicesContractRequest
+from .course_schedule_model import CourseSchedule
