@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Estadísticas
+{% endblock %}
+{% block aditionalMetadata %}
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+
+    <div>
+        {% block statistical_registers %}
+
+        {% endblock %}
+    </div>
+
+    <!-- Content center -->
+    {% include 'statistical_registers/statistical_info.html' %}
+    
+</div>
+{% endblock %}

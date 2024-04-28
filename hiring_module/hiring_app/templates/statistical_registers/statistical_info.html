@@ -1,0 +1,78 @@
+<div style="display: flex;">
+
+    <!-- Total hiring request Card -->
+    <div style="width: 100%;">
+      <div class="flex flex-col" style="width: 100%;">
+        <div class="mb-4" style="height: 11.8rem;">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2" style="display: flex; gap: 8rem;">
+                            <div>
+                                <div class="font-weight-bold text-primary text-uppercase mb-1">Solicitudes Totales:</div>
+                                <div class="font-weight-bold text-primary text-uppercase mb-1">Solicitudes Aprobadas:</div>
+                                <div class="font-weight-bold text-primary text-uppercase mb-1">Solicitudes con Dificultades:</div>
+                                <div class="font-weight-bold text-primary text-uppercase mb-1">Solicitudes Fuera de Plazo:</div>
+                            </div>
+                            <div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800 mb-1">{{ total_requests }}</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800 mb-1">{{ approved_requests }}</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800 mb-1">{{ for_validate_requests }}</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800 mb-1">{{ review_requests }}</div>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total unvalidated hiring request  Card -->
+        <div class="mb-4" style="height: 11.7rem;">
+            <div class="card border-left-danger shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="font-weight-bold text-danger text-uppercase mb-1">
+                                Mejor gestor
+                            </div>
+                            <div class="h5 mt-4 font-weight-bold text-gray-800">{{ best_manager }}</div>
+                            <div style="display: inline;">Efectividad:</div>
+                            <div style="display: inline;">{{ effectiveness_percentage }}%</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-window-close fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    
+    
+
+    <!-- Total unvalidated hiring request  Card -->
+    <div class="col-xl-6 mb-4" style="height: 25rem;">
+        <div class="card border-left-danger shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                            Aquí va el gráfico
+                            <br>
+                        </div>
+                        
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-window-close fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
