@@ -5,7 +5,7 @@
     >
         {% for choice in choices %}
         <option class="col"
-        value="{{ choice.0 }}" {% if choice.0 == contract_request.state %}selected{% endif %} >{{ choice.1 }}</option>
+        value="{{ choice.0 }}" {% if choice.0 == contract_request.state %}selected{% endif %} >{{ choice.0 }}</option>
         {% endfor %}
     </select>
 </form>
