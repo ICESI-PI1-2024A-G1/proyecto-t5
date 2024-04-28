@@ -25,45 +25,21 @@ def leader_or_admin_redirect_to_manager_statistics(view_func):
     return wrapper
 
 
-def get_metrics(user):
-
-    group_manager = Group.objects.get(name='manager')
-    managers = CustomUser.objects.filter(groups=group_manager)
-
-    total_requests = 0
+def get_metrics():
     approved_requests = 0
     review_requests = 0
     for_validate_requests = 0
-    best_manager = None
-    max_approved_requests = 0
-    all_requests_assigned_to_the_best_manager = 0
 
-    for manager in managers:
-        cex_requests = CEXContractRequest.objects.filter(manager_assigned_to=manager)
-        monitoring_requests = MonitoringContractRequest.objects.filter(manager_assigned_to=manager)
+    approved_requests = CEXContractRequest.objects.filter(state='filed').count() + MonitoringContractRequest.objects.filter(state='filed').count()
+    review_requests = CEXContractRequest.objects.filter(state='review').count() + MonitoringContractRequest.objects.filter(state='review').count()
+    for_validate_requests = CEXContractRequest.objects.filter(state='pending').count() + MonitoringContractRequest.objects.filter(state='pending').count()
+    for_validate_requests += CEXContractRequest.objects.filter(state='incomplete').count() + MonitoringContractRequest.objects.filter(state='incomplete').count()
 
-        total_requests_for_a_manager = cex_requests.count() + monitoring_requests.count()
-        approved_requests += cex_requests.filter(state='filed').count() + monitoring_requests.filter(state='filed').count()
-        review_requests += cex_requests.filter(state='review').count() + monitoring_requests.filter(state='review').count()
-        for_validate_requests += cex_requests.filter(state__in=['pending', 'incomplete']).count() + monitoring_requests.filter(state__in=['pending', 'incomplete']).count()
-
-        total_requests += total_requests_for_a_manager
-
-        if approved_requests > max_approved_requests:
-            max_approved_requests = approved_requests
-            best_manager = manager.first_name + ' ' + manager.last_name
-            all_requests_assigned_to_the_best_manager = total_requests_for_a_manager
-
-    if best_manager:
-        effectiveness_percentage = (max_approved_requests / all_requests_assigned_to_the_best_manager) * 100
-    else:
-        effectiveness_percentage = 0
+    
+    
 
     return {
-        'total_requests': total_requests,
         'approved_requests': approved_requests,
         'review_requests': review_requests,
         'for_validate_requests': for_validate_requests,
-        'best_manager': best_manager,
-        'effectiveness_percentage': effectiveness_percentage,
     }

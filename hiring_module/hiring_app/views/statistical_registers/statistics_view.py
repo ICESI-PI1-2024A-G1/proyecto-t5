@@ -11,7 +11,7 @@ class StatisticsView(View):
     @method_decorator(leader_or_admin_redirect_to_manager_statistics)
     def dispatch(self, request, *args, **kwargs):
         # Get the required metrics
-        metrics = get_metrics(request.user)
+        metrics = get_metrics()
 
         # Pass metrics as context to template
         return render(request, self.template_name, metrics)

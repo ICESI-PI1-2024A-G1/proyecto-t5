@@ -8,8 +8,8 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                             Mejor gestor</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ best_manager }}</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">Efectividad: <strong> {{effectiveness_percentage }} % </strong></div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">TBD</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">Efectividad: <strong> TBD % </strong></div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -26,8 +26,8 @@
             <div class="card-body">
                 <div class="chart-pie pt-4 pb-2">
                     <p style="display: none;" id="solicitudes_aprobadas_manager">{{ approved_requests }}</p>
-                    <p style="display: none;" id="solicitudes_con_dificultades_manager">{{ for_validate_requests }}</p>
-                    <p style="display: none;" id="solicitudes_tardias_manager">{{ review_requests }}</p>
+                    <p style="display: none;" id="solicitudes_en_revision_manager">{{ review_requests }}</p>
+                    <p style="display: none;" id="solicitudes_por_validar_manager">{{ for_validate_requests }}</p>
                     <canvas id="manager_chart_pie"></canvas>
                 </div>
                 <div class="mt-4 text-center small">
@@ -35,11 +35,13 @@
                         <i class="fas fa-circle text-success"></i> Solicitudes Aprobadas
                     </span>
                     <span class="mr-2">
-                        <i class="fas fa-circle text-warning"></i> Solicitudes con Dificultades
+                        <i class="fas fa-circle text-warning"></i> Solicitudes Solicitudes En revision
                     </span>
+                    <br>
                     <span class="mr-2">
-                        <i class="fas fa-circle text-danger"></i> Solicitudes Fuera de Plazo
+                        <i class="fas fa-circle text-danger"></i> Solicitudes por validar
                     </span>
+
                 </div>
             </div>
         </div>

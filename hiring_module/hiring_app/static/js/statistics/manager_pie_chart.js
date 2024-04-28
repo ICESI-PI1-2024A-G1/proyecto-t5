@@ -9,9 +9,9 @@ var ctx = document.getElementById("manager_chart_pie");
 var myPieChart = new Chart(ctx, {
   type: 'doughnut',
   data: {
-    labels: ["Solicitudes Aprobadas", "Solicitudes con dificultades", "Solicitudes tardias"],
+    labels: ["Solicitudes Aprobadas", "Solicitudes Solicitudes En revision", "Solicitudes por validar"],
     datasets: [{
-      data: [parseInt(document.getElementById("solicitudes_aprobadas_manager").innerText), parseInt(document.getElementById("solicitudes_con_dificultades_manager").innerText), parseInt(document.getElementById("solicitudes_tardias_manager").innerText)],
+      data: [parseInt(document.getElementById("solicitudes_aprobadas_manager").innerText), parseInt(document.getElementById("solicitudes_en_revision_manager").innerText), parseInt(document.getElementById("solicitudes_por_validar_manager").innerText)],
       backgroundColor: ['#1cc88a', '#f6c23e', '#e74a3b'],
       hoverBackgroundColor: ['#188f64', '#c99f33', '#9d342a'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
