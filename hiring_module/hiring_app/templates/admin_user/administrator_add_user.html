@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Panel de control de Administrador
+{% endblock %}
+{% block aditionalMetadata %}
+{% endblock %}
+
+{% block content %}
+        <main id="main" class="expanded">            
+            <div id="userListContainer">
+                {% include 'admin_user/components/add_user_list.html' %} 
+            </div>
+            
+        </main>
+    </main>
+{% endblock %}

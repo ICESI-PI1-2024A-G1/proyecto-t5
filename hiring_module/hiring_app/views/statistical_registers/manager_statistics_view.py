@@ -10,8 +10,8 @@ class ManagerStatisticsView(View):
 
     @method_decorator(leader_or_admin_redirect_to_manager_statistics)
     def dispatch(self, request, *args, **kwargs):
-        # Obtener las métricas necesarias
+        # Get the required metrics
         metrics = get_metrics(request.user)
 
-        # Pasar las métricas como contexto a la plantilla
+        # Pass metrics as context to template
         return render(request, self.template_name, metrics)

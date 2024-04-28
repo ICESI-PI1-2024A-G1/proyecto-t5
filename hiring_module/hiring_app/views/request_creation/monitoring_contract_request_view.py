@@ -12,11 +12,15 @@ class MonitoringContractRequestView(CreateView):
     success_url = reverse_lazy('hiring_app:monitoring') 
 
     def form_valid(self, form):
-         # Assign created_by and estimated_completion_date fields
+        # Assign created_by, estimated_completion_date and responsibles fields
         current_user = self.request.user
         estimated_completion_date = datetime.now() + timedelta(days=15)
+        leader = utilities.findLeaderToAssign()
+        manager = utilities.findManagerToAssign()
         form.instance.estimated_completion_date = estimated_completion_date
         form.instance.created_by = current_user
+        form.instance.leader_assigned_to = leader
+        form.instance.manager_assigned_to = manager
         
         monitoring_contract_request = form.save(commit=False)
         monitoring_contract_request.create_snapshot()

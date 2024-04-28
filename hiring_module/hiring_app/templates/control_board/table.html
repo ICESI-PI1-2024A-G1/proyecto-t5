@@ -1,13 +1,9 @@
-    <script>
-        function redirectToInfoPage(id) {
-            // Construir la URL con el ID proporcionado
-            var url = 'http://127.0.0.1:8000/hiring_app/info/' + id + '/';
-            // Redireccionar a la URL
-            window.location.href = url;
-        }
-    </script>
-
-
+<script>
+    function redirectToInfoPage(id) {
+      window.location.href = "{% url 'hiring_app:info' idContract='PLACEHOLDER' %}".replace('PLACEHOLDER', id);
+    }
+</script>
+  
 <div class="container-fluid">
 
     <!-- Page Heading -->
@@ -34,13 +30,13 @@
                     <tbody>
                         {% for request in requests %}
                             <tr>
-                                <td href="#" onclick="redirectToInfoPage('{{ request.id }}')">{{ request.id }}</td>
-                                <td href="#" onclick="redirectToInfoPage('{{ request.id }}')">{{ request.created_by.first_name }} {{ request.created_by.last_name }}</td>
-                                <td>{% include 'request_hiring/components/assign_leader.html' with leaders=leaders contract_request=request form_id_prefix='change_leader_form_' %}</td>
-                                <td>{% include 'request_hiring/components/assign_manager.html' with managers=managers contract_request=request form_id_prefix='change_manager_form_' %}</td>
-                                <td href="#" onclick="redirectToInfoPage('{{ request.id }}')">{{ request.state }}</td>
-                                <td href="#" onclick="redirectToInfoPage('{{ request.id }}')">{{ request.contrato }}</td>
-                                <td href="#" onclick="redirectToInfoPage('{{ request.id }}')">{{ request.start_date|date:"d-m-Y" }}</td>
+                                <td style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{ request.id }}</td>
+                                <td style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{ request.created_by.first_name }} {{ request.created_by.last_name }}</td>
+                                <td style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{% include 'request_hiring/components/assign_leader.html' with leaders=leaders contract_request=request form_id_prefix='change_leader_form_' %}</td>
+                                <td style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{% include 'request_hiring/components/assign_manager.html' with managers=managers contract_request=request form_id_prefix='change_manager_form_' %}</td>
+                                <td style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{ request.state }}</td>
+                                <td style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{ request.contrato }}</td>
+                                <td style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{ request.start_date|date:"d-m-Y" }}</td>
                             </tr>
                         {% endfor %}
                     </tbody>
