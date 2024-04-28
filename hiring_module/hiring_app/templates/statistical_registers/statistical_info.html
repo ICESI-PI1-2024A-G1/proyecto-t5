@@ -7,9 +7,12 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                            Mejor gestor</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">TBD</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">Efectividad: <strong> TBD % </strong></div>
+                            Calidad de nuestros gestores
+                        </div>
+                        {% for item in quality %}
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{item.0}}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">Efectividad: <strong> {{item.1}} % </strong></div>
+                        {% endfor %}
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -21,31 +24,7 @@
 
 
     <!-- Pie Chart -->
-    <div class="col-xl-4 col-lg-5">
-        <div class="card shadow mb-4">
-            <div class="card-body">
-                <div class="chart-pie pt-4 pb-2">
-                    <p style="display: none;" id="solicitudes_aprobadas_manager">{{ approved_requests }}</p>
-                    <p style="display: none;" id="solicitudes_en_revision_manager">{{ review_requests }}</p>
-                    <p style="display: none;" id="solicitudes_por_validar_manager">{{ for_validate_requests }}</p>
-                    <canvas id="manager_chart_pie"></canvas>
-                </div>
-                <div class="mt-4 text-center small">
-                    <span class="mr-2">
-                        <i class="fas fa-circle text-success"></i> Solicitudes Aprobadas
-                    </span>
-                    <span class="mr-2">
-                        <i class="fas fa-circle text-warning"></i> Solicitudes Solicitudes En revision
-                    </span>
-                    <br>
-                    <span class="mr-2">
-                        <i class="fas fa-circle text-danger"></i> Solicitudes por validar
-                    </span>
-
-                </div>
-            </div>
-        </div>
-    </div>
+    {% include 'statistical_registers/components/pie_chart_manager_quality.html' %}
 
 </div>
 
