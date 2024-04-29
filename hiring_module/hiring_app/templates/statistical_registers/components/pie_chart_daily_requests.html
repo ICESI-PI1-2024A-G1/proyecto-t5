@@ -1,0 +1,79 @@
+{% load static %}
+<div class="col-xl-5 col-lg-5">
+    <div class="card shadow mb-4">
+
+        <div class="card-body">
+            <div class="form-group">
+                <label for="date_select">Seleccionar dia:</label>
+                <input type="date" class="form-control" id="date_select">
+            </div>
+
+            <div class="chart-pie pt-4 pb-2">
+                <canvas id="daily_requests_pie_chart"></canvas>
+            </div>
+            <div class="mt-4 text-center small" id="solicitudes_info">
+
+
+                <span class="mr-2">
+                    <i class="fas fa-circle text-success"></i> Solicitudes CEX: <strong><span
+                            id="contratos_cex">0</span></strong>
+                </span>
+                <br>
+                <br>
+                <span class="mr-2">
+                    <i class="fas fa-circle text-warning"></i> Solicitudes Monitorias: <strong><span
+                            id="contratos_monitoria">0</span></strong>
+                </span>
+                <br>
+                <br>
+                <span class="mr-2">
+                    <i class="fas fa-circle text-gray-800"></i> Solicitudes Prestacion de Servicios: <strong><span
+                            id="contratos_pos">0</span></strong>
+                </span>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<p hidden id="daily_requests">{{ daily_requests }}</p>
+<script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+<script src="{% static 'js/statistics/daily_requests_pie_chart.js' %}"></script>
+
+<script>
+    createOrUpdateDailyRequestChart();
+</script>
+
+<script>
+
+    var dataSelect = document.getElementById('date_select');
+
+    dataSelect.addEventListener('change', function () {
+        var selectedValue = dataSelect.value.replace(/[\[\]']/g, '').split(',');
+
+        var daily_requests = document.getElementById('daily_requests').innerText;
+        daily_requests = eval(daily_requests);
+
+        var selected_data = null; // Initialize selected_data as null
+
+        for (let i = 0; i < daily_requests.length; i++) {
+            if (daily_requests[i][0] == selectedValue) {
+                selected_data = daily_requests[i];
+                break;
+            }
+        }
+
+        if (selected_data) {
+            document.getElementById('contratos_cex').innerText = selected_data[1];
+            document.getElementById('contratos_monitoria').innerText = selected_data[2];
+            document.getElementById('contratos_pos').innerText = selected_data[3];
+        } else {
+            document.getElementById('contratos_cex').innerText = 0;
+            document.getElementById('contratos_monitoria').innerText = 0;
+            document.getElementById('contratos_pos').innerText = 0;
+        }
+        createOrUpdateDailyRequestChart();
+    });
+
+</script>

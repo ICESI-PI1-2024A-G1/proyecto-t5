@@ -10,6 +10,12 @@
 
 </div>
 
+<div class="row">
+    {% include 'statistical_registers/components/monthly_requests.html' %}
+
+    <!-- Pie Chart -->
+    {% include 'statistical_registers/components/pie_chart_daily_requests.html' %}
+</div>
 
 <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
 
