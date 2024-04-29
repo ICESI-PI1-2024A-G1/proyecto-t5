@@ -8,6 +8,7 @@ from hiring_app.model.user_model import CustomUser
 from hiring_app.model.provision_of_services_request_model import ProvisionOfServicesContractRequest
 from hiring_app.model.cex_contract_request_model import CEXContractRequest
 from hiring_app.model.monitoring_contract_request_model import MonitoringContractRequest
+from hiring_app.model.course_schedule_model import CourseSchedule
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 
@@ -18,11 +19,13 @@ class RequestHiringView(View):
         managers = list(CustomUser.objects.filter(groups=groupManager))
         leaders = list(CustomUser.objects.filter(groups=groupLeader))
         contract_request = utilities.getContract(idContract)                 
-        typedContract = ("Contrato prestacion de servicios" if isinstance(contract_request, ProvisionOfServicesContractRequest)
+        typedContract = ("Contrato Prestación de Servicios" if isinstance(contract_request, ProvisionOfServicesContractRequest)
                         else "Contrato CEX" if isinstance(contract_request, CEXContractRequest) 
                         else "Contrato Monitoria" if isinstance(contract_request, MonitoringContractRequest) 
                         else "Error al obtener")
         snapshot_comment = contract_request.get_snapshots().filter(state=contract_request.state).first().comment
+        if(isinstance(contract_request, ProvisionOfServicesContractRequest)):
+            course_schedules = CourseSchedule.objects.filter(pos_contract_request_id=contract_request)
 
         days_difference = (contract_request.estimated_completion_date - timezone.now().date()).days if contract_request.estimated_completion_date else None
         return {
@@ -35,7 +38,8 @@ class RequestHiringView(View):
             'error_message': request.session.pop('error_message', None),
             'user': self.request.user,
             'actualgroup': str(self.request.user.groups.first()),
-            'snapshot_comment': snapshot_comment
+            'snapshot_comment': snapshot_comment,
+            'course_schedules': course_schedules if isinstance(contract_request, ProvisionOfServicesContractRequest) else None
             }
 
     def get(self, request, idContract):
