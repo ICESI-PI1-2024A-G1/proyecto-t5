@@ -32,6 +32,10 @@ class utilities:
                 Q(leader_cexcontractrequest_requests__state='pending') |
                 Q(leader_cexcontractrequest_requests__state='review') |
                 Q(leader_cexcontractrequest_requests__state='incomplete')
+            )) + Count('leader_provisionofservicescontractrequest_requests', filter=(
+                Q(leader_provisionofservicescontractrequest_requests__state='pending') |
+                Q(leader_provisionofservicescontractrequest_requests__state='review') |
+                Q(leader_provisionofservicescontractrequest_requests__state='incomplete')
             ))
         ).order_by('num_contracts', 'last_name')
         return leaders_with_least_contracts.first()
@@ -48,6 +52,10 @@ class utilities:
                 Q(manager_cexcontractrequest_requests__state='pending') |
                 Q(manager_cexcontractrequest_requests__state='review') |
                 Q(manager_cexcontractrequest_requests__state='incomplete')
+            )) + Count('manager_provisionofservicescontractrequest_requests', filter=(
+                Q(manager_provisionofservicescontractrequest_requests__state='pending') |
+                Q(manager_provisionofservicescontractrequest_requests__state='review') |
+                Q(manager_provisionofservicescontractrequest_requests__state='incomplete')
             ))
         ).order_by('num_contracts', 'last_name')
         return managers_with_least_contracts.first()
