@@ -2,6 +2,7 @@ from django.http import Http404, HttpResponse
 from django.views.generic import CreateView
 from hiring_app.forms import ProvisionOfServicesContractRequestForm
 from hiring_app.model import ProvisionOfServicesContractRequest
+from hiring_app.model import CourseSchedule
 from django.urls import reverse_lazy
 from datetime import datetime, timedelta
 from .utilities import utilities
@@ -20,9 +21,6 @@ class POSContractRequestView(CreateView):
         estimated_completion_date = datetime.now() + timedelta(days=30)
         leader = utilities.findLeaderToAssign()
         manager = utilities.findManagerToAssign()
-        print(form.instance)
-        if form.errors:
-            print(form.errors)
         form.instance.estimated_completion_date = estimated_completion_date
         form.instance.created_by = current_user
         form.instance.leader_assigned_to = leader
@@ -31,6 +29,17 @@ class POSContractRequestView(CreateView):
         pos_contract_request = form.save(commit=False)
         pos_contract_request.create_snapshot()
         pos_contract_request.save()
+        additional_fields = {}
+        for key, value in self.request.POST.items():
+            if key.startswith('additionalFields-'):
+                field_name = key.replace('additionalFields-', '')
+                field_name = field_name.split('-')[0]
+                additional_fields[field_name] = value
+                if(field_name == 'responsability'):
+                    additional_fields['pos_contract_request'] = pos_contract_request
+                    course_schedule = CourseSchedule.objects.create_schedule(**additional_fields)
+                    course_schedule.save()
+                    additional_fields = {}
         utilities.sendEmailSuccess(current_user)
         return super().form_valid(form)
     
@@ -42,7 +51,7 @@ class POSContractRequestView(CreateView):
 def download_rut_file(request, idContract, *args, **kwargs):
     # Get the rut and send it as a file
     model_instance = get_object_or_404(ProvisionOfServicesContractRequest, id=idContract)
-    if not request.user.has_perm('your_app.view_cexcontractrequest'):
+    if not request.user.has_perm('your_app.view_poscontractrequest'):
         raise PermissionDenied("You don't have permission to download this file.")
 
     if not model_instance.rut:

@@ -33,7 +33,7 @@ class utilities:
                 Q(leader_cexcontractrequest_requests__state='review') |
                 Q(leader_cexcontractrequest_requests__state='incomplete')
             ))
-        ).order_by('-num_contracts', 'last_name')
+        ).order_by('num_contracts', 'last_name')
         return leaders_with_least_contracts.first()
     
     def findManagerToAssign():
@@ -49,5 +49,5 @@ class utilities:
                 Q(manager_cexcontractrequest_requests__state='review') |
                 Q(manager_cexcontractrequest_requests__state='incomplete')
             ))
-        ).order_by('-num_contracts', 'last_name')
+        ).order_by('num_contracts', 'last_name')
         return managers_with_least_contracts.first()

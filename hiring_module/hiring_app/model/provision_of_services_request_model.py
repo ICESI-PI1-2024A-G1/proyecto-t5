@@ -1,6 +1,5 @@
 from django.db import models
 from .cex_contract_request_model import CEXContractRequest
-from django.core.exceptions import ValidationError
 
 class ProvisionOfServicesContractRequestManager(models.Manager):
     def create_contract_request(self, course_schedules, **extra_fields):
