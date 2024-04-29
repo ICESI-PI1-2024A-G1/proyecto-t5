@@ -31,5 +31,5 @@ urlpatterns = [
     path('request_creation/pos/', POSContractRequestView.as_view(), name='pos',),
     path('fields/', get_additional_fields, name='pos_fields',),
     path('download_rut/<str:idContract>/', download_rut_file, name='download_rut'),
-    path('statistics/', StatisticsView.as_view(), name='manager_statistics'),
+    path('statistics/', StatisticsView.as_view(), name='statistics'),
 ]

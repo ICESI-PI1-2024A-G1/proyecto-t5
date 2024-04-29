@@ -17,7 +17,7 @@
 
     <li class="nav-item active">
 
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{% url 'hiring_app:administrator_dashboard' %}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Panel de control</span>
         </a>
@@ -29,6 +29,10 @@
         </a>
         {% endif %}
 
+        <a class="nav-link" href="{% url 'hiring_app:statistics' %}">
+            <i class="fas fa-fw fa-file-contract"></i>
+            <span>Estadisticas</span>
+        </a>
     </li>
 
     <!-- Divider -->

@@ -51,10 +51,10 @@
 
 <script>
 
-    var dataSelect = document.getElementById('data_select');
+    var dailySelect = document.getElementById('data_select');
 
-    dataSelect.addEventListener('change', function () {
-        var selectedValue = dataSelect.value.replace(/[\[\]']/g, '').split(',');
+    dailySelect.addEventListener('change', function () {
+        var selectedValue = dailySelect.value.replace(/[\[\]']/g, '').split(',');
         
         document.getElementById('solicitudes_aprobadas_manager').innerText = selectedValue[1];
         document.getElementById('solicitudes_en_revision_manager').innerText = selectedValue[2];

@@ -8,10 +8,11 @@ from ..utilities import leader_or_admin_redirect_to_manager_statistics, get_metr
 class StatisticsView(View):
     template_name = 'statistical_registers/manager_statistics.html'
 
-    @method_decorator(leader_or_admin_redirect_to_manager_statistics)
+    #@method_decorator(leader_or_admin_redirect_to_manager_statistics)
     def dispatch(self, request, *args, **kwargs):
         # Get the required metrics
         metrics = get_metrics()
-
+        if self.request.user.groups.first().name == 'admin':
+            metrics['actualgroup'] = 'admin'
         # Pass metrics as context to template
         return render(request, self.template_name, metrics)
