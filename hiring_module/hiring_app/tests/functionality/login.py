@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
-from selenium import webdriver
+from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 
@@ -8,7 +8,7 @@ class LoginTest(StaticLiveServerTestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.selenium = webdriver.Chrome()  
+        cls.selenium = WebDriver()
         cls.selenium.implicitly_wait(10)  
 
     @classmethod
