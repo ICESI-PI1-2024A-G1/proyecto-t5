@@ -6,6 +6,7 @@ from django.contrib.auth.models import Group
 
 from hiring_app.model.cex_contract_request_model import CEXContractRequest
 from hiring_app.model.monitoring_contract_request_model import MonitoringContractRequest
+from hiring_app.model.provision_of_services_request_model import ProvisionOfServicesContractRequest
 
 # Decorator to redirect users to the correct dashboard based on their role
 def role_redirect(view_func):
@@ -74,26 +75,30 @@ def get_requests(user):
     groups = [group.name for group in user.groups.all()]
     requests_CEX = CEXContractRequest.objects.none()
     requests_monitoring = MonitoringContractRequest.objects.none()
+    requests_pos = ProvisionOfServicesContractRequest.objects.none()
 
     if 'admin' in groups:
         requests_CEX = CEXContractRequest.objects.all()
         requests_monitoring = MonitoringContractRequest.objects.all()
+        requests_pos = ProvisionOfServicesContractRequest.objects.all()
     elif 'leader' in groups:
         requests_CEX = CEXContractRequest.objects.filter(leader_assigned_to=user.id)
         requests_monitoring = MonitoringContractRequest.objects.filter(leader_assigned_to=user.id)
+        requests_pos = ProvisionOfServicesContractRequest.objects.filter(leader_assigned_to=user.id)
     elif 'manager' in groups:
         requests_CEX = CEXContractRequest.objects.filter(manager_assigned_to=user.id)
         requests_monitoring = MonitoringContractRequest.objects.filter(manager_assigned_to=user.id)
+        requests_pos = ProvisionOfServicesContractRequest.objects.filter(manager_assigned_to=user.id)
           
     groupManager = Group.objects.get(name='manager')
     groupLeader = Group.objects.get(name='leader')       
     managers = list(CustomUser.objects.filter(groups=groupManager))
     leaders = list(CustomUser.objects.filter(groups=groupLeader))
     return {
-        'requests': list(requests_CEX) + list(requests_monitoring),
-        'filled_requests': list(requests_CEX.filter(state='filed')) + list(requests_monitoring.filter(state='filed')),
-        'reviewed_requests': list(requests_CEX.filter(state='review')) + list(requests_monitoring.filter(state='review')),
-        'for_validate_requests':  list(requests_CEX.filter(state__in=['pending', 'incomplete'])) + list(requests_monitoring.filter(state__in=['pending', 'incomplete'])),
+        'requests': list(requests_CEX) + list(requests_monitoring) + list(requests_pos),
+        'filled_requests': list(requests_CEX.filter(state='filed')) + list(requests_monitoring.filter(state='filed')) + list(requests_pos.filter(state='filed')),
+        'reviewed_requests': list(requests_CEX.filter(state='review')) + list(requests_monitoring.filter(state='review')) + list(requests_pos.filter(state='review')),
+        'for_validate_requests':  list(requests_CEX.filter(state__in=['pending', 'incomplete'])) + list(requests_monitoring.filter(state__in=['pending', 'incomplete'])) + list(requests_pos.filter(state__in=['pending', 'incomplete'])),
         'leaders': leaders,
         'managers': managers,
     }
