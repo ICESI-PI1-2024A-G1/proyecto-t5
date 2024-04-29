@@ -2,4 +2,3 @@ from .login_form import LoginForm
 from .cex_contract_request_form import CEXContractRequestForm
 from .monitoring_contract_request_form import MonitoringContractRequestForm
 from .pos_contract_request_form import ProvisionOfServicesContractRequestForm
-from .course_schedule_form import CourseScheduleForm

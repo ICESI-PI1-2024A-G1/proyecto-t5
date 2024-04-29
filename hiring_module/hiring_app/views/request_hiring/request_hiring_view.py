@@ -5,6 +5,7 @@ from hiring_app.views.request_hiring.utilities import utilities
 from hiring_app.model.contract_request_model import state_choices
 from django.contrib.auth.models import Group
 from hiring_app.model.user_model import CustomUser
+from hiring_app.model.provision_of_services_request_model import ProvisionOfServicesContractRequest
 from hiring_app.model.cex_contract_request_model import CEXContractRequest
 from hiring_app.model.monitoring_contract_request_model import MonitoringContractRequest
 from django.urls import reverse_lazy
@@ -16,8 +17,9 @@ class RequestHiringView(View):
         groupLeader = Group.objects.get(name='leader')        
         managers = list(CustomUser.objects.filter(groups=groupManager))
         leaders = list(CustomUser.objects.filter(groups=groupLeader))
-        contract_request = utilities.getContract(idContract)        
-        typedContract = ("Contrato CEX" if isinstance(contract_request, CEXContractRequest) 
+        contract_request = utilities.getContract(idContract)                 
+        typedContract = ("Contrato prestacion de servicios" if isinstance(contract_request, ProvisionOfServicesContractRequest)
+                        else "Contrato CEX" if isinstance(contract_request, CEXContractRequest) 
                         else "Contrato Monitoria" if isinstance(contract_request, MonitoringContractRequest) 
                         else "Error al obtener")
         snapshot_comment = contract_request.get_snapshots().filter(state=contract_request.state).first().comment
