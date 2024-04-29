@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .model import CustomUser, ContractRequestSnapshot, CEXContractRequest, MonitoringContractRequest
+from .model import CustomUser, ContractRequestSnapshot, CEXContractRequest, MonitoringContractRequest, ProvisionOfServicesContractRequest, CourseSchedule
 
 class CustomUserAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
@@ -12,3 +12,5 @@ admin.site.register(ContractRequestSnapshot)
 admin.site.register(CEXContractRequest)
 admin.site.register(MonitoringContractRequest)
 admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(ProvisionOfServicesContractRequest)
+admin.site.register(CourseSchedule)

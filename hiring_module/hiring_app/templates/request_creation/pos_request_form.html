@@ -1,0 +1,277 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Solicitudes de contratos CEX
+{% endblock %}
+
+{% block content %}
+
+
+<main id="main" class="expanded">
+    <div style="margin-top: 64px; margin-left: 20vw; margin-right: 40vw;">
+
+        <!-- Visualize errors -->
+        {% if form.errors %}
+        <div style="background-color: #fde9e9; border: 1px solid #fca5a5; color: #c53030; padding: 1rem; border-radius: 0.375rem; position: relative;"
+            role="alert">
+            <ul style="list-style-type: disc; margin-top: 0.5rem;">
+                {% for field, error in form.errors.items %}
+                <li>{{ field }}: {{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <h1 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;">Solicitudes de contratos de prestacion de servicio</h1>
+
+        <form method="post" enctype="multipart/form-data" action="{% url 'hiring_app:pos' %}"
+            style="margin-bottom: 2rem;">
+            {% csrf_token %}
+
+            <!-- Solicitant name -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_solicitant_name" style="display: block; font-weight: 600;">Solicitant name:</label>
+                <input type="text" id="id_solicitant_name" name="solicitant_name" required
+                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- Solicitant faculty -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_solicitant_faculty" style="display: block; font-weight: 600;">Solicitant faculty:</label>
+                <input type="text" id="id_solicitant_faculty" name="solicitant_faculty" required
+                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- Hiree full name -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_hiree_full_name" style="display: block; font-weight: 600;">Hiree full name:</label>
+                <input type="text" id="id_hiree_full_name" name="hiree_full_name" required
+                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- Hiree ID -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_hiree_id" style="display: block; font-weight: 600;">Hiree ID:</label>
+                <input type="number" id="id_hiree_id" name="hiree_id" required
+                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- Hiree cellphone -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_hiree_cellphone" style="display: block; font-weight: 600;">Hiree cellphone:</label>
+                <input type="text" id="id_hiree_cellphone" name="hiree_cellphone" required
+                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- Hiree email -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_hiree_email" style="display: block; font-weight: 600;">Hiree email:</label>
+                <input type="email" id="id_hiree_email" name="hiree_email" required
+                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- Cenco -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_cenco" style="display: block; font-weight: 600;">Cenco:</label>
+                <input type="text" id="id_cenco" name="cenco" required
+                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- Request motive -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_request_motive" style="display: block; font-weight: 600;">Request motive:</label>
+                <textarea id="id_request_motive" name="request_motive" required
+                    style="min-height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;"></textarea>
+            </div>
+
+            <!-- Banking entity -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_banking_entity" style="display: block; font-weight: 600;">Banking entity:</label>
+                <input type="text" id="id_banking_entity" name="banking_entity" required
+                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- Bank account type -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_bank_account_type" style="display: block; font-weight: 600;">Bank account type:</label>
+                <select name="bank_account_type" id="id_bank_account_type" required
+                    style="width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+                    <option value="" disabled selected>Select</option>
+                    {% for choice in form.bank_account_type.field.choices %}
+                    <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Bank account number -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_bank_account_number" style="display: block; font-weight: 600;">Bank account
+                    number:</label>
+                <input type="text" id="id_bank_account_number" name="bank_account_number" required
+                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- EPS -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_eps" style="display: block; font-weight: 600;">EPS:</label>
+                <input type="text" id="id_eps" name="eps" required
+                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- Pension fund -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_pension_fund" style="display: block; font-weight: 600;">Pension fund:</label>
+                <input type="text" id="id_pension_fund" name="pension_fund" required
+                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- ARL -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_arl" style="display: block; font-weight: 600;">ARL:</label>
+                <input type="text" id="id_arl" name="arl" required
+                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- Contract value -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_contract_value" style="display: block; font-weight: 600;">Contract value:</label>
+                <input type="number" id="id_contract_value" name="contract_value" required
+                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- Charge account -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_charge_account" style="display: block; font-weight: 600;">Charge account:</label>
+                <textarea id="id_charge_account" name="charge_account" required
+                    style="min-height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;"></textarea>
+            </div>
+
+            <!-- Rut -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_rut" style="display: block; font-weight: 600;">Rut:</label>
+                <input type="file" id="id_rut" name="rut"
+                    style="width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- Course name -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_course_name" style="display: block; font-weight: 600;">Course name:</label>
+                <input type="text" id="id_course_name" name="course_name" required
+                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            
+            <!-- Period -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_period" style="display: block; font-weight: 600;">Period:</label>
+                <input type="text" id="id_period" name="period" required
+                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            
+            <!-- Group -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_group" style="display: block; font-weight: 600;">Group:</label>
+                <input type="text" id="id_group" name="group" required
+                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- Intensity -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_intensity" style="display: block; font-weight: 600;">Intensity:</label>
+                <input type="number" id="id_intensity" name="intensity" required
+                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- Total hours -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_total_hours" style="display: block; font-weight: 600;">Total hours:</label>
+                <input type="number" id="id_total_hours" name="total_hours" required
+                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- Course Code -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_course_code" style="display: block; font-weight: 600;">Course code:</label>
+                <input type="text" id="id_course_code" name="course_code" required
+                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- Students quantity -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_students_quantity" style="display: block; font-weight: 600;">Students quantity:</label>
+                <input type="number" id="id_students_quantity" name="students_quantity" required
+                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- Additional hours -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_additional_hours" style="display: block; font-weight: 600;">Additional hours:</label>
+                <input type="number" id="id_additional_hours" name="additional_hours" required
+                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <h4>Course schedules:</h4>
+
+            <!-- Date -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_date" style="display: block; font-weight: 600;">Date:</label>
+                <input type="date" id="id_date" name="date" required
+                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- Start time -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_start_time" style="display: block; font-weight: 600;">Start time:</label>
+                <input type="time" id="id_start_time" name="start_time" required
+                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- End time -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_end_time" style="display: block; font-weight: 600;">End time:</label>
+                <input type="time" id="id_end_time" name="end_time" required
+                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- Room -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_room" style="display: block; font-weight: 600;">Room:</label>
+                <input type="text" id="id_room" name="room" required
+                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- Responsability -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_responsability" style="display: block; font-weight: 600;">Responsability:</label>
+                <input type="text" id="id_responsability" name="responsability" required
+                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+            
+            <!-- Container for dynamically added fields -->
+            <div id="additionalFields"></div>
+
+            <!-- Add course schedule -->
+            <button type="button" id="add-fields-btn">Add Additional Fields</button>
+
+            <!-- Submit -->
+            <button type="submit"
+                style="background-color: #1e40af; color: #fff; font-weight: 600; padding: 0.5rem 1rem; border: none; border-radius: 0.375rem; cursor: pointer; transition: background-color 0.3s ease-in-out;">Enviar</button>
+        </form>
+    </div>
+</main>
+<script>
+    document.getElementById('add-fields-btn').addEventListener('click', function() {
+        // Fetch additional fields HTML via AJAX
+        fetch('{% url "hiring_app:pos_fields" %}')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('additionalFields').insertAdjacentHTML('beforeend', html);
+            })
+            .catch(error => console.error('Error fetching additional fields:', error));
+    });
+    </script>
+
+
+{% endblock %}
