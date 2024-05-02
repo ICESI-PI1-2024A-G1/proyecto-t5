@@ -1,18 +1,19 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} <!-- Extends from a base template -->
 
-{% block title %}
+{% load static %} <!-- Loads static files -->
+
+{% block title %} <!-- Defines the title of the page -->
 Solicitudes de contratos CEX
 {% endblock %}
 
-{% block content %}
+{% block content %} <!-- Defines the content block -->
 
 <div id="header">
-    {% include 'components/header.html' %}
+    {% include 'components/header.html' %} <!-- Includes the header component -->
 </div>
 
 <div id="sidebar">
-    {% include 'components/LeftSideMenu.html' %}
+    {% include 'components/LeftSideMenu.html' %} <!-- Includes the sidebar component -->
 </div>
 
 <main id="main" class="expanded">
@@ -25,7 +26,7 @@ Solicitudes de contratos CEX
             <strong style="font-weight: 600;">Error:</strong>
             <ul style="list-style-type: disc; margin-top: 0.5rem;">
                 {% for field, error in form.errors.items %}
-                <li>{{ field }}: {{ error }}</li>
+                <li>{{ field }}: {{ error }}</li> <!-- Displays form errors -->
                 {% endfor %}
             </ul>
         </div>
@@ -33,7 +34,8 @@ Solicitudes de contratos CEX
 
         <h1 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;">Solicitudes de contratos CEX</h1>
 
-        <form method="post" enctype="multipart/form-data" action="{% url 'hiring_app:cex' %}" style="margin-bottom: 2rem;">
+        <form method="post" enctype="multipart/form-data" action="{% url 'hiring_app:cex' %}"
+            style="margin-bottom: 2rem;">
             {% csrf_token %}
 
             <!-- Solicitant name -->
@@ -113,7 +115,8 @@ Solicitudes de contratos CEX
 
             <!-- Bank account number -->
             <div style="margin-bottom: 2rem;">
-                <label for="id_bank_account_number" style="display: block; font-weight: 600;">Bank account number:</label>
+                <label for="id_bank_account_number" style="display: block; font-weight: 600;">Bank account
+                    number:</label>
                 <input type="text" id="id_bank_account_number" name="bank_account_number"
                     style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
             </div>

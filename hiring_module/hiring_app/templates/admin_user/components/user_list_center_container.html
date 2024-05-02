@@ -1,5 +1,8 @@
 <div class="row justify-content-center">
+    <!-- Including user element container for Administradores with count=1 -->
     {% include 'admin_user/components/user_element_container.html' with count=1 status='Administradores' %}
+    <!-- Including user element container for Lideres with count=2 -->
     {% include 'admin_user/components/user_element_container.html' with count=2 status='Lideres' %}
+    <!-- Including user element container for Gestores with count=2 -->
     {% include 'admin_user/components/user_element_container.html' with count=2 status='Gestores' %}
 </div>

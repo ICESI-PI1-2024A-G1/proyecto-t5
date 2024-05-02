@@ -1,22 +1,26 @@
 <script>
+    // JavaScript function to redirect to the info page with the contract ID
     function redirectToInfoPage(id) {
-      window.location.href = "{% url 'hiring_app:info' idContract='PLACEHOLDER' %}".replace('PLACEHOLDER', id);
+        window.location.href = "{% url 'hiring_app:info' idContract='PLACEHOLDER' %}".replace('PLACEHOLDER', id);
     }
 </script>
-  
+
 <div class="container-fluid">
 
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Solicitudes de contratación</h1>
+
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
+            <!-- Title for the card -->
             <h6 class="m-0 font-weight-bold text-primary">Listado de solicitudes de contratación</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
+                        <!-- Table header row -->
                         <tr>
                             <th>ID</th>
                             <th>Solicitante</th>
@@ -28,16 +32,25 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <!-- Loop through each contract request -->
                         {% for request in requests %}
-                            <tr>
-                                <td style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{ request.id }}</td>
-                                <td style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{ request.created_by.first_name }} {{ request.created_by.last_name }}</td>
-                                <td style="cursor: pointer;">{% include 'request_hiring/components/assign_leader.html' with leaders=leaders contract_request=request form_id_prefix='change_leader_form_' %}</td>
-                                <td style="cursor: pointer;">{% include 'request_hiring/components/assign_manager.html' with managers=managers contract_request=request form_id_prefix='change_manager_form_' %}</td>
-                                <td style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{ request.state }}</td>
-                                <td style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{ request.contrato }}</td>
-                                <td style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{ request.start_date|date:"d-m-Y" }}</td>
-                            </tr>
+                        <tr>
+                            <!-- Clickable cells to redirect to the info page with contract ID -->
+                            <td style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{ request.id
+                                }}</td>
+                            <td style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{
+                                request.created_by.first_name }} {{ request.created_by.last_name }}</td>
+                            <td style="cursor: pointer;">{% include 'request_hiring/components/assign_leader.html' with
+                                leaders=leaders contract_request=request form_id_prefix='change_leader_form_' %}</td>
+                            <td style="cursor: pointer;">{% include 'request_hiring/components/assign_manager.html' with
+                                managers=managers contract_request=request form_id_prefix='change_manager_form_' %}</td>
+                            <td style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{
+                                request.state }}</td>
+                            <td style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{
+                                request.contrato }}</td>
+                            <td style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{
+                                request.start_date|date:"d-m-Y" }}</td>
+                        </tr>
                         {% endfor %}
                     </tbody>
                 </table>
