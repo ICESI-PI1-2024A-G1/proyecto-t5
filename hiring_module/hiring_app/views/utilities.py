@@ -16,6 +16,8 @@ def leader_or_admin_redirect_to_manager_statistics(view_func):
 
     # Description: Wrapper function to redirect leaders and administrators to the manager statistics page.
     # Input: request (HttpRequest): The request object.
+    #        *args: Variable length argument list.
+    #        **kwargs: Arbitrary keyword arguments.
     # Output: The original view function or a redirect to the manager statistics page.
     @wraps(view_func)
     def wrapper(request, *args, **kwargs):
