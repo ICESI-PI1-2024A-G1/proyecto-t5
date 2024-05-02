@@ -1,5 +1,7 @@
 from django.contrib.auth.views import LogoutView
 
+# Description: View for handling user logout.
+# Input: LogoutView
+# Output: None
 class LogoutView(LogoutView):
-    # Redirect to login page after logout
     next_page = 'login'

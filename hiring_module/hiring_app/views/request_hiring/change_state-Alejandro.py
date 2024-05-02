@@ -7,7 +7,14 @@ from hiring_app.model.monitoring_contract_request_model import MonitoringContrac
 from hiring_app.model.contract_request_snapshot_model import ContractRequestSnapshot
 from hiring_app.model.user_model import CustomUser
 
+# Description: View for changing the state of a contract request.
+# Input: HTTP POST request, idContract (int): The ID of the contract request.
+# Output: Redirects to the contract request information page.
 class ChangeStateView(View):
+
+    # Description: Handles the POST request for changing the state of a contract request.
+    # Input: HTTP POST request, idContract (int): The ID of the contract request.
+    # Output: Redirects to the contract request information page.
     def post(self, request, idContract):
         contract_request = utilities.getContract(idContract)
         new_state = request.POST.get('state')
@@ -47,10 +54,11 @@ class ChangeStateView(View):
                 
         return redirect('hiring_app:info', idContract=idContract)
 
-
+    # Description: Sends an email to notify the user that their request has been cancelled.
+    # Input: contract_request (MonitoringContractRequest): The contract request object, reason (str): The reason for cancellation.
+    # Output: None
     def sendEmailRequest(self, contract_request, reason):
-        content = f'Estimado/a {contract_request.created_by.first_name},\n\nLamentamos informarle que su solicitud ha sido cancelada. El motivo proporcionado es: {
-            reason}. \n \n Por favor, no dude en ponerse en contacto con nosotros si tiene alguna pregunta.\n\nAtentamente,\nTu aplicación'
+        content = f'Estimado/a {contract_request.created_by.first_name},\n\nLamentamos informarle que su solicitud ha sido cancelada. El motivo proporcionado es: {reason}. \n \n Por favor, no dude en ponerse en contacto con nosotros si tiene alguna pregunta.\n\nAtentamente,\nTu aplicación'
 
         message = EmailMultiAlternatives('Solicitud cancelada',
                                          content,
@@ -60,6 +68,9 @@ class ChangeStateView(View):
         message.attach_alternative(content, 'text/html')
         message.send()
 
+    # Description: Sends an email to notify the user about missing documents in their request.
+    # Input: contract_request (MonitoringContractRequest): The contract request object, reason (str): The reason for missing documents.
+    # Output: None
     def sendEmailFile(self, contract_request, reason):
         content = f'Estimado/a {contract_request.created_by.first_name},\n\nLe informamos que hemos identificado documentos faltantes en su solicitud. El motivo proporcionado es: {reason}.\n\nPor favor, proporcione la documentación faltante lo antes posible para continuar con el proceso.\n\nSi tiene alguna pregunta o necesita ayuda, no dude en ponerse en contacto con nosotros.\n\nAtentamente,\nTu aplicación'
 
@@ -71,6 +82,9 @@ class ChangeStateView(View):
         message.attach_alternative(content, 'text/html')
         message.send()
 
+    # Description: Sends an email to notify the user that their request has been successfully completed.
+    # Input: contract_request (MonitoringContractRequest): The contract request object, reason (str): Optional reason for completion.
+    # Output: None
     def sendEmailSuccess(self, contract_request, reason=""):
         content = f'Estimado/a {contract_request.created_by.first_name},\n\nNos complace informarle que su solicitud ha sido completada exitosamente.\n\nPor favor, no dude en ponerse en contacto con nosotros si tiene alguna pregunta o necesita asistencia adicional.\n\nAtentamente,\nTu aplicación'
 

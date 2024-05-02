@@ -6,10 +6,15 @@ from hiring_app.model.cex_contract_request_model import CEXContractRequest
 from hiring_app.model.monitoring_contract_request_model import MonitoringContractRequest
 from .utilities import role_redirect, get_requests
 
+# Description: View for the administrator dashboard.
+# Input: View
+# Output: Renders the administrator dashboard template with context data.
 class AdministratorDashboardView(View):
     template_name = 'control_board/administrator_dashboard.html'
 
-    # Redirect to correct dashboard based on user role
+    # Description: Dispatch method to redirect users based on their role.
+    # Input: self, request, *args, **kwargs
+    # Output: Renders the administrator dashboard template with context data.
     @method_decorator(role_redirect)
     def dispatch(self, request, *args, **kwargs):
         context = {

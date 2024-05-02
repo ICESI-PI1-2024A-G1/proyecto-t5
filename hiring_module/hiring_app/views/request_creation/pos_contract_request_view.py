@@ -9,14 +9,19 @@ from .utilities import utilities
 from django.shortcuts import get_object_or_404
 from django.core.exceptions import PermissionDenied
 
+# Description: View for creating Provision of Services contract requests.
+# Input: Inherits from CreateView.
+# Output: Renders Provision of Services contract request form and handles form submission.
 class POSContractRequestView(CreateView):
     model = ProvisionOfServicesContractRequest
     form_class = ProvisionOfServicesContractRequestForm
     success_url = reverse_lazy('hiring_app:pos')
     template_name = 'request_creation/pos_request_form.html'
 
+    # Description: Handles form submission when form data is valid.
+    # Input: form (ProvisionOfServicesContractRequestForm): The validated form instance.
+    # Output: Redirects to success URL after saving the form data.
     def form_valid(self, form):
-        # Assign created_by, estimated_completion_date and responsibles fields
         current_user = self.request.user
         estimated_completion_date = datetime.now() + timedelta(days=30)
         leader = utilities.findLeaderToAssign()
@@ -43,13 +48,18 @@ class POSContractRequestView(CreateView):
         utilities.sendEmailSuccess(current_user)
         return super().form_valid(form)
     
+    # Description: Handles form submission when form data is invalid.
+    # Input: form (ProvisionOfServicesContractRequestForm): The invalid form instance.
+    # Output: Renders the form again with validation errors.
     def form_invalid(self, form):
         return self.render_to_response(self.get_context_data(form=form))
     
 
     
+# Description: Downloads the RUT file associated with a Provision of Services contract request.
+# Input: idContract (int): The ID of the Provision of Services contract request.
+# Output: HttpResponse: Response containing the RUT file.
 def download_rut_file(request, idContract, *args, **kwargs):
-    # Get the rut and send it as a file
     model_instance = get_object_or_404(ProvisionOfServicesContractRequest, id=idContract)
     if not request.user.has_perm('your_app.view_poscontractrequest'):
         raise PermissionDenied("You don't have permission to download this file.")
