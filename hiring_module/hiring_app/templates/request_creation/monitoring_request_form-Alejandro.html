@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Solicitudes de contratos de Monitoría
+{% endblock %}
+
+{% block content %}
+
+<div id="header">
+    {% include 'components/header.html' %}
+</div>
+
+<div id="sidebar">
+    {% include 'components/LeftSideMenu.html' %}
+</div>
+
+<main id="main" class="expanded">
+    <div style="margin-top: 64px; margin-left: 20vw; margin-right: 40vw;">
+
+        <!-- visualize errors -->
+
+        {% if form.errors %}
+        <div style="background-color: #fde9e9; border: 1px solid #fca5a5; color: #c53030; padding: 1rem; border-radius: 0.375rem; position: relative;"
+            role="alert">
+            <strong style="font-weight: 600;">Error:</strong>
+            <ul style="list-style-type: disc; margin-top: 0.5rem;">
+                {% for field, error in form.errors.items %}
+                    <li>{{ field }}: {{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <h1 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;">Solicitudes de contratos de Monitoría</h1>
+
+        <form method="post" enctype="multipart/form-data" action="{% url 'hiring_app:monitoring' %}">
+            {% csrf_token %}
+
+            <!-- Cenco -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_cenco" style="display: block; font-weight: 600;">Cenco:</label>
+                <input type="text" name="cenco" maxlength="128" required id="id_cenco" style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- Cenco manager -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_cenco_manager" style="display: block; font-weight: 600;">Cenco manager:</label>
+                <input type="text" name="cenco_manager" maxlength="256" required id="id_cenco_manager"style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- Monitoring type -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_monitoring_type" style="display: block; font-weight: 600;">Monitoring type:</label>
+                <select name="monitoring_type" required id="id_monitoring_type" style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+                    <option value="" disabled selected>Seleccionar</option>
+                    {% for choice in form.monitoring_type.field.choices %}
+                    <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Student code  -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_student_code" style="display: block; font-weight: 600;">Student code:</label>
+                <input type="text" name="student_code" maxlength="16" required id="id_student_code" style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- Student full name -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_student_full_name" style="display: block; font-weight: 600;">Student full name:</label>
+                <input type="text" name="student_full_name" maxlength="256" required id="id_student_full_name" style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- Student ID -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_student_id" style="display: block; font-weight: 600;">Student id:</label>
+                <input type="text" name="student_id" maxlength="16" required id="id_student_id" style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- Student email -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_student_email" style="display: block; font-weight: 600;">Student email:</label>
+                <input type="email" name="student_email" maxlength="254" required id="id_student_email" style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- Student cellphone -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_student_cellphone" style="display: block; font-weight: 600;">Student cellphone:</label>
+                <input type="text" name="student_cellphone" maxlength="16" required id="id_student_cellphone" style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- Daviplata -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_daviplata" style="display: block; font-weight: 600;">Daviplata:</label>
+                <input type="text" name="daviplata" maxlength="32" required id="id_daviplata" style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- Course or proyect -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_course_or_proyect" style="display: block; font-weight: 600;">Course or proyect:</label>
+                <input type="text" name="course_or_proyect" maxlength="256" required id="id_course_or_proyect" style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- Monitoring description -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_monitoring_description" style="display: block; font-weight: 600;">Monitoring description:</label>
+                <textarea name="monitoring_description" id="id_monitoring_description" style="min-height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;"></textarea>
+            </div>
+
+            <!-- Weekly hours -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_weekly_hours" style="display: block; font-weight: 600;">Weekly hours:</label>
+                <input type="number" name="weekly_hours" step="0.01" required id="id_weekly_hours" style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- Total value to pay -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_total_value_to_pay" style="display: block; font-weight: 600;">Total value to pay:</label>
+                <input type="number" name="total_value_to_pay" step="0.01" required id="id_total_value_to_pay" style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            </div>
+
+            <!-- Is unique payment -->
+            <div style="margin-bottom: 2rem;">
+                <label for="id_is_unique_payment" style="display: block; font-weight: 600;">Is unique payment:</label>
+                <input type="checkbox" name="is_unique_payment" id="id_is_unique_payment">
+            </div>
+            
+            <!-- Submit -->
+            <button type="submit"
+                style="background-color: #1e40af; color: #fff; font-weight: 600; padding: 0.5rem 1rem; border: none; border-radius: 0.375rem; cursor: pointer; transition: background-color 0.3s ease-in-out;">Enviar</button>
+
+        </form>
+    </div>
+</main>
+
+<script src="{% static 'js/side_bar.js' %}"></script>
+
+{% endblock %}

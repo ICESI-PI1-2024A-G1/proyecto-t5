@@ -1,27 +1,34 @@
+# Import necessary modules from Django
 from django.db import models
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
+# Import local modules
 from .user_model import CustomUser
 from .contract_request_model import ContractRequest
 from hiring_module.settings import MEDIA_ROOT
 import os
 
+# Define a manager for CEXContractRequest objects
 class CEXContractRequestManager(models.Manager):
     def create_contract_request(self, **extra_fields):
         # Create a CEX contract request
         cex_contract_request = self.create(
             **extra_fields
         )
+        # Create a snapshot of the contract request
         cex_contract_request.create_snapshot()
+        # Save the contract request to the database
         cex_contract_request.save(using=self._db)
         return cex_contract_request
     
+# Define the CEXContractRequest model, which inherits from ContractRequest
 class CEXContractRequest(ContractRequest):
-    # CEX Contract Request model
+    # Define choices for bank account type
     BANK_ACCOUNT_CHOICES = [
         ('checking', 'Checking'),
         ('savings', 'Savings')
     ]
+    # Define fields for the CEXContractRequest model
     hiree_full_name = models.CharField(max_length=256)
     hiree_id = models.IntegerField()
     hiree_cellphone = models.CharField(max_length=16)
@@ -38,18 +45,22 @@ class CEXContractRequest(ContractRequest):
     charge_account = models.TextField(null=True)
     rut = models.FileField(upload_to='rut/', max_length=500)
 
+    # Assign the custom manager to the objects attribute
     objects = CEXContractRequestManager()
     
     def clean(self):
+        # Call the clean method of the superclass
         super().clean()
-        # Validate email field
+        # Validate the email field
         try:
             validate_email(self.hiree_email)
         except ValidationError:
+            # Raise a validation error if the email is invalid
             raise ValidationError({'email': 'Invalid email format'})
 
-        # Validate bank account type
+        # Validate the bank account type
         if self.bank_account_type not in dict(self.BANK_ACCOUNT_CHOICES).keys():
+            # Raise a validation error if the bank account type is invalid
             raise ValidationError({'bank_account_type': 'Invalid bank account type'})
 
     def save(self, *args, **kwargs):
@@ -58,4 +69,5 @@ class CEXContractRequest(ContractRequest):
         super().save(*args, **kwargs)
 
     def __str__(self):
+        # Return the string representation of the object
         return str(self.id)

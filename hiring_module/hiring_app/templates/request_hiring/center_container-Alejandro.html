@@ -1,0 +1,21 @@
+<div
+    style="max-width: 1280px; margin: 0 auto; background-color: #edf2f7; border-radius: 0.75rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 24px;">
+    <div style="display: flex; align-items: center;">
+        <div style="flex: 1; padding-left: 24px; padding-right: 24px; border-right: 1px solid #cbd5e0;">
+            <p style="font-weight: 600; color: #2d3748;">ID:</p>
+            <p>{{ contract_request.id }}</p>
+        </div>
+        <div style="flex: 1; padding-left: 24px; padding-right: 24px; border-right: 1px solid #cbd5e0;">
+            <p style="font-weight: 600; color: #2d3748;">Líder:</p> 
+            {% include 'request_hiring/components/assign_leader.html' %}
+        </div>
+        <div style="flex: 1; padding-left: 24px; padding-right: 24px; border-right: 1px solid #cbd5e0;">
+            <p style="font-weight: 600; color: #2d3748;">Gestor:</p>
+            {% include 'request_hiring/components/assign_manager.html' %}
+        </div>
+        <div style="flex: 1; padding-left: 24px;">
+            <p style="font-weight: 600; color: #2d3748;">Cambiar estado:</p>
+            {% include 'request_hiring/components/change_state.html' %}
+        </div>
+    </div>
+</div>

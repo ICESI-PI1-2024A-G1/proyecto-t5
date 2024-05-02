@@ -1,0 +1,29 @@
+<form id="changeStateForm" method="post" action="{% url 'hiring_app:change_state' contract_request.id %}" style="margin-bottom: 1rem;">
+    {% csrf_token %}
+    <select name="state" id="stateSelect" style="width: 100%; margin-top: 0.5rem; padding: 0.5rem; background-color: #ffffff; border: 1px solid #cbd5e0; border-radius: 0.375rem; outline: none; transition: border-color 0.15s ease-in-out;">
+        {% for choice in choices %}
+        <option value="{{ choice.0 }}" {% if choice.0 == contract_request.state %}selected{% endif %} style="color: #4a5568;">{{ choice.1 }}</option>
+        {% endfor %}
+    </select>
+</form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var selectElement = document.getElementById('stateSelect');
+        selectElement.addEventListener('change', function () {
+            if (this.value === 'incomplete' || this.value === 'cancelled') {
+                var reason = prompt('Ingrese el motivo de los documentos faltantes:');
+                if (reason !== null) {
+                    // Agregar el motivo al formulario como un campo oculto
+                    var reasonInput = document.createElement('input');
+                    reasonInput.type = 'hidden';
+                    reasonInput.name = 'reason';
+                    reasonInput.value = reason.trim();
+                    document.getElementById('changeStateForm').appendChild(reasonInput);
+                }
+            }
+            // Enviar el formulario después de manejar el motivo
+            document.getElementById('changeStateForm').submit();
+        });
+    });
+</script>
