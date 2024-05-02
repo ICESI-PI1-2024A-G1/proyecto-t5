@@ -26,14 +26,16 @@ CSRF_TRUSTED_ORIGINS = ['https://proyecto-t5.onrender.com']
 
 # Configuración de las variables de entorno
 SECRET_KEY = os.getenv('SECRET_KEY')
-DEBUG = os.getenv('DEBUG') == 'True'
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', 'localhost', 'proyecto-t5.onrender.com', '0.0.0.0']
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app',
+                 'localhost', 'proyecto-t5.onrender.com', '0.0.0.0']
+
 
 def decrypt(encrypted_text, shift):
     decrypted_text = ""
     for char in encrypted_text:
-        if char.isalpha():  
+        if char.isalpha():
             shifted = ord(char) - shift
             if char.islower():
                 if shifted < ord('a'):
@@ -43,8 +45,9 @@ def decrypt(encrypted_text, shift):
                     shifted += 26
             decrypted_text += chr(shifted)
         else:
-            decrypted_text += char  
+            decrypted_text += char
     return decrypted_text
+
 
 # Configuración de la base de datos
 DATABASES = {
@@ -79,7 +82,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-
 
 
 INTERNAL_IPS = [
@@ -151,7 +153,6 @@ STATIC_URL = '/hiring_app/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'hiring_app/static'),
 ]
-
 
 
 STATIC_ROOT = BASE_DIR.parent / "hiring_app/static"
