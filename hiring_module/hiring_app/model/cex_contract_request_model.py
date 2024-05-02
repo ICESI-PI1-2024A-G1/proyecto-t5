@@ -1,34 +1,37 @@
-# Import necessary modules from Django
 from django.db import models
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
-# Import local modules
 from .user_model import CustomUser
 from .contract_request_model import ContractRequest
 from hiring_module.settings import MEDIA_ROOT
 import os
 
-# Define a manager for CEXContractRequest objects
+# Description: Manager class for CEX contract requests.
+# Input: None
+# Output: None
 class CEXContractRequestManager(models.Manager):
+
+    # Description: Creates a new CEX contract request instance.
+    # Input: Keyword arguments for additional fields.
+    # Output: New CEX contract request instance.
     def create_contract_request(self, **extra_fields):
         # Create a CEX contract request
         cex_contract_request = self.create(
             **extra_fields
         )
-        # Create a snapshot of the contract request
         cex_contract_request.create_snapshot()
-        # Save the contract request to the database
         cex_contract_request.save(using=self._db)
         return cex_contract_request
-    
-# Define the CEXContractRequest model, which inherits from ContractRequest
+
+# Description: Model class for CEX contract requests, inheriting from ContractRequest.
+# Input: None
+# Output: None
 class CEXContractRequest(ContractRequest):
-    # Define choices for bank account type
     BANK_ACCOUNT_CHOICES = [
         ('checking', 'Checking'),
         ('savings', 'Savings')
     ]
-    # Define fields for the CEXContractRequest model
+
     hiree_full_name = models.CharField(max_length=256)
     hiree_id = models.IntegerField()
     hiree_cellphone = models.CharField(max_length=16)
@@ -45,29 +48,30 @@ class CEXContractRequest(ContractRequest):
     charge_account = models.TextField(null=True)
     rut = models.FileField(upload_to='rut/', max_length=500)
 
-    # Assign the custom manager to the objects attribute
     objects = CEXContractRequestManager()
     
+    # Description: Clean method to validate model fields.
+    # Input: None
+    # Output: None
     def clean(self):
-        # Call the clean method of the superclass
         super().clean()
-        # Validate the email field
         try:
             validate_email(self.hiree_email)
         except ValidationError:
-            # Raise a validation error if the email is invalid
             raise ValidationError({'email': 'Invalid email format'})
 
-        # Validate the bank account type
         if self.bank_account_type not in dict(self.BANK_ACCOUNT_CHOICES).keys():
-            # Raise a validation error if the bank account type is invalid
             raise ValidationError({'bank_account_type': 'Invalid bank account type'})
 
+    # Description: Save method to ensure validation before saving.
+    # Input: None
+    # Output: None
     def save(self, *args, **kwargs):
-        # Ensure validation is triggered before saving
         self.full_clean()  
         super().save(*args, **kwargs)
 
+    # Description: String representation of the CEX contract request instance.
+    # Input: None
+    # Output: String representation of the instance.
     def __str__(self):
-        # Return the string representation of the object
         return str(self.id)
