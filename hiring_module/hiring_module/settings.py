@@ -26,7 +26,6 @@ CSRF_TRUSTED_ORIGINS = ['https://proyecto-t5.onrender.com']
 
 # Configuración de las variables de entorno
 SECRET_KEY = os.getenv('SECRET_KEY')
-DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app',
                  'localhost', 'proyecto-t5.onrender.com', '0.0.0.0']
