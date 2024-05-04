@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var closeButtons = document.querySelectorAll('[data-bs-dismiss="modal"]');
     var reasonForm = document.getElementById('reasonForm');
     var stateInput = document.getElementById('stateInput');
+    var originalState = selectElement.value;
 
     selectElement.addEventListener('change', function () {
         var selectedValue = this.value;
@@ -70,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
     closeButtons.forEach(function(button) {
         button.addEventListener('click', function() {
             dialog.close();
+            selectElement.value = originalState;
         });
     });
 });

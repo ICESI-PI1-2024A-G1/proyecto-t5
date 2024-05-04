@@ -93,14 +93,4 @@
     // Update progress bar with default status
     updateProgressBar(defaultState);
   });
-
-  // Add a change event to the drop-down menu
-  document
-    .getElementById("stateSelect")
-    .addEventListener("change", function () {
-      // Get the selected value from the drop-down menu
-      var selectedState = this.value;
-      // Update progress bar based on selected status
-      updateProgressBar(selectedState);
-    });
 </script>
