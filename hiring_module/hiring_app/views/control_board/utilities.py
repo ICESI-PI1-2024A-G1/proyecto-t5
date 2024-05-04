@@ -8,11 +8,12 @@ from hiring_app.model.cex_contract_request_model import CEXContractRequest
 from hiring_app.model.monitoring_contract_request_model import MonitoringContractRequest
 from hiring_app.model.provision_of_services_request_model import ProvisionOfServicesContractRequest
 
-# Decorator to redirect users to the correct dashboard based on their role
+# Description: Decorator to redirect users to the correct dashboard based on their role.
+# Input: view_func (function): The view function to be wrapped.
+# Output: wrapper function: Redirects users to the appropriate dashboard based on their role.
 def role_redirect(view_func):
     @wraps(view_func)
     def wrapper(request, *args, **kwargs):
-        # Check if the user is already on the correct dashboard
         if request.user.groups.filter(name='admin').exists() and request.path != '/hiring_app/administrator_dashboard/':
             return redirect('hiring_app:administrator_dashboard')
         elif request.user.groups.filter(name='leader').exists() and request.path != '/hiring_app/leader_dashboard/':
@@ -22,12 +23,13 @@ def role_redirect(view_func):
         elif not request.user.groups.exists() and request.path != '/hiring_app/external_user_dashboard/':
             return redirect('hiring_app:external_user_dashboard')
         
-        # Call the original view function if no redirection is needed
         return view_func(request, *args, **kwargs)
     
     return wrapper
 
-# Decorator to ensure that only users with the 'admin' role can access a view
+# Description: Decorator to ensure that only users with the 'admin' role can access a view.
+# Input: view_func (function): The view function to be wrapped.
+# Output: wrapper function: Redirects non-admin users to appropriate dashboards.
 def admin_required(view_func):
     @wraps(view_func)
     def wrapper(request, *args, **kwargs):
@@ -42,7 +44,9 @@ def admin_required(view_func):
     
     return wrapper
 
-# Decorator to ensure that only users with the 'leader' role can access a view
+# Description: Decorator to ensure that only users with the 'leader' role can access a view.
+# Input: view_func (function): The view function to be wrapped.
+# Output: wrapper function: Redirects non-leader users to appropriate dashboards.
 def leader_required(view_func):
     @wraps(view_func)
     def wrapper(request, *args, **kwargs):
@@ -57,7 +61,9 @@ def leader_required(view_func):
     
     return wrapper
 
-# Decorator to ensure that only users with the 'manager' role can access a view
+# Description: Decorator to ensure that only users with the 'manager' role can access a view.
+# Input: view_func (function): The view function to be wrapped.
+# Output: wrapper function: Redirects non-manager users to appropriate dashboards.
 def manager_required(view_func):
     @wraps(view_func)
     def wrapper(request, *args, **kwargs):
@@ -71,6 +77,10 @@ def manager_required(view_func):
         return view_func(request, *args, **kwargs)
     
     return wrapper
+
+# Description: Retrieve various types of contract requests based on user's role.
+# Input: user (CustomUser): The user for whom to retrieve requests.
+# Output: Dictionary: Contains different types of contract requests and related information.
 def get_requests(user):
     groups = [group.name for group in user.groups.all()]
     requests_CEX = CEXContractRequest.objects.none()
@@ -102,7 +112,3 @@ def get_requests(user):
         'leaders': leaders,
         'managers': managers,
     }
-
-        
-        
-        

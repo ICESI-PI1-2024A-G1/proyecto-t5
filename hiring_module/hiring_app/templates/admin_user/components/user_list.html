@@ -1,86 +1,98 @@
 <div class="container-fluid">
 
-    <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Solicitudes de contratación</h1>
-    <!-- DataTales Example -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3 d-flex justify-content-between align-items-center">
-            <h6 class="m-0 font-weight-bold text-primary">Listado de solicitudes de contratación</h6>
-            <a href="add_user/" class="btn btn-primary btn-icon-split">
-                <span class="text">Agregar usuario</span>
-            </a>
-        </div>        
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Email</th>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Rol</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for user in users %}
-                        <tr>
-                            <td>{{ user.id }}</td>
-                            <td>{{ user.email }}</td>
-                            <td>{{ user.first_name }}</td>
-                            <td>{{ user.last_name }}</td>
-                            <td> <p style="display: none;">{{user.role}}</p>
-                                <select class="managerSelect btn btn-white border border-2 border-dark text-dark dropdown-toggle col" id="roleSelect_{{ user.id }}" onchange="updateRole('{{ user.id }}')">
-                                    <option class="col" value="admin" {% if user.role == "admin" %} selected {% endif %}>Administrator</option>
-                                    <option class="col" value="leader" {% if user.role == "leader" %} selected {% endif %}>Leader</option>
-                                    <option class="col" value="manager" {% if user.role == "manager" %} selected {% endif %}>Manager</option> 
-                                    <option class="col" value="remove">Remove</option>
-                                  </select>
-                      
-                            </td>
-
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </div>
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Solicitudes de contratación</h1>
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3 d-flex justify-content-between align-items-center">
+      <!-- Title for the card -->
+      <h6 class="m-0 font-weight-bold text-primary">Listado de solicitudes de contratación</h6>
+      <!-- Button to add user -->
+      <a href="add_user/" class="btn btn-primary btn-icon-split">
+        <span class="text">Agregar usuario</span>
+      </a>
     </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <!-- Table header row -->
+            <tr>
+              <th>ID</th>
+              <th>Email</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Rol</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Loop through each user -->
+            {% for user in users %}
+            <tr>
+              <!-- Display user data -->
+              <td>{{ user.id }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.first_name }}</td>
+              <td>{{ user.last_name }}</td>
+              <td>
+                <!-- Hidden paragraph to store user role -->
+                <p style="display: none;">{{user.role}}</p>
+                <!-- Dropdown to select user role -->
+                <select class="managerSelect btn btn-white border border-2 border-dark text-dark dropdown-toggle col"
+                  id="roleSelect_{{ user.id }}" onchange="updateRole('{{ user.id }}')">
+                  <!-- Options for different roles -->
+                  <option class="col" value="admin" {% if user.role=="admin" %} selected {% endif %}>Administrator
+                  </option>
+                  <option class="col" value="leader" {% if user.role=="leader" %} selected {% endif %}>Leader</option>
+                  <option class="col" value="manager" {% if user.role=="manager" %} selected {% endif %}>Manager
+                  </option>
+                  <option class="col" value="remove">Remove</option>
+                </select>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 
 </div>
 
-
+<!-- JavaScript function to update user role -->
 <script>
-    function updateRole(userId) {
-      var selectedRole = document.getElementById("roleSelect_" + userId).value;
-      var formData = new FormData();
-      formData.append('updateRole', 'updateRole');
-      formData.append('userId', userId);
-      formData.append('role', selectedRole);
+  function updateRole(userId) {
+    // Get selected role
+    var selectedRole = document.getElementById("roleSelect_" + userId).value;
+    // Create form data
+    var formData = new FormData();
+    formData.append('updateRole', 'updateRole');
+    formData.append('userId', userId);
+    formData.append('role', selectedRole);
 
-      // Mostrar el círculo de carga
-      document.getElementById("loadingCircle").style.display = "block";
+    // Show loading circle
+    document.getElementById("loadingCircle").style.display = "block";
 
-      fetch('{% url "hiring_app:administrator_user_list" %}', {
-        method: 'POST',
-        headers: {
-          'X-CSRFToken': '{{ csrf_token }}'
-        },
-        body: formData
-      }).then(function(response) {
-        if (response.ok) {
-          location.reload();
-        } else {
-          alert('Failed to update role.');
-          console.error('Failed to update role.');
-        }
-        // Ocultar el círculo de carga después de la respuesta
-        document.getElementById("loadingCircle").style.display = "none";
-      }).catch(function(error) {
-        console.error('Error:', error);
-        // Ocultar el círculo de carga en caso de error
-        document.getElementById("loadingCircle").style.display = "none";
-      });
-    }
-  </script>
+    // Fetch to update role
+    fetch('{% url "hiring_app:administrator_user_list" %}', {
+      method: 'POST',
+      headers: {
+        'X-CSRFToken': '{{ csrf_token }}'
+      },
+      body: formData
+    }).then(function (response) {
+      if (response.ok) {
+        location.reload(); // Reload page on success
+      } else {
+        alert('Failed to update role.');
+        console.error('Failed to update role.');
+      }
+      // Hide loading circle after response
+      document.getElementById("loadingCircle").style.display = "none";
+    }).catch(function (error) {
+      console.error('Error:', error);
+      // Hide loading circle on error
+      document.getElementById("loadingCircle").style.display = "none";
+    });
+  }
+</script>

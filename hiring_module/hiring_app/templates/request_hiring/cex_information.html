@@ -1,16 +1,17 @@
 <div class="card invoice mb-4">
-
     <div class="card-body p-4 p-md-5">
         <!-- Invoice table-->
         <div class="table-responsive">
             <table class="table table-borderless mb-0">
                 <thead class="border-bottom">
                     <tr class="small text-uppercase text-muted">
+                        <!-- Column headers -->
                         <th scope="col">Descripcion</th>
                         <th class="text-end" scope="col">Datos</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- Contract details rows -->
                     <tr class="border-bottom">
                         <td>
                             <div class="fw-bold">Nombre Completo del Contratado</div>
@@ -23,8 +24,7 @@
                         <td>
                             <div class="fw-bold">ID del Contratado</div>
                             <div class="small text-muted d-none d-md-block">El identificador único asignado al
-                                contratado.
-                            </div>
+                                contratado.</div>
                         </td>
                         <td class="text-end fw-bold">{{ contract_request.hiree_id }}</td>
                     </tr>
@@ -55,8 +55,7 @@
                         <td>
                             <div class="fw-bold">Motivo de la Solicitud</div>
                             <div class="small text-muted d-none d-md-block">El motivo por el cual se realiza la
-                                solicitud.
-                            </div>
+                                solicitud.</div>
                         </td>
                         <td class="text-end fw-bold">{{ contract_request.request_motive }}</td>
                     </tr>
@@ -64,8 +63,7 @@
                         <td>
                             <div class="fw-bold">Entidad Bancaria</div>
                             <div class="small text-muted d-none d-md-block">La entidad bancaria a la que está asociada
-                                la
-                                cuenta bancaria.</div>
+                                la cuenta bancaria.</div>
                         </td>
                         <td class="text-end fw-bold">{{ contract_request.banking_entity }}</td>
                     </tr>
@@ -89,8 +87,7 @@
                         <td>
                             <div class="fw-bold">EPS</div>
                             <div class="small text-muted d-none d-md-block">La Entidad Promotora de Salud del
-                                contratado.
-                            </div>
+                                contratado.</div>
                         </td>
                         <td class="text-end fw-bold">{{ contract_request.eps }}</td>
                     </tr>
@@ -120,20 +117,17 @@
                         <td>
                             <div class="fw-bold">Cuenta de Cobro</div>
                             <div class="small text-muted d-none d-md-block">La cuenta bancaria a la que se realizarán
-                                los
-                                pagos correspondientes.</div>
+                                los pagos correspondientes.</div>
                         </td>
                         <td class="text-end fw-bold">{{ contract_request.charge_account }}</td>
                     </tr>
                     <tr class="border-bottom">
                         <td colspan="2" class="text-end">
                             <a href="/hiring_app/download_rut/{{ contract_request.id }}/"
-                                style="color: #00599C;">Descargar
-                                Archivo RUT</a>
+                                style="color: #00599C;">Descargar Archivo RUT</a>
                         </td>
                     </tr>
                 </tbody>
-
             </table>
         </div>
     </div>

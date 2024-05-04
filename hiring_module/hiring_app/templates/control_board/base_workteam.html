@@ -1,37 +1,44 @@
 {% extends 'base.html' %}
+
 {% load static %}
+
 {% block title %}
-    Panel de control
+<!-- Title of the page -->
+Panel de control
 {% endblock %}
+
 {% block aditionalMetadata %}
+<!-- Additional metadata, if any -->
 {% endblock %}
 
 {% block content %}
+<!-- Main content block -->
 
 <div class="container-fluid">
 
     <!-- Page Heading -->
+    <!-- Title of the page -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Panel de control</h1>
+        <!-- Button for generating report (hidden on small screens) -->
         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
 
     <!-- Content center -->
-        
-        
+    <!-- Included center container -->
     {% include 'control_board/center_container.html' %}
-    
 
-    {% include 'control_board/table.html'%} 
+    <!-- Included table -->
+    {% include 'control_board/table.html'%}
 
     <div>
+        <!-- Block to be overridden in child templates -->
         {% block control_board %}
 
         {% endblock %}
     </div>
-    
-</div>
 
+</div>
 
 {% endblock %}

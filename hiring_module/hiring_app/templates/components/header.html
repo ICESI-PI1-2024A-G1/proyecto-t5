@@ -3,6 +3,7 @@
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
     <!-- Sidebar Toggle (Topbar) -->
+    <!-- Button to toggle the sidebar on smaller screens -->
     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
         <i class="fa fa-bars"></i>
     </button>
@@ -11,8 +12,10 @@
     <ul class="navbar-nav ml-auto">
 
         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+        <!-- Dropdown for search on extra small screens -->
         <li class="nav-item dropdown no-arrow d-sm-none">
             <!-- Dropdown - Messages -->
+            <!-- Search form dropdown menu -->
             <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                 aria-labelledby="searchDropdown">
                 <form class="form-inline mr-auto w-100 navbar-search">
@@ -29,19 +32,21 @@
             </div>
         </li>
 
-
-
+        <!-- Divider between search and user information -->
         <div class="topbar-divider d-none d-sm-block"></div>
 
         <!-- Nav Item - User Information -->
+        <!-- Dropdown for user information -->
         <li class="nav-item dropdown no-arrow">
-            <a id="profilePhoto" class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
+            <a id="profilePhoto" class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <!-- User's name and profile photo -->
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{user.first_name}} {{user.last_name}}</span>
                 <img class="img-profile rounded-circle" src="{% static 'images/undraw_profile.svg' %}">
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <!-- Logout option -->
                 <a id="logoutButton1" class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                     Logout
@@ -54,22 +59,27 @@
 </nav>
 
 <!-- Logout Modal-->
+<!-- Modal for logout confirmation -->
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
+                <!-- Modal title -->
                 <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <!-- Close button -->
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
+                <!-- Cancel button -->
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-
+                <!-- Form for logout -->
                 <form action="{% url 'logout' %}" method="post">
                     {% csrf_token %}
+                    <!-- Logout button -->
                     <button id="logoutButton2" class="btn btn-primary">Logout</button>
                 </form>
             </div>

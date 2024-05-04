@@ -1,13 +1,12 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} <!-- Extends a base template -->
+
+{% load static %} <!-- Loads static files -->
 
 {% block title %}
-Solicitudes de contratos CEX
+Solicitudes de contratos CEX <!-- Sets the title of the page -->
 {% endblock %}
 
-{% block content %}
-
-
+{% block content %} <!-- Starts a content block -->
 
 <main id="main" class="expanded">
     <div style="margin-top: 64px; margin-left: 20vw; margin-right: 40vw;">
@@ -18,7 +17,7 @@ Solicitudes de contratos CEX
             role="alert">
             <ul style="list-style-type: disc; margin-top: 0.5rem;">
                 {% for field, error in form.errors.items %}
-                <li>{{ field }}: {{ error }}</li>
+                <li>{{ field }}: {{ error }}</li> <!-- Displays form errors -->
                 {% endfor %}
             </ul>
         </div>
