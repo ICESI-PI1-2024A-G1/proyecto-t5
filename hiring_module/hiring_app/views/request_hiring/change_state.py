@@ -32,40 +32,28 @@ class ChangeStateView(View):
     def post(self, request, idContract):
         contract_request = utilities.getContract(idContract)
         new_state = request.POST.get('state')
-
+        reason = request.POST.get('reason')
+        print(new_state)
+        print(reason)
         state_actions = {
             'incomplete': {
-                'error_message': 'Debe ingresar un motivo para los documentos faltantes.',
                 'email_function': self.send_email_file
             },
             'cancelled': {
-                'error_message': 'Debe ingresar un motivo para la cancelacion.',
                 'email_function': self.send_email_request
             },
             'filed': {
-                'error_message': None,
                 'email_function': self.send_email_success
             }
         }
-
-        action = state_actions.get(new_state)
-
         if not contract_request.is_valid_transition(new_state):
             request.session['error_message'] = "Esta opción no es válida"
             return HttpResponseRedirect(reverse('hiring_app:info', kwargs={'idContract': idContract}))
 
-        if action:
-            if action['error_message']:
-                request.session['error_message'] = action['error_message']
-                return HttpResponseRedirect(reverse('hiring_app:info', kwargs={'idContract': idContract}))
-
-            if action['email_function']:
-                reason = request.POST.get('reason')
-                action['email_function'](contract_request, reason)
-
+        if state_actions.get(new_state):
+            state_actions.get(new_state)['email_function'](contract_request, reason)
+            
         contract_request.transition_to_state(new_state)
-        contract_request.state = new_state
-        contract_request.save()
 
         return HttpResponseRedirect(reverse('hiring_app:info', kwargs={'idContract': idContract}))
 
@@ -73,15 +61,15 @@ class ChangeStateView(View):
         content = f'Estimado/a {contract_request.created_by.first_name},\n\nLamentamos informarle que su solicitud ha sido cancelada. El motivo proporcionado es: {
             reason}.\n\nPor favor, no dude en ponerse en contacto con nosotros si tiene alguna pregunta.\n\nAtentamente,\nTu aplicación'
         send_email('Solicitud cancelada', content,
-                   "sg5043161@gmail.com")
+                   "alejandrolonber25@gmail.com")
 
     def send_email_file(self, contract_request, reason):
         content = f'Estimado/a {contract_request.created_by.first_name},\n\nLe informamos que hemos identificado documentos faltantes en su solicitud. El motivo proporcionado es: {
             reason}.\n\nPor favor, proporcione la documentación faltante lo antes posible para continuar con el proceso.\n\nSi tiene alguna pregunta o necesita ayuda, no dude en ponerse en contacto con nosotros.\n\nAtentamente,\nTu aplicación'
         send_email('Solicitud de documentación faltante',
-                   content, "sg5043161@gmail.com")
+                   content, "alejandrolonber25@gmail.com")
 
     def send_email_success(self, contract_request, reason=""):
         content = f'Estimado/a {contract_request.created_by.first_name},\n\nNos complace informarle que su solicitud ha sido completada exitosamente.\n\nPor favor, no dude en ponerse en contacto con nosotros si tiene alguna pregunta o necesita asistencia adicional.\n\nAtentamente,\nTu aplicación'
         send_email('Solicitud completada exitosamente',
-                   content, "sg5043161@gmail.com")
+                   content, "alejandrolonber25@gmail.com")

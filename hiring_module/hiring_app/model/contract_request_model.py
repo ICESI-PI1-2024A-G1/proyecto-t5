@@ -22,7 +22,13 @@ class ContractRequest(models.Model):
     manager_assigned_to = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, related_name='manager_%(class)s_requests', null=True, blank=True)
     leader_assigned_to = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, related_name='leader_%(class)s_requests', null=True, blank=True)
     created_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='created_%(class)s_requests', null=True, blank=True)
-
+    transitions = {
+            'pending': ('review', 'incomplete', 'cancelled'),
+            'review': ('filed', 'cancelled'),
+            'incomplete': ('review', 'cancelled'),
+            'filed': (),
+            'cancelled': ()
+        }
     class Meta:
         abstract = True
 
@@ -38,6 +44,8 @@ class ContractRequest(models.Model):
         current_snapshot.save()
 
     def transition_to_state(self, new_state, comment=''):
+        print("Esto está pasando")
+
         # Transition the contract request to a new state
         # If the new state is not valid, raise a ValueError
         if new_state not in dict(state_choices()).keys():
@@ -67,15 +75,7 @@ class ContractRequest(models.Model):
     
 
     def is_valid_transition(self, new_state):
-        transitions = {
-            'pending': ('review', 'incomplete', 'cancelled'),
-            'review': ('filed', 'cancelled'),
-            'incomplete': ('review', 'cancelled'),
-            'filed': (),
-            'cancelled': ()
-        }
-
-        return new_state in transitions.get(self.state, ())
+        return new_state in self.transitions.get(self.state, ())
         
         
     def create_snapshot(self, old_state=None, comment=''):

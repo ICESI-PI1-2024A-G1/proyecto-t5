@@ -3,7 +3,7 @@
     <input type="hidden" id="stateInput" name="state">
     <select name="state" id="stateSelect" class="btn btn-white border border-2 border-dark text-dark dropdown-toggle col">
         {% for choice in choices %}
-        <option class="col" value="{{ choice.0 }}" {% if choice.0 == contract_request.state %}selected{% endif %}>{{ choice.1 }}</option>
+        <option class="col" value="{{ choice.0 }}" {% if choice.0 == contract_request.state %}selected{% endif %}  {% if not choice.0 in available_changes %} disabled {% endif %} >{{ choice.1 }}</option>
         {% endfor %}
     </select>
 </form>
@@ -11,20 +11,20 @@
 <dialog id="reasonDialog" style="background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); z-index: 9999;">
     <form id="reasonForm" method="post" action="{% url 'hiring_app:change_state' idContract=contract_request.id %}">
         {% csrf_token %}
+        <input type="hidden" id="state" name="state">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Default Bootstrap Modal</h5>
             <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
         <div class="modal-body">
             <label id="reasonLabel" for="reason" style="margin-bottom: 10px; color: #4a5568; font-weight: bold; display: block;">Motivo:</label>
-            <input type="text" id="reason" name="reason" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #cbd5e0; outline: none; transition: border-color 0.15s ease-in-out; margin-bottom: 10px;">
+            <input type="text" id="reason" name="reason" required style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #cbd5e0; outline: none; transition: border-color 0.15s ease-in-out; margin-bottom: 10px;">
         </div>  
 
         <div class="modal-footer">
             <!-- Agregar el atributo data-bs-dismiss="modal" a los botones -->
             <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Close</button>
-            <button class="btn btn-primary" type="submit">Save changes</button>
+            <input type="submit" class="btn btn-primary" value="Save changes">
         </div>
     </form>
 </dialog>
@@ -45,47 +45,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
     selectElement.addEventListener('change', function () {
         var selectedValue = this.value;
-        // Establecer el estado seleccionado en el input oculto
-        stateInput.value = selectedValue;
-        // Verificar si la opción seleccionada requiere mostrar el modal
-        if (selectedValue === 'incomplete' || selectedValue === 'cancelled') {
-            // Configurar el texto del label del modal según la opción seleccionada
-            reasonLabel.textContent = selectedValue === 'incomplete' ? 'Documentos faltantes:' : 'Motivo de cancelación:';
-            // Mostrar el modal
-            dialog.showModal();
-        } else {
+            // Establecer el estado seleccionado en el input oculto
+            stateInput.value = selectedValue;
+            // Verificar si la opción seleccionada requiere mostrar el modal
+            if (selectedValue === 'incomplete' || selectedValue === 'cancelled') {
+                // Configurar el texto del label del modal según la opción seleccionada
+                reasonLabel.textContent = selectedValue === 'incomplete' ? 'Documentos faltantes:' : 'Motivo de cancelación:';
+                // Mostrar el modal
+                dialog.showModal();
+            } else {
             // Si la opción no requiere el modal, enviar el formulario directamente
-            document.getElementById('changeStateForm').submit();
-        }
+                document.getElementById('changeStateForm').submit();
+            }
     });
 
-    reasonForm.addEventListener('submit', function (event) {
-        event.preventDefault(); // Evitar el envío predeterminado del formulario
-        var formData = new FormData(this);
-        fetch(this.action, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'X-CSRFToken': document.getElementsByName('csrfmiddlewaretoken')[0].value
-            }
-        })
-        .then(response => {
-            if (response.ok) {
-                dialog.close();
-                successDropdown.style.display = 'block';
-                setTimeout(function () {
-                    successDropdown.style.display = 'none';
-                }, 2000);
-                return response.json();
-            } else {
-                throw new Error('Error en la solicitud');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            // Manejar errores
-        });
+    document.getElementById('reasonForm').addEventListener('submit', function(event) {
+
+    var currentState = document.getElementById('stateSelect').value;
+
+    document.getElementById('state').value = currentState;
     });
+
 
     closeButtons.forEach(function(button) {
         button.addEventListener('click', function() {
