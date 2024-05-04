@@ -11,6 +11,9 @@ from hiring_app.views.control_board.administrator_user_list_view import Administ
 from hiring_app.views.control_board.add_user_view import AddUserView
 from hiring_app.views.statistical_registers.statistics_view import StatisticsView
 
+# Description: URL patterns for the hiring_app Django app.
+# Input: None
+# Output: List of URL patterns.
 app_name = 'hiring_app'
 
 urlpatterns = [

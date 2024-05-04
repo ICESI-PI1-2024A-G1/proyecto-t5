@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block title %}
 Estadísticas
 {% endblock %}
+
 {% block aditionalMetadata %}
 {% endblock %}
 
@@ -11,12 +13,12 @@ Estadísticas
 
     <div>
         {% block statistical_registers %}
-
+        <!-- Placeholder for statistical registers -->
         {% endblock %}
     </div>
 
     <!-- Content center -->
     {% include 'statistical_registers/statistical_info.html' %}
-    
+
 </div>
 {% endblock %}

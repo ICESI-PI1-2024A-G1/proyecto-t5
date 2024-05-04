@@ -1,0 +1,65 @@
+<!-- main screen -->
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+Request Hiring
+{% endblock %}
+
+{% block aditionalMetadata %}
+<style>
+    /* Define CSS styles */
+    .expanded {
+        margin-left: 18vw;
+        /* Width of the expanded sidebar */
+        transition: margin-left 0.3s;
+        /* Add transition for smooth effect */
+    }
+
+    .nonExpanded {
+        margin-left: 3vw;
+        /* Width of the non-expanded sidebar */
+        transition: margin-left 0.3s;
+        /* Add transition for smooth effect */
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+{% if error_message %}
+<script>
+    alert("{{ error_message }}"); <!-- Display error message if exists -->
+</script>
+{% endif %}
+
+<div>
+    {% include 'components/header.html' %}
+</div>
+<div id="sidebar">
+    {% include 'components/LeftSideMenu.html' %}
+</div>
+
+<main id="main" class="expanded"
+    style="display: flex; flex-direction: column; height: 100%; width: 85vw; background-color: #E5E5E5; padding: 1rem;">
+    <div style="text-align: center; margin-top: 1rem;">
+        {% include 'request_hiring/center_container.html' %}
+    </div>
+    <h2
+        style="color: #434343; font-size: 1.5rem; line-height: 2rem; font-weight: 600; padding-bottom: 0.5rem; padding-top: 1rem;">
+        Estado de la contratación <!-- Hiring status -->
+    </h2>
+    <div style="display: flex;">
+        {% include 'request_hiring/date_details.html' %}
+        {% include 'request_hiring/progress_bar.html' %}
+        <h2
+            style="color: #434343; font-size: 1.5rem; line-height: 2rem; font-weight: 600; padding-bottom: 0.5rem; padding-top: 1rem;">
+            Bitácora <!-- Log -->
+        </h2>
+        <div style="display: flex;">
+            <!-- Content for log -->
+        </div>
+</main>
+{% endblock %}
+
+<script src="{% static 'js/side_bar.js' %}"></script>

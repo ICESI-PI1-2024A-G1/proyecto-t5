@@ -1,7 +1,9 @@
-{% load static %}
-<form action="{% url 'logout' %}" method="post">
-    {% csrf_token %}
+{% load static %} <!-- Load static files -->
+
+<form action="{% url 'logout' %}" method="post"> <!-- Form for logout -->
+    {% csrf_token %} <!-- CSRF token -->
     <button class="btn" style="color: #1e3a8a; transition: color 0.3s; border-radius: 200px;">
-        <img src="{% static 'images/icons/logOut.png' %}" width="30" height="30">
+        <!-- Button with styles -->
+        <img src="{% static 'images/icons/logOut.png' %}" width="30" height="30"> <!-- Logout image icon -->
     </button>
 </form>
