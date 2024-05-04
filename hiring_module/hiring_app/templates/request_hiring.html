@@ -1,56 +1,55 @@
 {% extends 'base.html' %}
 
-
 {% load static %}
-
 
 {% block title %}
 Request Hiring
 {% endblock %}
-
-
 
 {% block content %}
 <div class="container-fluid">
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <!-- Display heading -->
         <h1 class="h3 mb-0 text-gray-800">Solicitud de contratación de {{contract_request.created_by.first_name}}</h1>
     </div>
 
-
+    <!-- Include center container -->
     {% include 'request_hiring/center_container.html' %}
 
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <!-- Display heading for request status -->
         <h1 class="h3 mb-0 text-gray-800">Estado de la Solicitud</h1>
     </div>
 
-
     <div class="row">
 
-        <!-- Date info -->
+        <!-- Include date details -->
         {% include 'request_hiring/date_details.html' %}
 
-        <!-- Progress bar -->
+        <!-- Include progress bar -->
         {% include 'request_hiring/progress_bar.html' %}
     </div>
 
-
     <div class="row">
 
-        <!-- requester info -->
+        <!-- Include requester info -->
         {% include 'request_hiring/request_details.html' %}
 
-        <!-- snapshot info -->
+        <!-- Include snapshot info -->
         {% include 'request_hiring/components/snapshot.html' %}
     </div>
 
     {% if typedContract == "Contrato CEX" %}
-        {% include 'request_hiring/cex_information.html' %}
+    <!-- Include CEX contract information if typedContract matches -->
+    {% include 'request_hiring/cex_information.html' %}
     {% elif typedContract == "Contrato Monitoria" %}
-        {% include 'request_hiring/monitoring_information.html' %}
+    <!-- Include monitoring contract information if typedContract matches -->
+    {% include 'request_hiring/monitoring_information.html' %}
     {% elif typedContract == "Contrato Prestación de Servicios" %}
-        {% include 'request_hiring/pos_information.html' %}
+    <!-- Include POS contract information if typedContract matches -->
+    {% include 'request_hiring/pos_information.html' %}
     {% endif %}
 
 </div>

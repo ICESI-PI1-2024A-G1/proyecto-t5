@@ -1,23 +1,31 @@
-<form class="change-leader-form_{{ form_id_prefix }}{{ contract_request.id }}" method="post" action="{% url 'hiring_app:assign_leader' contract_request.id %}" style="margin-bottom: 1rem;">
+<!-- Form for changing the leader assigned to a contract request -->
+<form class="change-leader-form_{{ form_id_prefix }}{{ contract_request.id }}" method="post"
+    action="{% url 'hiring_app:assign_leader' contract_request.id %}" style="margin-bottom: 1rem;">
     {% csrf_token %}
 
-    <select name="leader" class="leaderSelect btn btn-white border border-2 border-dark text-dark dropdown-toggle col" {% if actualgroup != 'admin' %} disabled {% endif %}>
+    <!-- Dropdown menu for selecting a new leader -->
+    <select name="leader" class="leaderSelect btn btn-white border border-2 border-dark text-dark dropdown-toggle col"
+        {% if actualgroup !='admin' %} disabled {% endif %}>
         <option value="" class="col" selected>Seleccionar</option>
         {% for leader in leaders %}
-        <option value="{{ leader.id }}" class="col" {% if leader.id == contract_request.leader_assigned_to.id %} selected {% endif %}> {{ leader.first_name }} {{ leader.last_name }}</option>
+        <!-- Option for each leader, showing their first and last names -->
+        <option value="{{ leader.id }}" class="col" {% if leader.id==contract_request.leader_assigned_to.id %} selected
+            {% endif %}> {{ leader.first_name }} {{ leader.last_name }}</option>
         {% endfor %}
     </select>
-
 </form>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    var selectElements = document.querySelectorAll('.leaderSelect');
-    selectElements.forEach(function(selectElement) {
-        selectElement.addEventListener('change', function () {
-            var form = selectElement.closest('form');
-            form.submit();
+    document.addEventListener('DOMContentLoaded', function () {
+        // Select all dropdown elements with the 'leaderSelect' class
+        var selectElements = document.querySelectorAll('.leaderSelect');
+        selectElements.forEach(function (selectElement) {
+            // Add change event listener to each dropdown
+            selectElement.addEventListener('change', function () {
+                // Find the closest form element and submit it
+                var form = selectElement.closest('form');
+                form.submit();
+            });
         });
     });
-});
 </script>

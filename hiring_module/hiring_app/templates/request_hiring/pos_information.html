@@ -1,16 +1,17 @@
 <div class="card invoice mb-4">
-
     <div class="card-body p-4 p-md-5">
         <!-- Invoice table-->
         <div class="table-responsive">
             <table class="table table-borderless mb-0">
                 <thead class="border-bottom">
                     <tr class="small text-uppercase text-muted">
+                        <!-- Column headers -->
                         <th scope="col">Descripcion</th>
                         <th class="text-end" scope="col">Datos</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- Contract details rows -->
                     <tr class="border-bottom">
                         <td>
                             <div class="fw-bold">Nombre Completo del Contratado</div>
@@ -156,14 +157,16 @@
                     <tr class="border-bottom">
                         <td>
                             <div class="fw-bold">Intensidad horaria</div>
-                            <div class="small text-muted d-none d-md-block">La intensidad horaria de las clases del curso.</div>
+                            <div class="small text-muted d-none d-md-block">La intensidad horaria de las clases del
+                                curso.</div>
                         </td>
                         <td class="text-end fw-bold">{{ contract_request.intensity }}</td>
                     </tr>
                     <tr class="border-bottom">
                         <td>
                             <div class="fw-bold">Horas totales</div>
-                            <div class="small text-muted d-none d-md-block">La cantidad de horas totales del curso.</div>
+                            <div class="small text-muted d-none d-md-block">La cantidad de horas totales del curso.
+                            </div>
                         </td>
                         <td class="text-end fw-bold">{{ contract_request.total_hours }}</td>
                     </tr>

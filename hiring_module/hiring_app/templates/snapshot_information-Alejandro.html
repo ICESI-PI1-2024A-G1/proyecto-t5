@@ -1,26 +1,36 @@
 <!-- main screen -->
 {% extends 'base.html' %}
-
 {% block title %}
-    Request Hiring
+Request Hiring
 {% endblock %}
 
 {% block content %}
-    {% if error_message %}
-        <script>
-            alert("{{ error_message }}");
-        </script>
-    {% endif %}
+{% if error_message %}
+<!-- Display an alert if there's an error message -->
+<script>
+    alert("{{ error_message }}");
+</script>
+{% endif %}
 
-    {% include 'components/header.html' %}
-    <div style="display: flex; justify-content: center; margin-top: 1rem;">
-        <div class="snapshot-details" style="width: calc(33% - 1rem); background-color: #f0f4f8; padding: 1rem; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); text-align: center;">
-            <p style="font-weight: bold; font-size: 1.2rem; margin-bottom: 0.5rem;">Snapshot Information</p>
-            <p><strong>Snapshot contract request ID:</strong> {{ snapshot.contract_request_id }}</p>
-            <p><strong>State:</strong> {{ snapshot.state }}</p>
-            <p><strong>Comment:</strong> {% if snapshot.comment %} {{ snapshot.comment }} {% else %} N/A {% endif %}</p>
-            <p><strong>Start Date:</strong> {{ snapshot.state_start }}</p>
-            <p><strong>End Date:</strong> {% if snapshot.state_end %} {{ snapshot.state_end }} {% else %} N/A {% endif %}</p>
-        </div>
+{% include 'components/header.html' %}
+
+<!-- Snapshot Information -->
+<div style="display: flex; justify-content: center; margin-top: 1rem;">
+    <div class="snapshot-details"
+        style="width: calc(33% - 1rem); background-color: #f0f4f8; padding: 1rem; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); text-align: center;">
+        <!-- Title -->
+        <p style="font-weight: bold; font-size: 1.2rem; margin-bottom: 0.5rem;">Snapshot Information</p>
+        <!-- Contract request ID -->
+        <p><strong>Snapshot contract request ID:</strong> {{ snapshot.contract_request_id }}</p>
+        <!-- State -->
+        <p><strong>State:</strong> {{ snapshot.state }}</p>
+        <!-- Comment -->
+        <p><strong>Comment:</strong> {% if snapshot.comment %} {{ snapshot.comment }} {% else %} N/A {% endif %}</p>
+        <!-- Start Date -->
+        <p><strong>Start Date:</strong> {{ snapshot.state_start }}</p>
+        <!-- End Date -->
+        <p><strong>End Date:</strong> {% if snapshot.state_end %} {{ snapshot.state_end }} {% else %} N/A {% endif %}
+        </p>
     </div>
+</div>
 {% endblock %}
