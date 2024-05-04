@@ -1,7 +1,9 @@
 from functools import wraps
 from django.shortcuts import redirect
 from django.urls import reverse
+from django.db.models import Avg, F, ExpressionWrapper, DurationField
 from hiring_app.model import CustomUser
+from datetime import timedelta
 from django.contrib.auth.models import Group
 from hiring_app.model.cex_contract_request_model import CEXContractRequest
 from hiring_app.model.monitoring_contract_request_model import MonitoringContractRequest
@@ -127,3 +129,15 @@ def quality_calculator(aprobadas, en_revision, por_validar):
         return porcentaje_aprobadas
     else:
         return 0 
+    
+def get_average_duration():
+    total_requests = (
+        list(CEXContractRequest.objects.all()) +
+        list(MonitoringContractRequest.objects.all()) +
+        list(ProvisionOfServicesContractRequest.objects.all())
+    )
+    total_duration = sum((request.completion_date - request.start_date).days for request in total_requests if request.completion_date and request.start_date)
+    total_count = len(total_requests)
+    total_avg_duration = total_duration / total_count if total_count > 0 else timedelta()
+
+    return total_avg_duration

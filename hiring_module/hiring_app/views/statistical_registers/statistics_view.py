@@ -2,7 +2,7 @@ from django.views import View
 from django.views.generic import TemplateView
 from django.shortcuts import redirect, render
 from django.utils.decorators import method_decorator
-from ..utilities import leader_or_admin_redirect_to_manager_statistics, get_metrics
+from ..utilities import leader_or_admin_redirect_to_manager_statistics, get_metrics, get_average_duration
 
 
 class StatisticsView(View):
@@ -12,6 +12,8 @@ class StatisticsView(View):
     def dispatch(self, request, *args, **kwargs):
         # Get the required metrics
         metrics = get_metrics()
+        average_duration = get_average_duration()
+        metrics['average_duration'] = average_duration
         if self.request.user.groups.first().name == 'admin':
             metrics['actualgroup'] = 'admin'
         # Pass metrics as context to template
