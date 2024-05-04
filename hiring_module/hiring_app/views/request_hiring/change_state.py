@@ -29,6 +29,10 @@ def send_email(subject, content, recipient):
 
 
 class ChangeStateView(View):
+
+    # Description: View for changing the state of a contract request.
+    # Input: HTTP POST request, idContract (int): The ID of the contract request.
+    # Output: Redirects to the contract request information page.
     def post(self, request, idContract):
         contract_request = utilities.getContract(idContract)
         new_state = request.POST.get('state')

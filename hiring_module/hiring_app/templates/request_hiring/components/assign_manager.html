@@ -1,17 +1,22 @@
-<form class="change-manager-form_{{ form_id_prefix }}{{ contract_request.id }}" method="post" action="{% url 'hiring_app:assign_manager' contract_request.id %}" style="margin-bottom: 1rem;">
-    {% csrf_token %}
-    <select name="manager" class="managerSelect btn btn-white border border-2 border-dark text-dark dropdown-toggle col" {% if actualgroup != "admin"  and actualgroup != 'leader' %}
-    disabled
-    {% endif %}
-    
-    >
-        <option class="col" value="" disabled selected >Seleccionar</option>
+<!-- Form for changing the manager assigned to a contract request -->
+<form class="change-manager-form_{{ form_id_prefix }}{{ contract_request.id }}" method="post"
+    action="{% url 'hiring_app:assign_manager' contract_request.id %}" style="margin-bottom: 1rem;">
+    {% csrf_token %} <!-- CSRF token for security -->
+
+    <!-- Dropdown menu for selecting a new manager -->
+    <select name="manager" class="managerSelect btn btn-white border border-2 border-dark text-dark dropdown-toggle col"
+        {% if actualgroup !="admin" and actualgroup !='leader' %} disabled <!-- Disable the dropdown if the user is not
+        an admin or a leader -->
+        {% endif %}
+
+        >
+        <option class="col" value="" disabled selected>Seleccionar</option> <!-- Default "Select" option -->
 
         {% for manager in managers %}
-        
-        <option value="{{ manager.id }}" class="col" {% if manager.id == contract_request.manager_assigned_to.id %}selected{% endif %} style="color: #4a5568;">{{ manager.first_name }} {{ manager.last_name }}</option>
+        <!-- Option for each manager, showing their first and last names -->
+        <option value="{{ manager.id }}" class="col" {% if manager.id==contract_request.manager_assigned_to.id
+            %}selected{% endif %} style="color: #4a5568;">{{ manager.first_name }} {{ manager.last_name }}</option>
         {% endfor %}
-
     </select>
 </form>
 

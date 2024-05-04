@@ -1,16 +1,16 @@
-{% extends 'login_base.html' %}
-{% load static %}
+{% extends 'login_base.html' %} <!-- Extending from a base template -->
+
+{% load static %} <!-- Loading static files such as CSS, JavaScript, and images -->
 
 {% block title %}
-Log In
+Log In <!-- Title of the page -->
 {% endblock %}
 
-{% block content %}
+{% block content %} <!-- Start of the content block -->
 <main style="background-image: url('{% static 'images/auth/background1.webp' %}')" class="main-screen">
-    <div class="overlay"></div>
+    <div class="overlay"></div> <!-- Overlay for background -->
     <div class="content-container">
-        {% include 'auth/login.html' %}
+        {% include 'auth/login.html' %} <!-- Including the login form -->
     </div>
 </main>
-
-{% endblock %}
+{% endblock %} <!-- End of the content block -->

@@ -4,15 +4,17 @@ from django.shortcuts import redirect, render
 from django.utils.decorators import method_decorator
 from ..utilities import leader_or_admin_redirect_to_manager_statistics, get_metrics
 
-
+# Description: View class for the manager statistics page.
+# Input: View (Class): Django class-based view.
+# Output: None
 class StatisticsView(View):
     template_name = 'statistical_registers/manager_statistics.html'
 
-    #@method_decorator(leader_or_admin_redirect_to_manager_statistics)
+    # Description: Renders the manager statistics page.
+    # Input: request (HttpRequest): The request object.
+    # Output: Rendered HTML template displaying manager statistics.
     def dispatch(self, request, *args, **kwargs):
-        # Get the required metrics
         metrics = get_metrics()
         if self.request.user.groups.first().name == 'admin':
             metrics['actualgroup'] = 'admin'
-        # Pass metrics as context to template
         return render(request, self.template_name, metrics)
