@@ -33,7 +33,6 @@ class ContractRequest(models.Model):
         return ContractRequestSnapshot.objects.filter(contract_request_id=self.id)
 
     def edit_comment(self, comment):
-        # Edit the comment of the current snapshot of the contract request
         current_snapshot = self.get_snapshots().filter(state=self.state).first()
         current_snapshot.comment = comment
         current_snapshot.save()
