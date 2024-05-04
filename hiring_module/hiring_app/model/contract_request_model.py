@@ -1,3 +1,4 @@
+from datetime import datetime
 import uuid
 from django.db import models
 from .user_model import CustomUser
@@ -44,8 +45,6 @@ class ContractRequest(models.Model):
         current_snapshot.save()
 
     def transition_to_state(self, new_state, comment=''):
-        print("Esto está pasando")
-
         # Transition the contract request to a new state
         # If the new state is not valid, raise a ValueError
         if new_state not in dict(state_choices()).keys():
@@ -61,6 +60,10 @@ class ContractRequest(models.Model):
 
         self.state = new_state
         self.current_state_start = timezone.now()
+        
+        if (new_state == 'filed' or new_state == 'cancelled'):
+            self.completion_date = datetime.now()
+            
         self.save()
         self.create_snapshot(comment=comment)
         return previous_state
