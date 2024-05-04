@@ -1,35 +1,27 @@
 {% extends 'base.html' %}
-
 {% load static %}
-
 {% block title %}
-<!-- Title of the page -->
 Panel de control
 {% endblock %}
-
 {% block aditionalMetadata %}
-<!-- Additional metadata, if any -->
 {% endblock %}
 
 {% block content %}
-<!-- Main content block -->
 
 <main id="main" class="expanded">
-    <!-- Included center container -->
     {% include 'control_board/center_container.html' %}
+    
+    {% include 'control_board/table.html' with managers=managers leaders=leaders group=actualgroup%} 
 
-    <!-- Included table with context variables -->
-    {% include 'control_board/table.html' with managers=managers leaders=leaders group=actualgroup %}
-
-    <!-- Block to be overridden in child templates -->
+    
     <div>
         {% block control_board %}
 
         {% endblock %}
     </div>
-
-    <!-- Included state change section -->
+    
     {% include 'control_board/state_change.html' %}
 </main>
+
 
 {% endblock %}
