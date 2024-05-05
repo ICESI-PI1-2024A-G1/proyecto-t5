@@ -1,76 +1,78 @@
-<form id="changeStateForm" method="post" action="{% url 'hiring_app:change_state' contract_request.id %}" style="margin-bottom: 1rem;">
+<form id="changeStateForm" method="post" action="{% url 'hiring_app:change_state' idContract=contract_request.id %}" style="margin-bottom: 1rem;">
     {% csrf_token %}
-    <select name="state" id="stateSelect"     
-    class="btn btn-white border border-2 border-dark text-dark dropdown-toggle col"
-    >
+    <input type="hidden" id="stateInput" name="state">
+    <select name="state" id="stateSelect" class="btn btn-white border border-2 border-dark text-dark dropdown-toggle col">
         {% for choice in choices %}
-        <option class="col"
-        value="{{ choice.0 }}" {% if choice.0 == contract_request.state %}selected{% endif %} >{{ choice.0 }}</option>
+        <option class="col" value="{{ choice.0 }}" {% if choice.0 == contract_request.state %}selected{% endif %}  {% if not choice.0 in available_changes %} disabled {% endif %} >{{ choice.1 }}</option>
         {% endfor %}
     </select>
 </form>
 
 <dialog id="reasonDialog" style="background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); z-index: 9999;">
-    <form id="reasonForm">
+    <form id="reasonForm" method="post" action="{% url 'hiring_app:change_state' idContract=contract_request.id %}">
+        {% csrf_token %}
+        <input type="hidden" id="state" name="state">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Default Bootstrap Modal</h5>
             <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
         <div class="modal-body">
             <label id="reasonLabel" for="reason" style="margin-bottom: 10px; color: #4a5568; font-weight: bold; display: block;">Motivo:</label>
-            <input type="text" id="reason" name="reason" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #cbd5e0; outline: none; transition: border-color 0.15s ease-in-out; margin-bottom: 10px;">
+            <input type="text" id="reason" name="reason" required style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #cbd5e0; outline: none; transition: border-color 0.15s ease-in-out; margin-bottom: 10px;">
         </div>  
-        
+
         <div class="modal-footer">
             <!-- Agregar el atributo data-bs-dismiss="modal" a los botones -->
             <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Close</button>
-            <button class="btn btn-primary" type="submit">Save changes</button>
+            <input type="submit" class="btn btn-primary" value="Save changes">
         </div>
     </form>
 </dialog>
-
-
-
 
 <div id="successDropdown" class="success-box" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #1f8b1f; padding: 20px; border-radius: 5px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); z-index: 9999; color: white; font-weight: bold; text-align: center;">
     ¡Formulario enviado correctamente!
 </div>
 
-
-
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var selectElement = document.getElementById('stateSelect');
-        var dialog = document.getElementById('reasonDialog');
-        var successDropdown = document.getElementById('successDropdown');
-        var reasonLabel = document.getElementById('reasonLabel');
-        var errorPopup = document.getElementById('errorPopup');
-        var closeButtons = document.querySelectorAll('[data-bs-dismiss="modal"]'); // Seleccionar todos los botones con data-bs-dismiss="modal"
+document.addEventListener('DOMContentLoaded', function () {
+    var selectElement = document.getElementById('stateSelect');
+    var dialog = document.getElementById('reasonDialog');
+    var successDropdown = document.getElementById('successDropdown');
+    var reasonLabel = document.getElementById('reasonLabel');
+    var closeButtons = document.querySelectorAll('[data-bs-dismiss="modal"]');
+    var reasonForm = document.getElementById('reasonForm');
+    var stateInput = document.getElementById('stateInput');
+    var originalState = selectElement.value;
 
-        selectElement.addEventListener('change', function () {
-            if (this.value === 'incomplete') {
-                document.getElementById('reasonForm').reset(); // Resetear el formulario
-                reasonLabel.textContent = 'Documentos faltantes:';
-                dialog.showModal();
-            } else if (this.value === 'cancelled') {
-                document.getElementById('reasonForm').reset(); // Resetear el formulario
-                reasonLabel.textContent = 'Motivo de cancelación:';
+    selectElement.addEventListener('change', function () {
+        var selectedValue = this.value;
+            // Establecer el estado seleccionado en el input oculto
+            stateInput.value = selectedValue;
+            // Verificar si la opción seleccionada requiere mostrar el modal
+            if (selectedValue === 'incomplete' || selectedValue === 'cancelled') {
+                // Configurar el texto del label del modal según la opción seleccionada
+                reasonLabel.textContent = selectedValue === 'incomplete' ? 'Documentos faltantes:' : 'Motivo de cancelación:';
+                // Mostrar el modal
                 dialog.showModal();
             } else {
+            // Si la opción no requiere el modal, enviar el formulario directamente
                 document.getElementById('changeStateForm').submit();
-                successDropdown.style.display = 'block';
-                setTimeout(function () {
-                    successDropdown.style.display = 'none';
-                }, 2000);
             }
-        });
+    });
 
-        // Agregar evento clic a cada botón de cierre
-        closeButtons.forEach(function(button) {
-            button.addEventListener('click', function() {
-                dialog.close(); // Cerrar el modal al hacer clic en el botón
-            });
+    document.getElementById('reasonForm').addEventListener('submit', function(event) {
+
+    var currentState = document.getElementById('stateSelect').value;
+
+    document.getElementById('state').value = currentState;
+    });
+
+
+    closeButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            dialog.close();
+            selectElement.value = originalState;
         });
     });
+});
 </script>
