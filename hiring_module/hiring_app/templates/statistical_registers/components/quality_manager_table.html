@@ -1,55 +1,52 @@
 <div class="col-xl-7 col-md-6 mb-4">
     <div class="card border-left-info shadow h-100 py-2">
-        <h3 class="m-4 font-weight-bold text-info">Calidad de nuestros gestores</h3>
-        <!-- Description for the card -->
-        <p class="ml-4 mr-2">
-            Esta tabla muestra a los 5 mejores gestores y sus indicadores de calidad. Cuanto mayor sea el porcentaje,
-            mejor será la calidad del
-            proceso de gestión de solicitudes.
-        </p>
-        <!-- Start of the table -->
-        <div class="card-body">
-            <table class="table table-bordered" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>Gestor</th>
-                        <th>Efectividad</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Rows for each manager with their respective effectiveness -->
-                    <tr>
-                        <td>{{ quality.0.0 }}</td>
-                        <td><strong>{% if quality.0.1 %} {{ quality.0.1 }} {% else %} ... {% endif %}</strong>
-                        </td>
-                    </tr>
+        <h3 class="m-4 font-weight-bold text-info">Calidad de nuestros gestores</h6>
+            <p class="ml-4 mr-2">
+                Esta tabla muestra a los 5 mejores gestores y sus indicadores de calidad. Cuanto mayor sea el porcentaje, mejor será la calidad del
+                proceso de gestión de solicitudes.
+            </p>
+            <div class="card-body">
+                <table class="table table-bordered" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Gestor</th>
+                            <th>Efectividad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-                    <tr>
-                        <td>{{ quality.1.0 }}</td>
-                        <td><strong>{% if quality.1.1 %} {{ quality.1.1 }} {% else %} ... {% endif %}</strong>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>{{ quality.0.0 }}</td>
+                            <td><strong>{% if quality.0.1 %} {{ quality.0.1 }} {% else %} ... {% endif %}</strong>
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <td>{{ quality.2.0 }}</td>
-                        <td><strong>{% if quality.2.1 %} {{ quality.2.1 }} {% else %} ... {% endif %}</strong>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>{{ quality.1.0 }}</td>
+                            <td><strong>{% if quality.1.1 %} {{ quality.1.1 }} {% else %} ... {% endif %}</strong>
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <td>{{ quality.3.0 }}</td>
-                        <td><strong>{% if quality.3.1 %} {{ quality.3.1 }} {% else %} ... {% endif %}</strong>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>{{ quality.2.0 }}</td>
+                            <td><strong>{% if quality.2.1 %} {{ quality.2.1 }} {% else %} ... {% endif %}</strong>
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <td>{{ quality.4.0 }}</td>
-                        <td><strong>{% if quality.4.1 %} {{ quality.4.1 }} {% else %} ... {% endif %}</strong>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>{{ quality.3.0 }}</td>
+                            <td><strong>{% if quality.3.1 %} {{ quality.3.1 }} {% else %} ... {% endif %}</strong>
+                            </td>
+                        </tr>
 
-                </tbody>
-            </table>
-        </div>
+                        <tr>
+                            <td>{{ quality.4.0 }}</td>
+                            <td><strong>{% if quality.4.1 %} {{ quality.4.1 }} {% else %} ... {% endif %}</strong>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
     </div>
 </div>

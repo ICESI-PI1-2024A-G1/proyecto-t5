@@ -7,7 +7,6 @@ Request Hiring
 
 {% block content %}
 {% if error_message %}
-<!-- Display error message as an alert if it exists -->
 <script>
     alert("{{ error_message }}");
 </script>
@@ -15,38 +14,33 @@ Request Hiring
 
 <div class="row p-4">
     {% for snapshot in snapshots %}
-    <!-- Iterate over each snapshot -->
+
     <div class="col-lg-4 mb-4">
         <div class="card lift lift-sm h-100">
-            <!-- Card Header -->
+            
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary">Bitacora del estado</h6>
             </div>
-            <!-- Card Body -->
             <div class="card-body" style="padding-top: 1px !important; padding-bottom: 1px !important;">
                 <ul class="list-group list-group-flush">
-                    <!-- Display the state of the contract -->
                     <li class="list-group-item">Estado de la contratacion:<br> {{ snapshot.state }}</li>
-                    <!-- Display the start date of the state -->
                     <li class="list-group-item">Fecha inicial <br> {{ snapshot.state_start }}</li>
-                    <!-- Display the end date of the state, if available -->
                     <li class="list-group-item">Fecha final <br>
                         {% if snapshot.state_end %}
                         {{ snapshot.state_end }}
-                        {% else %} N/A {% endif %}
-                    </li>
+                        {% else %} N/A {% endif %}</li>
                 </ul>
             </div>
-            <!-- Card Footer -->
             <div class="card-footer">
                 <div class="small text-muted">
-                    <!-- Display any observations related to the state -->
                     Observaciones:<br> {% if snapshot.comment %} {{ snapshot.comment }} {% else %} N/A {% endif %}
                 </div>
             </div>
         </div>
     </div>
+
     {% endfor %}
+    
 </div>
 
 {% endblock %}

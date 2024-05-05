@@ -4,15 +4,10 @@ from django.shortcuts import redirect, render
 from django.utils.decorators import method_decorator
 from hiring_app.views.control_board.utilities import role_redirect, get_requests
 
-# Description: View for displaying the leader dashboard.
-# Input: View
-# Output: Renders the leader dashboard template.
 class LeaderDashboardView(View):
     template_name = 'control_board/leader_dashboard.html'
 
-    # Description: Dispatch method to redirect based on user role.
-    # Input: self, request, *args, **kwargs
-    # Output: Renders the leader dashboard template with context.
+    # Redirect to correct dashboard based on user role
     @method_decorator(role_redirect)
     def dispatch(self, request, *args, **kwargs):
         context = {
