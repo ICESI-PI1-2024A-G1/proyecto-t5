@@ -101,11 +101,6 @@ class ContractRequest(models.Model):
     # Input: New state.
     # Output: Boolean indicating validity of transition.
     def is_valid_transition(self, new_state):
-<<<<<<< HEAD
-        return new_state in self.transitions.get(self.state, ())
-        
-        
-=======
         transitions = {
             'pending': ('review', 'incomplete', 'cancelled'),
             'review': ('filed', 'cancelled'),
@@ -119,7 +114,6 @@ class ContractRequest(models.Model):
     # Description: Create a snapshot of the current state of the contract request.
     # Input: Old state (optional), comment.
     # Output: Created snapshot instance.
->>>>>>> develop
     def create_snapshot(self, old_state=None, comment=''):
         if self.state is None:
             self.state = 'pending'

@@ -5,7 +5,7 @@
 
     <!-- Dropdown menu for selecting a new leader -->
     <select name="leader" class="leaderSelect btn btn-white border border-2 border-dark text-dark dropdown-toggle col"
-        {% if actualgroup !='admin' %} disabled {% endif %}>
+        {% if not actualgroup == 'admin' %} disabled {% endif %}>
         <option value="" class="col" selected>Seleccionar</option>
         {% for leader in leaders %}
         <!-- Option for each leader, showing their first and last names -->

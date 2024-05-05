@@ -12,21 +12,6 @@ from django.contrib.auth.models import Group
 # Input: None
 # Output: None
 class utilities:
-<<<<<<< HEAD
-    # Send email to user when request is created
-    def send_email(subject, content, recipient):
-        msg = MIMEMultipart()
-        msg['From'] = settings.EMAIL_HOST_USER
-        msg['To'] = recipient
-        msg['Subject'] = subject
-
-        msg.attach(MIMEText(content, 'html'))
-
-        with smtplib.SMTP_SSL(settings.EMAIL_HOST, settings.EMAIL_PORT) as server:
-            server.login(settings.EMAIL_HOST_USER,
-                        settings.EMAIL_HOST_PASSWORD)
-            server.send_message(msg)
-=======
     # Description: Sends an email to the user when a request is successfully created.
     # Input: created_by (CustomUser): The user who created the request.
     # Output: None
@@ -43,7 +28,6 @@ class utilities:
 
         message.attach_alternative(content, 'text/html')
         message.send()
->>>>>>> develop
 
     # Description: Finds the leader with the least amount of active requests.
     # Input: None
