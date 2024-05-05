@@ -3,14 +3,7 @@ from .contract_request_model import ContractRequest
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 
-# Description: Manager class for ProvisionOfServicesContractRequest instances.
-# Input: None
-# Output: None
 class ProvisionOfServicesContractRequestManager(models.Manager):
-
-    # Description: Creates a new ProvisionOfServicesContractRequest instance.
-    # Input: Keyword arguments for additional fields.
-    # Output: New ProvisionOfServicesContractRequest instance.
     def create_contract_request(self, **extra_fields):
         self.model = ProvisionOfServicesContractRequest
         from .course_schedule_model import CourseSchedule
@@ -31,13 +24,12 @@ class ProvisionOfServicesContractRequestManager(models.Manager):
             )
             course_schedule.save()
         return provision_of_services_request
-
-# Description: Model class for provision of services contract requests.
-# Input: None
-# Output: None
+    
 class ProvisionOfServicesContractRequest(ContractRequest):
+    
     objects = ProvisionOfServicesContractRequestManager()
 
+    # CEX Contract Request model
     BANK_ACCOUNT_CHOICES = [
         ('checking', 'Checking'),
         ('savings', 'Savings')
@@ -65,29 +57,24 @@ class ProvisionOfServicesContractRequest(ContractRequest):
     course_code = models.CharField(max_length=16)
     students_quantity = models.IntegerField()
     additional_hours = models.IntegerField()
-
-    # Description: Clean method to validate model fields.
-    # Input: None
-    # Output: None
+    
     def clean(self):
         super().clean()
+        # Validate email field
         try:
             validate_email(self.hiree_email)
         except ValidationError:
             raise ValidationError({'email': 'Invalid email format'})
 
+        # Validate bank account type
         if self.bank_account_type not in dict(self.BANK_ACCOUNT_CHOICES).keys():
             raise ValidationError({'bank_account_type': 'Invalid bank account type'})
 
-    # Description: Save method to ensure validation before saving.
-    # Input: None
-    # Output: None
     def save(self, *args, **kwargs):
+        # Ensure validation is triggered before saving
         self.full_clean()  
         super().save(*args, **kwargs)
 
-    # Description: String representation of the ProvisionOfServicesContractRequest instance.
-    # Input: None
-    # Output: String representation of the instance.
     def __str__(self):
         return str(self.id)
+

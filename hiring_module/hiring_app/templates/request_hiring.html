@@ -1,55 +1,56 @@
 {% extends 'base.html' %}
 
+
 {% load static %}
+
 
 {% block title %}
 Request Hiring
 {% endblock %}
+
+
 
 {% block content %}
 <div class="container-fluid">
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <!-- Display heading -->
         <h1 class="h3 mb-0 text-gray-800">Solicitud de contratación de {{contract_request.created_by.first_name}}</h1>
     </div>
 
-    <!-- Include center container -->
+
     {% include 'request_hiring/center_container.html' %}
 
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <!-- Display heading for request status -->
         <h1 class="h3 mb-0 text-gray-800">Estado de la Solicitud</h1>
     </div>
 
+
     <div class="row">
 
-        <!-- Include date details -->
+        <!-- Date info -->
         {% include 'request_hiring/date_details.html' %}
 
-        <!-- Include progress bar -->
+        <!-- Progress bar -->
         {% include 'request_hiring/progress_bar.html' %}
     </div>
 
+
     <div class="row">
 
-        <!-- Include requester info -->
+        <!-- requester info -->
         {% include 'request_hiring/request_details.html' %}
 
-        <!-- Include snapshot info -->
+        <!-- snapshot info -->
         {% include 'request_hiring/components/snapshot.html' %}
     </div>
 
     {% if typedContract == "Contrato CEX" %}
-    <!-- Include CEX contract information if typedContract matches -->
-    {% include 'request_hiring/cex_information.html' %}
+        {% include 'request_hiring/cex_information.html' %}
     {% elif typedContract == "Contrato Monitoria" %}
-    <!-- Include monitoring contract information if typedContract matches -->
-    {% include 'request_hiring/monitoring_information.html' %}
+        {% include 'request_hiring/monitoring_information.html' %}
     {% elif typedContract == "Contrato Prestación de Servicios" %}
-    <!-- Include POS contract information if typedContract matches -->
-    {% include 'request_hiring/pos_information.html' %}
+        {% include 'request_hiring/pos_information.html' %}
     {% endif %}
 
 </div>

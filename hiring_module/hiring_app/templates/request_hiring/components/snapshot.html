@@ -1,83 +1,75 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
-<script src="https://malsup.github.io/jquery.form.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
+<script src="https://malsup.github.io/jquery.form.js"></script> 
 
-<script>
-    $(document).ready(function () {
-        // Initialize the ajaxForm plugin for the form with id "edit-comment"
+<script> 
+    $(document).ready(function() { 
         $('#edit-comment').ajaxForm({
-            // Define success callback function
-            success: function (responseText, status, xhr, $form) {
+            success: function(responseText, status, xhr, $form) {
                 if (status == 'success') {
-                    // Display success message if the request was successful
                     alert("El comentario ha sido actualizado exitosamente.");
                 } else {
-                    // Display error message if the request was not successful
                     alert("Error: No se pudo actualizar el comentario.");
                 }
             },
-            // Define error callback function
-            error: function (xhr, status, error) {
-                // Display error message if an error occurs during the request
+            error: function(xhr, status, error) {
                 alert("Error: " + error);
             }
         });
-    });
+    }); 
 </script>
+
+
+
 
 <div class="col-xl-8 col-lg-7">
     <div class="card shadow mb-4">
         <!-- Card Header - Dropdown -->
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <!-- Title of the card -->
             <h6 class="m-0 font-weight-bold text-primary">Bitacora de seguimiento</h6>
         </div>
 
         <!-- Card Body -->
         <div class="card-body">
             <div class=" my-3 ">
-                <!-- Form for editing comment -->
-                <form class="col" id="edit-comment" method="post"
-                    action="{% url 'hiring_app:snapshots' idContract=contract_request.id %}">
+                <form class="col" id="edit-comment" method="post" action="{% url 'hiring_app:snapshots' idContract=contract_request.id %}">
                     {% csrf_token %}
-                    <!-- Textarea for entering comment -->
                     <textarea class="form-control" rows="3" name="comment">{{ snapshot_comment }}</textarea>
                     <div class="mt-4">
-                        <!-- Button for saving comment -->
-                        <button type="submit" name="action" value="edit-comment"
-                            class="btn btn-success btn-icon-split text-start mr-4"
-                            style="justify-content: start !important;">
+
+                        <button type="submit" name="action" value="edit-comment" class="btn btn-success btn-icon-split text-start mr-4" style="justify-content: start !important;">
                             <span class="icon text-white-50">
                                 <i class="fas fa-check"></i>
                             </span>
                             <span class="text">Guardar bitacora</span>
                         </button>
                         <span class="d-block d-sm-none py-2"></span>
-                        <!-- Button for viewing snapshots -->
-                        <button type="button" name="action" value="view-snapshots" class="btn btn-info btn-icon-split"
-                            style="justify-content: start !important;" onclick="submitForm('view-snapshots-form')">
+                        <button type="button" name="action" value="view-snapshots" class="btn btn-info btn-icon-split" style="justify-content: start !important;" onclick="submitForm('view-snapshots-form')">
                             <span class="icon text-white-50">
                                 <i class="fas fa-info-circle"></i>
                             </span>
                             <span class="text">Ver bitacoras &lrm; &lrm; &lrm; &lrm; &lrm; &lrm;</span>
                         </button>
+
+
                     </div>
                 </form>
-
-                <!-- Form for submitting action to view snapshots -->
-                <form method="post" action="{% url 'hiring_app:snapshots' idContract=contract_request.id %}"
-                    id="view-snapshots-form">
+                
+                <form method="post" action="{% url 'hiring_app:snapshots' idContract=contract_request.id %}" id="view-snapshots-form">
                     {% csrf_token %}
                     <input type="hidden" name="action" value="view-snapshots">
                 </form>
-
+                
                 <script>
-                    // Function to submit a form by its ID
                     function submitForm(formId) {
                         var form = document.getElementById(formId);
                         form.submit();
                     }
                 </script>
+                
+                                
+            
             </div>
+
         </div>
     </div>
 </div>

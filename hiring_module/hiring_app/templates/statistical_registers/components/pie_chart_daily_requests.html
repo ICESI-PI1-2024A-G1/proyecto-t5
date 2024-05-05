@@ -1,10 +1,10 @@
 {% load static %}
 <div class="col-xl-5 col-lg-5">
     <div class="card shadow mb-4">
+
         <div class="card-body">
             <div class="form-group">
-                <label for="date_select">Seleccionar día:</label>
-                <!-- Changed id attribute from "date_select" to "date_select" -->
+                <label for="date_select">Seleccionar dia:</label>
                 <input type="date" class="form-control" id="date_select">
             </div>
 
@@ -12,25 +12,28 @@
                 <canvas id="daily_requests_pie_chart"></canvas>
             </div>
             <div class="mt-4 text-center small" id="solicitudes_info">
-                <!-- Added space after each <br> for better readability -->
+
+
                 <span class="mr-2">
                     <i class="fas fa-circle text-success"></i> Solicitudes CEX: <strong><span
                             id="contratos_cex">0</span></strong>
                 </span>
-                <br> <!-- Added space after each <br> for better readability -->
-                <br> <!-- Added space after each <br> for better readability -->
+                <br>
+                <br>
                 <span class="mr-2">
                     <i class="fas fa-circle text-warning"></i> Solicitudes Monitorias: <strong><span
                             id="contratos_monitoria">0</span></strong>
                 </span>
-                <br> <!-- Added space after each <br> for better readability -->
-                <br> <!-- Added space after each <br> for better readability -->
+                <br>
+                <br>
                 <span class="mr-2">
-                    <i class="fas fa-circle text-gray-800"></i> Solicitudes Prestación de Servicios: <strong><span
+                    <i class="fas fa-circle text-gray-800"></i> Solicitudes Prestacion de Servicios: <strong><span
                             id="contratos_pos">0</span></strong>
                 </span>
             </div>
         </div>
+
+
     </div>
 </div>
 
@@ -43,6 +46,7 @@
 </script>
 
 <script>
+
     var dataSelect = document.getElementById('date_select');
 
     dataSelect.addEventListener('change', function () {
@@ -71,4 +75,5 @@
         }
         createOrUpdateDailyRequestChart();
     });
+
 </script>

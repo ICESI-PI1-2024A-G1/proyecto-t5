@@ -1,19 +1,17 @@
-{% extends 'base.html' %} <!-- Extending from base.html -->
-
-{% load static %} <!-- Loading static files -->
-
-{% block title %} <!-- Block for title -->
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
 Panel de control de Administrador
 {% endblock %}
-
-{% block aditionalMetadata %} <!-- Block for additional metadata -->
+{% block aditionalMetadata %}
 {% endblock %}
 
-{% block content %} <!-- Block for main content -->
-<main id="main" class="expanded"> <!-- Main content container -->
-    <div id="userListContainer">
-        {% include 'admin_user/components/add_user_list.html' %} <!-- Including add_user_list.html -->
-    </div>
-
-</main>
+{% block content %}
+        <main id="main" class="expanded">            
+            <div id="userListContainer">
+                {% include 'admin_user/components/add_user_list.html' %} 
+            </div>
+            
+        </main>
+    </main>
 {% endblock %}
