@@ -18,7 +18,8 @@ class RequestHiringView(View):
         groupLeader = Group.objects.get(name='leader')        
         managers = list(CustomUser.objects.filter(groups=groupManager))
         leaders = list(CustomUser.objects.filter(groups=groupLeader))
-        contract_request = utilities.getContract(idContract)                 
+        contract_request = utilities.getContract(idContract)      
+        available_changes = contract_request.transitions.get(contract_request.state)        
         typedContract = ("Contrato Prestación de Servicios" if isinstance(contract_request, ProvisionOfServicesContractRequest)
                         else "Contrato CEX" if isinstance(contract_request, CEXContractRequest) 
                         else "Contrato Monitoria" if isinstance(contract_request, MonitoringContractRequest) 
@@ -39,7 +40,8 @@ class RequestHiringView(View):
             'user': self.request.user,
             'actualgroup': str(self.request.user.groups.first()),
             'snapshot_comment': snapshot_comment,
-            'course_schedules': course_schedules if isinstance(contract_request, ProvisionOfServicesContractRequest) else None
+            'course_schedules': course_schedules if isinstance(contract_request, ProvisionOfServicesContractRequest) else None,
+            'available_changes': available_changes
             }
 
     def get(self, request, idContract):

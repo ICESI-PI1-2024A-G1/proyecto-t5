@@ -25,10 +25,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 CSRF_TRUSTED_ORIGINS = ['https://proyecto-t5.onrender.com']
 
 # Configuración de las variables de entorno
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = "django-insecure-4ht3kx09p6eqjx1&(l#d8h5qsmg(3jdgthb2aw#gz!7un41*mr"
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app',
                  'localhost', 'proyecto-t5.onrender.com', '0.0.0.0']
+
 
 
 def decrypt(encrypted_text, shift):
@@ -168,9 +170,9 @@ LOGIN_REDIRECT_URL = "hiring_app:home"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'hiring_app', 'media')
 
 
-EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
-EMAIL_HOST = os.getenv('EMAIL_HOST')
-EMAIL_PORT = os.getenv('EMAIL_PORT')
-EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL')
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'mail.sebastiandiazdev.com'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'no-reply@sebastiandiazdev.com'
+EMAIL_HOST_PASSWORD = 'w=!56S93oK$h'
+EMAIL_USE_SSL = True
