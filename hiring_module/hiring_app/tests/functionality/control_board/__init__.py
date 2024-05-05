@@ -1,2 +1,1 @@
 from .control_board_external_user import ControlBoardExternalUser
-from .control_board_admin import ControlBoardAdmin

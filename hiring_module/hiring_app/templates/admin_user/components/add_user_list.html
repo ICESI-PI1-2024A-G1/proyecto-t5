@@ -1,7 +1,7 @@
 <div class="container-fluid">
 
   <!-- Page Heading -->
-  <h1 class="h3 mb-2 text-gray-800">Usuarios externos</h1>
+  <h1 id="titleAdd" class="h3 mb-2 text-gray-800">Usuarios externos</h1>
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3 d-flex justify-content-between align-items-center">
@@ -24,10 +24,10 @@
           <tbody>
             {% for user in users %}
             <tr>
-              <td>{{ user.id }}</td>
-              <td>{{ user.email }}</td>
-              <td>{{ user.first_name }}</td>
-              <td>{{ user.last_name }}</td>
+              <td id="{{ user.id }}_id">{{ user.id }}</td>
+              <td id="{{ user.id }}_email">{{ user.email }}</td>
+              <td id="{{ user.id }}_name">{{ user.first_name }}</td>
+              <td id="{{ user.id }}_lastname">{{ user.last_name }}</td>
               <form id="addUserForm_{{ user.id }}" method="post" onsubmit="return updateRole('{{ user.id }}')">
                 {% csrf_token %}
                 <td>
@@ -41,7 +41,7 @@
                   </select>
                 </td>
                 <td>
-                  <button type="submit" name="search_by" value="email" class="btn btn-outline-dark">
+                  <button id="{{ user.id }}" name="search_by" value="email" class="btn btn-outline-dark">
                     Añadir
                   </button>
                 </td>
@@ -56,3 +56,24 @@
 
 </div>
 
+
+
+<!-- Modal -->
+<div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="notificationTitle">Título de la notificación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="notificationMessage">Mensaje de notificación</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                    onclick="window.history.back()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
