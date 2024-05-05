@@ -38,10 +38,14 @@
                                 <td style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{ request.id }}</td>
                                 <td style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{ request.created_by.first_name }} {{ request.created_by.last_name }}</td>
                                 {% if not actualgroup == 'leader' %}
-                                <td style="cursor: pointer;">{% include 'request_hiring/components/assign_leader.html' with leaders=leaders contract_request=request form_id_prefix='change_leader_form_' %}</td>
+                                <td style="cursor: pointer;">
+                                    <p style="display: none;">{{ request.leader_assigned_to.first_name }}</p>
+                                    {% include 'request_hiring/components/assign_leader.html' with leaders=leaders contract_request=request form_id_prefix='change_leader_form_' %}</td>
                                 {% endif %}
                                 {% if not actualgroup == 'manager' %}
-                                <td style="cursor: pointer;">{% include 'request_hiring/components/assign_manager.html' with managers=managers contract_request=request form_id_prefix='change_manager_form_' %}</td>
+                                <td style="cursor: pointer;">
+                                    <p style="display: none;">{{ request.manager_assigned_to.first_name }}</p>
+                                    {% include 'request_hiring/components/assign_manager.html' with managers=managers contract_request=request form_id_prefix='change_manager_form_' %}</td>
                                 {% endif %}
                                 <td style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{ request.state }}</td>
                                 <td style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{ request.contrato }}</td>
