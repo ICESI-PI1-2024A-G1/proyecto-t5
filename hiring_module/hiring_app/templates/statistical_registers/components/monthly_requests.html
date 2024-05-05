@@ -1,21 +1,18 @@
 {% load static %}
 <div class="col-xl-7 col-md-6 mb-4">
     <div class="card border-left-info shadow h-100 py-2">
-        <h3 class="m-4 font-weight-bold text-info">Cantidad de solicitudes</h3>
-        <!-- Fixed typo: changed closing tag from </h6> to </h3> -->
-        <p class="ml-4 mr-2">
-            Esta grafica muestra la cantidad de solicitudes que se han realizado en el mes seleccionado.
-        </p>
-        <div class="form-group ml-4 mr-4">
-            <label for="month_select">Seleccionar mes:</label>
-            <!-- Corrected the id attribute to match the JavaScript code -->
-            <input type="month" class="form-control" id="month_select">
-            <!-- Changed id attribute to "month_select" -->
-        </div>
+        <h3 class="m-4 font-weight-bold text-info">Cantidad de solicitudes</h6>
+            <p class="ml-4 mr-2">
+                Esta grafica muestra la cantidad de solicitudes que se han realizado en el mes seleccionado.
+            </p>
+            <div class="form-group ml-4 mr-4">
+                <label for="date_select">Seleccionar mes:</label>
+                <input type="month" class="form-control" id="month_select">
+            </div>
 
-        <div class="chart-area">
-            <canvas id="monthly_requests_line_chart"></canvas>
-        </div>
+            <div class="chart-area">
+                <canvas id="monthly_requests_line_chart"></canvas>
+            </div>
 
     </div>
 </div>
@@ -29,10 +26,10 @@
 </script>
 
 <script>
-    // Moved the script block for event listener below the previous script block
+
     var monthSelect = document.getElementById('month_select');
 
     monthSelect.addEventListener('change', function () {
-        createOrUpdateMonthlyRequestChart();
+            createOrUpdateMonthlyRequestChart();
     });
 </script>

@@ -5,19 +5,14 @@ from django.urls import reverse_lazy
 from datetime import datetime, timedelta
 from .utilities import utilities
 
-# Description: View for creating monitoring contract requests.
-# Input: Inherits from CreateView.
-# Output: Renders monitoring contract request form and handles form submission.
 class MonitoringContractRequestView(CreateView):
     model = MonitoringContractRequest
     form_class = MonitoringContractRequestForm
     template_name = 'request_creation/monitoring_request_form.html'
     success_url = reverse_lazy('hiring_app:monitoring') 
 
-    # Description: Handles form submission when form data is valid.
-    # Input: form (MonitoringContractRequestForm): The validated form instance.
-    # Output: Redirects to success URL after saving the form data.
     def form_valid(self, form):
+        # Assign created_by, estimated_completion_date and responsibles fields
         current_user = self.request.user
         estimated_completion_date = datetime.now() + timedelta(days=15)
         leader = utilities.findLeaderToAssign()
@@ -36,8 +31,5 @@ class MonitoringContractRequestView(CreateView):
                    "alejandrolonber25@gmail.com")
         return super().form_valid(form)
     
-    # Description: Handles form submission when form data is invalid.
-    # Input: form (MonitoringContractRequestForm): The invalid form instance.
-    # Output: Renders the form again with validation errors.
     def form_invalid(self, form):
         return self.render_to_response(self.get_context_data(form=form))

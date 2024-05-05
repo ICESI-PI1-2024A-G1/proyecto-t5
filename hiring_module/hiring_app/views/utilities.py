@@ -11,32 +11,27 @@ from hiring_app.model.provision_of_services_request_model import ProvisionOfServ
 from collections import defaultdict
 from datetime import datetime
 
-# Description: Decorator to redirect leaders and administrators to the manager statistics page.
-# Input: view_func (function): The view function to be wrapped.
-# Output: Function object.
-def leader_or_admin_redirect_to_manager_statistics(view_func):
+# Decorator to redirect leaders and administrators to manager statistics page
 
-    # Description: Wrapper function to redirect leaders and administrators to the manager statistics page.
-    # Input: request (HttpRequest): The request object.
-    #        *args: Variable length argument list.
-    #        **kwargs: Arbitrary keyword arguments.
-    # Output: The original view function or a redirect to the manager statistics page.
+
+def leader_or_admin_redirect_to_manager_statistics(view_func):
     @wraps(view_func)
     def wrapper(request, *args, **kwargs):
         if not request.user.is_authenticated:
+            # If the user is not authenticated, redirect the user to login
             return redirect('login')
 
         if request.user.groups.filter(name__in=['leader', 'admin']).exists():
+            # If the user is a leader or administrator, and is not on the manager statistics page, redirect them there
             if not request.path == reverse('hiring_app:manager_statistics'):
                 return redirect('hiring_app:manager_statistics')
 
+        # If the user is not a leader or administrator, or the leader or administrator already on the manager’s statistics page, call the original view
         return view_func(request, *args, **kwargs)
 
     return wrapper
 
-# Description: Retrieve metrics for manager statistics.
-# Input: None
-# Output: Dictionary containing metrics data.
+
 def get_metrics():
     approved_requests = 0
     review_requests = 0
@@ -55,13 +50,16 @@ def get_metrics():
     monitoring_requests = MonitoringContractRequest.objects.all()
     pos_requests = ProvisionOfServicesContractRequest.objects.all()
 
+    # Initialize a defaultdict to store requests count for each date
     requests_count_by_date = defaultdict(lambda: [0, 0, 0])
 
+    # Iterate over each type of request
     for request_type, queryset in [("CEX", cex_requests), ("Monitoring", monitoring_requests), ("POS", pos_requests)]:
         for request in queryset:
             start_date = request.start_date
             requests_count_by_date[start_date][{"CEX": 0, "Monitoring": 1, "POS": 2}[request_type]] += 1
 
+    # Convert the defaultdict to a list of lists
     daily_requests = [[date.strftime('%Y-%m-%d')] + counts for date, counts in requests_count_by_date.items()]
 
     daily_requests.sort()
@@ -122,11 +120,6 @@ def get_metrics():
         'monthly_requests': monthly_requests
     }
 
-# Description: Calculate quality percentage based on approved, under review, and to be validated requests.
-# Input: aprobadas (int): Number of approved requests.
-#        en_revision (int): Number of requests under review.
-#        por_validar (int): Number of requests to be validated.
-# Output: Quality percentage (float).
 def quality_calculator(aprobadas, en_revision, por_validar):
     total = aprobadas + en_revision + por_validar
 

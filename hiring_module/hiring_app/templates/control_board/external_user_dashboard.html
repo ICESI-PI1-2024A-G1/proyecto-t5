@@ -1,37 +1,30 @@
 {% extends 'control_board/base_external_user.html' %}
-
 {% load static %}
-
 {% block title %}
-Panel de control de usuario externo <!-- Setting the title of the page -->
+    Panel de control de usuario externo
 {% endblock %}
-
 {% block aditionalMetadata %}
 {% endblock %}
 
 {% block control_board %}
-<main id="main" class="expanded">
-    <div class="container text-center">
-        <!-- Button to create a monitoring contract -->
-        <div style="padding-top: 25px;">
-            <button id="create_monitoring_contract"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                <a href="/hiring_app/request_creation/monitoring/">Crear contrato de monitoria</a>
-            </button>
+    <main id="main" class="expanded">
+        <div class="container text-center">
+                <div style="padding-top: 25px;">
+                    <button id="create_monitoring_contract"  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        <a href="/hiring_app/request_creation/monitoring/">Crear contrato de monitoria</a>
+                    </button>
+                </div>
+                <div style="padding-top: 25px;">
+                    <button id="create_cex_contract" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        <a href="/hiring_app/request_creation/cex/">Crear contrato CEX</a>
+                    </button>
+                </div>
+                <div style="padding-top: 25px;">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        <a href="/hiring_app/request_creation/pos/">Crear contrato de prestacion de servicios</a>
+                    </button>
+                </div>
         </div>
-        <!-- Button to create a CEX contract -->
-        <div style="padding-top: 25px;">
-            <button id="create_cex_contract"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                <a href="/hiring_app/request_creation/cex/">Crear contrato CEX</a>
-            </button>
-        </div>
-        <!-- Button to create a contract of service provision -->
-        <div style="padding-top: 25px;">
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                <a href="/hiring_app/request_creation/pos/">Crear contrato de prestacion de servicios</a>
-            </button>
-        </div>
-    </div>
-</main>
+    </main>
+
 {% endblock %}

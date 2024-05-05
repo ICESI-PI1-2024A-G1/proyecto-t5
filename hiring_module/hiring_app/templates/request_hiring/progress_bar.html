@@ -53,7 +53,6 @@
 </div>
 
 <script>
-<<<<<<< HEAD
   // Update progress bar function according to selected status
   function updateProgressBar(state) {
     var progressBar = document.getElementById("ProgressBar");
@@ -85,41 +84,6 @@
         break;
       default:
         break;
-=======
-    // Update progress bar function according to selected status
-    function updateProgressBar(state) {
-        var progressBar = document.getElementById('ProgressBar');
-        switch (state) {
-            // Update width, color, and text content based on status
-            case 'pending':
-                progressBar.style.width = '25%';
-                progressBar.style.backgroundColor = '#00599C';
-                progressBar.textContent = '25%';
-                break;
-            case 'review':
-                progressBar.style.width = '50%';
-                progressBar.style.backgroundColor = '#00599C';
-                progressBar.textContent = '50%';
-                break;
-            case 'incomplete':
-                progressBar.style.width = '75%';
-                progressBar.style.backgroundColor = '#00599C';
-                progressBar.textContent = '75%';
-                break;
-            case 'filed':
-                progressBar.style.width = '100%';
-                progressBar.style.backgroundColor = 'green';
-                progressBar.textContent = '100%';
-                break;
-            case 'cancelled':
-                progressBar.style.width = '100%';
-                progressBar.style.backgroundColor = 'red';
-                progressBar.textContent = '100%';
-                break;
-            default:
-                break;
-        }
->>>>>>> develop
     }
   }
 

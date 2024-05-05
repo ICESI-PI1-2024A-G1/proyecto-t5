@@ -25,11 +25,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 CSRF_TRUSTED_ORIGINS = ['https://proyecto-t5.onrender.com']
 
 # Configuración de las variables de entorno
+SECRET_KEY = "django-insecure-4ht3kx09p6eqjx1&(l#d8h5qsmg(3jdgthb2aw#gz!7un41*mr"
 DEBUG = True
-SECRET_KEY = os.getenv('SECRET_KEY')
 
 ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app',
                  'localhost', 'proyecto-t5.onrender.com', '0.0.0.0']
+
 
 
 def decrypt(encrypted_text, shift):

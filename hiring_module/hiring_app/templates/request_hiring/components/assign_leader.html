@@ -1,18 +1,13 @@
-<!-- Form for changing the leader assigned to a contract request -->
-<form class="change-leader-form_{{ form_id_prefix }}{{ contract_request.id }}" method="post"
-    action="{% url 'hiring_app:assign_leader' contract_request.id %}" style="margin-bottom: 1rem;">
+<form class="change-leader-form_{{ form_id_prefix }}{{ contract_request.id }}" method="post" action="{% url 'hiring_app:assign_leader' contract_request.id %}" style="margin-bottom: 1rem;">
     {% csrf_token %}
 
-    <!-- Dropdown menu for selecting a new leader -->
-    <select name="leader" class="leaderSelect btn btn-white border border-2 border-dark text-dark dropdown-toggle col"
-        {% if not actualgroup == 'admin' %} disabled {% endif %}>
+    <select name="leader" class="leaderSelect btn btn-white border border-2 border-dark text-dark dropdown-toggle col" {% if actualgroup != 'admin' %} disabled {% endif %}>
         <option value="" class="col" selected>Seleccionar</option>
         {% for leader in leaders %}
-        <!-- Option for each leader, showing their first and last names -->
-        <option value="{{ leader.id }}" class="col" {% if leader.id==contract_request.leader_assigned_to.id %} selected
-            {% endif %}> {{ leader.first_name }} {{ leader.last_name }}</option>
+        <option value="{{ leader.id }}" class="col" {% if leader.id == contract_request.leader_assigned_to.id %} selected {% endif %}> {{ leader.first_name }} {{ leader.last_name }}</option>
         {% endfor %}
     </select>
+
 </form>
 
 
