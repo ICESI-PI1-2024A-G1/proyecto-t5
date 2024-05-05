@@ -2,6 +2,8 @@ from functools import wraps
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.db.models import Avg, F, ExpressionWrapper, DurationField
+from django.db.models import Q
+from django.utils import timezone
 from hiring_app.model import CustomUser
 from datetime import timedelta
 from django.contrib.auth.models import Group
@@ -110,14 +112,16 @@ def get_metrics():
     best_to_worse_manager = best_to_worse_manager[:5]
 
     best_to_worse_manager_with_percentage = [(nombre, f"{porcentaje} %") for nombre, porcentaje in best_to_worse_manager]
-
     
+    overdue_requests = get_resolved_after_estimated_date()
+
     
     return {
         'data': data,
         'quality': best_to_worse_manager_with_percentage,
         'daily_requests': daily_requests,
-        'monthly_requests': monthly_requests
+        'monthly_requests': monthly_requests,
+        'overdue_requests': overdue_requests
     }
 
 def quality_calculator(aprobadas, en_revision, por_validar):
@@ -129,15 +133,47 @@ def quality_calculator(aprobadas, en_revision, por_validar):
         return porcentaje_aprobadas
     else:
         return 0 
-    
-def get_average_duration():
-    total_requests = (
-        list(CEXContractRequest.objects.all()) +
-        list(MonitoringContractRequest.objects.all()) +
-        list(ProvisionOfServicesContractRequest.objects.all())
-    )
-    total_duration = sum((request.completion_date - request.start_date).days for request in total_requests if request.completion_date and request.start_date)
-    total_count = len(total_requests)
-    total_avg_duration = total_duration / total_count if total_count > 0 else timedelta()
 
-    return total_avg_duration
+def get_average_duration():
+    approved_or_cancelled_requests = (
+        list(CEXContractRequest.objects.filter(Q(state='filed') | Q(state='cancelled'))) +
+        list(MonitoringContractRequest.objects.filter(Q(state='filed') | Q(state='cancelled'))) +
+        list(ProvisionOfServicesContractRequest.objects.filter(Q(state='filed') | Q(state='cancelled')))
+    )
+    
+    total_duration_seconds = sum((request.completion_date - timezone.make_aware(datetime.combine(request.start_date, datetime.min.time()), timezone.utc)).total_seconds() for request in approved_or_cancelled_requests if request.completion_date and request.start_date)
+    total_count = len(approved_or_cancelled_requests)
+    total_avg_duration_seconds = total_duration_seconds / total_count if total_count > 0 else 0
+
+    total_days, remainder = divmod(total_avg_duration_seconds, 86400)
+    total_hours, remainder = divmod(remainder, 3600)
+    total_minutes, _ = divmod(remainder, 60)
+
+    return {
+        'days': int(total_days),
+        'hours': int(total_hours),
+        'minutes': int(total_minutes)
+    }
+    
+def get_resolved_after_estimated_date():
+    approved_or_cancelled_requests = (
+        list(CEXContractRequest.objects.filter(Q(state='filed') | Q(state='cancelled'))) +
+        list(MonitoringContractRequest.objects.filter(Q(state='filed') | Q(state='cancelled'))) +
+        list(ProvisionOfServicesContractRequest.objects.filter(Q(state='filed') | Q(state='cancelled')))
+    )
+
+    resolved_after_estimated_date_count = 0
+
+    for request in approved_or_cancelled_requests:
+        if request.estimated_completion_date and request.completion_date:
+            estimated_completion_date_datetime = datetime.combine(request.estimated_completion_date, datetime.min.time())
+            estimated_completion_date_datetime_aware = timezone.make_aware(estimated_completion_date_datetime)
+            if request.completion_date > estimated_completion_date_datetime_aware:
+                resolved_after_estimated_date_count += 1
+
+    return resolved_after_estimated_date_count
+
+
+
+
+
