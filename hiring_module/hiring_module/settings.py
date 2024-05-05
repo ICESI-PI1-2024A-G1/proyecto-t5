@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app',
                  'localhost', 'proyecto-t5.onrender.com', '0.0.0.0']
 
 
+
 def decrypt(encrypted_text, shift):
     decrypted_text = ""
     for char in encrypted_text:
