@@ -15,11 +15,8 @@
 
     <!-- Pie Chart -->
     {% include 'statistical_registers/components/pie_chart_daily_requests.html' %}
-    </div>
-        <p>Promedio de duración de una solicitud: {{ average_duration.days }} días, {{ average_duration.hours }} horas y {{ average_duration.minutes }} minutos</p> 
-        <p>Cantidad de solicitudes resueltas fuera del plazo estimado: {{ overdue_requests }}</p>
-    <div>
 
+    {% include 'statistical_registers/components/average_time_and_overdue_requests.html' %}
 
 </div>
 
