@@ -4,14 +4,8 @@ from .user_model import CustomUser
 from .contract_request_model import ContractRequest
 from django.core.validators import validate_email
 
-# Description: Manager class for MonitoringContractRequest instances.
-# Input: None
-# Output: None
-class MonitoringContractRequestManager(models.Manager):
 
-    # Description: Creates a new MonitoringContractRequest instance.
-    # Input: Keyword arguments for additional fields.
-    # Output: New MonitoringContractRequest instance.
+class MonitoringContractRequestManager(models.Manager):
     def create_contract_request(self, **extra_fields):
         self.model = MonitoringContractRequest
         monitoring_contract_request = self.create(
@@ -19,11 +13,9 @@ class MonitoringContractRequestManager(models.Manager):
         )
         monitoring_contract_request.create_snapshot()
         monitoring_contract_request.save(using=self._db)
+        
         return monitoring_contract_request
-
-# Description: Model class for monitoring contract requests.
-# Input: None
-# Output: None
+    
 class MonitoringContractRequest(ContractRequest):
     cenco = models.CharField(max_length=128)
     has_money_in_cenco = models.BooleanField()
@@ -43,25 +35,18 @@ class MonitoringContractRequest(ContractRequest):
 
     objects = MonitoringContractRequestManager()
 
-    # Description: Clean method to validate model fields.
-    # Input: None
-    # Output: None
     def clean(self):
         super().clean()
+        # Validate email field
         try:
             validate_email(self.student_email)
         except ValidationError:
             raise ValidationError({'email': 'Invalid email format'})
-
-    # Description: Save method to ensure validation before saving.
-    # Input: None
-    # Output: None
+        
     def save(self, *args, **kwargs):
+        # Ensure validation is triggered before saving
         self.full_clean()  
         super().save(*args, **kwargs)
 
-    # Description: String representation of the MonitoringContractRequest instance.
-    # Input: None
-    # Output: String representation of the instance.
     def __str__(self):
         return str(self.id)

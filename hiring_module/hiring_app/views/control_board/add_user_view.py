@@ -9,33 +9,24 @@ from django.utils.decorators import method_decorator
 from django.db.models import Q, CharField, Value
 from django.db.models.functions import Concat
 
-# Description: View for adding users by administrators.
-# Input: TemplateView
-# Output: Rendered template with context data
 class AddUserView(TemplateView):
     template_name = 'admin_user/administrator_add_user.html'
 
-    # Description: Dispatch method to check if user is an admin before proceeding.
-    # Input: self, *args, **kwargs
-    # Output: Redirects to login page if user is not an admin, otherwise continues with view execution.
+    # Redirect to correct dashboard based on user role
     @method_decorator(admin_required)
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
 
-    # Description: Method to get context data for rendering template.
-    # Input: self, **kwargs
-    # Output: Context data containing users to be displayed in the template.
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        # External users are users who are not admins, leaders, or managers
         users = CustomUser.objects.exclude(groups__name__in=['admin', 'leader', 'manager'])
+        # Add a role field to each user object
         for user in users:
             user.role = str(user.groups.first())
         context['users'] = users
         return context
     
-    # Description: Method to handle POST requests, including search queries and modifying user groups.
-    # Input: self, request, *args, **kwargs
-    # Output: Renders template with updated context data based on the POST request.
     def post(self, request, *args, **kwargs):            
         if 'search_query' in request.POST:
             search_query = request.POST.get('search_query')
@@ -43,6 +34,7 @@ class AddUserView(TemplateView):
                 search_query = None
 
             if 'search_by' in request.POST:
+                # If either search button is clicked, determine which type of search is requested
                 search_by = request.POST.get('search_by')
                 if search_by == 'email':
                     users = CustomUser.objects.exclude(groups__name__in=['admin', 'leader', 'manager']).filter(email__icontains=search_query)
@@ -51,11 +43,13 @@ class AddUserView(TemplateView):
                     query = Q()
                     for term in search_terms:
                         query &= (Q(first_name__icontains=term) | Q(last_name__icontains=term))
+                        # Filter users based on the query
                     users = CustomUser.objects.annotate(
                         full_name=Concat('first_name', Value(' '), 'last_name', output_field=CharField())
                     ).filter(query).exclude(groups__name__in=['admin', 'leader', 'manager'])
 
             else:
+                # If no search button is clicked, display all users
                 users = CustomUser.objects.exclude(groups__name__in=['admin', 'leader', 'manager'])
 
             context = self.get_context_data()
@@ -65,9 +59,11 @@ class AddUserView(TemplateView):
             context['users'] = users
             return self.render_to_response(context)
         else:
+            # Handle POST request to modify user group
             user_id = request.POST.get('user_id')
             role = request.POST.get('role')
             user = CustomUser.objects.get(pk=user_id)
+            # Modify user's group based on selected role
             if role == 'admin':
                 user.groups.set([Group.objects.get(name='admin')])
             elif role == 'leader':
@@ -75,4 +71,5 @@ class AddUserView(TemplateView):
             else:
                 user.groups.set([Group.objects.get(name='manager')])
 
+            # Redirect to a success page or any other page as needed
             return HttpResponseRedirect(reverse('hiring_app:administrator_user_list'))

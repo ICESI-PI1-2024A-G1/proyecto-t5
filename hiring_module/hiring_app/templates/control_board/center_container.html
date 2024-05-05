@@ -6,17 +6,14 @@
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <!-- Title for total hiring requests -->
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                             Solicitudes de contratación
                             <br>
                             <strong>Mes actual</strong>
                         </div>
-                        <!-- Display total number of hiring requests for the current month -->
                         <div class="h5 mb-0 font-weight-bold text-gray-800">{{requests|length}}</div>
                     </div>
                     <div class="col-auto">
-                        <!-- Icon for total hiring requests -->
                         <i class="fas fa-calendar fa-2x text-gray-300"></i>
                     </div>
                 </div>
@@ -24,23 +21,20 @@
         </div>
     </div>
 
-    <!-- Total unvalidated hiring request Card -->
+    <!-- Total unvalidated hiring request  Card -->
     <div class="col-xl-3 col-md-6 mb-4">
         <div class="card border-left-danger shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <!-- Title for total unvalidated hiring requests -->
                         <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                             Solicitudes sin validar
                             <br>
                             <strong>Histórico</strong>
                         </div>
-                        <!-- Display total number of unvalidated hiring requests -->
                         <div class="h5 mb-0 font-weight-bold text-gray-800">{{for_validate_requests|length}}</div>
                     </div>
                     <div class="col-auto">
-                        <!-- Icon for total unvalidated hiring requests -->
                         <i class="fas fa-window-close fa-2x text-gray-300"></i>
                     </div>
                 </div>
@@ -54,17 +48,14 @@
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <!-- Title for total validated hiring requests -->
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                             Solicitudes validadas
                             <br>
                             <strong>Mes actual</strong>
                         </div>
-                        <!-- Display total number of validated hiring requests for the current month -->
                         <div class="h5 mb-0 font-weight-bold text-gray-800">{{reviewed_requests|length}}</div>
                     </div>
                     <div class="col-auto">
-                        <!-- Icon for total validated hiring requests -->
                         <i class="fas fa-eye fa-2x text-gray-300"></i>
                     </div>
                 </div>
@@ -78,17 +69,14 @@
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <!-- Title for total approved hiring requests -->
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                             Solicitudes aprobadas
                             <br>
                             <strong>Mes actual</strong>
                         </div>
-                        <!-- Display total number of approved hiring requests for the current month -->
                         <div class="h5 mb-0 font-weight-bold text-gray-800">{{filled_requests|length}}</div>
                     </div>
                     <div class="col-auto">
-                        <!-- Icon for total approved hiring requests -->
                         <i class="fas fa-check-square fa-2x text-gray-300"></i>
                     </div>
                 </div>
