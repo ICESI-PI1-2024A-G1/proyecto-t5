@@ -36,20 +36,13 @@
                         {% for request in requests %}
                         <tr>
                             <!-- Clickable cells to redirect to the info page with contract ID -->
-                            <td style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{ request.id
-                                }}</td>
-                            <td style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{
-                                request.created_by.first_name }} {{ request.created_by.last_name }}</td>
-                            <td style="cursor: pointer;">{% include 'request_hiring/components/assign_leader.html' with
-                                leaders=leaders contract_request=request form_id_prefix='change_leader_form_' %}</td>
-                            <td style="cursor: pointer;">{% include 'request_hiring/components/assign_manager.html' with
-                                managers=managers contract_request=request form_id_prefix='change_manager_form_' %}</td>
-                            <td style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{
-                                request.state }}</td>
-                            <td style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{
-                                request.contrato }}</td>
-                            <td style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{
-                                request.start_date|date:"d-m-Y" }}</td>
+                            <td style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{ request.id}}</td>
+                            <td style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{request.created_by.first_name }} {{ request.created_by.last_name }}</td>
+                            <td style="cursor: pointer;">{% include 'request_hiring/components/assign_leader.html' withleaders=leaders contract_request=request form_id_prefix='change_leader_form_' %}</td>
+                            <td style="cursor: pointer;">{% include 'request_hiring/components/assign_manager.html' withmanagers=managers contract_request=request form_id_prefix='change_manager_form_' %}</td>
+                            <td style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{request.state }}</td>
+                            <td style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{request.contrato }}</td>
+                            <td style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{request.start_date|date:"d-m-Y" }}</td>
                         </tr>
                         {% endfor %}
                     </tbody>
