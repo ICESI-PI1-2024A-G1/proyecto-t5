@@ -23,9 +23,9 @@ Request Hiring
             </div>
             <div class="card-body" style="padding-top: 1px !important; padding-bottom: 1px !important;">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Estado de la contratacion:<br> {{ snapshot.state }}</li>
-                    <li class="list-group-item">Fecha inicial <br> {{ snapshot.state_start }}</li>
-                    <li class="list-group-item">Fecha final <br>
+                    <li id="{{ snapshot.state }}"class="list-group-item">Estado de la contratacion:<br> {{ snapshot.state }}</li>
+                    <li id="{{ snapshot.state }}_initDate"class="list-group-item">Fecha inicial <br> {{ snapshot.state_start }}</li>
+                    <li id="{{ snapshot.state }}_endDate"class="list-group-item">Fecha final <br>
                         {% if snapshot.state_end %}
                         {{ snapshot.state_end }}
                         {% else %} N/A {% endif %}</li>

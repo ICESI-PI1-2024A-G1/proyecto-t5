@@ -25,7 +25,7 @@ Solicitudes de contratos de Monitoría
 
         <h1 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;">Solicitudes de contratos de Monitoría</h1>
 
-        <form method="post" enctype="multipart/form-data" action="{% url 'hiring_app:monitoring' %}">
+        <form id="monitoringForm"  method="post" enctype="multipart/form-data" action="{% url 'hiring_app:monitoring' %}">
             {% csrf_token %}
 
             <!-- Cenco -->
@@ -138,5 +138,89 @@ Solicitudes de contratos de Monitoría
         </form>
     </div>
 </main>
+
+<!-- Modal -->
+<div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="notificationTitle">Título de la notificación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="notificationMessage">Mensaje de notificación</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="notificationCloseBtn"
+                    data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var form = document.getElementById('monitoringForm');
+        var notificationModal = new bootstrap.Modal(document.getElementById('notificationModal'));
+        var notificationTitle = document.getElementById('notificationTitle');
+        var notificationMessage = document.getElementById('notificationMessage');
+        var notificationCloseBtn = document.getElementById('notificationCloseBtn');
+
+        function showNotification(message, type) {
+            notificationTitle.textContent = (type === 'success') ? 'Éxito' : 'Error';
+            notificationMessage.textContent = message;
+            notificationModal.show();
+        }
+
+        function hideNotification() {
+            notificationModal.hide();
+        }
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            var formData = new FormData(form);
+            var url = form.action;
+
+            var darkOverlay = document.createElement('div');
+            darkOverlay.classList.add('dark-overlay');
+            document.body.appendChild(darkOverlay);
+
+            var loadingIndicator = document.createElement('div');
+            loadingIndicator.innerHTML = '<div class="spinner-border text-white" role="status"></div>';
+            loadingIndicator.classList.add('loading-indicator');
+            document.body.appendChild(loadingIndicator);
+
+            fetch(url, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                }
+            })
+                .then(function (response) {
+                    document.body.removeChild(darkOverlay);
+                    document.body.removeChild(loadingIndicator);
+
+                    if (response.ok) {
+                        showNotification('La solicitud fue exitosa.', 'success');
+                        form.reset(); // Opcional: limpiar el formulario después del envío exitoso
+                    } else {
+                        showNotification('Ocurrió un error al procesar la solicitud.', 'error');
+                    }
+                })
+                .catch(function (error) {
+                    console.error('Error en la solicitud AJAX:', error);
+                    document.body.removeChild(darkOverlay);
+                    document.body.removeChild(loadingIndicator);
+                    showNotification('Ocurrió un error al procesar la solicitud.', 'error');
+                });
+        });
+    });
+
+</script>
+
 
 {% endblock %}

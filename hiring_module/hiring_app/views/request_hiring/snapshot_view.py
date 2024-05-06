@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.utils import timezone
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.views import View
 from hiring_app.views.request_hiring.utilities import utilities
 from hiring_app.model.contract_request_model import state_choices
@@ -33,5 +33,5 @@ class SnapshotsView(View):
             contract_request = utilities.getContract(idContract)
             comment = request.POST.get('comment')
             contract_request.edit_comment(comment)
-            return HttpResponse('Comment edited successfully')
+            return redirect(request.META.get('HTTP_REFERER'))
             
