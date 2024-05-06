@@ -41,13 +41,17 @@
     </div>
 </div>
 
+
+
+
+
 <script>
 
     var dailyLeaderSelect = document.getElementById('data_leader_select');
 
     dailyLeaderSelect.addEventListener('change', function () {
         var selectedValue = dailyLeaderSelect.value.replace(/[\[\]']/g, '').split(',');
-        
+
         document.getElementById('solicitudes_aprobadas_leader').innerText = selectedValue[1];
         document.getElementById('solicitudes_en_revision_leader').innerText = selectedValue[2];
         document.getElementById('solicitudes_por_validar_leader').innerText = selectedValue[3];
