@@ -1,58 +1,65 @@
 {% load static %}
 <div class="col-xl-5 col-lg-5">
-    <div class="card shadow mb-4">
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <div class="form-group">
+        <label for="data_select">Seleccionar Datos:</label>
+        <select class="form-control" id="data_leader_select">
+          {% for item in leader_data %}
+          <option value="{{ item }}">{{ item.0 }}</option>
+          {% endfor %}
+        </select>
+      </div>
 
-        <div class="card-body">
-            <div class="form-group">
-                <label for="data_select">Seleccionar Datos:</label>
-                <select class="form-control" id="data_leader_select">
-                    {% for item in leader_data %}
-                    <option value="{{ item }}">{{ item.0 }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-
-            <div class="chart-pie pt-4 pb-2">
-                <canvas id="leader_chart_pie"></canvas>
-            </div>
-            <div class="mt-4 text-center small" id="solicitudes_info">
-
-
-                <span class="mr-2">
-                    <i class="fas fa-circle text-success"></i> Solicitudes Aprobadas: <strong><span
-                            id="solicitudes_aprobadas_leader">{{ leader_data.0.1 }}</span></strong>
-                </span>
-                <br>
-                <br>
-                <span class="mr-2">
-                    <i class="fas fa-circle text-warning"></i> Solicitudes En revisión: <strong><span
-                            id="solicitudes_en_revision_leader">{{ leader_data.0.2 }}</span></strong>
-                </span>
-                <br>
-                <br>
-                <span class="mr-2">
-                    <i class="fas fa-circle text-danger"></i> Solicitudes por validar: <strong><span
-                            id="solicitudes_por_validar_leader">{{ leader_data.0.3 }}</span></strong>
-                </span>
-            </div>
-        </div>
-
-
+      <div class="chart-pie pt-4 pb-2">
+        <canvas id="leader_chart_pie"></canvas>
+      </div>
+      <div class="mt-4 text-center small" id="solicitudes_info">
+        <span class="mr-2">
+          <i class="fas fa-circle text-success"></i> Solicitudes Aprobadas:
+          <strong
+            ><span id="solicitudes_aprobadas_leader"
+              >{{ leader_data.0.1 }}</span
+            ></strong
+          >
+        </span>
+        <br />
+        <br />
+        <span class="mr-2">
+          <i class="fas fa-circle text-warning"></i> Solicitudes En revisión:
+          <strong
+            ><span id="solicitudes_en_revision_leader"
+              >{{ leader_data.0.2 }}</span
+            ></strong
+          >
+        </span>
+        <br />
+        <br />
+        <span class="mr-2">
+          <i class="fas fa-circle text-danger"></i> Solicitudes por validar:
+          <strong
+            ><span id="solicitudes_por_validar_leader"
+              >{{ leader_data.0.3 }}</span
+            ></strong
+          >
+        </span>
+      </div>
     </div>
+  </div>
 </div>
 
-<script>
+<script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+<script src="{% static 'js/statistics/leader_pie_chart.js' %}">
 
-    var dailyLeaderSelect = document.getElementById('data_leader_select');
+  var dailyLeaderSelect = document.getElementById('data_leader_select');
 
-    dailyLeaderSelect.addEventListener('change', function () {
-        var selectedValue = dailyLeaderSelect.value.replace(/[\[\]']/g, '').split(',');
-        
-        document.getElementById('solicitudes_aprobadas_leader').innerText = selectedValue[1];
-        document.getElementById('solicitudes_en_revision_leader').innerText = selectedValue[2];
-        document.getElementById('solicitudes_por_validar_leader').innerText = selectedValue[3];
+  dailyLeaderSelect.addEventListener('change', function () {
+      var selectedValue = dailyLeaderSelect.value.replace(/[\[\]']/g, '').split(',');
 
-        createOrUpdateLeaderChart();
-    });
+      document.getElementById('solicitudes_aprobadas_leader').innerText = selectedValue[1];
+      document.getElementById('solicitudes_en_revision_leader').innerText = selectedValue[2];
+      document.getElementById('solicitudes_por_validar_leader').innerText = selectedValue[3];
 
+      createOrUpdateLeaderChart();
+  });
 </script>

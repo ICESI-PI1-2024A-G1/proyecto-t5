@@ -15,29 +15,29 @@ Estadísticas
     <h2>Líderes</h2>
     {% include 'statistical_registers/statistical_leader_info.html' %}
     <h2>Gestores</h2>
-     {% include 'statistical_registers/statistical_manager_info.html' %}
-     
+    {% include 'statistical_registers/statistical_manager_info.html' %}
+
     <h2>General</h2>
 
-     <div class="row">
+    <div class="row">
         {% include 'statistical_registers/components/monthly_requests.html' %}
-    
+
         <!-- Pie Chart -->
         {% include 'statistical_registers/components/pie_chart_daily_requests.html' %}
 
         {% include 'statistical_registers/components/average_time_and_overdue_requests.html' %}
     </div>
-    
+
 </div>
 
 
 <script>
     function onPageLoad() {
         createOrUpdateLeaderChart();
-        createOrUpdateChart();
+        createOrUpdateManagerChart();
         createOrUpdateDailyRequestChart();
-        
-        
+
+
     }
 
     document.addEventListener("DOMContentLoaded", onPageLoad);
