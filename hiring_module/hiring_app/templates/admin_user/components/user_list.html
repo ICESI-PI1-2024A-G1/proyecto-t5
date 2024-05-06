@@ -6,7 +6,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between align-items-center">
             <h6 class="m-0 font-weight-bold text-primary">Listado de solicitudes de contratación</h6>
-            <a href="add_user/" class="btn btn-primary btn-icon-split">
+            <a id="addUser" href="add_user/" class="btn btn-primary btn-icon-split">
                 <span class="text">Agregar usuario</span>
             </a>
         </div>        
@@ -26,11 +26,11 @@
                     <tbody>
                         {% for user in users %}
                         <tr>
-                            <td>{{ user.id }}</td>
-                            <td>{{ user.email }}</td>
-                            <td>{{ user.first_name }}</td>
-                            <td>{{ user.last_name }}</td>
-                            <td> <p style="display: none;">{{user.role}}</p>
+                            <td id="{{ user.id }}_id">{{ user.id }}</td>
+                            <td id="{{ user.id }}_email">{{ user.email }}</td>
+                            <td id="{{ user.id }}_name">{{ user.first_name }}</td>
+                            <td id="{{ user.id }}_lastname">{{ user.last_name }}</td>
+                            <td id="{{ user.id }}_role"> <p style="display: none;">{{user.role}}</p>
                                 <select class="managerSelect btn btn-white border border-2 border-dark text-dark dropdown-toggle col" id="roleSelect_{{ user.id }}" onchange="updateRole('{{ user.id }}')">
                                     <option class="col" value="admin" {% if user.role == "admin" %} selected {% endif %}>Administrator</option>
                                     <option class="col" value="leader" {% if user.role == "leader" %} selected {% endif %}>Leader</option>

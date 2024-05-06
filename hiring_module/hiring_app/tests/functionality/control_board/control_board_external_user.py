@@ -51,3 +51,21 @@ class ControlBoardExternalUser(StaticLiveServerTestCase):
         
         
         self.assertIn('Solicitudes de contratos CEX', self.selenium.title)
+
+
+    def test_get_form_pos(self):
+        self.selenium.get(self.live_server_url)
+        
+        username_input = self.selenium.find_element(By.NAME,'id')
+        password_input = self.selenium.find_element(By.NAME, 'password')
+        username_input.send_keys('1106293874')
+        password_input.send_keys('mariagonzales123')
+        
+        password_input.send_keys(Keys.RETURN)
+        
+        button_create_pos_contract = self.selenium.find_element(By.ID, 'create_pos_contract')
+
+        button_create_pos_contract.click()
+        
+        
+        self.assertIn('Solicitudes de contratos POS', self.selenium.title)
