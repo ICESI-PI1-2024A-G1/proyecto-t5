@@ -27,7 +27,6 @@
                             <th>Gestor encargado</th>
                             {% endif %}
                             <th>Estado</th>
-                            <th>Contrato</th>
                             <th>Fecha incio</th>
                         </tr>
                     </thead>
@@ -48,7 +47,6 @@
                                     {% include 'request_hiring/components/assign_manager.html' with managers=managers contract_request=request form_id_prefix='change_manager_form_' %}</td>
                                 {% endif %}
                                 <td id="{{ request.id }}_state" style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{ request.state }}</td>
-                                <td id="{{ request.id }}_contract" style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{ request.contrato }}</td>
                                 <td id="{{ request.id }}_date" style="cursor: pointer;" onclick="redirectToInfoPage('{{ request.id }}')">{{ request.start_date|date:"d-m-Y" }}</td>
                             </tr>
                         {% endfor %}
