@@ -12,9 +12,6 @@
     <form id="reasonForm" method="post" action="{% url 'hiring_app:change_state' idContract=contract_request.id %}">
         {% csrf_token %}
         <input type="hidden" id="state" name="state">
-        <div class="modal-header">
-            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
 
         <div class="modal-body">
             <label id="reasonLabel" for="reason" style="margin-bottom: 10px; color: #4a5568; font-weight: bold; display: block;">Motivo:</label>
