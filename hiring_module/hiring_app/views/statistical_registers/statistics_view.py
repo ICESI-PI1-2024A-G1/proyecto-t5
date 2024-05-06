@@ -16,5 +16,9 @@ class StatisticsView(View):
         manager_metrics = get_manager_metrics()
         leader_metrics = get_leader_metrics()
         average_duration = get_average_duration()
+        group = {'actualgroup': 'other'}
+        if self.request.user.groups.first().name == 'admin':
+            group = {'actualgroup': 'admin'}
+        
         # Pass metrics as context to template
-        return render(request, self.template_name, manager_metrics|leader_metrics|average_duration)
+        return render(request, self.template_name, manager_metrics|leader_metrics|average_duration|group)
