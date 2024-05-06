@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Estadísticas
+{% endblock %}
+{% block aditionalMetadata %}
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Estadísticas</h1>
+    </div>
+    <h2>Líderes</h2>
+    {% include 'statistical_registers/statistical_leader_info.html' %}
+    <h2>Gestores</h2>
+     {% include 'statistical_registers/statistical_manager_info.html' %}
+     
+    <h2>General</h2>
+
+     <div class="row">
+        {% include 'statistical_registers/components/monthly_requests.html' %}
+    
+        <!-- Pie Chart -->
+        {% include 'statistical_registers/components/pie_chart_daily_requests.html' %}
+    </div>
+    
+</div>
+
+
+<script>
+    function onPageLoad() {
+        createOrUpdateLeaderChart();
+        createOrUpdateChart();
+        createOrUpdateDailyRequestChart();
+        
+        
+    }
+
+    document.addEventListener("DOMContentLoaded", onPageLoad);
+</script>
+
+<script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+<script src="{% static 'js/statistics/manager_pie_chart.js' %}"></script>
+<script src="{% static 'js/statistics/leader_pie_chart.js' %}"></script>
+
+{% endblock %}

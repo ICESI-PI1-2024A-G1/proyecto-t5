@@ -30,7 +30,7 @@ def leader_or_admin_redirect_to_manager_statistics(view_func):
     return wrapper
 
 
-def get_metrics():
+def get_manager_metrics():
     approved_requests = 0
     review_requests = 0
     for_validate_requests = 0
@@ -112,11 +112,99 @@ def get_metrics():
     
     
     return {
-        'data': data,
-        'quality': best_to_worse_manager_with_percentage,
+        'manager_data': data,
+        'manager_quality': best_to_worse_manager_with_percentage,
         'daily_requests': daily_requests,
         'monthly_requests': monthly_requests
     }
+
+def get_leader_metrics():
+    approved_requests = 0
+    review_requests = 0
+    for_validate_requests = 0
+    leaders = CustomUser.objects.filter(
+        groups=Group.objects.get(name='leader'))
+    
+    cex_requests_ammount = 0
+    monitoring_request_ammount = 0
+    pos_requests_ammount = 0
+    data = []
+    best_to_worse_leader = []
+    daily_requests = []
+    monthly_requests = []
+
+    cex_requests = CEXContractRequest.objects.all()
+    monitoring_requests = MonitoringContractRequest.objects.all()
+    pos_requests = ProvisionOfServicesContractRequest.objects.all()
+
+    # Initialize a defaultdict to store requests count for each date
+    requests_count_by_date = defaultdict(lambda: [0, 0, 0])
+
+    # Iterate over each type of request
+    for request_type, queryset in [("CEX", cex_requests), ("Monitoring", monitoring_requests), ("POS", pos_requests)]:
+        for request in queryset:
+            start_date = request.start_date
+            requests_count_by_date[start_date][{"CEX": 0, "Monitoring": 1, "POS": 2}[request_type]] += 1
+
+    # Convert the defaultdict to a list of lists
+    daily_requests = [[date.strftime('%Y-%m-%d')] + counts for date, counts in requests_count_by_date.items()]
+
+    daily_requests.sort()
+
+    for leader in leaders:
+        cex_requests = CEXContractRequest.objects.filter(
+            leader_assigned_to=leader)
+        
+        monitoring_requests = MonitoringContractRequest.objects.filter(
+            leader_assigned_to=leader)
+        
+        pos_requests = ProvisionOfServicesContractRequest.objects.filter(
+            leader_assigned_to=leader)
+        
+        
+        approved_requests = cex_requests.filter(state='filed').count(
+        ) + monitoring_requests.filter(state='filed').count(
+        ) + pos_requests.filter(state='filed').count(
+        )
+        
+        
+        review_requests = cex_requests.filter(state='review').count(
+        ) + monitoring_requests.filter(state='review').count(
+        ) + pos_requests.filter(state='review').count(
+        )
+        
+        
+        for_validate_requests = cex_requests.filter(state='pending').count(
+        ) + monitoring_requests.filter(state='pending').count(
+        ) + pos_requests.filter(state='pending').count(
+        )
+        
+        
+        for_validate_requests += cex_requests.filter(state='incomplete').count(
+        ) + monitoring_requests.filter(state='incomplete').count(
+        ) + pos_requests.filter(state='incomplete').count(
+        )
+        
+        
+        data.append([(leader.first_name + ' ' + leader.last_name), approved_requests,
+                    review_requests, for_validate_requests])
+        
+        
+        best_to_worse_leader.append([(leader.first_name + ' ' + leader.last_name), quality_calculator(approved_requests, review_requests, for_validate_requests)])
+
+    best_to_worse_leader = sorted(best_to_worse_leader, key=lambda x: x[1], reverse=True)
+
+    best_to_worse_leader = best_to_worse_leader[:5]
+
+    best_to_worse_leader_with_percentage = [(nombre, f"{porcentaje} %") for nombre, porcentaje in best_to_worse_leader]
+
+    
+    
+    return {
+        'leader_data': data,
+        'leader_quality': best_to_worse_leader_with_percentage,
+    }
+
 
 def quality_calculator(aprobadas, en_revision, por_validar):
     total = aprobadas + en_revision + por_validar
