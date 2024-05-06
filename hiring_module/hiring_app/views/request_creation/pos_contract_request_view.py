@@ -41,7 +41,7 @@ class POSContractRequestView(CreateView):
                     course_schedule.save()
                     additional_fields = {}
         utilities.send_email('Solicitud de contratación radicada', 'Estimado/a, su solicitud de contrato en el aplicativo del módulo de contratación de la unidad de servicios compartidos ha sido radicada satisfactoriamente',
-                   "alejandrolonber25@gmail.com")
+                   current_user.email)
         return super().form_valid(form)
     
     def form_invalid(self, form):
