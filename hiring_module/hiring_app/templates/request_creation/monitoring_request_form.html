@@ -146,7 +146,6 @@ Solicitudes de contratos de Monitoría
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="notificationTitle">Título de la notificación</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <p id="notificationMessage">Mensaje de notificación</p>
@@ -176,6 +175,10 @@ Solicitudes de contratos de Monitoría
         function hideNotification() {
             notificationModal.hide();
         }
+
+        notificationCloseBtn.addEventListener('click', function () {
+            hideNotification();
+        });
 
         form.addEventListener('submit', function (event) {
             event.preventDefault();

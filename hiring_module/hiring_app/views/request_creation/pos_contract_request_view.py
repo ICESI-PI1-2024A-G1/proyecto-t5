@@ -47,6 +47,11 @@ class POSContractRequestView(CreateView):
     def form_invalid(self, form):
         return self.render_to_response(self.get_context_data(form=form))
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['actualgroup'] = 'external'
+        return context
+    
 
     
 def download_rut_file(request, idContract, *args, **kwargs):

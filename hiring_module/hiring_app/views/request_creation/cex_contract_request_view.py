@@ -35,6 +35,11 @@ class CEXContractRequestView(CreateView):
     def form_invalid(self, form):
         return self.render_to_response(self.get_context_data(form=form))
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['actualgroup'] = 'external'
+        return context
+    
 def download_rut_file(request, idContract, *args, **kwargs):
     # Get the rut and send it as a file
     model_instance = get_object_or_404(CEXContractRequest, id=idContract)
