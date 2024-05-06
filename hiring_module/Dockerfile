@@ -14,10 +14,10 @@ COPY . .
 ENV SECRET_KEY=django-insecure-4ht3kx09p6eqjx1&(l#d8h5qsmg(3jdgthb2aw#gz!7un41*mr
 ENV DEBUG=True
 ENV DATABASE_NAME=defaultdb
-ENV DATABASE_USER=avnadmin
-ENV DATABASE_PASSWORD=AVNS_R9bgbL8Sy56Ggdg3g1s
-ENV DATABASE_HOST=module-hiring-hiring-module.b.aivencloud.com
-ENV DATABASE_PORT=17645
+ENV DATABASE_USER=doadmin
+ENV DATABASE_PASSWORD=DYQV_ytjHR2c4FDOh1jjgswf
+ENV DATABASE_HOST=db-postgres-proyecto-t5-do-user-16438607-0.c.db.ondigitalocean.com
+ENV DATABASE_PORT=25060
 ENV EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend
 ENV EMAIL_HOST=mail.sebastiandiazdev.com
 ENV EMAIL_PORT=465

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 import os
+import sys
 from dotenv import load_dotenv
 from pathlib import Path
 
@@ -24,10 +25,30 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 CSRF_TRUSTED_ORIGINS = ['https://proyecto-t5.onrender.com']
 
 # Configuración de las variables de entorno
-SECRET_KEY = os.getenv('SECRET_KEY')
-DEBUG = os.getenv('DEBUG') == 'True'
+SECRET_KEY = "django-insecure-4ht3kx09p6eqjx1&(l#d8h5qsmg(3jdgthb2aw#gz!7un41*mr"
+DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', 'localhost', 'proyecto-t5.onrender.com', '0.0.0.0']
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app',
+                 'localhost', 'proyecto-t5.onrender.com', '0.0.0.0']
+
+
+
+def decrypt(encrypted_text, shift):
+    decrypted_text = ""
+    for char in encrypted_text:
+        if char.isalpha():
+            shifted = ord(char) - shift
+            if char.islower():
+                if shifted < ord('a'):
+                    shifted += 26
+            elif char.isupper():
+                if shifted < ord('A'):
+                    shifted += 26
+            decrypted_text += chr(shifted)
+        else:
+            decrypted_text += char
+    return decrypted_text
+
 
 # Configuración de la base de datos
 DATABASES = {
@@ -35,25 +56,20 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('DATABASE_NAME'),
         'USER': os.getenv('DATABASE_USER'),
-        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+        'PASSWORD': decrypt(os.getenv('DATABASE_PASSWORD'), 3),
         'HOST': os.getenv('DATABASE_HOST'),
         'PORT': os.getenv('DATABASE_PORT'),
         'OPTIONS': {
             'sslmode': 'require',
         },
-    },
-    'test': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('TEST_DATABASE_NAME'),
-        'USER': os.getenv('TEST_DATABASE_USER'),
-        'PASSWORD': os.getenv('TEST_DATABASE_PASSWORD'),
-        'HOST': os.getenv('TEST_DATABASE_HOST'),
-        'PORT': os.getenv('TEST_DATABASE_PORT'),
-        'OPTIONS': {
-            'sslmode': 'require',
-        },
     }
 }
+
+if 'test' in sys.argv:
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'test_db.sqlite3',
+    }
 
 
 # Application definition
@@ -67,7 +83,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-
 
 
 INTERNAL_IPS = [
@@ -141,7 +156,6 @@ STATICFILES_DIRS = [
 ]
 
 
-
 STATIC_ROOT = BASE_DIR.parent / "hiring_app/static"
 
 
@@ -156,9 +170,9 @@ LOGIN_REDIRECT_URL = "hiring_app:home"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'hiring_app', 'media')
 
 
-EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
-EMAIL_HOST = os.getenv('EMAIL_HOST')
-EMAIL_PORT = os.getenv('EMAIL_PORT')
-EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL')
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'mail.sebastiandiazdev.com'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'no-reply@sebastiandiazdev.com'
+EMAIL_HOST_PASSWORD = 'w=!56S93oK$h'
+EMAIL_USE_SSL = True

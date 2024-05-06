@@ -1,0 +1,35 @@
+{% load static %}
+<div class="col-xl-7 col-md-6 mb-4">
+    <div class="card border-left-info shadow h-100 py-2">
+        <h3 class="m-4 font-weight-bold text-info">Cantidad de solicitudes</h6>
+            <p class="ml-4 mr-2">
+                Esta grafica muestra la cantidad de solicitudes que se han realizado en el mes seleccionado.
+            </p>
+            <div class="form-group ml-4 mr-4">
+                <label for="date_select">Seleccionar mes:</label>
+                <input type="month" class="form-control" id="month_select">
+            </div>
+
+            <div class="chart-area">
+                <canvas id="monthly_requests_line_chart"></canvas>
+            </div>
+
+    </div>
+</div>
+
+<p hidden id="daily_requests">{{ daily_requests }}</p>
+<script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+<script src="{% static 'js/statistics/monthly_requests_line_chart.js' %}"></script>
+
+<script>
+    createOrUpdateMonthlyRequestChart();
+</script>
+
+<script>
+
+    var monthSelect = document.getElementById('month_select');
+
+    monthSelect.addEventListener('change', function () {
+            createOrUpdateMonthlyRequestChart();
+    });
+</script>

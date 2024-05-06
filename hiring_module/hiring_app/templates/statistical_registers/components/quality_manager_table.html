@@ -1,0 +1,52 @@
+<div class="col-xl-7 col-md-6 mb-4">
+    <div class="card border-left-info shadow h-100 py-2">
+        <h3 class="m-4 font-weight-bold text-info">Calidad de nuestros gestores</h6>
+            <p class="ml-4 mr-2">
+                Esta tabla muestra a los 5 mejores gestores y sus indicadores de calidad. Cuanto mayor sea el porcentaje, mejor será la calidad del
+                proceso de gestión de solicitudes.
+            </p>
+            <div class="card-body">
+                <table class="table table-bordered" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Gestor</th>
+                            <th>Efectividad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>{{ manager_quality.0.0 }}</td>
+                            <td><strong>{% if manager_quality.0.1 %} {{ manager_quality.0.1 }} {% else %} ... {% endif %}</strong>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>{{ manager_quality.1.0 }}</td>
+                            <td><strong>{% if manager_quality.1.1 %} {{ manager_quality.1.1 }} {% else %} ... {% endif %}</strong>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>{{ manager_quality.2.0 }}</td>
+                            <td><strong>{% if manager_quality.2.1 %} {{ manager_quality.2.1 }} {% else %} ... {% endif %}</strong>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>{{ manager_quality.3.0 }}</td>
+                            <td><strong>{% if manager_quality.3.1 %} {{ manager_quality.3.1 }} {% else %} ... {% endif %}</strong>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>{{ manager_quality.4.0 }}</td>
+                            <td><strong>{% if manager_quality.4.1 %} {{ manager_quality.4.1 }} {% else %} ... {% endif %}</strong>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+    </div>
+</div>

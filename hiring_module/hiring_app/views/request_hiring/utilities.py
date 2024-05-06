@@ -1,6 +1,7 @@
 from django.http import Http404
 from hiring_app.model.cex_contract_request_model import CEXContractRequest
 from hiring_app.model.monitoring_contract_request_model import MonitoringContractRequest
+from hiring_app.model.provision_of_services_request_model import ProvisionOfServicesContractRequest
 from django.contrib.auth.models import Group
 from hiring_app.model.user_model import CustomUser
 
@@ -11,6 +12,10 @@ class utilities:
 
         if not contract_request:
             contract_request = MonitoringContractRequest.objects.filter(
+                id=idContract).first()
+            
+        if not contract_request:
+            contract_request = ProvisionOfServicesContractRequest.objects.filter(
                 id=idContract).first()
 
         if not contract_request:

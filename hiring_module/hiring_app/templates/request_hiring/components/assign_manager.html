@@ -1,8 +1,6 @@
-<form id="ChangeManagerForm" method="post" action="{% url 'hiring_app:assign_manager' contract_request.id %}" style="margin-bottom: 1rem;">
+<form class="change-manager-form_{{ form_id_prefix }}{{ contract_request.id }}" method="post" action="{% url 'hiring_app:assign_manager' contract_request.id %}" style="margin-bottom: 1rem;">
     {% csrf_token %}
-    <select name="manager" id="managerSelect" 
-    class="btn btn-white border border-2 border-dark text-dark dropdown-toggle col"
-    {% if not is_admin and not is_leader %}
+    <select name="manager" class="managerSelect btn btn-white border border-2 border-dark text-dark dropdown-toggle col" {% if actualgroup != "admin"  and actualgroup != 'leader' %}
     disabled
     {% endif %}
     
@@ -10,15 +8,8 @@
         <option class="col" value="" disabled selected >Seleccionar</option>
 
         {% for manager in managers %}
-
-        <option class="col" value="{{ manager.id }}" 
-        {% if manager.id == contract_request.manager_assigned_to.id %}
-        selected
-        {% endif %} 
-        >
-            {{ manager.first_name }} {{ manager.last_name }}
-        </option>
-
+        
+        <option value="{{ manager.id }}" class="col" {% if manager.id == contract_request.manager_assigned_to.id %}selected{% endif %} style="color: #4a5568;">{{ manager.first_name }} {{ manager.last_name }}</option>
         {% endfor %}
 
     </select>
@@ -26,9 +17,70 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        var selectElement = document.getElementById('managerSelect');
-        selectElement.addEventListener('change', function () {
-            document.getElementById('ChangeManagerForm').submit();
+        var selectElements = document.querySelectorAll('.managerSelect');
+        selectElements.forEach(function(selectElement) {
+            selectElement.addEventListener('change', function () {
+                var form = selectElement.closest('form');
+                var formData = new FormData(form);
+                var url = form.action;
+    
+                // Mostrar fondo oscuro
+                var darkOverlay = document.createElement('div');
+                darkOverlay.classList.add('dark-overlay');
+                document.body.appendChild(darkOverlay);
+    
+                // Mostrar indicador de carga
+                var loadingIndicator = document.createElement('div');
+                loadingIndicator.innerHTML = '<div class="spinner-border text-white" role="status"></div>';
+                loadingIndicator.classList.add('loading-indicator');
+                document.body.appendChild(loadingIndicator);
+    
+                fetch(url, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest', // Agregar la cabecera X-Requested-With
+                        'X-CSRFToken': '{{ csrf_token }}' // Agregar el token CSRF
+                    }
+                })
+                .then(function(response) {
+                    // Ocultar fondo oscuro y indicador de carga después de recibir la respuesta
+                    document.body.removeChild(darkOverlay);
+                    document.body.removeChild(loadingIndicator);
+    
+                    if (response.ok) {
+                        showNotification('La solicitud fue exitosa.', 'success');
+                    } else {
+                        showNotification('Ocurrió un error al procesar la solicitud.', 'error');
+                    }
+                })
+                .catch(function(error) {
+                    console.error('Error en la solicitud AJAX:', error);
+                    // Ocultar fondo oscuro y indicador de carga en caso de error
+                    document.body.removeChild(darkOverlay);
+                    document.body.removeChild(loadingIndicator);
+                    showNotification('Ocurrió un error al procesar la solicitud.', 'error');
+                });
+            });
+        });
+    
+        var notificationModal = new bootstrap.Modal(document.getElementById('notificationModal'));
+        var notificationTitle = document.getElementById('notificationTitle');
+        var notificationMessage = document.getElementById('notificationMessage');
+        var notificationCloseBtn = document.getElementById('notificationCloseBtn');
+    
+        function showNotification(message, type) {
+            // Modificar el título y el mensaje del modal según el tipo de notificación
+            notificationTitle.textContent = (type === 'success') ? 'Éxito' : 'Error';
+            notificationMessage.textContent = message;
+            // Mostrar el modal
+            notificationModal.show();
+        }
+    
+        // Cerrar el modal al hacer clic en el botón "Cerrar"
+        notificationCloseBtn.addEventListener('click', function() {
+            notificationModal.hide();
         });
     });
-</script>
+    </script>
+    

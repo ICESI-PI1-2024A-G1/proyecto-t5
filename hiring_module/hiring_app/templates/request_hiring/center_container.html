@@ -10,7 +10,7 @@
                             Lider asignado:
                             <br>
                         </div>
-                        <div class="pt-3 h5 mb-0 font-weight-bold text-gray-800">{% include 'request_hiring/components/assign_leader.html' %}</div>
+                        <div class="pt-3 h5 mb-0 font-weight-bold text-gray-800">{% include 'request_hiring/components/assign_leader.html'  with leaders=leaders contract_request=contract_request %}</div>
                     </div>
 
                 </div>
@@ -28,7 +28,7 @@
                             Gestor asignado:
                             <br>
                         </div>
-                        <div class="pt-3 h5 mb-0 font-weight-bold text-gray-800">{% include 'request_hiring/components/assign_manager.html' %}</div>
+                        <div class="pt-3 h5 mb-0 font-weight-bold text-gray-800">{% include 'request_hiring/components/assign_manager.html'  with managers=managers contract_request=contract_request %}</div>
                     </div>
                 </div>
             </div>
