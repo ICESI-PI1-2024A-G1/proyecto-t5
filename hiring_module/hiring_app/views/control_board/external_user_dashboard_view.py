@@ -27,3 +27,8 @@ class ExternalUserDashboardView(TemplateView):
     @method_decorator(role_and_login_required)
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['actualgroup'] = 'external'
+        return context
