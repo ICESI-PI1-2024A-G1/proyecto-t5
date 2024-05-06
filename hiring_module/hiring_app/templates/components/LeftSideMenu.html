@@ -1,5 +1,4 @@
 {% load static %}
-{% if actualgroup != "external" %}
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
@@ -29,10 +28,12 @@
         </a>
         {% endif %}
 
+        {% if actualgroup != "external" %}
         <a class="nav-link" href="{% url 'hiring_app:statistics' %}">
             <i class="fas fa-fw fa-file-contract"></i>
             <span>Estadisticas</span>
         </a>
+        {% endif %}
     </li>
 
     <!-- Divider -->
@@ -45,4 +46,3 @@
 
 
 </ul>
-{% endif %}
