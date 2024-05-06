@@ -252,8 +252,6 @@ class ProvisionOfServicesContractRequestTests(TestCase):
             )
     
     def test_transition_state_on_pos_contract_request(self):
-        # Create a user
-        user = self.create_user1()
         # Create a pos contract request
         pos_contract_request = self.create_pos_contract_request()
         # Check if there's a snapshot of the contract request
