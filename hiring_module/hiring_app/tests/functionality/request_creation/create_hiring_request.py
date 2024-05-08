@@ -142,17 +142,16 @@ class CreateHiringRequest(StaticLiveServerTestCase):
         self.selenium.find_element(By.NAME, 'course_code').send_keys('CS101')
         self.selenium.find_element(By.NAME, 'students_quantity').send_keys('30')
         self.selenium.find_element(By.NAME, 'additional_hours').send_keys('10')
-        self.selenium.find_element(By.ID, 'add-fields-btn').click()
         additional_fields = self.selenium.find_elements(By.XPATH, '//div[@id="additionalFields"]')
         for field in additional_fields:
-            field.find_element(By.NAME, 'additionalFields-date').send_keys('2024-05-04')
-            field.find_element(By.NAME, 'additionalFields-start_time').send_keys('08:001')  # 1 para AM
-            field.find_element(By.NAME, 'additionalFields-end_time').send_keys('12:002')    # 2 para PM
-            field.find_element(By.NAME, 'additionalFields-room').send_keys('Room 101')
-            field.find_element(By.NAME, 'additionalFields-responsability').send_keys('Teaching')
+            field.find_element(By.CSS_SELECTOR, "[name^='additionalFields-date']").send_keys('2024-05-04')
+            field.find_element(By.CSS_SELECTOR, "[name^='additionalFields-start_time']").send_keys('08:001')  # 1 para AM
+            field.find_element(By.CSS_SELECTOR, "[name^='additionalFields-end_time']").send_keys('12:002')    # 2 para PM
+            field.find_element(By.CSS_SELECTOR, "[name^='additionalFields-room']").send_keys('101D')
+            field.find_element(By.CSS_SELECTOR, "[name^='additionalFields-responsability']").send_keys('Teaching')
 
         self.selenium.find_element(By.CSS_SELECTOR, 'button[type="submit"]').click()
-        time.sleep(2)
+        time.sleep(4)
         notification_message = self.selenium.find_element(By.ID, "notificationMessage").text
         
         self.assertEqual(notification_message, "La solicitud fue exitosa.")
