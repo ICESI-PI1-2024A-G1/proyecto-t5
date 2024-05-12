@@ -100,12 +100,16 @@ def get_manager_metrics():
         ) + pos_requests.filter(state='incomplete').count(
         )
         
+        cancelled_requests = cex_requests.filter(state='cancelled').count(
+        ) + monitoring_requests.filter(state='cancelled').count(
+        ) + pos_requests.filter(state='cancelled').count(
+        )
         
         data.append([(manager.first_name + ' ' + manager.last_name), approved_requests,
-                    review_requests, for_validate_requests])
+                    review_requests, for_validate_requests,cancelled_requests])
         
         
-        best_to_worse_manager.append([(manager.first_name + ' ' + manager.last_name), quality_calculator(approved_requests, review_requests, for_validate_requests)])
+        best_to_worse_manager.append([(manager.first_name + ' ' + manager.last_name), quality_calculator(approved_requests, review_requests, for_validate_requests,cancelled_requests)])
 
     best_to_worse_manager = sorted(best_to_worse_manager, key=lambda x: x[1], reverse=True)
 
@@ -191,12 +195,17 @@ def get_leader_metrics():
         ) + pos_requests.filter(state='incomplete').count(
         )
         
+        cancelled_requests = cex_requests.filter(state='cancelled').count(
+        ) + monitoring_requests.filter(state='cancelled').count(
+        ) + pos_requests.filter(state='cancelled').count(
+        )
+        
         
         data.append([(leader.first_name + ' ' + leader.last_name), approved_requests,
-                    review_requests, for_validate_requests])
+                    review_requests, for_validate_requests,cancelled_requests])
         
         
-        best_to_worse_leader.append([(leader.first_name + ' ' + leader.last_name), quality_calculator(approved_requests, review_requests, for_validate_requests)])
+        best_to_worse_leader.append([(leader.first_name + ' ' + leader.last_name), quality_calculator(approved_requests, review_requests, for_validate_requests,cancelled_requests)])
 
     best_to_worse_leader = sorted(best_to_worse_leader, key=lambda x: x[1], reverse=True)
 
@@ -212,13 +221,13 @@ def get_leader_metrics():
     }
 
 
-def quality_calculator(aprobadas, en_revision, por_validar):
-    total = aprobadas + en_revision + por_validar
+def quality_calculator(approved_requests, under_review_requests, for_validate_requests, cancelled_requests):
+    total = approved_requests + under_review_requests + for_validate_requests + cancelled_requests
 
     if total != 0:
-        porcentaje_aprobadas = (aprobadas / total) * 100
-        porcentaje_aprobadas = round(porcentaje_aprobadas, 2)
-        return porcentaje_aprobadas
+        quality = ((approved_requests + cancelled_requests)/ total) * 100
+        quality = round(quality, 2)
+        return quality
     else:
         return 0 
 
@@ -229,7 +238,7 @@ def get_average_duration():
         list(ProvisionOfServicesContractRequest.objects.filter(Q(state='filed') | Q(state='cancelled')))
     )
     
-    total_duration_seconds = sum((request.completion_date - timezone.make_aware(datetime.combine(request.start_date, datetime.min.time()), timezone.utc)).total_seconds() for request in approved_or_cancelled_requests if request.completion_date and request.start_date)
+    total_duration_seconds = sum((request.completion_date - timezone.make_aware(datetime.combine(request.start_date, datetime.min.time()))).total_seconds() for request in approved_or_cancelled_requests if request.completion_date and request.start_date)
     total_count = len(approved_or_cancelled_requests)
     total_avg_duration_seconds = total_duration_seconds / total_count if total_count > 0 else 0
 

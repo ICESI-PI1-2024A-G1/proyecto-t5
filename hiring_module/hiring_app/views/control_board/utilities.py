@@ -10,6 +10,12 @@ from hiring_app.model.provision_of_services_request_model import ProvisionOfServ
 from django.http import HttpResponse
 from openpyxl import Workbook
 
+from datetime import datetime
+from django.db.models import Q
+from django.utils import timezone
+from itertools import chain
+
+
 # Decorator to redirect users to the correct dashboard based on their role
 def role_redirect(view_func):
     @wraps(view_func)
@@ -96,10 +102,40 @@ def get_requests(user):
     groupLeader = Group.objects.get(name='leader')       
     managers = list(CustomUser.objects.filter(groups=groupManager))
     leaders = list(CustomUser.objects.filter(groups=groupLeader))
+    
+    current_date = timezone.now()
+    current_month = current_date.month
+    current_year = current_date.year
+
+    requests = list(
+        chain(
+            requests_CEX.filter(start_date__month=current_month, start_date__year=current_year),
+            requests_monitoring.filter(start_date__month=current_month, start_date__year=current_year),
+            requests_pos.filter(start_date__month=current_month, start_date__year=current_year)
+        )
+    )
+
+    filled_requests = list(
+        chain(
+            requests_CEX.filter(start_date__month=current_month, start_date__year=current_year, state='filed'),
+            requests_monitoring.filter(start_date__month=current_month, start_date__year=current_year, state='filed'),
+            requests_pos.filter(start_date__month=current_month, start_date__year=current_year, state='filed')
+        )
+    )
+
+    reviewed_requests = list(
+        chain(
+            requests_CEX.filter(start_date__month=current_month, start_date__year=current_year, state='review'),
+            requests_monitoring.filter(start_date__month=current_month, start_date__year=current_year, state='review'),
+            requests_pos.filter(start_date__month=current_month, start_date__year=current_year, state='review')
+        )
+    )
+    
+    
     return {
-        'requests': list(requests_CEX) + list(requests_monitoring) + list(requests_pos),
-        'filled_requests': list(requests_CEX.filter(state='filed')) + list(requests_monitoring.filter(state='filed')) + list(requests_pos.filter(state='filed')),
-        'reviewed_requests': list(requests_CEX.filter(state='review')) + list(requests_monitoring.filter(state='review')) + list(requests_pos.filter(state='review')),
+        'requests': requests,
+        'filled_requests': filled_requests,
+        'reviewed_requests': reviewed_requests,
         'for_validate_requests':  list(requests_CEX.filter(state__in=['pending', 'incomplete'])) + list(requests_monitoring.filter(state__in=['pending', 'incomplete'])) + list(requests_pos.filter(state__in=['pending', 'incomplete'])),
         'leaders': leaders,
         'managers': managers,

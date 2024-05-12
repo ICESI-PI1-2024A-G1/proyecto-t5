@@ -3,8 +3,8 @@
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="form-group">
-                <label for="data_select">Seleccionar Datos:</label>
-                <select class="form-control" id="data_select">
+                <label for="data_manager_select">Seleccionar Datos:</label>
+                <select class="form-control" id="data_manager_select">
                     {% for item in manager_data %}
                     <option value="{{ item }}">{{ item.0 }}</option>
                     {% endfor %}
@@ -31,22 +31,34 @@
                     <i class="fas fa-circle text-danger"></i> Solicitudes por validar:
                     <strong><span id="solicitudes_por_validar_manager">{{ manager_data.0.3 }}</span></strong>
                 </span>
+                <br />
+                <br />
+                <span class="mr-2">
+                    <i class="fas fa-circle text-secondary"></i> Solicitudes canceladas:
+                    <strong><span id="solicitudes_canceladas_manager">{{ manager_data.0.4 }}</span></strong>
+                </span>
             </div>
         </div>
     </div>
 </div>
 
+<script src="{% static 'js/statistics/manager_pie_chart.js' %}"></script>
+
+
 <script>
 
-    var dailySelect = document.getElementById('data_select');
+    var dailyManagerSelect = document.getElementById('data_manager_select');
 
-    dailySelect.addEventListener('change', function () {
-        var selectedValue = dailySelect.value.replace(/[\[\]']/g, '').split(',');
-
+    dailyManagerSelect.addEventListener('change', function () {
+        var selectedValue = dailyManagerSelect.value.replace(/[\[\]']/g, '').split(',');
+        
         document.getElementById('solicitudes_aprobadas_manager').innerText = selectedValue[1];
         document.getElementById('solicitudes_en_revision_manager').innerText = selectedValue[2];
         document.getElementById('solicitudes_por_validar_manager').innerText = selectedValue[3];
+        document.getElementById('solicitudes_canceladas_manager').innerText = selectedValue[4];
 
         createOrUpdateManagerChart();
     });
 </script>
+
+<script>createOrUpdateManagerChart()</script>
