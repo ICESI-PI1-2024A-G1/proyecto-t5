@@ -261,20 +261,6 @@ def get_resolved_after_estimated_date():
 
     return resolved_after_estimated_date_count
 
-def filter_quantity_of_requests_by_date_range(start_date, end_date):
-    cex_requests = CEXContractRequest.objects.filter(start_date__gte=start_date, start_date__lte=end_date)
-    monitoring_requests = MonitoringContractRequest.objects.filter(start_date__gte=start_date, start_date__lte=end_date)
-    pos_requests = ProvisionOfServicesContractRequest.objects.filter(start_date__gte=start_date, start_date__lte=end_date)
-    
-    cex_count = cex_requests.count()
-    monitoring_count = monitoring_requests.count()
-    pos_count = pos_requests.count()
-    
-    return {
-        'CEX': cex_count,
-        'Monitoring': monitoring_count,
-        'POS': pos_count
-    }
 
     
     
