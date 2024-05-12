@@ -18,7 +18,7 @@ function createOrUpdateLeaderChart() {
                 data: [
                     parseInt(document.getElementById("solicitudes_aprobadas_leader").innerText),
                     parseInt(document.getElementById("solicitudes_en_revision_leader").innerText),
-                    parseInt(document.getElementById("solicitudes_por_validar_leader").innerText).
+                    parseInt(document.getElementById("solicitudes_por_validar_leader").innerText),
                     parseInt(document.getElementById("solicitudes_canceladas_leader").innerText)
                 ],
                 backgroundColor: ['#1cc88a', '#f6c23e', '#e74a3b','#858795'],

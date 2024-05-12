@@ -238,7 +238,7 @@ def get_average_duration():
         list(ProvisionOfServicesContractRequest.objects.filter(Q(state='filed') | Q(state='cancelled')))
     )
     
-    total_duration_seconds = sum((request.completion_date - timezone.make_aware(datetime.combine(request.start_date, datetime.min.time()), timezone.utc)).total_seconds() for request in approved_or_cancelled_requests if request.completion_date and request.start_date)
+    total_duration_seconds = sum((request.completion_date - timezone.make_aware(datetime.combine(request.start_date, datetime.min.time()))).total_seconds() for request in approved_or_cancelled_requests if request.completion_date and request.start_date)
     total_count = len(approved_or_cancelled_requests)
     total_avg_duration_seconds = total_duration_seconds / total_count if total_count > 0 else 0
 
