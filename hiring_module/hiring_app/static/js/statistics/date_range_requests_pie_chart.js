@@ -1,16 +1,16 @@
-var dailyRequestChart;
+var dateRangeRequestChart;
 
-function createOrUpdateDailyRequestChart() {
-    var chartCanvas = document.getElementById("daily_requests_pie_chart");
+function createOrUpdateDateRangeRequestChart() {
+    var chartCanvas = document.getElementById("date_range_requests_pie_chart");
     
     // Eliminar el gráfico anterior si existe
-    if (dailyRequestChart) {
-        dailyRequestChart.destroy();
+    if (dateRangeRequestChart) {
+        dateRangeRequestChart.destroy();
     }
     
     // Crear el nuevo gráfico
     var ctx = chartCanvas.getContext('2d');
-    dailyRequestChart = new Chart(ctx, {
+    dateRangeRequestChart = new Chart(ctx, {
         type: 'doughnut',
         data: {
             labels: ["Solicitudes CEX", "Solicitudes Monitoria", "Solicitudes POS"],
