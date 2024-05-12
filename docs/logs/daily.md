@@ -392,3 +392,454 @@
 | Alejandro Castro     |                  |                   |                || Santiago Valencia    | Nada | Se culmina con la implementación de la bitácora y se<br>terminan de hacer commits de la barra de progreso<br>y de la bitácora | Ninguno || Juan Sebastian Diaz  |                  |                   |                |
 
 </details>
+
+<details>
+<summary>01/04/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Nada | Nada | Ninguno |
+| Alejandro Londoño    |                  |                   |                |
+| Alejandro Castro     | Nada | Nada | Ninguno |
+| Juan Sebastian Diaz  |                  |                   |                |
+| Santiago Valencia    | Nada | Nada | Ninguno |
+
+</details>
+
+<details>
+<summary>02/04/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Nada | Nada | Ninguno |
+| Alejandro Londoño    | Nada | Nada | Ninguno |
+| Alejandro Castro     | Nada | Nada | Ninguno |
+| Juan Sebastian Diaz  | Hacer historias de usuario del segundo sprint | Nada | Ninguno |
+| Santiago Valencia    | Nada | Nada | Ninguno |
+
+</details>
+
+<details>
+<summary>03/04/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Nada | Nada | Ninguno |
+| Alejandro Londoño    | Nada | Nada | Ninguno |
+| Alejandro Castro     | Nada | Nada | Ninguno |
+| Juan Sebastian Diaz  | Hacer las tareas de las historias de usuario | Hacer historias de usuario del segundo sprint | Ninguno |
+| Santiago Valencia    | Nada | Nada | Ninguno |
+
+</details>
+
+<details>
+<summary>04/04/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Nada | Nada | Ninguno |
+| Alejandro Londoño    | Nada | Nada | Ninguno |
+| Alejandro Castro     | Nada | Nada | Ninguno |
+| Juan Sebastian Diaz  |                  |                   |                |
+| Santiago Valencia    | Nada | Nada | Ninguno |
+
+</details>
+
+<details>
+<summary>05/04/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Nada | Nada | Ninguno |
+| Alejandro Londoño    | Nada | Nada | Ninguno |
+| Alejandro Castro     | Nada | Nada | Ninguno |
+| Juan Sebastian Diaz  |                  |                   |                |
+| Santiago Valencia    | Nada | Nada | Ninguno |
+</details>
+
+<details>
+<summary>06/04/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Nada | Nada | Ninguno |
+| Alejandro Londoño    | Nada | Nada | Ninguno |
+| Alejandro Castro     | Nada | Nada | Ninguno |
+| Juan Sebastian Diaz  |                  |                   |                |
+| Santiago Valencia    | Nada | Nada | Ninguno |
+
+</details>
+
+<details>
+<summary>07/04/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Nada | Nada | Ninguno |
+| Alejandro Londoño    | Nada | Nada | Ninguno |
+| Alejandro Castro     | Nada | Nada | Ninguno |
+| Juan Sebastian Diaz  |                  |                   |                |
+| Santiago Valencia    | Nada | Nada | Ninguno |
+
+</details>
+
+<details>
+<summary>08/04/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Nada | Nada | Ninguno |
+| Alejandro Londoño    | Nada | Nada | Ninguno |
+| Alejandro Castro     | Nada | Nada | Ninguno |
+| Juan Sebastian Diaz  | Nada | Nada | Ninguno |
+| Santiago Valencia    | Nada | Nada | Ninguno |
+
+</details>
+
+<details>
+<summary>09/04/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Nada | Nada | Ninguno |
+| Alejandro Londoño    | Nada | Nada | Ninguno |
+| Alejandro Castro     | Nada | Nada | Ninguno |
+| Juan Sebastian Diaz  | Nada | Nada | Ninguno |
+| Santiago Valencia    | Nada | Nada | Ninguno |
+
+</details>
+
+<details>
+<summary>10/04/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Nada | Nada | Ninguno |
+| Alejandro Londoño    | Nada | Nada | Ninguno |
+| Alejandro Castro     | Nada | Nada | Ninguno |
+| Juan Sebastian Diaz  | Nada | Nada | Ninguno |
+| Santiago Valencia    | Nada | Nada | Ninguno |
+
+</details>
+
+<details>
+<summary>11/04/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Nada | Nada | Ninguno|
+| Alejandro Londoño    | Nada | Nada | Ninguno |
+| Alejandro Castro     | Nada | Nada | Ninguno |
+| Juan Sebastian Diaz  | Nada | Nada | Ninguno |
+| Santiago Valencia    | Nada | Nada | Ninguno |
+
+</details>
+
+<details>
+<summary>12/04/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Nada | Nada | Ninguno |
+| Alejandro Londoño    |  | Nada | Ninguno |
+| Alejandro Castro     | Nada | Nada | Ninguno |
+| Juan Sebastian Diaz  | Revisar bugs y problemas del sistema | nada | ninguno |
+| Santiago Valencia    | Nada | Nada | Ninguno |
+</details>
+
+<details>
+<summary>13/04/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Empezar la logica en el backend para el panel de administracion de usuarios| Nada             | Ninguno        |
+| Alejandro Londoño    | Reunión sobre nuevas características | Nada | Ninguno |
+| Alejandro Castro     | Nada | Nada | Ninguno |
+| Juan Sebastian Diaz  | Revisar codigo para reestructuracion y posible implementacion SOLID | Revisar bug | Ninguno|
+| Santiago Valencia    | Nada | Nada | Ninguno |
+
+</details>
+
+<details>
+<summary>14/04/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Terminar el frontend para el panel de administrador de usuarios | Empezar la logica en el backend para el panel de administrador | Ninguno |
+| Alejandro Londoño    | Creación del template base para paneles de control | Nada  | Ninguno |
+| Alejandro Castro     | Nada | Nada | Ninguno |
+| Juan Sebastian Diaz  | Revisar PR de Julian, comenzar despliegue y migracion de base de datos | Nada | Vercel tiene muchos problemas para desplegar un repositorio no propio, la base de datos de elephant esta desactualizada|
+| Santiago Valencia    | Nada | Nada | Ninguno |
+
+</details>
+
+<details>
+<summary>15/04/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Nada | Nada | Ninguno |
+| Alejandro Londoño    | Refactorización de templates | Creación del template base para paneles de control | Necesidad de charla técnica con el grupo al encontrar faltas de entendimiento sobre los templates de django |
+| Alejandro Castro     | Nada | Nada | Ninguno |
+| Juan Sebastian Diaz  | Migracion de base de datos a algun servicio cloud y vercel no corre el programa| Comienzo de despliegue | Probe desactualizando Django, pero no funciono. |
+| Santiago Valencia    | Nada | Nada | Ninguno |
+
+</details>
+
+<details>
+<summary>16/04/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Nada | Nada | Ninguno |
+| Alejandro Londoño    | Nada | Nada | Ninguno |
+| Alejandro Castro     | Nada | Nada | Ninguno |
+| Juan Sebastian Diaz  | Implementacion de una bd con aivencloud y despliegue con vercel | migracion y despliegue | con la base de datos no tuve ningun problema, vercel sigue sin funcionar |
+| Santiago Valencia    | Nada | Nada | Ninguno |
+
+</details>
+
+<details>
+<summary>17/04/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Nada | Nada | Ninguno |
+| Alejandro Londoño    | Nada | Nada | Ninguno |
+| Alejandro Castro     | Nada | Nada | Ninguno |
+| Juan Sebastian Diaz  | Intento de despligue con vercel | implementacion de bd con aiven cloud | No funciona |
+| Santiago Valencia    | Nada | Nada | Ninguno |
+
+</details>
+
+<details>
+<summary>18/04/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Nada | Nada | Ninguno |
+| Alejandro Londoño    | Nada | Nada | Ninguno |
+| Alejandro Castro     | Nada | Nada | Ninguno |
+| Juan Sebastian Diaz  | Intento de despliegue con nueva plataforma, railway | intento de despliegue | Se me acabo el saldo  |
+| Santiago Valencia    | Nada | Nada | Ninguno |
+
+</details>
+
+<details>
+<summary>19/04/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Nada | Nada | Ninguno |
+| Alejandro Londoño    | Nada | Nada | Ninguno |
+| Alejandro Castro     | Nada | Nada | Ninguno |
+| Juan Sebastian Diaz  | Intento de despliegue con Render | Intento con railway | gunicorn genera muchos conflictos por su estructura |
+| Santiago Valencia    | Nada | Nada | Ninguno |
+</details>
+
+<details>
+<summary>20/04/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Nada | Nada | Ninguno        |
+| Alejandro Londoño    | Refactorización de las vistas de paneles de control | Nada | Ninguno |
+| Alejandro Castro     | Nada | Nada | Ninguno |
+| Juan Sebastian Diaz  | Despliegue con Render dockerizando la aplicacion | Intento de despliegue en render con opcion "python 3" | nuestros modulos de tailwind son incompatibles, asi que hay que hacer una reestructuracion del frotend. |
+| Santiago Valencia    | Nada | Nada | Ninguno |
+
+</details>
+
+<details>
+<summary>21/04/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Nada | Nada | Ninguno |
+| Alejandro Londoño    | Abstracción de consultas para estadísticas | Refactorización de las vistas de paneles de control| Ninguno |
+| Alejandro Castro     | Analizar como utilizar los filtros en las solicitudes de contratación | Nada | Ninguno |
+| Juan Sebastian Diaz  | Nada | Nada | Ninguno|
+| Santiago Valencia    | Nada | Nada | Ninguno |
+
+</details>
+
+<details>
+<summary>22/04/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Ayudar en resolucion de conflictos de merge | Nada | Ninguno |
+| Alejandro Londoño    | Implementación de indicadores generales para los tableros de control | Nada | Ninguno |
+| Alejandro Castro     | Nada | Nada | Ninguno |
+| Juan Sebastian Diaz  | Refactorizacion del frontend | Nada | Integracion de bootstrap por medio de link |
+| Santiago Valencia    | Se comenzó a pensar la implementación de las estadísticas de los gestores | Nada | Ninguno |
+
+</details>
+
+<details>
+<summary>23/04/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Nada | Ayudar en resolucion de conflictos de merge | Ninguno |
+| Alejandro Londoño    | Renderizado de las solicitudes de contratación para cada grupo de usuario | Implementación de indicadores generales para los tableros de control| Ninguno |
+| Alejandro Castro     | Nada | Nada | Ninguno |
+| Juan Sebastian Diaz  | Desarrollo de los componentes basados en bootstrap y actividad responsive  | Refactorizacion del frontend| Ninguno |
+| Santiago Valencia    | Se crearon los archivos de las estadísticas de los gestores | Se comenzó a pensar la implementación de las estadísticas de los gestores | Ninguno |
+
+</details>
+<details>
+<summary>24/04/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Ayudar en resolucion de conflictos de merge | Nada | Ninguno |
+| Alejandro Londoño    | Asignación de líderes y gestores a solicitudes de contratación desde el panel de control | Renderizado de las solicitudes de contratación para cada grupo de usuario | Ninguno |
+| Alejandro Castro     | Realicé en análisis de la tarea para la implementación | Nada | Ninguno |
+| Juan Sebastian Diaz  | Funcionalidades interactivas y diseño del panel de control | Desarrollo de los componentes| Ninguno |
+| Santiago Valencia    | Se desarrolló parte del front para mostrar las estadísticas de los gestores | Se crearon los archivos de las estadísticas de los gestores | Ninguno |
+
+</details>
+
+<details>
+<summary>25/04/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Nada | Ayudar en resolucion de conflictos de merge | Ninguno |
+| Alejandro Londoño    | Nada | Asignación de líderes y gestores a solicitudes de contratación desde el panel de control | Conflictos con el nuevo frontend |
+| Alejandro Castro     | Nada | Nada | Ninguno |
+| Juan Sebastian Diaz  | Desarrollo de las pantallas de informacion y dropdowns | Funcionalidades interactivas y diseño| Ninguno  |
+| Santiago Valencia    | Nada | Se desarrolló parte del front para mostrar las estadísticas de los gestores | Ninguno |
+
+</details>
+
+<details>
+<summary>26/04/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Empezar la creacion del modelo de contrato de prestacion de servicios | Nada | Problemas en funcionalidades ya existentes que no reconocen el nuevo modelo |
+| Alejandro Londoño    | Nada | Nada | Ninguno |
+| Alejandro Castro     | Nada | Nada | Ninguno |
+| Juan Sebastian Diaz  | Pantallas interactivas para las pantallas informativas | Desarrollo de las pantallas de informacion y dropdowns | Ninguno |
+| Santiago Valencia    | Se creó la lógica del back para obtener la información de las estadísticas de los gestores | Nada | Ninguno |
+
+</details>
+
+<details>
+<summary>27/04/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Terminar la creacion del modelo de contrato de prestacion de servicios | Empezar la creacion del modelo de contrato de prestacion de servicios | Ninguno        |
+| Alejandro Londoño    | Nada | Nada | Ninguno |
+| Alejandro Castro     | Nada | Nada | Ninguno |
+| Juan Sebastian Diaz  | Desarrollo de las paginas informativas, migracion de base de datos, implementacion de github actions, tablas responsive | Pantallas interactivas para las pantallas informativas | Ninguno |
+| Santiago Valencia    | Se agregaron algunas estadísticas adicionales para los gestores | Se creó la lógica del back para obtener la información de las estadísticas de los gestores | Ninguno |
+
+</details>
+
+<details>
+<summary>28/04/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Creacion de estadisticas diarias y mensuales de solicitudes de contratos | Terminar la creacion del modelo de prestacion de servicios | Ninguno |
+| Alejandro Londoño    | Configuración de la base de datos para pruebas | Nada| Ninguno |
+| Alejandro Castro     | Nada | Nada | Ninguno |
+| Juan Sebastian Diaz  | Implementacion de pruebas en selenium, sqlite para testing con ayuda de Alejandro, mejoras de frontend y Githubs actions | Desarrollo de las paginas informativas, migracion de base de datos, implementacion de github actions, tablas responsive | Pantallas interactivas para las pantallas informativas | Ninguno|
+| Santiago Valencia    | Nada | Se agregaron algunas estadísticas adicionales para los gestores | Ninguno |
+
+</details>
+
+<details>
+<summary>29/04/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Ayudar en resolucion de conflictos de merge | Nada | Ninguno |
+| Alejandro Londoño    | Implementación de indicadores generales para los tableros de control | Nada | Ninguno |
+| Alejandro Castro     | Revisé lo que tenia que realizar en la semana | Nada | Ninguno |
+| Juan Sebastian Diaz  | Implementacion de pruebas funcionales | Nada | NADA |
+| Santiago Valencia    | Se comenzó a pensar la implementación de las estadísticas de los gestores | Nada | Ninguno |
+
+</details>
+
+<details>
+<summary>30/04/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Nada | Ayudar en resolucion de conflictos de merge | Ninguno |
+| Alejandro Londoño    | Renderizado de las solicitudes de contratación para cada grupo de usuario | Implementación de indicadores generales para los tableros de control| Ninguno |
+| Alejandro Castro     | Nada | Nada | Ninguno |
+| Juan Sebastian Diaz  | Refactor de Estadisticas y Pruebas funcionales  | Pruebas funcionales | Ninguno |
+| Santiago Valencia    | Se crearon los archivos de las estadísticas de los gestores | Se comenzó a pensar la implementación de las estadísticas de los gestores | Ninguno |
+
+</details>
+
+<details>
+<summary>01/05/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Ayudar en resolucion de conflictos de merge | Nada | Ninguno |
+| Alejandro Londoño    | Asignación de líderes y gestores a solicitudes de contratación desde el panel de control | Renderizado de las solicitudes de contratación para cada grupo de usuario | Ninguno |
+| Alejandro Castro     | Empecé a realizar la documentación de todo el código | Nada | Ninguno |
+| Juan Sebastian Diaz  | Pruebas funcionales | Pruebas funcionales | Ninguno |
+| Santiago Valencia    | Se desarrolló parte del front para mostrar las estadísticas de los gestores | Se crearon los archivos de las estadísticas de los gestores | Ninguno |
+
+</details>
+
+<details>
+<summary>02/05/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Nada | Ayudar en resolucion de conflictos de merge | Ninguno |
+| Alejandro Londoño    | Nada | Asignación de líderes y gestores a solicitudes de contratación desde el panel de control | Conflictos con el nuevo frontend |
+| Alejandro Castro     | Nada | Nada | Ninguno |
+| Juan Sebastian Diaz  | Pruebas funcionales | Pruebas funcionales | Ninguno  |
+| Santiago Valencia    | Nada | Se desarrolló parte del front para mostrar las estadísticas de los gestores | Ninguno |
+
+</details>
+
+<details>
+<summary>03/05/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Empezar la creacion del modelo de contrato de prestacion de servicios | Nada | Problemas en funcionalidades ya existentes que no reconocen el nuevo modelo |
+| Alejandro Londoño    | Nada | Nada | Ninguno |
+| Alejandro Castro     | Ayude con algunas HU externas de mi tarea| Nada | Ninguno |
+| Juan Sebastian Diaz  | Pruebas funcionales | Pruebas funcionales | Ninguno |
+| Santiago Valencia    | Se creó la lógica del back para obtener la información de las estadísticas de los gestores | Nada | Ninguno |
+
+</details>
+
+<details>
+<summary>04/05/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Terminar la creacion del modelo de contrato de prestacion de servicios | Empezar la creacion del modelo de contrato de prestacion de servicios | Ninguno        |
+| Alejandro Londoño    | Nada | Nada | Ninguno |
+| Alejandro Castro     | Terminé toda la documentación del código | Ayude con algunas HU| Ninguno |
+| Juan Sebastian Diaz  | Pruebas funcionales | Pruebas funcionales | Ninguno |
+| Santiago Valencia    | Se agregaron algunas estadísticas adicionales para los gestores | Se creó la lógica del back para obtener la información de las estadísticas de los gestores | Ninguno |
+
+</details>
+
+<details>
+<summary>05/05/2024</summary>
+
+| Nombre               | Lo que hice hoy  | Lo que hice ayer  | Inconvenientes |
+|----------------------|------------------|-------------------|----------------|
+| Julian Mendoza       | Creacion de estadisticas diarias y mensuales de solicitudes de contratos | Terminar la creacion del modelo de prestacion de servicios | Ninguno |
+| Alejandro Londoño    | Configuración de la base de datos para pruebas | Nada| Ninguno |
+| Alejandro Castro     | Nada | Terminé la documentación del código| Ninguno |
+| Juan Sebastian Diaz  | Pruebas funcionales | Pruebas funcionales | Ninguno |
+| Santiago Valencia    | Nada | Se agregaron algunas estadísticas adicionales para los gestores | Ninguno |
+
+</details>
