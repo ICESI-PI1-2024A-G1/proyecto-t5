@@ -10,8 +10,10 @@
     <h1 class="h3 mb-2 text-gray-800">Solicitudes de contratación</h1>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
+        <div class="card-header py-3 d-flex justify-content-between align-items-center">
             <h6 class="m-0 font-weight-bold text-primary">Listado de solicitudes de contratación</h6>
+            <button id="export_requests" onclick="redirectToExportRequests()"  class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                class="fas fa-download fa-sm text-white-50 mr-2"></i>Exportar</button>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -57,3 +59,9 @@
     </div>
 
 </div>
+
+<script>
+    function redirectToExportRequests() {
+        window.location.href = "{% url 'hiring_app:export_requests' %}";
+    }
+</script>

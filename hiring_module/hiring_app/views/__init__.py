@@ -9,3 +9,4 @@ from .control_board.administrator_dashboard_view import AdministratorDashboardVi
 from .control_board.leader_dashboard_view import LeaderDashboardView
 from .control_board.manager_dashboard_view import ManagerDashboardView
 from .request_hiring.assign_leader import AssignLeaderView
+from .control_board.export_requests_view import ExportRequestsView
