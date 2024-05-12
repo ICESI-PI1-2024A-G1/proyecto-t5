@@ -4,6 +4,7 @@ from django.db import models
 from .user_model import CustomUser
 from django.utils import timezone
 from .contract_request_snapshot_model import ContractRequestSnapshot
+
 def state_choices():
     return (
         ('pending', 'Pending'),
