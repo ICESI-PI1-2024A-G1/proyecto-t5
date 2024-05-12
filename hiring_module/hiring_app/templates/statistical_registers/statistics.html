@@ -30,6 +30,13 @@ Estadísticas
 
 </div>
 
+<script>
+    window.onload = function() {
+        createOrUpdateLeaderChart();
+        createOrUpdateManagerChart();
+        createOrUpdateDailyRequestChart();
+        };
+</script>
 
 <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
 <script src="{% static 'js/statistics/manager_pie_chart.js' %}"></script>
