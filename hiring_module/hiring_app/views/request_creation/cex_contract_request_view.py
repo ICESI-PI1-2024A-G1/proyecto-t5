@@ -59,6 +59,5 @@ def download_rut_file(request, idContract, *args, **kwargs):
 
     response = HttpResponse(
         rut_file_data, content_type='application/octet-stream')
-    response['Content-Disposition'] = f'attachment; filename="{
-        model_instance.rut.name}"'
+    response['Content-Disposition'] = f'attachment; filename="{model_instance.rut.name}"'
     return response
