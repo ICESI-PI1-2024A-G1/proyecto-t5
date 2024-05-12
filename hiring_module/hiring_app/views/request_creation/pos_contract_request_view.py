@@ -43,8 +43,7 @@ class POSContractRequestView(CreateView):
                         **additional_fields)
                     course_schedule.save()
                     additional_fields = {}
-        utilities.send_email('Solicitud de contratación radicada', 'Estimado/a, su solicitud de contrato en el aplicativo del módulo de contratación de la unidad de servicios compartidos ha sido radicada satisfactoriamente',
-                             current_user.email)
+        utilities.send_email('Solicitud de contratación radicada', 'Estimado/a, su solicitud de contrato en el aplicativo del módulo de contratación de la unidad de servicios compartidos ha sido radicada satisfactoriamente',current_user.email)
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -73,6 +72,5 @@ def download_rut_file(request, idContract, *args, **kwargs):
 
     response = HttpResponse(
         rut_file_data, content_type='application/octet-stream')
-    response['Content-Disposition'] = f'attachment; filename="{
-        model_instance.rut.name}"'
+    response['Content-Disposition'] = f'attachment; filename="{model_instance.rut.name}"'
     return response
