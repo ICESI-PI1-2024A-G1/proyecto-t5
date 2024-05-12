@@ -31,20 +31,9 @@ Estadísticas
 </div>
 
 
-<script>
-    function onPageLoad() {
-        createOrUpdateLeaderChart();
-        createOrUpdateManagerChart();
-        createOrUpdateDailyRequestChart();
-
-
-    }
-
-    document.addEventListener("DOMContentLoaded", onPageLoad);
-</script>
-
 <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
 <script src="{% static 'js/statistics/manager_pie_chart.js' %}"></script>
 <script src="{% static 'js/statistics/leader_pie_chart.js' %}"></script>
+
 
 {% endblock %}

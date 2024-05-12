@@ -2,7 +2,7 @@ var managerChart;
 
 function createOrUpdateManagerChart() {
     var chartCanvas = document.getElementById("manager_chart_pie");
-    
+
     // Eliminar el gráfico anterior si existe
     if (managerChart) {
         managerChart.destroy();
@@ -13,15 +13,16 @@ function createOrUpdateManagerChart() {
     managerChart = new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: ["Solicitudes Aprobadas", "Solicitudes En revisión", "Solicitudes por validar"],
+            labels: ["Solicitudes Aprobadas", "Solicitudes En revisión", "Solicitudes por validar", "Solicitudes canceladas"],
             datasets: [{
                 data: [
                     parseInt(document.getElementById("solicitudes_aprobadas_manager").innerText),
                     parseInt(document.getElementById("solicitudes_en_revision_manager").innerText),
-                    parseInt(document.getElementById("solicitudes_por_validar_manager").innerText)
+                    parseInt(document.getElementById("solicitudes_por_validar_manager").innerText),
+                    parseInt(document.getElementById("solicitudes_canceladas_manager").innerText)
                 ],
-                backgroundColor: ['#1cc88a', '#f6c23e', '#e74a3b'],
-                hoverBackgroundColor: ['#188f64', '#c99f33', '#9d342a'],
+                backgroundColor: ['#1cc88a', '#f6c23e', '#e74a3b','#858795'],
+                hoverBackgroundColor: ['#188f64', '#c99f33', '#9d342a','#666873'],
                 hoverBorderColor: "rgba(234, 236, 244, 1)",
             }],
         },
