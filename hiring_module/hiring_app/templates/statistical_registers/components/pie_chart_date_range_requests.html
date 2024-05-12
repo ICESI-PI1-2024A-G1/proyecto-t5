@@ -1,112 +1,87 @@
 {% load static %}
 <div class="col-xl-5 col-lg-5">
-    <div class="card shadow mb-4">
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <div class="form-group">
+        <label for="start_date">Seleccionar rango de fechas:</label>
+        <input type="date" class="form-control" id="start_date" />
+        <label for="end_date">a</label>
+        <input type="date" class="form-control" id="end_date" />
+      </div>
 
-        <div class="card-body">
-            <div class="form-group">
-                <label for="start_date">Fecha inicial:</label>
-                <input type="date" class="form-control" id="start_date">
-            </div>
-
-            <div class="form-group">
-                <label for="end_date">Fecha final:</label>
-                <input type="date" class="form-control" id="end_date">
-            </div>
-
-            <div class="chart-pie pt-4 pb-2">
-                <canvas id="date_range_requests_pie_chart"></canvas>
-            </div>
-            <div class="mt-4 text-center small" id="solicitudes_info">
-
-
-                <span class="mr-2">
-                    <i class="fas fa-circle text-success"></i> Solicitudes CEX: <strong><span
-                            id="contratos_cex">0</span></strong>
-                </span>
-                <br>
-                <br>
-                <span class="mr-2">
-                    <i class="fas fa-circle text-warning"></i> Solicitudes Monitorias: <strong><span
-                            id="contratos_monitoria">0</span></strong>
-                </span>
-                <br>
-                <br>
-                <span class="mr-2">
-                    <i class="fas fa-circle text-gray-800"></i> Solicitudes Prestacion de Servicios: <strong><span
-                            id="contratos_pos">0</span></strong>
-                </span>
-            </div>
-        </div>
-
-
+      <div class="chart-pie pt-4 pb-2">
+        <canvas id="date_range_requests_pie_chart"></canvas>
+      </div>
+      <div class="mt-4 text-center small" id="solicitudes_info">
+        <span class="mr-2">
+          <i class="fas fa-circle text-success"></i> Solicitudes CEX:
+          <strong><span id="contratos_cex">0</span></strong>
+        </span>
+        <br />
+        <br />
+        <span class="mr-2">
+          <i class="fas fa-circle text-warning"></i> Solicitudes Monitorias:
+          <strong><span id="contratos_monitoria">0</span></strong>
+        </span>
+        <br />
+        <br />
+        <span class="mr-2">
+          <i class="fas fa-circle text-gray-800"></i> Solicitudes Prestacion de
+          Servicios: <strong><span id="contratos_pos">0</span></strong>
+        </span>
+      </div>
     </div>
+  </div>
 </div>
 
+<p hidden id="date_range_requests">{{ daily_requests }}</p>
 <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
 <script src="{% static 'js/statistics/date_range_requests_pie_chart.js' %}"></script>
 
-
-
 <script>
-    var startDateSelect = document.getElementById('start_date');
-    var endDateSelect = document.getElementById('end_date');
+  var startDateInput = document.getElementById("start_date");
+  var endDateInput = document.getElementById("end_date");
 
-    function updateChartAndHeaders(data) {
-        document.getElementById('contratos_cex').innerText = data.CEX;
-        document.getElementById('contratos_monitoria').innerText = data.Monitoring;
-        document.getElementById('contratos_pos').innerText = data.POS;
-        createOrUpdateDateRangeRequestChart();
+  startDateInput.addEventListener("change", updateDateRangeChart);
+  endDateInput.addEventListener("change", updateDateRangeChart);
+
+  function updateDateRangeChart() {
+    var startDate = startDateInput.value.replace(/[\[\]']/g, "").split(",");
+    var endDate = endDateInput.value.replace(/[\[\]']/g, "").split(",");
+
+    var dateRangeRequests = document.getElementById(
+      "date_range_requests"
+    ).innerText;
+    dateRangeRequests = eval(dateRangeRequests);
+    var selectedData = [];
+    for (let i = 0; i < dateRangeRequests.length; i++) {
+      if (
+        dateRangeRequests[i][0] >= startDate &&
+        dateRangeRequests[i][0] <= endDate
+      ) {
+        selectedData.push(dateRangeRequests[i]);
+      }
     }
 
-    startDateSelect.addEventListener('change', function () {
-        var startDate = startDateSelect.value;
-        var endDate = endDateSelect.value;
+    if (selectedData) {
+      var sumContratosCex = 0;
+      var sumContratosMonitoria = 0;
+      var sumContratosPos = 0;
 
-        if (startDate && endDate) {
-            var url = "{% 'statistics_url' %}";
-            var data = {
-                start_date: startDate,
-                end_date: endDate,
-                csrfmiddlewaretoken: "{{ csrf_token }}"
-            };
+      for (let i = 0; i < selectedData.length; i++) {
+        sumContratosCex += parseInt(selectedData[i][1]);
+        sumContratosMonitoria += parseInt(selectedData[i][2]);
+        sumContratosPos += parseInt(selectedData[i][3]);
+      }
 
-            fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': "{{ csrf_token }}"
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(data => updateChartAndHeaders(data))
-            .catch(error => console.error('Error:', error));
-        }
-    });
-
-    endDateSelect.addEventListener('change', function () {
-        var startDate = startDateSelect.value;
-        var endDate = endDateSelect.value;
-
-        if (startDate && endDate) {
-            var url = "{% 'statistics_url' %}";
-            var data = {
-                start_date: startDate,
-                end_date: endDate,
-                csrfmiddlewaretoken: "{{ csrf_token }}"
-            };
-
-            fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': "{{ csrf_token }}"
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(data => updateChartAndHeaders(data))
-            .catch(error => console.error('Error:', error));
-        }
-    });
+      document.getElementById("contratos_cex").innerText = sumContratosCex;
+      document.getElementById("contratos_monitoria").innerText = sumContratosMonitoria;
+      document.getElementById("contratos_pos").innerText = sumContratosPos;
+    } else {
+      document.getElementById("contratos_cex").innerText = 0;
+      document.getElementById("contratos_monitoria").innerText = 0;
+      document.getElementById("contratos_pos").innerText = 0;
+    }
+    createOrUpdateDateRangeRequestChart();
+  }
 </script>
