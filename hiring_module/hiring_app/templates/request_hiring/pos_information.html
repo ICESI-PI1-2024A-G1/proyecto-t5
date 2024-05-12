@@ -1,244 +1,425 @@
-<div class="card invoice mb-4">
-
-    <div class="card-body p-4 p-md-5">
-        <!-- Invoice table-->
-        <div class="table-responsive">
-            <table class="table table-borderless mb-0">
-                <thead class="border-bottom">
-                    <tr class="small text-uppercase text-muted">
-                        <th scope="col">Descripcion</th>
-                        <th class="text-end" scope="col">Datos</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="border-bottom">
-                        <td>
-                            <div class="fw-bold">Nombre Completo del Contratado</div>
-                            <div class="small text-muted d-none d-md-block">El nombre completo de la persona contratada.
-                            </div>
-                        </td>
-                        <td class="text-end fw-bold">{{ contract_request.hiree_full_name }}</td>
-                    </tr>
-                    <tr class="border-bottom">
-                        <td>
-                            <div class="fw-bold">ID del Contratado</div>
-                            <div class="small text-muted d-none d-md-block">El identificador único asignado al
-                                contratado.
-                            </div>
-                        </td>
-                        <td class="text-end fw-bold">{{ contract_request.hiree_id }}</td>
-                    </tr>
-                    <tr class="border-bottom">
-                        <td>
-                            <div class="fw-bold">Número de Teléfono del Contratado</div>
-                            <div class="small text-muted d-none d-md-block">El número de teléfono del contratado.</div>
-                        </td>
-                        <td class="text-end fw-bold">{{ contract_request.hiree_cellphone }}</td>
-                    </tr>
-                    <tr class="border-bottom">
-                        <td>
-                            <div class="fw-bold">Correo Electrónico del Contratado</div>
-                            <div class="small text-muted d-none d-md-block">El correo electrónico de contacto del
-                                contratado.</div>
-                        </td>
-                        <td class="text-end fw-bold">{{ contract_request.hiree_email }}</td>
-                    </tr>
-                    <tr class="border-bottom">
-                        <td>
-                            <div class="fw-bold">Cenco</div>
-                            <div class="small text-muted d-none d-md-block">Centro de costos asignado al contratado.
-                            </div>
-                        </td>
-                        <td class="text-end fw-bold">{{ contract_request.cenco }}</td>
-                    </tr>
-                    <tr class="border-bottom">
-                        <td>
-                            <div class="fw-bold">Motivo de la Solicitud</div>
-                            <div class="small text-muted d-none d-md-block">El motivo por el cual se realiza la
-                                solicitud.
-                            </div>
-                        </td>
-                        <td class="text-end fw-bold">{{ contract_request.request_motive }}</td>
-                    </tr>
-                    <tr class="border-bottom">
-                        <td>
-                            <div class="fw-bold">Entidad Bancaria</div>
-                            <div class="small text-muted d-none d-md-block">La entidad bancaria a la que está asociada
-                                la
-                                cuenta bancaria.</div>
-                        </td>
-                        <td class="text-end fw-bold">{{ contract_request.banking_entity }}</td>
-                    </tr>
-                    <tr class="border-bottom">
-                        <td>
-                            <div class="fw-bold">Tipo de Cuenta Bancaria</div>
-                            <div class="small text-muted d-none d-md-block">El tipo de cuenta bancaria del contratado.
-                            </div>
-                        </td>
-                        <td class="text-end fw-bold">{{ contract_request.get_bank_account_type_display }}</td>
-                    </tr>
-                    <tr class="border-bottom">
-                        <td>
-                            <div class="fw-bold">Número de Cuenta Bancaria</div>
-                            <div class="small text-muted d-none d-md-block">El número de cuenta bancaria del contratado.
-                            </div>
-                        </td>
-                        <td class="text-end fw-bold">{{ contract_request.bank_account_number }}</td>
-                    </tr>
-                    <tr class="border-bottom">
-                        <td>
-                            <div class="fw-bold">EPS</div>
-                            <div class="small text-muted d-none d-md-block">La Entidad Promotora de Salud del
-                                contratado.
-                            </div>
-                        </td>
-                        <td class="text-end fw-bold">{{ contract_request.eps }}</td>
-                    </tr>
-                    <tr class="border-bottom">
-                        <td>
-                            <div class="fw-bold">Fondo de Pensiones</div>
-                            <div class="small text-muted d-none d-md-block">El fondo de pensiones del contratado.</div>
-                        </td>
-                        <td class="text-end fw-bold">{{ contract_request.pension_fund }}</td>
-                    </tr>
-                    <tr class="border-bottom">
-                        <td>
-                            <div class="fw-bold">ARL</div>
-                            <div class="small text-muted d-none d-md-block">La Administradora de Riesgos Laborales del
-                                contratado.</div>
-                        </td>
-                        <td class="text-end fw-bold">{{ contract_request.arl }}</td>
-                    </tr>
-                    <tr class="border-bottom">
-                        <td>
-                            <div class="fw-bold">Valor del Contrato</div>
-                            <div class="small text-muted d-none d-md-block">El valor total del contrato.</div>
-                        </td>
-                        <td class="text-end fw-bold">{{ contract_request.contract_value }}</td>
-                    </tr>
-                    <tr class="border-bottom">
-                        <td>
-                            <div class="fw-bold">Cuenta de Cobro</div>
-                            <div class="small text-muted d-none d-md-block">La cuenta bancaria a la que se realizarán
-                                los
-                                pagos correspondientes.</div>
-                        </td>
-                        <td class="text-end fw-bold">{{ contract_request.charge_account }}</td>
-                    </tr>
-                    <tr class="border-bottom">
-                        <td colspan="2" class="text-end">
-                            <a href="/hiring_app/download_rut/{{ contract_request.id }}/"
-                                style="color: #00599C;">Descargar
-                                Archivo RUT</a>
-                        </td>
-                    </tr>
-                    <tr class="border-bottom">
-                        <td>
-                            <div class="fw-bold">Nombre de curso</div>
-                            <div class="small text-muted d-none d-md-block">El nombre de curso del contrato.</div>
-                        </td>
-                        <td class="text-end fw-bold">{{ contract_request.course_name }}</td>
-                    </tr>
-                    <tr class="border-bottom">
-                        <td>
-                            <div class="fw-bold">Periodo</div>
-                            <div class="small text-muted d-none d-md-block">El periodo del curso.</div>
-                        </td>
-                        <td class="text-end fw-bold">{{ contract_request.period }}</td>
-                    </tr>
-                    <tr class="border-bottom">
-                        <td>
-                            <div class="fw-bold">Grupo</div>
-                            <div class="small text-muted d-none d-md-block">El grupo del curso.</div>
-                        </td>
-                        <td class="text-end fw-bold">{{ contract_request.group }}</td>
-                    </tr>
-                    <tr class="border-bottom">
-                        <td>
-                            <div class="fw-bold">Intensidad horaria</div>
-                            <div class="small text-muted d-none d-md-block">La intensidad horaria de las clases del curso.</div>
-                        </td>
-                        <td class="text-end fw-bold">{{ contract_request.intensity }}</td>
-                    </tr>
-                    <tr class="border-bottom">
-                        <td>
-                            <div class="fw-bold">Horas totales</div>
-                            <div class="small text-muted d-none d-md-block">La cantidad de horas totales del curso.</div>
-                        </td>
-                        <td class="text-end fw-bold">{{ contract_request.total_hours }}</td>
-                    </tr>
-                    <tr class="border-bottom">
-                        <td>
-                            <div class="fw-bold">Codigo del curso</div>
-                            <div class="small text-muted d-none d-md-block">El codigo del curso.</div>
-                        </td>
-                        <td class="text-end fw-bold">{{ contract_request.course_code }}</td>
-                    </tr>
-                    <tr class="border-bottom">
-                        <td>
-                            <div class="fw-bold">Cantidad de estudiantes</div>
-                            <div class="small text-muted d-none d-md-block">La cantidad de estudiantes del curso.</div>
-                        </td>
-                        <td class="text-end fw-bold">{{ contract_request.students_quantity }}</td>
-                    </tr>
-                    <tr class="border-bottom">
-                        <td>
-                            <div class="fw-bold">Horas adicionales</div>
-                            <div class="small text-muted d-none d-md-block">Las horas adicionales del curso.</div>
-                        </td>
-                        <td class="text-end fw-bold">{{ contract_request.additional_hours }}</td>
-                    </tr>
-                    {% for schedule in course_schedules %}
-                    <tr class="border-bottom">
-                        <td>
-                            <div class="fw-bold">Clase</div>
-                        </td>
-                    </tr>
-
-                    <tr class="border-bottom">
-                        <td>
-                            <div class="fw-bold">Fecha</div>
-                            <div class="small text
-                                -muted d-none d-md-block">La fecha de la clase.</div>
-                        </td>
-                        <td class="text-end fw-bold">{{ schedule.date }}</td>
-                    </tr>
-                    <tr class="border-bottom">
-                        <td>
-                            <div class="fw-bold">Hora de inicio</div>
-                            <div class="small text
-                                -muted d-none d-md-block">La hora de inicio de la clase.</div>
-                        </td>
-                        <td class="text-end fw-bold">{{ schedule.start_time }}</td>
-                    </tr>
-                    <tr class="border-bottom">
-                        <td>
-                            <div class="fw-bold">Hora de fin</div>
-                            <div class="small text
-                                -muted d-none d-md-block">La hora de fin de la clase.</div>
-                        </td>
-                        <td class="text-end fw-bold">{{ schedule.end_time }}</td>
-                    </tr>
-                    <tr class="border-bottom">
-                        <td>
-                            <div class="fw-bold">Salón</div>
-                            <div class="small text
-                                -muted d-none d-md-block">El salón de la clase.</div>
-                        </td>
-                        <td class="text-end fw-bold">{{ schedule.room }}</td>
-                    </tr>
-                    <tr class="border-bottom">
-                        <td>
-                            <div class="fw-bold">Responsabilidad</div>
-                            <div class="small text
-                                -muted d-none d-md-block">Codigo de la responsabilidad de la clase.</div>
-                        </td>
-                        <td class="text-end fw-bold">{{ schedule.responsability }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-
-            </table>
-        </div>
+<h1 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem">
+  Solicitudes de contratos de CEX
+</h1>
+<div class="row">
+  <!-- Data student  -->
+  <div class="col-xl-7 col-lg-6">
+    <div class="card shadow mb-4">
+      <!-- Card Header - Dropdown -->
+      <div
+        class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+      >
+        <h6 class="m-0 font-weight-bold text-primary">
+          Información del contratado
+        </h6>
+      </div>
+      <!-- Card Body -->
+      <div class="card-body">
+        <table class="table table-borderless mb-0">
+          <tbody>
+            <tr class="border-bottom">
+              <td>
+                <div class="fw-bold">Nombre Completo del Contratado</div>
+                <div class="small text-muted d-none d-md-block">
+                  El nombre completo de la persona contratada.
+                </div>
+              </td>
+              <td class="text-end fw-bold">
+                {{ contract_request.hiree_full_name }}
+              </td>
+            </tr>
+            <tr class="border-bottom">
+              <td>
+                <div class="fw-bold">ID del Contratado</div>
+                <div class="small text-muted d-none d-md-block">
+                  El identificador único asignado al contratado.
+                </div>
+              </td>
+              <td class="text-end fw-bold">{{ contract_request.hiree_id }}</td>
+            </tr>
+            <tr class="border-bottom">
+              <td>
+                <div class="fw-bold">Número de Teléfono del Contratado</div>
+                <div class="small text-muted d-none d-md-block">
+                  El número de teléfono del contratado.
+                </div>
+              </td>
+              <td class="text-end fw-bold">
+                {{ contract_request.hiree_cellphone }}
+              </td>
+            </tr>
+            <tr class="border-bottom">
+              <td>
+                <div class="fw-bold">Correo Electrónico del Contratado</div>
+                <div class="small text-muted d-none d-md-block">
+                  El correo electrónico de contacto del contratado.
+                </div>
+              </td>
+              <td class="text-end fw-bold">
+                {{ contract_request.hiree_email }}
+              </td>
+            </tr>
+            <tr class="border-bottom">
+              <td>
+                <div class="fw-bold">EPS</div>
+                <div class="small text-muted d-none d-md-block">
+                  La Entidad Promotora de Salud del contratado.
+                </div>
+              </td>
+              <td class="text-end fw-bold">{{ contract_request.eps }}</td>
+            </tr>
+            <tr class="border-bottom">
+              <td>
+                <div class="fw-bold">ARL</div>
+                <div class="small text-muted d-none d-md-block">
+                  La Administradora de Riesgos Laborales del contratado.
+                </div>
+              </td>
+              <td class="text-end fw-bold">{{ contract_request.arl }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+  </div>
+
+  <!-- CENCO -->
+  <div class="col-xl-5 col-lg-6">
+    <div class="card shadow mb-4">
+      <!-- Card Header - Dropdown -->
+      <div
+        class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+      >
+        <h6 class="m-0 font-weight-bold text-primary">
+          Información del financiera
+        </h6>
+      </div>
+      <!-- Card Body -->
+      <div class="card-body">
+        <table class="table table-borderless mb-0">
+          <tbody>
+            <tr class="border-bottom">
+              <td>
+                <div class="fw-bold">Cenco</div>
+                <div class="small text-muted d-none d-md-block">
+                  Centro de costos asignado al contratado.
+                </div>
+              </td>
+              <td class="text-end fw-bold">{{ contract_request.cenco }}</td>
+            </tr>
+            <tr class="border-bottom">
+              <td>
+                <div class="fw-bold">Entidad Bancaria</div>
+                <div class="small text-muted d-none d-md-block">
+                  La entidad bancaria a la que está asociada la cuenta bancaria.
+                </div>
+              </td>
+              <td class="text-end fw-bold">
+                {{ contract_request.banking_entity }}
+              </td>
+            </tr>
+            <tr class="border-bottom">
+              <td>
+                <br />
+
+                <div class="fw-bold">Tipo de Cuenta Bancaria</div>
+                <div class="small text-muted d-none d-md-block">
+                  El tipo de cuenta bancaria del contratado.
+                </div>
+              </td>
+              <td class="text-end fw-bold">
+                <br />
+
+                {{ contract_request.get_bank_account_type_display }}
+              </td>
+            </tr>
+            <tr class="border-bottom">
+              <td>
+                <br />
+
+                <div class="fw-bold">Número de Cuenta Bancaria</div>
+                <div class="small text-muted d-none d-md-block">
+                  El número de cuenta bancaria del contratado.
+                </div>
+              </td>
+              <td class="text-end fw-bold">
+                <br />
+
+                {{ contract_request.bank_account_number }}
+              </td>
+            </tr>
+            <tr class="border-bottom">
+              <td>
+                <br />
+                <div class="fw-bold">Fondo de Pensiones</div>
+                <div class="small text-muted d-none d-md-block">
+                  El fondo de pensiones del contratado.
+                </div>
+              </td>
+              <td class="text-end fw-bold">
+                <br />
+
+                {{ contract_request.pension_fund }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-12 col-lg-12">
+    <div class="card shadow mb-4">
+      <!-- Card Header - Dropdown -->
+      <div
+        class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+      >
+        <h6 class="m-0 font-weight-bold text-primary">
+          Información legal del contrato
+        </h6>
+      </div>
+      <!-- Card Body -->
+      <div class="card-body">
+        <table class="table table-borderless mb-0">
+          <tbody>
+            <tr class="border-bottom">
+              <td>
+                <div class="fw-bold">Nombre de curso</div>
+                <div class="small text-muted d-none d-md-block">
+                  El nombre de curso del contrato.
+                </div>
+              </td>
+              <td class="text-end fw-bold">
+                {{ contract_request.course_name }}
+              </td>
+            </tr>
+            <tr class="border-bottom">
+              <td>
+                <div class="fw-bold">Periodo</div>
+                <div class="small text-muted d-none d-md-block">
+                  El periodo del curso.
+                </div>
+              </td>
+              <td class="text-end fw-bold">{{ contract_request.period }}</td>
+            </tr>
+            <tr class="border-bottom">
+              <td>
+                <div class="fw-bold">Grupo</div>
+                <div class="small text-muted d-none d-md-block">
+                  El grupo del curso.
+                </div>
+              </td>
+              <td class="text-end fw-bold">{{ contract_request.group }}</td>
+            </tr>
+            <tr class="border-bottom">
+              <td>
+                <div class="fw-bold">Intensidad horaria</div>
+                <div class="small text-muted d-none d-md-block">
+                  La intensidad horaria de las clases del curso.
+                </div>
+              </td>
+              <td class="text-end fw-bold">{{ contract_request.intensity }}</td>
+            </tr>
+            <tr class="border-bottom">
+              <td>
+                <div class="fw-bold">Horas totales</div>
+                <div class="small text-muted d-none d-md-block">
+                  La cantidad de horas totales del curso.
+                </div>
+              </td>
+              <td class="text-end fw-bold">
+                {{ contract_request.total_hours }}
+              </td>
+            </tr>
+            <tr class="border-bottom">
+              <td>
+                <div class="fw-bold">Codigo del curso</div>
+                <div class="small text-muted d-none d-md-block">
+                  El codigo del curso.
+                </div>
+              </td>
+              <td class="text-end fw-bold">
+                {{ contract_request.course_code }}
+              </td>
+            </tr>
+            <tr class="border-bottom">
+              <td>
+                <div class="fw-bold">Cantidad de estudiantes</div>
+                <div class="small text-muted d-none d-md-block">
+                  La cantidad de estudiantes del curso.
+                </div>
+              </td>
+              <td class="text-end fw-bold">
+                {{ contract_request.students_quantity }}
+              </td>
+            </tr>
+            <tr class="border-bottom">
+              <td>
+                <div class="fw-bold">Horas adicionales</div>
+                <div class="small text-muted d-none d-md-block">
+                  Las horas adicionales del curso.
+                </div>
+              </td>
+              <td class="text-end fw-bold">
+                {{ contract_request.additional_hours }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Data monitoring  -->
+  <div class="col-xl-6 col-lg-6">
+    <div class="card shadow mb-4">
+      <!-- Card Header - Dropdown -->
+      <div
+        class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+      >
+        <h6 class="m-0 font-weight-bold text-primary">
+          Información legal del contrato
+        </h6>
+      </div>
+      <!-- Card Body -->
+      <div class="card-body">
+        <table class="table table-borderless mb-0">
+          <tbody>
+            <tr class="border-bottom">
+              <td>
+                <br />
+
+                <div class="fw-bold">Motivo de la Solicitud</div>
+                <div class="small text-muted d-none d-md-block">
+                  El motivo por el cual se realiza la solicitud.
+                </div>
+              </td>
+              <td class="text-end fw-bold">
+                <br />
+
+                {{ contract_request.request_motive }}
+              </td>
+            </tr>
+
+            <tr class="border-bottom">
+              <td>
+                <br />
+
+                <div class="fw-bold">Valor del Contrato</div>
+                <div class="small text-muted d-none d-md-block">
+                  El valor total del contrato.
+                </div>
+              </td>
+              <td class="text-end fw-bold">
+                <br />
+
+                {{ contract_request.contract_value }}
+              </td>
+            </tr>
+            <tr class="border-bottom">
+              <td>
+                <br />
+
+                <div class="fw-bold">Cuenta de Cobro</div>
+                <div class="small text-muted d-none d-md-block">
+                  La cuenta bancaria a la que se realizarán los pagos
+                  correspondientes.
+                </div>
+              </td>
+              <td class="text-end fw-bold">
+                <br />
+
+                {{ contract_request.charge_account }}
+              </td>
+            </tr>
+            <tr class="border-bottom">
+              <td colspan="2" class="text-end">
+                <br />
+                <br />
+                <a
+                  href="/hiring_app/download_rut/{{ contract_request.id }}/"
+                  style="color: #00599c"
+                  >Descargar Archivo RUT</a
+                >
+                <br />
+                <br />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-6 col-lg-6">
+    <div class="card shadow mb-4">
+      <!-- Card Header - Dropdown -->
+      <div
+        class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+      >
+        <h6 class="m-0 font-weight-bold text-primary">
+          Información legal del contrato
+        </h6>
+      </div>
+      <!-- Card Body -->
+      <div class="card-body">
+        <table class="table table-borderless mb-0">
+          <tbody>
+            {% for schedule in course_schedules %}
+            <tr class="border-bottom">
+              <td>
+                <div class="fw-bold">Clase</div>
+              </td>
+            </tr>
+            <tr class="border-bottom">
+              <td>
+                <div class="fw-bold">Fecha</div>
+                <div class="small text -muted d-none d-md-block">
+                  La fecha de la clase.
+                </div>
+              </td>
+              <td class="text-end fw-bold">{{ schedule.date }}</td>
+            </tr>
+            <tr class="border-bottom">
+              <td>
+                <div class="fw-bold">Hora de inicio</div>
+                <div class="small text -muted d-none d-md-block">
+                  La hora de inicio de la clase.
+                </div>
+              </td>
+              <td class="text-end fw-bold">{{ schedule.start_time }}</td>
+            </tr>
+            <tr class="border-bottom">
+              <td>
+                <div class="fw-bold">Hora de fin</div>
+                <div class="small text -muted d-none d-md-block">
+                  La hora de fin de la clase.
+                </div>
+              </td>
+              <td class="text-end fw-bold">{{ schedule.end_time }}</td>
+            </tr>
+            <tr class="border-bottom">
+              <td>
+                <div class="fw-bold">Salón</div>
+                <div class="small text -muted d-none d-md-block">
+                  El salón de la clase.
+                </div>
+              </td>
+              <td class="text-end fw-bold">{{ schedule.room }}</td>
+            </tr>
+            <tr class="border-bottom">
+              <td>
+                <div class="fw-bold">Responsabilidad</div>
+                <div class="small text -muted d-none d-md-block">
+                  Codigo de la responsabilidad de la clase.
+                </div>
+              </td>
+              <td class="text-end fw-bold">{{ schedule.responsability }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>

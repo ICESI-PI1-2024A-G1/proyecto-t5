@@ -50,7 +50,7 @@ def get_manager_metrics():
 
     cex_requests = CEXContractRequest.objects.all()
     monitoring_requests = MonitoringContractRequest.objects.all()
-    pos_requests = ProvisionOfServicesContractRequest.objects.all()
+    pos_requests =   ProvisionOfServicesContractRequest.objects.all()
 
     # Initialize a defaultdict to store requests count for each date
     requests_count_by_date = defaultdict(lambda: [0, 0, 0])
@@ -269,6 +269,10 @@ def get_resolved_after_estimated_date():
                 resolved_after_estimated_date_count += 1
 
     return resolved_after_estimated_date_count
+
+
+    
+    
 
 
 
