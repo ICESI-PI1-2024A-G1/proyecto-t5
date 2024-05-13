@@ -97,6 +97,15 @@ def get_requests(user):
         requests_CEX = CEXContractRequest.objects.filter(manager_assigned_to=user.id)
         requests_monitoring = MonitoringContractRequest.objects.filter(manager_assigned_to=user.id)
         requests_pos = ProvisionOfServicesContractRequest.objects.filter(manager_assigned_to=user.id)
+      
+    for request in requests_CEX:
+        request.request_type = 'CEX'
+
+    for request in requests_monitoring:
+        request.request_type = 'Monitoría'
+
+    for request in requests_pos:
+        request.request_type = 'Honorarios' 
           
     groupManager = Group.objects.get(name='manager')
     groupLeader = Group.objects.get(name='leader')       
@@ -107,7 +116,9 @@ def get_requests(user):
     current_month = current_date.month
     current_year = current_date.year
 
-    requests = list(
+    requests = list(requests_CEX) + list(requests_monitoring) + list(requests_pos)
+
+    requests_month = list(
         chain(
             requests_CEX.filter(start_date__month=current_month, start_date__year=current_year),
             requests_monitoring.filter(start_date__month=current_month, start_date__year=current_year),
@@ -134,6 +145,7 @@ def get_requests(user):
     
     return {
         'requests': requests,
+        'requests_month': requests_month,
         'filled_requests': filled_requests,
         'reviewed_requests': reviewed_requests,
         'for_validate_requests':  list(requests_CEX.filter(state__in=['pending', 'incomplete'])) + list(requests_monitoring.filter(state__in=['pending', 'incomplete'])) + list(requests_pos.filter(state__in=['pending', 'incomplete'])),

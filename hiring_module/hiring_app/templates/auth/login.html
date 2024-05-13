@@ -1,25 +1,24 @@
 {% load static %}
-    <div style="display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden;">
-        <div style="display: flex; flex-direction: column; align-items: center; margin-top: 20px; padding: 30px; background-color: rgba(255, 255, 255, 0.918); border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-width: 350px; min-width: 30vw;">
-            <img src="{% static 'images/auth/logo_icesi.webp' %}" alt="logo" style="margin-bottom: 20px; height: 70px;">
-            <h1 style="font-size: 20px; font-weight: bold; line-height: 1.2; margin-bottom: 20px; color: #333;">Sign in to your account</h1>
-            <form method="post" style="display: flex; flex-direction: column; width: 100%;" action="#">
-                {% csrf_token %}
-                {{ form.non_field_errors }}
+<div style="display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden;">
+    <div style="display: flex; flex-direction: column; align-items: center; margin-top: 20px; padding: 35px; background-color: rgba(255, 255, 255, 0.918); border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-width: 350px; min-width: 30vw;">
+        <img src="{% static 'images/auth/logo_icesi.webp' %}" alt="logo" style="margin-bottom: 20px; height: 70px;">
+        <form method="post" style="display: flex; flex-direction: column; width: 100%;" action="#">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
 
-                <label for="email" style="margin-bottom: 10px; font-size: 16px; font-weight: bold; color: #333;">Your ID</label>
-                {{ form.id }}
-                <label for="password" style="margin-top: 15px; margin-bottom: 10px; font-size: 16px; font-weight: bold; color: #333;">Password</label>
-                {{ form.password }}
+            <label for="email" style="margin-bottom: 10px; font-size: 16px; font-weight: bold; color: #333;">Usuario</label>
+            <input type="number" name="id" style="padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px;" placeholder="" min="0" step="1" required="" id="id_id">
+            <label for="password" style="margin-top: 15px; margin-bottom: 10px; font-size: 16px; font-weight: bold; color: #333;">Contraseña</label>
+            <input type="password" name="password" style="padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px;" placeholder="" required="" id="id_password">
 
-                <button type="submit" style="padding: 12px; margin-top: 20px; border: none; border-radius: 8px; background-color: #2A8FD0; color: #fff; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease-in-out;">Sign in</button>
-                <div>
-                {% if messages %}
-                    {% for message in messages %}
-                        <p id="warningMessage" style="color: #dc2626; font-weight: 600; margin-top: 20px; text-align: center;">Credenciales incorrectas. Inténtelo de nuevo.</p>
-                    {% endfor %}
-                {% endif %}                
-                </div>
-            </form>
-        </div>
+            <button type="submit" style="padding: 12px; margin-top: 20px; border: none; border-radius: 8px; background-color: #2A8FD0; color: #fff; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease-in-out;">Iniciar Sesión</button>
+            <div>
+            {% if messages %}
+                {% for message in messages %}
+                    <p id="warningMessage" style="color: #dc2626; font-weight: 600; margin-top: 20px; text-align: center;">Credenciales incorrectas. Inténtelo de nuevo.</p>
+                {% endfor %}
+            {% endif %}                
+            </div>
+        </form>
     </div>
+</div>

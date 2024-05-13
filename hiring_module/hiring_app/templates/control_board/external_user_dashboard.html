@@ -1,30 +1,40 @@
-{% extends 'control_board/base_external_user.html' %}
+{% extends 'base.html' %}
 {% load static %}
 {% block title %}
-    Panel de control de usuario externo
+Panel de control
 {% endblock %}
 {% block aditionalMetadata %}
 {% endblock %}
 
-{% block control_board %}
-    <main id="main" class="expanded">
-        <div class="container text-center">
-                <div style="padding-top: 25px;">
-                    <button id="create_monitoring_contract"  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        <a href="/hiring_app/request_creation/monitoring/">Crear contrato de monitoria</a>
-                    </button>
-                </div>
-                <div style="padding-top: 25px;">
-                    <button id="create_cex_contract" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        <a href="/hiring_app/request_creation/cex/">Crear contrato CEX</a>
-                    </button>
-                </div>
-                <div style="padding-top: 25px;">
-                    <button id="create_pos_contract" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        <a href="/hiring_app/request_creation/pos/">Crear contrato de prestacion de servicios</a>
-                    </button>
-                </div>
-        </div>
-    </main>
+{% block content %}
 
-{% endblock %}
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="container mb-4">
+                <h1 class="h3 text-gray-800">Bienvenido al panel de control de Usuario Externo</h1>
+                <h5>Radique los siguientes tipos de solicitudes de contratos</h5>
+    </div>
+
+    <!-- Content center -->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <a href="/hiring_app/request_creation/monitoring/" class="btn btn-primary btn-block text-white">
+                    Crear contrato de monitoría
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <a href="/hiring_app/request_creation/cex/" class="btn btn-primary btn-block text-white">
+                    Crear contrato CEX
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <a href="/hiring_app/request_creation/pos/" class="btn btn-primary btn-block text-white">
+                    Crear contrato de Honorarios
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}

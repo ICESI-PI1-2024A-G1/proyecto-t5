@@ -34,7 +34,7 @@ contratos de Monitoría {% endblock %} {% block content %}
                 <label
                   for="id_student_code"
                   style="display: block; font-weight: 600"
-                  >Student code:</label
+                  >Código:</label
                 >
                 <input
                   type="text"
@@ -63,7 +63,7 @@ contratos de Monitoría {% endblock %} {% block content %}
                 <label
                   for="id_student_full_name"
                   style="display: block; font-weight: 600"
-                  >Student full name:</label
+                  >Nombre Completo:</label
                 >
                 <input
                   type="text"
@@ -92,7 +92,7 @@ contratos de Monitoría {% endblock %} {% block content %}
                 <label
                   for="id_student_id"
                   style="display: block; font-weight: 600"
-                  >Student id:</label
+                  >Documento de Identificación:</label
                 >
                 <input
                   type="text"
@@ -121,7 +121,7 @@ contratos de Monitoría {% endblock %} {% block content %}
                 <label
                   for="id_student_email"
                   style="display: block; font-weight: 600"
-                  >Student email:</label
+                  >Correo Electrónico:</label
                 >
                 <input
                   type="email"
@@ -150,7 +150,7 @@ contratos de Monitoría {% endblock %} {% block content %}
                 <label
                   for="id_student_cellphone"
                   style="display: block; font-weight: 600"
-                  >Student cellphone:</label
+                  >Teléfono Celular:</label
                 >
                 <input
                   type="text"
@@ -185,7 +185,7 @@ contratos de Monitoría {% endblock %} {% block content %}
               class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
             >
               <h6 class="m-0 font-weight-bold text-primary">
-                Información del financiera
+                Información financiera
               </h6>
             </div>
             <!-- Card Body -->
@@ -222,7 +222,7 @@ contratos de Monitoría {% endblock %} {% block content %}
                 <label
                   for="id_cenco_manager"
                   style="display: block; font-weight: 600"
-                  >Cenco manager:</label
+                  >Encargado del Cenco:</label
                 >
                 <input
                   type="text"
@@ -280,7 +280,7 @@ contratos de Monitoría {% endblock %} {% block content %}
                 <label
                   for="id_total_value_to_pay"
                   style="display: block; font-weight: 600"
-                  >Total value to pay:</label
+                  >Valor a Pagar:</label
                 >
                 <input
                   type="number"
@@ -312,7 +312,7 @@ contratos de Monitoría {% endblock %} {% block content %}
                       <label
                         for="id_weekly_hours"
                         style="display: block; font-weight: 600"
-                        >Weekly hours:</label
+                        >Horas Semanales:</label
                       >
                       <input
                         type="number"
@@ -342,7 +342,7 @@ contratos de Monitoría {% endblock %} {% block content %}
                       <label
                         for="id_is_unique_payment"
                         style="display: block; font-weight: 600"
-                        >Is unique payment:</label
+                        >Es pago único:</label
                       >
                       <input
                         class="checkbox"
@@ -376,7 +376,7 @@ contratos de Monitoría {% endblock %} {% block content %}
                 <label
                   for="id_monitoring_type"
                   style="display: block; font-weight: 600"
-                  >Monitoring type:</label
+                  >Tipo de Monitoría:</label
                 >
                 <select
                   name="monitoring_type"
@@ -395,10 +395,13 @@ contratos de Monitoría {% endblock %} {% block content %}
                       box-shadow 0.15s ease-in-out;
                   "
                 >
-                  <option value="" disabled selected>Seleccionar</option>
-                  {% for choice in form.monitoring_type.field.choices %}
-                  <option value="{{ choice.0 }}">{{ choice.1 }}</option>
-                  {% endfor %}
+                <option value="" disabled selected>Seleccionar</option>
+                  
+                <option value="">---------</option>
+                
+                <option value="academic">Académica</option>
+                
+                <option value="office">De Oficina</option>
                 </select>
               </div>
 
@@ -407,7 +410,7 @@ contratos de Monitoría {% endblock %} {% block content %}
                 <label
                   for="id_course_or_proyect"
                   style="display: block; font-weight: 600"
-                  >Course or proyect:</label
+                  >Curso o Proyecto:</label
                 >
                 <input
                   type="text"
@@ -436,7 +439,7 @@ contratos de Monitoría {% endblock %} {% block content %}
                 <label
                   for="id_monitoring_description"
                   style="display: block; font-weight: 600"
-                  >Monitoring description:</label
+                  >Descripción de la monitoría:</label
                 >
                 <textarea
                   name="monitoring_description"

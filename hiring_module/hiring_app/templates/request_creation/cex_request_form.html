@@ -31,7 +31,7 @@ contratos CEX {% endblock %} {% block content %}
               <label
                 for="id_hiree_full_name"
                 style="display: block; font-weight: 600"
-                >Hiree full name:</label
+                >Nombre Completo:</label
               >
               <input
                 type="text"
@@ -57,7 +57,7 @@ contratos CEX {% endblock %} {% block content %}
             <!-- Hiree ID -->
             <div style="margin-bottom: 2rem">
               <label for="id_hiree_id" style="display: block; font-weight: 600"
-                >Hiree ID:</label
+                >Documento de Identificación:</label
               >
               <input
                 type="number"
@@ -84,7 +84,7 @@ contratos CEX {% endblock %} {% block content %}
               <label
                 for="id_hiree_cellphone"
                 style="display: block; font-weight: 600"
-                >Hiree cellphone:</label
+                >Teléfono Celular:</label
               >
               <input
                 type="text"
@@ -112,7 +112,7 @@ contratos CEX {% endblock %} {% block content %}
               <label
                 for="id_hiree_email"
                 style="display: block; font-weight: 600"
-                >Hiree email:</label
+                >Correo Electrónico:</label
               >
               <input
                 type="email"
@@ -197,7 +197,7 @@ contratos CEX {% endblock %} {% block content %}
             class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
           >
             <h6 class="m-0 font-weight-bold text-primary">
-              Información del financiera
+              Información financiera
             </h6>
           </div>
           <!-- Card Body -->
@@ -233,7 +233,7 @@ contratos CEX {% endblock %} {% block content %}
               <label
                 for="id_banking_entity"
                 style="display: block; font-weight: 600"
-                >Banking entity:</label
+                >Entidad Bancaria:</label
               >
               <input
                 type="text"
@@ -262,7 +262,7 @@ contratos CEX {% endblock %} {% block content %}
               <label
                 for="id_bank_account_type"
                 style="display: block; font-weight: 600"
-                >Bank account type:</label
+                >Tipo de Cuenta Bancaria:</label
               >
               <select
                 name="bank_account_type"
@@ -281,10 +281,13 @@ contratos CEX {% endblock %} {% block content %}
                     box-shadow 0.15s ease-in-out;
                 "
               >
-                <option value="" disabled selected>Select</option>
-                {% for choice in form.bank_account_type.field.choices %}
-                <option value="{{ choice.0 }}">{{ choice.1 }}</option>
-                {% endfor %}
+              <option value="" disabled selected>Seleccionar</option>
+                
+              <option value="">---------</option>
+              
+              <option value="checking">Débito</option>
+              
+              <option value="savings">Ahorros</option>
               </select>
             </div>
             <br />
@@ -294,7 +297,7 @@ contratos CEX {% endblock %} {% block content %}
               <label
                 for="id_bank_account_number"
                 style="display: block; font-weight: 600"
-                >Bank account number:</label
+                >Número de Cuenta Bancaria:</label
               >
               <input
                 type="text"
@@ -322,7 +325,7 @@ contratos CEX {% endblock %} {% block content %}
               <label
                 for="id_pension_fund"
                 style="display: block; font-weight: 600"
-                >Pension fund:</label
+                >Fondo de Pensiones:</label
               >
               <input
                 type="text"
@@ -366,7 +369,7 @@ contratos CEX {% endblock %} {% block content %}
               <label
                 for="id_solicitant_faculty"
                 style="display: block; font-weight: 600"
-                >Solicitant faculty:</label
+                >Unidad Solicitante:</label
               >
               <input
                 type="text"
@@ -393,7 +396,7 @@ contratos CEX {% endblock %} {% block content %}
               <label
                 for="id_request_motive"
                 style="display: block; font-weight: 600"
-                >Request motive:</label
+                >Motivo de Solicitud:</label
               >
               <textarea
                 id="id_request_motive"
@@ -419,7 +422,7 @@ contratos CEX {% endblock %} {% block content %}
               <label
                 for="id_contract_value"
                 style="display: block; font-weight: 600"
-                >Contract value:</label
+                >Valor del Contrato:</label
               >
               <input
                 type="number"
@@ -446,7 +449,7 @@ contratos CEX {% endblock %} {% block content %}
               <label
                 for="id_charge_account"
                 style="display: block; font-weight: 600"
-                >Charge account:</label
+                >Cuenta de Cargo:</label
               >
               <textarea
                 id="id_charge_account"
@@ -471,7 +474,7 @@ contratos CEX {% endblock %} {% block content %}
             <!-- Rut -->
             <div style="margin-bottom: 2rem">
               <label for="id_rut" style="display: block; font-weight: 600"
-                >Rut:</label
+                >RUT:</label
               >
               <input
                 type="file"
