@@ -34,6 +34,8 @@ class StatisticsTest(StaticLiveServerTestCase):
 
         statistics_button.click()
 
+        time.sleep(2)
+
         self.assertIn('Estadísticas', self.selenium.title)
 
         # Get the current date
@@ -67,6 +69,7 @@ class StatisticsTest(StaticLiveServerTestCase):
         
         first_cell_text = first_result.find_element(By.XPATH, './td[1]').click()
         
+        time.sleep(2)
         
         self.assertIn('Solicitud de contratación de', self.selenium.find_element(By.ID, 'titleRequestHiring').text)
         
@@ -83,10 +86,15 @@ class StatisticsTest(StaticLiveServerTestCase):
         notificationCloseBtn = self.selenium.find_element(By.ID, 'notificationCloseBtn')
 
         notificationCloseBtn.click()
+
+        time.sleep(2)
+
         
         statistics_button = self.selenium.find_element(By.ID, 'Statistics')
 
         statistics_button.click()
+
+        time.sleep(2)
 
         self.assertIn('Estadísticas', self.selenium.title)
 
@@ -119,6 +127,7 @@ class StatisticsTest(StaticLiveServerTestCase):
         
         first_cell_text = first_result.find_element(By.XPATH, './td[1]').click()
         
+        time.sleep(2)
         
         self.assertIn('Solicitud de contratación de', self.selenium.find_element(By.ID, 'titleRequestHiring').text)
         
@@ -135,10 +144,14 @@ class StatisticsTest(StaticLiveServerTestCase):
         notificationCloseBtn = self.selenium.find_element(By.ID, 'notificationCloseBtn')
 
         notificationCloseBtn.click()
+
+        time.sleep(2)
         
         statistics_button = self.selenium.find_element(By.ID, 'Statistics')
 
         statistics_button.click()
+
+        time.sleep(2)
 
         self.assertIn('Estadísticas', self.selenium.title)
 
@@ -153,7 +166,6 @@ class StatisticsTest(StaticLiveServerTestCase):
 
         self.assertIn('1', solicitudes_por_validar_leader)
 
-        time.sleep(2)
         
         
 
