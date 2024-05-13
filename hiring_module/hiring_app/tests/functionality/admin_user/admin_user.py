@@ -137,12 +137,10 @@ class AdminUserTest(StaticLiveServerTestCase):
         self.assertEqual('Lista de usuarios', self.selenium.title)
         
         self.selenium.find_element(By.ID, 'roleSelect_1109185879').send_keys('remove')
+
+        time.sleep(2)
         
-        
-        try:
-            self.selenium.find_element(By.ID, 'addUser').click()
-        except StaleElementReferenceException:
-            self.selenium.find_element(By.ID, 'addUser').click()
+        self.selenium.find_element(By.ID, 'addUser').click()
 
         self.assertEqual('1109185879', self.selenium.find_element(By.ID, '1109185879_id').text)
 
