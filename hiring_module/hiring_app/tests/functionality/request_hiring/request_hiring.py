@@ -86,7 +86,7 @@ class RequestHiringTest(StaticLiveServerTestCase):
 
         id = first_result.find_element(By.XPATH, './td[1]').text
 
-        state = first_result.find_element(By.XPATH, './td[5]').text
+        state = "Pendiente"
 
         search_input.send_keys(state)
 
@@ -236,7 +236,7 @@ class RequestHiringTest(StaticLiveServerTestCase):
 
         search_input = self.selenium.find_element(By.CSS_SELECTOR, 'input[type="search"]')
 
-        search_input.send_keys("Pending")
+        search_input.send_keys("Pendiente")
 
         search_input.send_keys(Keys.RETURN)
         
@@ -293,7 +293,7 @@ class RequestHiringTest(StaticLiveServerTestCase):
 
         search_input = self.selenium.find_element(By.CSS_SELECTOR, 'input[type="search"]')
 
-        search_input.send_keys("Pending")
+        search_input.send_keys("Pendiente")
 
         search_input.send_keys(Keys.RETURN)
         
@@ -318,7 +318,7 @@ class RequestHiringTest(StaticLiveServerTestCase):
 
         self.selenium.find_element(By.NAME, 'reason').send_keys("Hola")
         
-        self.selenium.find_element(By.XPATH, '//input[@type="submit" and @value="Save changes"]').click()
+        self.selenium.find_element(By.XPATH, '//input[@type="submit" and @value="Enviar"]').click()
 
         time.sleep(2)
         
@@ -332,7 +332,7 @@ class RequestHiringTest(StaticLiveServerTestCase):
 
         self.selenium.find_element(By.NAME, 'reason').send_keys("Hola")
 
-        self.selenium.find_element(By.XPATH, '//input[@type="submit" and @value="Save changes"]').click()
+        self.selenium.find_element(By.XPATH, '//input[@type="submit" and @value="Enviar"]').click()
 
         self.assertIn('100%', self.selenium.find_element(By.ID, 'ProgressBar').text)
 
@@ -351,7 +351,7 @@ class RequestHiringTest(StaticLiveServerTestCase):
 
         search_input = self.selenium.find_element(By.CSS_SELECTOR, 'input[type="search"]')
 
-        search_input.send_keys("Pending")
+        search_input.send_keys("Pendiente")
 
         search_input.send_keys(Keys.RETURN)
         
@@ -379,7 +379,7 @@ class RequestHiringTest(StaticLiveServerTestCase):
 
         self.selenium.find_element(By.NAME, 'reason').send_keys("Hola")
         
-        self.selenium.find_element(By.XPATH, '//input[@type="submit" and @value="Save changes"]').click()
+        self.selenium.find_element(By.XPATH, '//input[@type="submit" and @value="Enviar"]').click()
         
         self.assertIn('75%', self.selenium.find_element(By.ID, 'ProgressBar').text)
 
@@ -406,7 +406,7 @@ class RequestHiringTest(StaticLiveServerTestCase):
 
         self.selenium.find_element(By.NAME, 'reason').send_keys("Hola")
 
-        self.selenium.find_element(By.XPATH, '//input[@type="submit" and @value="Save changes"]').click()
+        self.selenium.find_element(By.XPATH, '//input[@type="submit" and @value="Enviar"]').click()
 
         self.assertIn('100%', self.selenium.find_element(By.ID, 'ProgressBar').text)
 
@@ -424,7 +424,7 @@ class RequestHiringTest(StaticLiveServerTestCase):
 
         search_input = self.selenium.find_element(By.CSS_SELECTOR, 'input[type="search"]')
 
-        search_input.send_keys("Pending")
+        search_input.send_keys("Pendiente")
 
         search_input.send_keys(Keys.RETURN)
         
@@ -448,7 +448,7 @@ class RequestHiringTest(StaticLiveServerTestCase):
 
         self.selenium.find_element(By.NAME, 'reason').send_keys("Hola")
 
-        self.selenium.find_element(By.XPATH, '//input[@type="submit" and @value="Save changes"]').click()
+        self.selenium.find_element(By.XPATH, '//input[@type="submit" and @value="Enviar"]').click()
 
         self.assertIn('100%', self.selenium.find_element(By.ID, 'ProgressBar').text)
 
