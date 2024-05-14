@@ -27,8 +27,7 @@ class MonitoringContractRequestView(CreateView):
         monitoring_contract_request.save()
             
             
-        utilities.send_email('Solicitud de contratación radicada', 'Estimado/a, su solicitud de contrato en el aplicativo del módulo de contratación de la unidad de servicios compartidos ha sido radicada satisfactoriamente',
-                   current_user.email)
+        utilities.send_email('Solicitud de contratación radicada', 'Estimado/a, su solicitud de contrato en el aplicativo del módulo de contratación de la unidad de servicios compartidos ha sido radicada satisfactoriamente',current_user.email)
         return super().form_valid(form)
     
     def form_invalid(self, form):

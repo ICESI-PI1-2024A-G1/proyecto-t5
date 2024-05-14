@@ -21,11 +21,23 @@ class AdministratorUserListView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         users = CustomUser.objects.filter(groups__name__in=['admin', 'leader', 'manager'])
+        admins_ammount = 0
+        leaders_ammount = 0
+        managers_ammount = 0
         # Add a role field to each user object
         for user in users:
             user.role = str(user.groups.first())
+            if user.role == 'admin':
+                admins_ammount += 1
+            elif user.role == 'leader':
+                leaders_ammount += 1
+            elif user.role == 'manager':
+                managers_ammount += 1
         context['users'] = users
         context['actualgroup'] = 'admin'
+        context['admins_ammount'] = admins_ammount
+        context['leaders_ammount'] = leaders_ammount
+        context['managers_ammount'] = managers_ammount
         return context
     
     def post(self, request, *args, **kwargs):

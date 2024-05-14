@@ -33,8 +33,6 @@ class ChangeStateView(View):
         contract_request = utilities.getContract(idContract)
         new_state = request.POST.get('state')
         reason = request.POST.get('reason')
-        print(new_state)
-        print(reason)
         state_actions = {
             'incomplete': {
                 'email_function': self.send_email_file

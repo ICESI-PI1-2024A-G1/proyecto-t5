@@ -3,7 +3,22 @@
     <input type="hidden" id="stateInput" name="state">
     <select name="state" id="stateSelect" class="btn btn-white border border-2 border-dark text-dark dropdown-toggle col">
         {% for choice in choices %}
-        <option class="col" value="{{ choice.0 }}" {% if choice.0 == contract_request.state %}selected{% endif %}  {% if not choice.0 in available_changes %} disabled {% endif %} >{{ choice.1 }}</option>
+        <option class="col" value="{{ choice.0 }}" {% if choice.0 == contract_request.state %}selected{% endif %}  {% if not choice.0 in available_changes %} disabled {% endif %} >
+
+        {% if choice.1 == 'Pending' %}
+        Pendiente
+        {% elif choice.1 == 'Review' %}
+            En Revisión
+        {% elif choice.1 == 'Incomplete' %}
+            Incompleto
+        {% elif choice.1 == 'Filed' %}
+            Completado
+        {% elif choice.1 == 'Cancelled' %}
+            Cancelado
+        {% endif %}
+
+        </option>
+        
         {% endfor %}
     </select>
 </form>
@@ -20,8 +35,8 @@
 
         <div class="modal-footer">
             <!-- Agregar el atributo data-bs-dismiss="modal" a los botones -->
-            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Close</button>
-            <input type="submit" class="btn btn-primary" value="Save changes">
+            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cerrar</button>
+            <input type="submit" class="btn btn-primary" value="Enviar">
         </div>
     </form>
 </dialog>

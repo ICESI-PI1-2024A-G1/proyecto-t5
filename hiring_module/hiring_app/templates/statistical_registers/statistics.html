@@ -23,28 +23,25 @@ Estadísticas
         {% include 'statistical_registers/components/monthly_requests.html' %}
 
         <!-- Pie Chart -->
-        {% include 'statistical_registers/components/pie_chart_daily_requests.html' %}
+        {% include 'statistical_registers/components/pie_chart_date_range_requests.html' %}
 
         {% include 'statistical_registers/components/average_time_and_overdue_requests.html' %}
     </div>
 
 </div>
 
-
 <script>
-    function onPageLoad() {
+    window.onload = function() {
         createOrUpdateLeaderChart();
         createOrUpdateManagerChart();
         createOrUpdateDailyRequestChart();
-
-
+        createOrUpdateDateRangeRequestChart();
     }
-
-    document.addEventListener("DOMContentLoaded", onPageLoad);
 </script>
 
 <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
 <script src="{% static 'js/statistics/manager_pie_chart.js' %}"></script>
 <script src="{% static 'js/statistics/leader_pie_chart.js' %}"></script>
+
 
 {% endblock %}

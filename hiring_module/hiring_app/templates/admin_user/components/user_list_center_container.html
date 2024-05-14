@@ -1,5 +1,5 @@
 <div class="row justify-content-center">
-    {% include 'admin_user/components/user_element_container.html' with count=1 status='Administradores' %}
-    {% include 'admin_user/components/user_element_container.html' with count=2 status='Lideres' %}
-    {% include 'admin_user/components/user_element_container.html' with count=2 status='Gestores' %}
+    {% include 'admin_user/components/user_element_container.html' with count=admins_ammount status='Administradores' %}
+    {% include 'admin_user/components/user_element_container.html' with count=leaders_ammount status='Lideres' %}
+    {% include 'admin_user/components/user_element_container.html' with count=managers_ammount status='Gestores' %}
 </div>

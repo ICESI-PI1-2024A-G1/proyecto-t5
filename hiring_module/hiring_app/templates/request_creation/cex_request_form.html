@@ -1,235 +1,630 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} {% load static %} {% block title %} Solicitudes de
+contratos CEX {% endblock %} {% block content %}
 
-{% block title %}
-Solicitudes de contratos CEX
-{% endblock %}
-
-{% block content %}
-
-<main id="main" class="expanded">
-    <div style="margin-top: 64px; margin-left: 20vw; margin-right: 40vw;">
-
-        <h1 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;">Solicitudes de contratos CEX</h1>
-
-        <form id="contractForm" method="post" enctype="multipart/form-data" action="{% url 'hiring_app:cex' %}"
-            style="margin-bottom: 2rem;">
-            {% csrf_token %}
-
-            <!-- Solicitant name -->
-            <div style="margin-bottom: 2rem;">
-                <label for="id_solicitant_name" style="display: block; font-weight: 600;">Solicitant name:</label>
-                <input type="text" id="id_solicitant_name" name="solicitant_name" required
-                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
-            </div>
-
-            <!-- Solicitant faculty -->
-            <div style="margin-bottom: 2rem;">
-                <label for="id_solicitant_faculty" style="display: block; font-weight: 600;">Solicitant faculty:</label>
-                <input type="text" id="id_solicitant_faculty" name="solicitant_faculty" required
-                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
-            </div>
-
+<form
+  id="contractForm"
+  method="post"
+  enctype="multipart/form-data"
+  action="{% url 'hiring_app:cex' %}"
+>
+  {% csrf_token %}
+  <div class="container-fluid">
+    <h1 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem">
+      Solicitudes de contratos de CEX
+    </h1>
+    <div class="row">
+      <!-- Data hiree  -->
+      <div class="col-xl-8 col-lg-7">
+        <div class="card shadow mb-4">
+          <!-- Card Header - Dropdown -->
+          <div
+            class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+          >
+            <h6 class="m-0 font-weight-bold text-primary">
+              Información del contratado
+            </h6>
+          </div>
+          <!-- Card Body -->
+          <div class="card-body">
             <!-- Hiree full name -->
-            <div style="margin-bottom: 2rem;">
-                <label for="id_hiree_full_name" style="display: block; font-weight: 600;">Hiree full name:</label>
-                <input type="text" id="id_hiree_full_name" name="hiree_full_name" required
-                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            <div style="margin-bottom: 2rem">
+              <label
+                for="id_hiree_full_name"
+                style="display: block; font-weight: 600"
+                >Nombre Completo:</label
+              >
+              <input
+                type="text"
+                id="id_hiree_full_name"
+                name="hiree_full_name"
+                required
+                style="
+                  height: 1rem;
+                  width: 100%;
+                  padding: 1rem;
+                  color: #333;
+                  border: 1px solid #ccc;
+                  border-radius: 0.375rem;
+                  background-color: #f7fafc;
+                  font-size: 1rem;
+                  outline: none;
+                  transition: border-color 0.15s ease-in-out,
+                    box-shadow 0.15s ease-in-out;
+                "
+              />
             </div>
 
             <!-- Hiree ID -->
-            <div style="margin-bottom: 2rem;">
-                <label for="id_hiree_id" style="display: block; font-weight: 600;">Hiree ID:</label>
-                <input type="number" id="id_hiree_id" name="hiree_id" required
-                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            <div style="margin-bottom: 2rem">
+              <label for="id_hiree_id" style="display: block; font-weight: 600"
+                >Documento de Identificación:</label
+              >
+              <input
+                type="number"
+                id="id_hiree_id"
+                name="hiree_id"
+                required
+                style="
+                  height: 1rem;
+                  width: 100%;
+                  padding: 1rem;
+                  color: #333;
+                  border: 1px solid #ccc;
+                  border-radius: 0.375rem;
+                  background-color: #f7fafc;
+                  font-size: 1rem;
+                  outline: none;
+                  transition: border-color 0.15s ease-in-out,
+                    box-shadow 0.15s ease-in-out;
+                "
+              />
             </div>
-
             <!-- Hiree cellphone -->
-            <div style="margin-bottom: 2rem;">
-                <label for="id_hiree_cellphone" style="display: block; font-weight: 600;">Hiree cellphone:</label>
-                <input type="text" id="id_hiree_cellphone" name="hiree_cellphone" required
-                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            <div style="margin-bottom: 2rem">
+              <label
+                for="id_hiree_cellphone"
+                style="display: block; font-weight: 600"
+                >Teléfono Celular:</label
+              >
+              <input
+                type="text"
+                id="id_hiree_cellphone"
+                name="hiree_cellphone"
+                required
+                style="
+                  height: 1rem;
+                  width: 100%;
+                  padding: 1rem;
+                  color: #333;
+                  border: 1px solid #ccc;
+                  border-radius: 0.375rem;
+                  background-color: #f7fafc;
+                  font-size: 1rem;
+                  outline: none;
+                  transition: border-color 0.15s ease-in-out,
+                    box-shadow 0.15s ease-in-out;
+                "
+              />
             </div>
 
             <!-- Hiree email -->
-            <div style="margin-bottom: 2rem;">
-                <label for="id_hiree_email" style="display: block; font-weight: 600;">Hiree email:</label>
-                <input type="email" id="id_hiree_email" name="hiree_email" required
-                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            <div style="margin-bottom: 2rem">
+              <label
+                for="id_hiree_email"
+                style="display: block; font-weight: 600"
+                >Correo Electrónico:</label
+              >
+              <input
+                type="email"
+                id="id_hiree_email"
+                name="hiree_email"
+                required
+                style="
+                  height: 1rem;
+                  width: 100%;
+                  padding: 1rem;
+                  color: #333;
+                  border: 1px solid #ccc;
+                  border-radius: 0.375rem;
+                  background-color: #f7fafc;
+                  font-size: 1rem;
+                  outline: none;
+                  transition: border-color 0.15s ease-in-out,
+                    box-shadow 0.15s ease-in-out;
+                "
+              />
             </div>
-
-            <!-- Cenco -->
-            <div style="margin-bottom: 2rem;">
-                <label for="id_cenco" style="display: block; font-weight: 600;">Cenco:</label>
-                <input type="text" id="id_cenco" name="cenco" required
-                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
-            </div>
-
-            <!-- Request motive -->
-            <div style="margin-bottom: 2rem;">
-                <label for="id_request_motive" style="display: block; font-weight: 600;">Request motive:</label>
-                <textarea id="id_request_motive" name="request_motive" required
-                    style="min-height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;"></textarea>
-            </div>
-
-            <!-- Banking entity -->
-            <div style="margin-bottom: 2rem;">
-                <label for="id_banking_entity" style="display: block; font-weight: 600;">Banking entity:</label>
-                <input type="text" id="id_banking_entity" name="banking_entity" required
-                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
-            </div>
-
-            <!-- Bank account type -->
-            <div style="margin-bottom: 2rem;">
-                <label for="id_bank_account_type" style="display: block; font-weight: 600;">Bank account type:</label>
-                <select name="bank_account_type" id="id_bank_account_type" required
-                    style="width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
-                    <option value="" disabled selected>Select</option>
-                    {% for choice in form.bank_account_type.field.choices %}
-                    <option value="{{ choice.0 }}">{{ choice.1 }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-
-            <!-- Bank account number -->
-            <div style="margin-bottom: 2rem;">
-                <label for="id_bank_account_number" style="display: block; font-weight: 600;">Bank account
-                    number:</label>
-                <input type="text" id="id_bank_account_number" name="bank_account_number" required
-                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
-            </div>
-
             <!-- EPS -->
-            <div style="margin-bottom: 2rem;">
-                <label for="id_eps" style="display: block; font-weight: 600;">EPS:</label>
-                <input type="text" id="id_eps" name="eps" required
-                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
-            </div>
-
-            <!-- Pension fund -->
-            <div style="margin-bottom: 2rem;">
-                <label for="id_pension_fund" style="display: block; font-weight: 600;">Pension fund:</label>
-                <input type="text" id="id_pension_fund" name="pension_fund" required
-                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            <div style="margin-bottom: 2rem">
+              <label for="id_eps" style="display: block; font-weight: 600"
+                >EPS:</label
+              >
+              <input
+                type="text"
+                id="id_eps"
+                name="eps"
+                required
+                style="
+                  height: 1rem;
+                  width: 100%;
+                  padding: 1rem;
+                  color: #333;
+                  border: 1px solid #ccc;
+                  border-radius: 0.375rem;
+                  background-color: #f7fafc;
+                  font-size: 1rem;
+                  outline: none;
+                  transition: border-color 0.15s ease-in-out,
+                    box-shadow 0.15s ease-in-out;
+                "
+              />
             </div>
 
             <!-- ARL -->
-            <div style="margin-bottom: 2rem;">
-                <label for="id_arl" style="display: block; font-weight: 600;">ARL:</label>
-                <input type="text" id="id_arl" name="arl" required
-                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            <div style="margin-bottom: 2rem">
+              <label for="id_arl" style="display: block; font-weight: 600"
+                >ARL:</label
+              >
+              <input
+                type="text"
+                id="id_arl"
+                name="arl"
+                required
+                style="
+                  height: 1rem;
+                  width: 100%;
+                  padding: 1rem;
+                  color: #333;
+                  border: 1px solid #ccc;
+                  border-radius: 0.375rem;
+                  background-color: #f7fafc;
+                  font-size: 1rem;
+                  outline: none;
+                  transition: border-color 0.15s ease-in-out,
+                    box-shadow 0.15s ease-in-out;
+                "
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CENCO -->
+      <div class="col-xl-4 col-lg-5">
+        <div class="card shadow mb-4">
+          <!-- Card Header - Dropdown -->
+          <div
+            class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+          >
+            <h6 class="m-0 font-weight-bold text-primary">
+              Información financiera
+            </h6>
+          </div>
+          <!-- Card Body -->
+          <div class="card-body">
+            <!-- Cenco -->
+            <div style="margin-bottom: 2rem">
+              <label for="id_cenco" style="display: block; font-weight: 600"
+                >Cenco:</label
+              >
+              <input
+                type="text"
+                id="id_cenco"
+                name="cenco"
+                required
+                style="
+                  height: 1rem;
+                  width: 100%;
+                  padding: 1rem;
+                  color: #333;
+                  border: 1px solid #ccc;
+                  border-radius: 0.375rem;
+                  background-color: #f7fafc;
+                  font-size: 1rem;
+                  outline: none;
+                  transition: border-color 0.15s ease-in-out,
+                    box-shadow 0.15s ease-in-out;
+                "
+              />
             </div>
 
+            <!-- Banking entity -->
+            <div style="margin-bottom: 2rem">
+              <label
+                for="id_banking_entity"
+                style="display: block; font-weight: 600"
+                >Entidad Bancaria:</label
+              >
+              <input
+                type="text"
+                id="id_banking_entity"
+                name="banking_entity"
+                required
+                style="
+                  height: 1rem;
+                  width: 100%;
+                  padding: 1rem;
+                  color: #333;
+                  border: 1px solid #ccc;
+                  border-radius: 0.375rem;
+                  background-color: #f7fafc;
+                  font-size: 1rem;
+                  outline: none;
+                  transition: border-color 0.15s ease-in-out,
+                    box-shadow 0.15s ease-in-out;
+                "
+              />
+            </div>
+            <br />
+
+            <!-- Bank account type -->
+            <div style="margin-bottom: 2rem">
+              <label
+                for="id_bank_account_type"
+                style="display: block; font-weight: 600"
+                >Tipo de Cuenta Bancaria:</label
+              >
+              <select
+                name="bank_account_type"
+                id="id_bank_account_type"
+                required
+                style="
+                  width: 100%;
+                  padding: 1rem;
+                  color: #333;
+                  border: 1px solid #ccc;
+                  border-radius: 0.375rem;
+                  background-color: #f7fafc;
+                  font-size: 1rem;
+                  outline: none;
+                  transition: border-color 0.15s ease-in-out,
+                    box-shadow 0.15s ease-in-out;
+                "
+              >
+              <option value="" disabled selected>Seleccionar</option>
+                
+              <option value="">---------</option>
+              
+              <option value="checking">Débito</option>
+              
+              <option value="savings">Ahorros</option>
+              </select>
+            </div>
+            <br />
+
+            <!-- Bank account number -->
+            <div style="margin-bottom: 2rem">
+              <label
+                for="id_bank_account_number"
+                style="display: block; font-weight: 600"
+                >Número de Cuenta Bancaria:</label
+              >
+              <input
+                type="text"
+                id="id_bank_account_number"
+                name="bank_account_number"
+                required
+                style="
+                  height: 1rem;
+                  width: 100%;
+                  padding: 1rem;
+                  color: #333;
+                  border: 1px solid #ccc;
+                  border-radius: 0.375rem;
+                  background-color: #f7fafc;
+                  font-size: 1rem;
+                  outline: none;
+                  transition: border-color 0.15s ease-in-out,
+                    box-shadow 0.15s ease-in-out;
+                "
+              />
+            </div>
+            <br />
+            <!-- Pension fund -->
+            <div style="margin-bottom: 2rem">
+              <label
+                for="id_pension_fund"
+                style="display: block; font-weight: 600"
+                >Fondo de Pensiones:</label
+              >
+              <input
+                type="text"
+                id="id_pension_fund"
+                name="pension_fund"
+                required
+                style="
+                  height: 1rem;
+                  width: 100%;
+                  padding: 1rem;
+                  color: #333;
+                  border: 1px solid #ccc;
+                  border-radius: 0.375rem;
+                  background-color: #f7fafc;
+                  font-size: 1rem;
+                  outline: none;
+                  transition: border-color 0.15s ease-in-out,
+                    box-shadow 0.15s ease-in-out;
+                "
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data contract  -->
+      <div class="col-xl-12 col-lg-12">
+        <div class="card shadow mb-4">
+          <!-- Card Header - Dropdown -->
+          <div
+            class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+          >
+            <h6 class="m-0 font-weight-bold text-primary">
+              Información legal para el contrato
+            </h6>
+          </div>
+          <!-- Card Body -->
+          <div class="card-body">
+            <!-- Solicitant faculty -->
+            <div style="margin-bottom: 2rem">
+              <label
+                for="id_solicitant_faculty"
+                style="display: block; font-weight: 600"
+                >Unidad Solicitante:</label
+              >
+              <input
+                type="text"
+                id="id_solicitant_faculty"
+                name="solicitant_faculty"
+                required
+                style="
+                  height: 1rem;
+                  width: 100%;
+                  padding: 1rem;
+                  color: #333;
+                  border: 1px solid #ccc;
+                  border-radius: 0.375rem;
+                  background-color: #f7fafc;
+                  font-size: 1rem;
+                  outline: none;
+                  transition: border-color 0.15s ease-in-out,
+                    box-shadow 0.15s ease-in-out;
+                "
+              />
+            </div>
+            <!-- Request motive -->
+            <div style="margin-bottom: 2rem">
+              <label
+                for="id_request_motive"
+                style="display: block; font-weight: 600"
+                >Motivo de Solicitud:</label
+              >
+              <textarea
+                id="id_request_motive"
+                name="request_motive"
+                required
+                style="
+                  min-height: 1rem;
+                  width: 100%;
+                  padding: 1rem;
+                  color: #333;
+                  border: 1px solid #ccc;
+                  border-radius: 0.375rem;
+                  background-color: #f7fafc;
+                  font-size: 1rem;
+                  outline: none;
+                  transition: border-color 0.15s ease-in-out,
+                    box-shadow 0.15s ease-in-out;
+                "
+              ></textarea>
+            </div>
             <!-- Contract value -->
-            <div style="margin-bottom: 2rem;">
-                <label for="id_contract_value" style="display: block; font-weight: 600;">Contract value:</label>
-                <input type="number" id="id_contract_value" name="contract_value" required
-                    style="height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            <div style="margin-bottom: 2rem">
+              <label
+                for="id_contract_value"
+                style="display: block; font-weight: 600"
+                >Valor del Contrato:</label
+              >
+              <input
+                type="number"
+                id="id_contract_value"
+                name="contract_value"
+                required
+                style="
+                  height: 1rem;
+                  width: 100%;
+                  padding: 1rem;
+                  color: #333;
+                  border: 1px solid #ccc;
+                  border-radius: 0.375rem;
+                  background-color: #f7fafc;
+                  font-size: 1rem;
+                  outline: none;
+                  transition: border-color 0.15s ease-in-out,
+                    box-shadow 0.15s ease-in-out;
+                "
+              />
             </div>
-
             <!-- Charge account -->
-            <div style="margin-bottom: 2rem;">
-                <label for="id_charge_account" style="display: block; font-weight: 600;">Charge account:</label>
-                <textarea id="id_charge_account" name="charge_account" required
-                    style="min-height: 1rem; width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;"></textarea>
+            <div style="margin-bottom: 2rem">
+              <label
+                for="id_charge_account"
+                style="display: block; font-weight: 600"
+                >Cuenta de Cargo:</label
+              >
+              <textarea
+                id="id_charge_account"
+                name="charge_account"
+                required
+                style="
+                  min-height: 1rem;
+                  width: 100%;
+                  padding: 1rem;
+                  color: #333;
+                  border: 1px solid #ccc;
+                  border-radius: 0.375rem;
+                  background-color: #f7fafc;
+                  font-size: 1rem;
+                  outline: none;
+                  transition: border-color 0.15s ease-in-out,
+                    box-shadow 0.15s ease-in-out;
+                "
+              ></textarea>
             </div>
 
             <!-- Rut -->
-            <div style="margin-bottom: 2rem;">
-                <label for="id_rut" style="display: block; font-weight: 600;">Rut:</label>
-                <input type="file" id="id_rut" name="rut"
-                    style="width: 100%; padding: 1rem; color: #333; border: 1px solid #ccc; border-radius: 0.375rem; background-color: #f7fafc; font-size: 1rem; outline: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+            <div style="margin-bottom: 2rem">
+              <label for="id_rut" style="display: block; font-weight: 600"
+                >RUT:</label
+              >
+              <input
+                type="file"
+                id="id_rut"
+                name="rut"
+                style="
+                  width: 100%;
+                  padding: 1rem;
+                  color: #333;
+                  border: 1px solid #ccc;
+                  border-radius: 0.375rem;
+                  background-color: #f7fafc;
+                  font-size: 1rem;
+                  outline: none;
+                  transition: border-color 0.15s ease-in-out,
+                    box-shadow 0.15s ease-in-out;
+                "
+              />
             </div>
-
-
-            <!-- Submit -->
-            <button type="submit"
-                style="background-color: #1e40af; color: #fff; font-weight: 600; padding: 0.5rem 1rem; border: none; border-radius: 0.375rem; cursor: pointer; transition: background-color 0.3s ease-in-out;">Enviar</button>
-        </form>
+          </div>
+        </div>
+      </div>
     </div>
-</main>
+    <!-- Submit -->
+    <button
+      class="col-xl-12 col-lg-12"
+      type="submit"
+      style="
+        background-color: #1e40af;
+        color: #fff;
+        font-weight: 600;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+      "
+    >
+      Enviar
+    </button>
+  </div>
+</form>
 
 <!-- Modal -->
-<div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="notificationTitle">Título de la notificación</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p id="notificationMessage">Mensaje de notificación</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                    onclick="window.history.back()">Cerrar</button>
-            </div>
-        </div>
+<div
+  class="modal fade"
+  id="notificationModal"
+  tabindex="-1"
+  aria-labelledby="notificationModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="notificationTitle">
+          Título de la notificación
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p id="notificationMessage">Mensaje de notificación</p>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+          onclick="window.history.back()"
+        >
+          Cerrar
+        </button>
+      </div>
     </div>
+  </div>
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var form = document.getElementById('contractForm');
-        var notificationModal = new bootstrap.Modal(document.getElementById('notificationModal'));
-        var notificationTitle = document.getElementById('notificationTitle');
-        var notificationMessage = document.getElementById('notificationMessage');
-        var notificationCloseBtn = document.getElementById('notificationCloseBtn');
+  document.addEventListener("DOMContentLoaded", function () {
+    var form = document.getElementById("contractForm");
+    var notificationModal = new bootstrap.Modal(
+      document.getElementById("notificationModal")
+    );
+    var notificationTitle = document.getElementById("notificationTitle");
+    var notificationMessage = document.getElementById("notificationMessage");
+    var notificationCloseBtn = document.getElementById("notificationCloseBtn");
 
-        function showNotification(message, type) {
-            notificationTitle.textContent = (type === 'success') ? 'Éxito' : 'Error';
-            notificationMessage.textContent = message;
-            notificationModal.show();
-        }
+    function showNotification(message, type) {
+      notificationTitle.textContent = type === "success" ? "Éxito" : "Error";
+      notificationMessage.textContent = message;
+      notificationModal.show();
+    }
 
-        function hideNotification() {
-            notificationModal.hide();
-        }
+    function hideNotification() {
+      notificationModal.hide();
+    }
 
-        form.addEventListener('submit', function (event) {
-            event.preventDefault();
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
 
-            var formData = new FormData(form);
-            var url = form.action;
+      var formData = new FormData(form);
+      var url = form.action;
 
-            var darkOverlay = document.createElement('div');
-            darkOverlay.classList.add('dark-overlay');
-            document.body.appendChild(darkOverlay);
+      var darkOverlay = document.createElement("div");
+      darkOverlay.classList.add("dark-overlay");
+      document.body.appendChild(darkOverlay);
 
-            var loadingIndicator = document.createElement('div');
-            loadingIndicator.innerHTML = '<div class="spinner-border text-white" role="status"></div>';
-            loadingIndicator.classList.add('loading-indicator');
-            document.body.appendChild(loadingIndicator);
+      var loadingIndicator = document.createElement("div");
+      loadingIndicator.innerHTML =
+        '<div class="spinner-border text-white" role="status"></div>';
+      loadingIndicator.classList.add("loading-indicator");
+      document.body.appendChild(loadingIndicator);
 
-            fetch(url, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest',
-                    'X-CSRFToken': '{{ csrf_token }}'
-                }
-            })
-                .then(function (response) {
-                    document.body.removeChild(darkOverlay);
-                    document.body.removeChild(loadingIndicator);
+      fetch(url, {
+        method: "POST",
+        body: formData,
+        headers: {
+          "X-Requested-With": "XMLHttpRequest",
+          "X-CSRFToken": "{{ csrf_token }}",
+        },
+      })
+        .then(function (response) {
+          document.body.removeChild(darkOverlay);
+          document.body.removeChild(loadingIndicator);
 
-                    if (response.ok) {
-                        showNotification('La solicitud fue exitosa.', 'success');
-                        form.reset(); // Opcional: limpiar el formulario después del envío exitoso
-                    } else {
-                        showNotification('Ocurrió un error al procesar la solicitud.', 'error');
-                    }
-                })
-                .catch(function (error) {
-                    console.error('Error en la solicitud AJAX:', error);
-                    document.body.removeChild(darkOverlay);
-                    document.body.removeChild(loadingIndicator);
-                    showNotification('Ocurrió un error al procesar la solicitud.', 'error');
-                });
+          if (response.ok) {
+            showNotification("La solicitud fue exitosa.", "success");
+            form.reset(); // Opcional: limpiar el formulario después del envío exitoso
+          } else {
+            showNotification(
+              "Ocurrió un error al procesar la solicitud.",
+              "error"
+            );
+          }
+        })
+        .catch(function (error) {
+          console.error("Error en la solicitud AJAX:", error);
+          document.body.removeChild(darkOverlay);
+          document.body.removeChild(loadingIndicator);
+          showNotification(
+            "Ocurrió un error al procesar la solicitud.",
+            "error"
+          );
         });
     });
-
+  });
 </script>
 
 {% endblock %}

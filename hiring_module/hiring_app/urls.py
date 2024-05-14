@@ -10,6 +10,7 @@ from hiring_app.views.request_creation.additional_pos_fields_view import get_add
 from hiring_app.views.control_board.administrator_user_list_view import AdministratorUserListView
 from hiring_app.views.control_board.add_user_view import AddUserView
 from hiring_app.views.statistical_registers.statistics_view import StatisticsView
+from hiring_app.views.control_board.export_requests_view import ExportRequestsView
 
 app_name = 'hiring_app'
 
@@ -43,5 +44,6 @@ urlpatterns = [
     path('download_rut/<str:idContract>/',
          download_rut_file, name='download_rut'),
     path('statistics/', StatisticsView.as_view(), name='statistics'),
+    path('export_requests/', ExportRequestsView.as_view(), name='export_requests')
 ]
 
