@@ -9,7 +9,7 @@
 
         {% for manager in managers %}
         
-        <option value="{{ manager.id }}" class="col" {% if manager.id == contract_request.manager_assigned_to.id %}selected{% endif %} style="color: #4a5568;">{{ manager.first_name }} {{ manager.last_name }}</option>
+        <option value="{{ manager.id }}" class="col" {% if manager.id == contract_request.manager_assigned_to.id %}selected{% endif %} style="color: #4a5568;">{{ manager.first_name|truncatechars:10 }} {{ manager.last_name|truncatechars:8 }}</option>
         {% endfor %}
 
     </select>

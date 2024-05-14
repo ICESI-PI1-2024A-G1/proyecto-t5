@@ -39,7 +39,7 @@ class CreateHiringRequest(StaticLiveServerTestCase):
             By.NAME, 'cenco_manager').send_keys('John Doe')
         monitoring_type = self.selenium.find_element(
             By.NAME, 'monitoring_type')
-        monitoring_type.send_keys('Academic')
+        monitoring_type.send_keys('Academico')
         self.selenium.find_element(By.NAME, 'student_code').send_keys('123456')
         self.selenium.find_element(
             By.NAME, 'student_full_name').send_keys('Jane Smith')
@@ -101,7 +101,7 @@ class CreateHiringRequest(StaticLiveServerTestCase):
             By.NAME, 'banking_entity').send_keys('Bank of Example')
         bank_account_type = self.selenium.find_element(
             By.NAME, 'bank_account_type')
-        bank_account_type.send_keys('Savings')
+        bank_account_type.send_keys('Ahorros')
         self.selenium.find_element(
             By.NAME, 'bank_account_number').send_keys('1234567890')
         self.selenium.find_element(By.NAME, 'eps').send_keys('EPS Company')
@@ -159,7 +159,7 @@ class CreateHiringRequest(StaticLiveServerTestCase):
             By.NAME, 'banking_entity').send_keys('Bank of Example')
         bank_account_type = self.selenium.find_element(
             By.NAME, 'bank_account_type')
-        bank_account_type.send_keys('Savings')
+        bank_account_type.send_keys('Ahorros')
         self.selenium.find_element(
             By.NAME, 'bank_account_number').send_keys('1234567890')
         self.selenium.find_element(By.NAME, 'eps').send_keys('EPS Company')
