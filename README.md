@@ -1,53 +1,46 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/mxgxu2b2)
 
-Configuration for collaborative work:
+## User Section:
 
-1) Have postgresql installed in version 16.2 (password "admin")
+Welcome to the Hiring Module!
 
-2) Have postgresql in environment variables
+This software aims to streamline the hiring process and facilitate the management of shared office resources. With our tool, you can efficiently track the entire hiring cycle until the contract is finalized.
 
-3) Create the hiring_module database for local use
+If you're interested in learning more or want to test our demo, please contact us [here](mailto:info@hiringmodule.com).
 
-> psql -U postgres -c "CREATE DATABASE hiring_module;"
+**Demo Link:** [Hiring Module Demo](https://proyecto-t5.onrender.com)
 
-4) Have python installed since version 3.12.1
+## Developer Section:
 
-5) Create a virtual python environment (in a location other than the repository or project directory)
+### Overview:
 
->python -m venv hiring_venv
+The Hiring Module is developed using Django framework, providing a robust solution for managing hiring processes. The application utilizes PostgreSQL for the primary database, while a temporary SQLite database is used for testing purposes.
 
-**From here the steps will be necessary every time you work on the project**
+### Setup Instructions:
 
-6) Activate the virtual environment
+1. Configure environment variables, including database connection details, in the `.env` file.
+2. Navigate to the project directory:
 
-> ./hiring_venv/Scripts/activate
+    ```bash
+    cd hiring_module
+    ```
 
-When you are in the virtual environment you can work on the project
+3. Perform database migrations:
 
-7) Make the necessary installations of dependencies
+    ```bash
+    python manage.py makemigrations hiring_app
+    python manage.py migrate
+    ```
 
-> pip install -r requirements.txt
+4. Run the development server:
 
-8) Move to the project directory
+    ```bash
+    python manage.py runserver
+    ```
 
-> cd hiring_module
+### Important Notes:
 
-9) Make database migrations
+- This codebase serves as a demo and is not intended for production use in critical business operations.
+- Developers are encouraged to set up an SMTP server for handling progress notifications and other relevant functionalities.
 
-Being in the project directory...
-
-> python manage.py makemigrations hiring_app
-
-> python manage.py migrate
-
-10) Run server
-Being in the project director...
-
-> python manage.py runserver
-
-
-
-
-
-
-
+Thank you for your interest in the Hiring Module! If you have any questions or suggestions for improvement, feel free to reach out to us.
